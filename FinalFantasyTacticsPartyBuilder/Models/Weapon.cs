@@ -13,7 +13,9 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int WeaponCategoryID { get; set; }
 
-        public string Name { get; set; }
+        public string PsxName { get; set; }
+
+        public string PspName { get; set; }
 
         public int AttackPower { get; set; }
 
@@ -23,13 +25,21 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string SpellEffect { get; set; }
 
-        public string StatusEffect { get; set; }
+        public string HitStatusEffect { get; set; }
 
-        public int? MagicAttackBoost { get; set; }
+        public string EquipStatusEffect { get; set; }
 
-        public string AcquiredViaMode { get; set; }
+        public int? MagicAttackBoost { get; set; }    
+        
+        public int? SpeedBoost { get; set; }    
 
         public string Element { get; set; }
+
+        public string ElementAbsorbed { get; set; }
+
+        public string ElementBoosted { get; set; }
+
+        public string AcquiredViaMode { get; set; }
 
         public string AcquiredViaLocation { get; set; }
 
@@ -46,6 +56,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string IconFileName { get; set; }
 
         public int Cost { get; set; }
+
+        public string Note { get; set; }
 
         public virtual WeaponCategory WeaponCategory { get; set; }
     }
