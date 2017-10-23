@@ -39,7 +39,13 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string AcquiredViaTreasureHunt { get; set; }
 
+        public string AcquiredViaCatch { get; set; }
+
+        public string AcquiredViaInitialEquip { get; set; }
+
         public string IconFileName { get; set; }
+
+        public int Cost { get; set; }
 
         public virtual WeaponCategory WeaponCategory { get; set; }
     }
