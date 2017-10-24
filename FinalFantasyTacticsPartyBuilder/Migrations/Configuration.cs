@@ -1264,6 +1264,807 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             });
 
             #endregion
+
+            #region Poles
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Cypress Pole",
+                AttackPower = 6,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
+                AcquiredViaTreasureHunt = "Castled City of Zaland (rare)",
+                Cost = 1000,
+                Description = "A pole carved from the wood of a cypress.",
+                IconFileName = "FFT_Cypress_Pole.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Battle Bamboo",
+                AttackPower = 7,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle (Chapter 2)",
+                AcquiredViaTreasureHunt = "Balias Swale (rare)",
+                Cost = 1400,
+                Description = "A thin and supple bamboo pole that bends lithely when swung through the air.",
+                IconFileName = "FFT_Battle_Bamboo.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Musk Pole",
+                AttackPower = 8,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
+                AcquiredViaTreasureHunt = "Monastery Vaults Second Level (rare)",
+                Cost = 2400,
+                Description = "A pole crafted from wood that emits a musky scent. It is in the shape of a large ladle.",
+                IconFileName = "FFT_Musk_Pole.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Iron Fan",
+                AttackPower = 9,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                Cost = 4000,
+                Description = "The ribs of this enormous fan are made of iron. When folded up, it may be employed as a pole in battle.",
+                IconFileName = "FFT_Iron_Fan.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Gokuu Pole",
+                AttackPower = 10,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaTreasureHunt = "Free City of Bervenia (rare)",
+                Cost = 7500,
+                HitStatusEffect = "Atheist",
+                Description = "One strike from this pole can cause the target to lose his faith.",
+                IconFileName = "FFT_Gokuu_Pole.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Ivory Pole",
+                AttackPower = 11,
+                HitPercentage = 20,
+                AcquiredViaPoach = "Sekhret",
+                AcquiredViaCatch = "Level 95 Ninja",
+                Cost = 10000,
+                Description = "A pole made from specially treated ivory. It is surprisingly strong, despite its fragile appearance.",
+                IconFileName = "FFT_Ivory_Pole.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Eight-fluted Pole",
+                AttackPower = 12,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
+                AcquiredViaTreasureHunt = "Limberry Castle Undercroft (rare)",
+                AcquiredViaCatch = "Level 90-94 Ninja",
+                Cost = 20000,
+                RemoveStatusEffect = "Blind, Silence, Oil, Toad, Poison, Slow, Stop, Immobilize, Disable",
+                Description = "A shaft of boxwood, carved into a hexagonal shape and reinforced with metal plates.",
+                IconFileName = "FFT_Eight-fluted_Pole.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Pole,
+                PspName = "Whale Whisker",
+                AttackPower = 16,
+                HitPercentage = 20,
+                AcquiredViaPoach = "Tiamat",
+                AcquiredViaMode = "Melee",
+                AcquiredViaCatch = "Level 96+ Ninja",
+                Cost = 37000,
+                Description = "A pole made from a dark material that is neither wood nor metal. Some say it is a dire whale's whisker.",
+                IconFileName = "FFT_Whale_Whisker.gif"
+            });
+
+            #endregion
+
+            #region Rods
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Rod",
+                AttackPower = 3,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Magick City of Gariland (Chapter 1)",
+                AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
+                Cost = 200,
+                Description = "A rod fashioned from evergreen wood.",
+                IconFileName = "FFT_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Thunder Rod",
+                AttackPower = 3,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                Cost = 400,
+                ElementBoosted = "Thunder",
+                SpellEffect = "Thunder",
+                Element = "Thunder",
+                Description = "A rod imbued with the power of thunder.",
+                IconFileName = "FFT_Thunder_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Flame Rod",
+                AttackPower = 3,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                AcquiredViaPoach = "Bomb",
+                AcquiredViaTreasureHunt = "Brigands' Den (rare)",
+                Cost = 400,
+                ElementBoosted = "Fire",
+                SpellEffect = "Fire",
+                Element = "Fire",
+                Description = "A rod imbued with the power of fire.",
+                IconFileName = "FFT_Flame_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Ice Rod",
+                AttackPower = 3,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                AcquiredViaTreasureHunt = "Brigands' Den (rare)",
+                Cost = 400,
+                ElementBoosted = "Ice",
+                SpellEffect = "Ice",
+                Element = "Ice",
+                Description = "A rod imbued with the power of ice.",
+                IconFileName = "FFT_Ice_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Poison Rod",
+                AttackPower = 3,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
+                AcquiredViaTreasureHunt = "Zeirchele Falls (rare)",
+                Cost = 500,
+                HitStatusEffect = "Poison",
+                Description = "A rod with a poisoned tip.",
+                IconFileName = "FFT_Poison_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Wizard's Rod",
+                AttackPower = 4,
+                MagicAttackBoost = 2,
+                HitPercentage = 20,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaPoach = "Dark Behemoth, Treant",
+                AcquiredViaTreasureHunt = "Dugeura Pass (rare)",
+                Cost = 8000,
+                Description = "A rod that enhances the magickal potency of its wielder.",
+                IconFileName = "FFT_Wizard's_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Dragon Rod",
+                AttackPower = 5,
+                HitPercentage = 20,
+                AcquiredViaPoach = "Blue Dragon",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 12000,
+                Description = "A rod wielded by a dragon master. Its tip is made from carved dragon bone.",
+                IconFileName = "FFT_Dragon_Rod.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Rod of Faith",
+                AttackPower = 5,
+                HitPercentage = 20,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                Cost = 10,
+                EquipStatusEffect = "Faith",
+                HitStatusEffect = "Faith",
+                Description = "This rod purges doubt from those it touches, turning them into pillars of faith.",
+                IconFileName = "FFT_Rod_of_Faith.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Stardust Rod",
+                AttackPower = 5,
+                HitPercentage = 20,
+                MagicAttackBoost = 3,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                SpellEffect = "Gravity",
+                Description = "A rod tipped with a meteorite fragment.",
+                IconFileName = "FFT_Stardust_Rod.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Rod,
+                PspName = "Crown Sceptre",
+                AttackPower = 5,
+                HitPercentage = 20,
+                MagicAttackBoost = 4,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Description = "A magicked rod wielded by members of the royal guard.",
+                IconFileName = "FFT_Crown_Sceptre.png"
+            });
+
+            #endregion
+
+            #region Polearms
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Javelin",
+                AttackPower = 8,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Second battle Merchant City of Dorter (Chapter 2)",
+                AcquiredViaTreasureHunt = "Balias Swale (rare)",
+                Cost = 1000,
+                Description = "A light and inexpensive spear. Allows the wielder to attack enemies within a range of two tiles.",
+                IconFileName = "FFT_Javelin_1.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Spear",
+                AttackPower = 9,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Meeting with Cardinal Delacroix at Lionel Castle (Chapter 2)",
+                AcquiredViaTreasureHunt = "First battle Mining Town of Gollund (rare)",
+                Cost = 2000,
+                Description = "The most commonly used type of spear. Distinguished by its especially long reach.",
+                IconFileName = "FFT_Spear.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Mythril Spear",
+                AttackPower = 10,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
+                Cost = 4500,
+                Description = "The tip of this spear is made from the valuable metal known as mythril.",
+                IconFileName = "FFT_Mythril_Spear.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Partisan",
+                AttackPower = 11,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaPoach = "Bonesnatch",
+                AcquiredViaTreasureHunt = "Free City of Bervenia (rare)",
+                Cost = 7000,
+                Description = "A polearm tipped with a broad, double-edged blade. Its design increases the damage it causes.",
+                IconFileName = "FFT_Partisan.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Obelisk",
+                PsxName = "Oberisk",
+                AttackPower = 12,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
+                AcquiredViaTreasureHunt = "Limberry Castle Undercroft (rare)",
+                AcquiredViaCatch = "Level 90-94 Ninja",
+                Cost = 10000,
+                Description = "A hefty spear fitted with an obelisk-shaped head.",
+                IconFileName = "FFT_Obelisk.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Holy Lance",
+                AttackPower = 14,
+                HitPercentage = 10,
+                AcquiredViaPoach = "Sekhret",
+                AcquiredViaMode = "Rendezvous",
+                AcquiredViaCatch = "Level 90-94 Ninja",
+                Cost = 18000,
+                SpellEffect = "Holy",
+                Element = "Holy",
+                Description = "This sacred weapon shines a brilliant blue.",
+                IconFileName = "FFT_Holy_Lance.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Dragon Whisker",
+                AttackPower = 17,
+                HitPercentage = 10,
+                AcquiredViaPoach = "Red Dragon",
+                AcquiredViaMode = "Melee/Rendezvous",
+                AcquiredViaCatch = "Level 96 Ninja",
+                Cost = 44000,
+                Description = "A spear made from a mysterious material that is neither wood nor metal. Some say it is a dragon's whisker.",
+                IconFileName = "FFT_Dragon_Whisker.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Gae Bolg",
+                AttackPower = 24,
+                HitPercentage = 15,
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                Description = "A spear said to have been wielded by a child of the gods. Merely lifting it requires great strength.",
+                IconFileName = "FFT_Gae_Bolg.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Gungnir",
+                AttackPower = 29,
+                HitPercentage = 15,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Element = "Thunder",
+                Description = "A spear with the power to pierce anything.",
+                IconFileName = "FFT_Gungnir.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Polearm,
+                PspName = "Javelin 'II'",
+                AttackPower = 30,
+                HitPercentage = 10,
+                AcquiredViaTreasureHunt = "Nelveska Temple",
+                AcquiredViaCatch = "Level 97+ Ninja",
+                Cost = 1000,
+                Description = "This spear has unmatched attack power.",
+                IconFileName = "FFT_Javelin_2.gif"
+            });
+
+            #endregion
+
+            #region Staves
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Oak Staff",
+                AttackPower = 3,
+                HitPercentage = 15,
+                AcquiredViaLocation = "Magick City of Gariland (Chapter 1)",
+                AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
+                Cost = 120,
+                Description = "A staff made from sturdy oak.",
+                IconFileName = "FFT_Oak_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "White Staff",
+                AttackPower = 3,
+                HitPercentage = 15,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                AcquiredViaTreasureHunt = "Brigands' Den (rare)",
+                Cost = 800,
+                RemoveStatusEffect = "Doom",
+                Description = "A staff carried by members of the clergy.",
+                IconFileName = "FFT_White_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Mage's Staff",
+                PsxName = "Wizard Staff",
+                AttackPower = 4,
+                HitPercentage = 15,
+                MagicAttackBoost = 1,
+                AcquiredViaLocation = "Balias Swale (Chapter 3)",
+                AcquiredViaTreasureHunt = "First battle Mining Town of Gollund (rare)",
+                Cost = 4000,
+                Description = "This cypress staff increases the magick power of its owner.",
+                IconFileName = "FFT_Mage's_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Healing Staff",
+                AttackPower = 4,
+                HitPercentage = 15,
+                AcquiredViaInitialEquip = "Alma",
+                AcquiredViaPoach = "Dryad",
+                AcquiredViaTreasureHunt = "First battle Mining Town of Gollund (rare)",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 4000,
+                Note = "Heals target.",
+                Description = "A staff imbued with the power of spirits. Has the power to restore HP to those it hits.",
+                IconFileName = "FFT_Healing_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Serpent Staff",
+                PsxName = "Rainbow Staff",
+                AttackPower = 5,
+                HitPercentage = 15,
+                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
+                AcquiredViaTreasureHunt = "Castled City of Zaland (rare)",
+                Cost = 2200,
+                Description = "A staff with a giant serpent scale embedded in its tip.",
+                IconFileName = "FFT_Serpent_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Nirvana",
+                AttackPower = 5,
+                HitPercentage = 15,
+                MagicAttackBoost = 3,
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                Element = "Holy",
+                Description = "A staff that can only be mastered by the enlightened.",
+                IconFileName = "FFT_Nirvana.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Dreamwaker",
+                AttackPower = 5,
+                HitPercentage = 15,
+                MagicAttackBoost = 4,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Description = "A powerful staff said to give life to its owner's dreams.",
+                IconFileName = "FFT_Dreamwaker.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Golden Staff",
+                AttackPower = 6,
+                HitPercentage = 15,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaPoach = "Treant",
+                AcquiredViaTreasureHunt = "Dugeura Pass (rare)",
+                Cost = 7000,
+                Description = "A shiny staff decorated with gold.",
+                IconFileName = "FFT_Golden_Staff.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Zeus Mace",
+                AttackPower = 6,
+                HitPercentage = 15,
+                MagicAttackBoost = 1,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                Cost = 10,
+                Note = "Physical Attack +2.",
+                Description = "A staff that increases the strength of its user.",
+                IconFileName = "FFT_Zeus_Mace.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Staff,
+                PspName = "Staff of the Magi",
+                PsxName = "Sage Staff",
+                AttackPower = 7,
+                HitPercentage = 15,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                Cost = 10,
+                Description = "An ordinary wooden staff that one might find anywhere.",
+                IconFileName = "FFT_Staff_of_the_Magi.gif"
+            });
+
+            #endregion
+
+            #region Swords
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Nagnarok",
+                PsxName = "Nagrarok",
+                AttackPower = 1,
+                HitPercentage = 50,
+                AcquiredViaPoach = "Swine",
+                AcquiredViaMode = "Rendezvous",
+                AcquiredViaCatch = "Level 95 Ninja",
+                Cost = 10,
+                HitStatusEffect = "Toad",
+                Description = "This dark blade is mentioned in legends about the end of the world.",
+                IconFileName = "FFT_Nagrarok.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Broadsword",
+                AttackPower = 4,
+                HitPercentage = 5,
+                AcquiredViaLocation = "Magick City of Gariland (Chapter 1)",
+                AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
+                Cost = 200,
+                Description = "This broad-bladed sword is suited for large slashing strokes. It is inexpensive, but not particularly powerful.",
+                IconFileName = "FFT_Broadsword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Longsword",
+                AttackPower = 5,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Dycedarg meeting at Eagrose Castle (Chapter 1)",
+                AcquiredViaTreasureHunt = "Merchant City of Dorter (rare)",
+                Cost = 900,
+                Description = "This straight and sharp double-edged blade can be used for either stabbing or slashing.",
+                IconFileName = "FFT_Long_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Iron Sword",
+                AttackPower = 6,
+                HitPercentage = 5,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                Cost = 900,
+                Description = "This sword has a broad and sturdy blade, but its iron construction makes it very heavy.",
+                IconFileName = "FFT_Iron_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Mythril Sword",
+                AttackPower = 7,
+                HitPercentage = 8,
+                AcquiredViaLocation = "Lenalian Plateau (Chapter 1)",
+                AcquiredViaTreasureHunt = "Fovoham Windflats (rare), Mining Town of Gollund (rare)",
+                Cost = 1600,
+                Description = "A sword forged from the metal known as mythril. Its brilliantly shining blade is incredibly lightweight.",
+                IconFileName = "FFT_Mythril_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Coral Sword",
+                AttackPower = 8,
+                HitPercentage = 5,
+                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
+                AcquiredViaPoach = "Minotaur",
+                Cost = 3300,
+                Element = "Thunder",
+                Description = "The handle of this single-edged sword has been decorated with intricate coral piecework.",
+                IconFileName = "FFT_Coral_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Blood Sword",
+                AttackPower = 8,
+                HitPercentage = 5,
+                AcquiredViaSteal = "Gaffgarion at Golgollada Gallows",
+                AcquiredViaTreasureHunt = "Eagrose Castle (rare)",
+                AcquiredViaPoach = "Hydra",
+                AcquiredViaMode = "Melee",
+                Cost = 3300,
+                Note = "Absorbs foe's HP.",
+                Description = "The blade of this sword is a deep crimson, as if it were drenched in blood. It is cruelly sharp.",
+                IconFileName = "FFT_Blood_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Ancient Sword",
+                AttackPower = 9,
+                HitPercentage = 5,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
+                AcquiredViaPoach = "Gobbledygook",
+                Cost = 5000,
+                HitStatusEffect = "Immobilize",
+                Description = "A sword constructed using ancient techniques that have long since perished from the world.",
+                IconFileName = "FFT_Ancient_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Sleep Blade",
+                PsxName = "Sleep Sword",
+                AttackPower = 9,
+                HitPercentage = 5,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                AcquiredViaPoach = "Squidraken",
+                AcquiredViaTreasureHunt = "Grogh Heights (rare)",
+                Cost = 5000,
+                HitStatusEffect = "Sleep",
+                Description = "A wide-bladed sword with a midnight blue handle.",
+                IconFileName = "FFT_Sleep_Blade.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Diamond Sword",
+                AttackPower = 10,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaPoach = "Treant",
+                AcquiredViaTreasureHunt = "Dugeura Pass (rare)",
+                Cost = 8000,
+                Description = "The countless tiny diamonds embedded into this sword's blade saw into its victims, causing great damage.",
+                IconFileName = "FFT_Diamond_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Materia Blade",
+                AttackPower = 10,
+                HitPercentage = 10,
+                AcquiredViaTreasureHunt = "Bervenia Volcano",
+                AcquiredViaMode = "Melee/Rendezvous",
+                AcquiredViaCatch = "Level 96+ Ninja",
+                Cost = 10,
+                Description = "A sword of extraplanar origin.",
+                IconFileName = "FFT_Materia_Blade.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Platinum Sword",
+                AttackPower = 12,
+                HitPercentage = 10,
+                AcquiredViaLocation = "Walled City of Yardrow (Chapter 3)",
+                AcquiredViaTreasureHunt = "Mount Germinas (rare)",
+                Cost = 11000,
+                Description = "A shining sword made of a lustrous white alloy of mythril and platinum. Its broad blade is wickedly sharp.",
+                IconFileName = "FFT_Platinum_Sword.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Icebrand",
+                AttackPower = 13,
+                HitPercentage = 10,
+                AcquiredViaLocation = "The Horror of Riovanes (Chapter 4)",
+                AcquiredViaInitialEquip = "Luso",
+                Cost = 14000,
+                SpellEffect = "Blizzara",
+                Element = "Ice",
+                Description = "A sword with a transparent blade that resembles ice.",
+                IconFileName = "FFT_Icebrand.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Runeblade",
+                AttackPower = 14,
+                HitPercentage = 15,
+                MagicAttackBoost = 2,
+                AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
+                AcquiredViaTreasureHunt = "Fort Besselat North Wall (rare)",
+                AcquiredViaCatch = "Level 90-94 Ninja",
+                Cost = 20000,
+                Description = "A sword inscribed with ancient runes.",
+                IconFileName = "FFT_Runeblade.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Moonblade",
+                AttackPower = 20,
+                HitPercentage = 15,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                EquipStatusEffect = "Haste",
+                Description = "A sword that glitters cruelly like a crescent moon.",
+                IconFileName = "FFT_Moonblade.png"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.Sword,
+                PspName = "Onion Sword",
+                AttackPower = 50,
+                HitPercentage = 15,
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                Note = "Onion Knight only.",
+                Description = "A blade forged for swordsmen who have mastered every technique and achieved knighthood's most exalted rank.",
+                IconFileName = "FFT_Onion_Sword.png"
+            });
+
+            #endregion
+
+            #region Throwing Weapons
+            context.Weapons.AddOrUpdate(m => m.PspName,
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Shuriken",
+                AttackPower = 4,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Second battle Merchant City of Dorter (Chapter 2)",
+                Cost = 50,
+                Description = "A throwing weapon for ninjas. It spins in the air before hitting its target.",
+                IconFileName = "FFT_Shuriken.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Fuma Shuriken",
+                PsxName = "Magic Shuriken",
+                AttackPower = 7,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                Cost = 300,
+                Description = "A pinwheel-shaped throwing star that flies at very high speeds.",
+                IconFileName = "FFT_Fuma_Shuriken.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Yagyu Darkrood",
+                PsxName = "Yagyu Darkness",
+                AttackPower = 10,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                Cost = 1000,
+                Description = "A cross-shaped throwing star used by a famous ninja school. Its blades are serrated for maximum damage.",
+                IconFileName = "FFT_Yagyu_Darkrood.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Flameburst Bomb",
+                PsxName = "Fire Ball",
+                AttackPower = 8,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Meeting with Cardinal Delacroix at Lionel Castle (Chapter 2)",
+                Cost = 250,
+                Element = "Fire",
+                Description = "An explosive sphere that deals fire damage when thrown.",
+                IconFileName = "FFT_Flameburst_Bomb.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Snowmelt Bomb",
+                PsxName = "Water Ball",
+                AttackPower = 8,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Meeting with Cardinal Delacroix at Lionel Castle (Chapter 2)",
+                AcquiredViaPoach = "Bomb",
+                Cost = 250,
+                Element = "Water",
+                Description = "An explosive sphere that deals water damage when thrown.",
+                IconFileName = "FFT_Snowmelt_Bomb.gif"
+            },
+            new Weapon
+            {
+                WeaponCategoryID = (int)WeaponCategoriesList.ThrowingWeapon,
+                PspName = "Spark Bomb",
+                PsxName = "Lightning Ball",
+                AttackPower = 8,
+                HitPercentage = 0,
+                AcquiredViaLocation = "Meeting with Cardinal Delacroix at Lionel Castle (Chapter 2)",
+                Cost = 250,
+                Element = "Lightning",
+                Description = "An explosive sphere that deals lightning damage when thrown.",
+                IconFileName = "FFT_Spark_Bomb.gif"
+            });
+
+            #endregion
         }
     }
 }

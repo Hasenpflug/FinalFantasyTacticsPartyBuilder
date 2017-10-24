@@ -27,6 +27,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string HitStatusEffect { get; set; }
 
+        public string RemoveStatusEffect { get; set; }
+
         public string EquipStatusEffect { get; set; }
 
         public int? MagicAttackBoost { get; set; }    
