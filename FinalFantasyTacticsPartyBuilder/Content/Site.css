@@ -22,3 +22,44 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#brick-background {
+    width:800px;
+    height:200px;
+    margin:20px;
+    border-color:brown;
+    border-width:5px;
+    background-color:brown;
+}
+
+.menu-container {    
+    width:200px;
+    height:300px;
+    margin-left: 20px;
+}
+
+.menu {
+    height: 80%;
+    width:100%;
+    background-image: url(Images/menu_background.png);
+    border: 2px solid black;
+    box-shadow: black 3px 3px 3px;
+    padding-top:20px;
+    float:left;
+    margin-top: -10px;
+}
+
+.menu ul {
+    padding-left:15px;
+}
+
+.menu li {
+    list-style: none;
+    font: 70px 'Final Fantasy Script Collection - Final Fantasy Tactics';
+    line-height: 60%;
+    text-shadow: 2px 2px 5px grey;
+}
+
+img {
+    width:40%;
+}
