@@ -1,12 +1,14 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html, body {
+    width:100%;
+    height:100%;
+    margin:0;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    width:100%;
+    height:100%;    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -23,41 +25,76 @@ textarea {
     max-width: 280px;
 }
 
-#brick-background {
-    width:800px;
-    height:200px;
-    margin:20px;
-    border-color:brown;
-    border-width:5px;
-    background-color:brown;
+#party-overview-container {
+    width:100%;
+    height:100%;
+    background-image: url(Images/party_builder_background.png);
+    z-index: 1;
+    padding:60px;
 }
 
-.menu-container {    
-    width:200px;
-    height:300px;
+#party-builder-container {
+    width:80%;
+    height:75%;
+    margin:0; 
+}
+
+.unit-container {
+    width:22%;
+    height:25%;
+    margin:10px;
+    background-color:blue;
+    display:inline-block;
+}
+
+.menu-container {
+    position:relative;
+    left:1000px; 
+    width: 200px;
+    height: 300px;
     margin-left: 20px;
+    z-index:3;
 }
 
 .menu {
     height: 80%;
-    width:100%;
+    width: 100%;
     background-image: url(Images/menu_background.png);
     border: 2px solid black;
     box-shadow: black 3px 3px 3px;
-    padding-top:20px;
     float:left;
     margin-top: -10px;
 }
 
 .menu ul {
-    padding-left:15px;
+    margin-top: 15px;
+    padding-left: 15px;
 }
 
 .menu li {
+    margin: 5px;
     list-style: none;
-    font: 70px 'Final Fantasy Script Collection - Final Fantasy Tactics';
-    line-height: 60%;
-    text-shadow: 2px 2px 5px grey;
+    font: 50px 'Altima';
+    line-height: 70%;
+    
+}
+
+.menu li a {
+   color: inherit;
+   text-decoration:none;
+   text-shadow: 2px 2px 15px grey;
+}
+
+.menu li:hover {
+   position: relative;
+}
+
+
+.menu li:hover:before {
+    content: url(Images/menu_cursor.png);
+    position: absolute;
+    left: -40px;
+    bottom: 5px;
 }
 
 img {

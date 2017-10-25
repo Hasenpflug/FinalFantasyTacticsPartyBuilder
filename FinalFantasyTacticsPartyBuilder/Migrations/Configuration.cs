@@ -2914,7 +2914,84 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 MagicAttackBoost = 2,
                 Description = "A hooded robe that completely covers the wearer's body.",
                 IconFileName = "FFT_Wizard's_Robe.gif",
-            }
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "Chameleon Robe",
+                HPBonus = 40,
+                MPBonus = 28,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                Cost = 5000,
+                ElementAbsorbed = "Holy",
+                ImmuneStatusEffect = "KO",
+                Description = "A robe dyed with pigments made from shining green stones.",
+                IconFileName = "FFT_Chameleon_Robe.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "White Robe",
+                HPBonus = 50,
+                MPBonus = 34,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                Cost = 9000,
+                ElementHalved = "Fire, Ice, Lightning",
+                Description = "These pure white vestments halve damage taken from the primary elements.",
+                IconFileName = "FFT_White_Robe.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "Black Robe",
+                HPBonus = 60,
+                MPBonus = 30,
+                AcquiredViaLocation = "Walled City of Yardrow (Chapter 3)",
+                AcquiredViaTreasureHunt = "Limberry Castle Gate",
+                Cost = 13000,
+                ElementBoosted = "Fire, Ice, Lightning",
+                Description = "These pitch-black vestments increase damage inflicted by magicks of the primary elements.",
+                IconFileName = "FFT_Black_Robe.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "Luminous Robe",
+                PsxName = "Light Robe",
+                HPBonus = 75,
+                MPBonus = 50,
+                AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
+                Cost = 30000,
+                Description = "The material in this robe has been woven from threads that glow faintly with magick.",
+                IconFileName = "FFT_Luminous_Robe.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "Lordly Robe",
+                PsxName = "Robe of Lords",
+                HPBonus = 100,
+                MPBonus = 80,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                Cost = 10,
+                PhysicalAttackBoost = 2,
+                MagicAttackBoost = 1,
+                EquipStatusEffect = "Protect, Shell",
+                Description = "Luxurious robe worn by high-ranking nobles.",
+                IconFileName = "FFT_Lordly_Robe.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                PspName = "Sage's Robe",
+                HPBonus = 120,
+                MPBonus = 100,
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                ElementHalved = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
+                Description = "A robe woven from threads that shimmer in all colors of the rainbow. Halves damage taken from elemental magick.",
+                IconFileName = "FF_tactics_sages_robe.png",
+            });
 
             #endregion
 

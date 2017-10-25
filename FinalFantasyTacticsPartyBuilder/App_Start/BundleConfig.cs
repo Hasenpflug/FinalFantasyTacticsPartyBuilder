@@ -26,7 +26,8 @@ namespace FinalFantasyTacticsPartyBuilder
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/Fonts/stylesheet.css"));
+                      "~/Content/Fonts/stylesheet.css",
+                      "~/fonts/webfont.css"));
         }
     }
 }
