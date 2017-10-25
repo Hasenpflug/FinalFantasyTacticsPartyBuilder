@@ -55,31 +55,31 @@ namespace FinalFantasyTacticsWebScraper
             ChromeDriver driver = new ChromeDriver(options);
             Thread.Sleep(TimeSpan.FromSeconds(2));
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://finalfantasy.wikia.com/wiki/List_of_Final_Fantasy_Tactics_weapons");
+            driver.Navigate().GoToUrl("http://finalfantasy.wikia.com/wiki/List_of_Final_Fantasy_Tactics_Items");
             if (new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(m => m.FindElements(By.CssSelector("table.full-width.FFT")).Count == 21))
             {
-                // All item tables for weapons
-                List<IWebElement> weaponTables = driver.FindElements(By.CssSelector("table.full-width.FFT")).OrderBy(m => m.Location.Y).ToList();
+                // All item tables for Items
+                List<IWebElement> ItemTables = driver.FindElements(By.CssSelector("table.full-width.FFT")).OrderBy(m => m.Location.Y).ToList();
                 // All the table row elements for a single item
                 List<IWebElement> itemRows = new List<IWebElement>();
-                List<Weapon> weapons = new List<Weapon>();
+                List<Item> Items = new List<Item>();
                 // Index of rows for the entire table
                 int rowIndex = 0;
-                // Flag to initialize new weapon object
-                bool weaponSentinel = false;
+                // Flag to initialize new Item object
+                bool Itemsentinel = false;
 
-                foreach (IWebElement table in weaponTables)
+                foreach (IWebElement table in ItemTables)
                 {
                     // All of the rows for the table
                     List<IWebElement> rows = table.FindElements(By.CssSelector("tr:not(.a)")).ToList();
-                    Weapon weapon = new Weapon();
+                    Item Item = new Item();
 
                     while (rows.Count != rowIndex)
                     {
-                        if (weaponSentinel)
+                        if (Itemsentinel)
                         {
                             itemRows.Clear();
-                            weapon = new Weapon();
+                            Item = new Item();
                         }
 
                         // Add the row for the particular item
@@ -90,10 +90,10 @@ namespace FinalFantasyTacticsWebScraper
                             int magickAttackBoost = 0;
                             List<IWebElement> itemRowElements = itemRows[rowIndex].FindElements(By.CssSelector("td")).ToList();
 
-                            weapon.PspName = itemRows[rowIndex].FindElement(By.CssSelector("th > a > span")).Text.Trim();
-                            weapon.AttackPower = Convert.ToInt16(itemRowElements[0].Text.Trim());
-                            weapon.HitPercentage = Convert.ToInt16(itemRowElements[1].Text.Trim().Replace("%", ""));
-                            weapon.MagicAttackBoost = int.TryParse(itemRowElements[2].Text.Trim(), out magickAttackBoost) ? magickAttackBoost : 0;
+                            Item.PspName = itemRows[rowIndex].FindElement(By.CssSelector("th > a > span")).Text.Trim();
+                            Item.AttackPower = Convert.ToInt16(itemRowElements[0].Text.Trim());
+                            Item.HitPercentage = Convert.ToInt16(itemRowElements[1].Text.Trim().Replace("%", ""));
+                            Item.MagicAttackBoost = int.TryParse(itemRowElements[2].Text.Trim(), out magickAttackBoost) ? magickAttackBoost : 0;
 
                             string[] acquiredData = itemRowElements[3].Text.Trim().Split(new string[] { ":", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                             string scrapedText = "";
@@ -119,25 +119,25 @@ namespace FinalFantasyTacticsWebScraper
                                     switch (acquiredData[i - counter])
                                     {
                                         case "Outfitters":
-                                            weapon.AcquiredViaLocation = scrapedText;
+                                            Item.AcquiredViaLocation = scrapedText;
                                             break;
                                         case "Treasure":
-                                            weapon.AcquiredViaTreasureHunt = scrapedText;
+                                            Item.AcquiredViaTreasureHunt = scrapedText;
                                             break;
                                         case "Mode":
-                                            weapon.AcquiredViaMode = scrapedText;
+                                            Item.AcquiredViaMode = scrapedText;
                                             break;
                                         case "Poach":
-                                            weapon.AcquiredViaPoach = scrapedText;
+                                            Item.AcquiredViaPoach = scrapedText;
                                             break;
                                         case "Steal":
-                                            weapon.AcquiredViaSteal = scrapedText;
+                                            Item.AcquiredViaSteal = scrapedText;
                                             break;
                                         case "Initial":
-                                            weapon.AcquiredViaInitialEquip = scrapedText;
+                                            Item.AcquiredViaInitialEquip = scrapedText;
                                             break;
                                         case "Catch":
-                                            weapon.AcquiredViaCatch = scrapedText;
+                                            Item.AcquiredViaCatch = scrapedText;
                                             break;
                                     }
 
@@ -146,7 +146,7 @@ namespace FinalFantasyTacticsWebScraper
                                 }
                             }
 
-                            weapon.Cost = Convert.ToInt16(itemRowElements[4].Text.Trim());
+                            Item.Cost = Convert.ToInt16(itemRowElements[4].Text.Trim());
                             rowIndex++;
                         }
                         else if (rows[rowIndex].FindElements(By.CssSelector("b")).Count > 0)
@@ -163,25 +163,25 @@ namespace FinalFantasyTacticsWebScraper
                                     switch (itemEffectData[i])
                                     {
                                         case "Element":
-                                            weapon.AcquiredViaLocation = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaLocation = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Spell Effect":
-                                            weapon.AcquiredViaTreasureHunt = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaTreasureHunt = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Effect":
-                                            weapon.AcquiredViaMode = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaMode = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Equip":
-                                            weapon.AcquiredViaPoach = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaPoach = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Absorbs":
-                                            weapon.AcquiredViaSteal = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaSteal = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Boosts":
-                                            weapon.AcquiredViaInitialEquip = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaInitialEquip = itemEffectData[i + 1].Trim();
                                             break;
                                         case "Removes":
-                                            weapon.AcquiredViaCatch = itemEffectData[i + 1].Trim();
+                                            Item.AcquiredViaCatch = itemEffectData[i + 1].Trim();
                                             break;
                                     }
                                 }
@@ -191,17 +191,17 @@ namespace FinalFantasyTacticsWebScraper
                         }
                         else
                         {
-                            weapon.Description = rows[rowIndex].FindElements(By.CssSelector("i"))[0].Text.Trim();
-                            weaponSentinel = true;
+                            Item.Description = rows[rowIndex].FindElements(By.CssSelector("i"))[0].Text.Trim();
+                            Itemsentinel = true;
                             rowIndex++;
-                            weapons.Add(weapon);              
+                            Items.Add(Item);              
                         }
                     }
                 }
 
                 using (FFTContext context = new FFTContext())
                 {
-                    context.Weapons.AddRange(weapons);
+                    context.Items.AddRange(Items);
                 }
             }
         }

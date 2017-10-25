@@ -9,8 +9,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 {
     public class FFTContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Weapon> Weapons { get; set; }
-        public DbSet<WeaponCategory> WeaponCategories { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
 
         public FFTContext() : base("DefaultConnection")
         {

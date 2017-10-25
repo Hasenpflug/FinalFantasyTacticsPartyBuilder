@@ -6,20 +6,24 @@ using System.Web;
 
 namespace FinalFantasyTacticsPartyBuilder.Models
 {
-    public class Weapon
+    public class Item
     {
         [Key]
-        public int WeaponID { get; set; }
+        public int ItemID { get; set; }
 
-        public int WeaponCategoryID { get; set; }
+        public int ItemCategoryID { get; set; }
 
         public string PsxName { get; set; }
 
         public string PspName { get; set; }
 
-        public int AttackPower { get; set; }
+        public int? AttackPower { get; set; }
 
-        public int HitPercentage { get; set; }
+        public int? HPBonus { get; set; }
+
+        public int? MPBonus { get; set; }
+
+        public int? HitPercentage { get; set; }
 
         public string Description { get; set; }
 
@@ -29,7 +33,11 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string RemoveStatusEffect { get; set; }
 
+        public string ImmuneStatusEffect { get; set; }
+
         public string EquipStatusEffect { get; set; }
+
+        public int? PhysicalAttackBoost { get; set; }
 
         public int? MagicAttackBoost { get; set; }    
         
@@ -40,6 +48,10 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string ElementAbsorbed { get; set; }
 
         public string ElementBoosted { get; set; }
+
+        public string ElementHalved { get; set; }
+
+        public string ElementNegated { get; set; }
 
         public string AcquiredViaMode { get; set; }
 
@@ -61,6 +73,6 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string Note { get; set; }
 
-        public virtual WeaponCategory WeaponCategory { get; set; }
+        public virtual ItemCategory ItemCategory { get; set; }
     }
 }

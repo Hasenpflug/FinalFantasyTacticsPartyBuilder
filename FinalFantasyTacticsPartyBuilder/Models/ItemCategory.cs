@@ -6,16 +6,17 @@ using System.Web;
 
 namespace FinalFantasyTacticsPartyBuilder.Models
 {
-    public enum WeaponCategoriesList
+    public enum ItemCategoriesList
     {
         Axe, Bag, Book, Bow, Cloth, Crossbow, FellSword, Flail, Gun, Instrument, Katana, Knife, KnightSword,
-        NinjaBlade, Pole, Rod, Polearm, Staff, Sword, ThrowingWeapon, Unarmed
+        NinjaBlade, Pole, Rod, Polearm, Staff, Sword, ThrowingItem, Unarmed, HeavyArmour, Clothes, HairAdornments,
+        Hats, Helmets, Robes,
     }
 
-    public class WeaponCategory
+    public class ItemCategory
     {
         [Key]
-        public int WeaponCategoryID { get; set; }
+        public int ItemCategoryID { get; set; }
 
         public string Category { get; set; }
     }
