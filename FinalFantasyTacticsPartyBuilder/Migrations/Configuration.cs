@@ -15,29 +15,10 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
         protected override void Seed(FFTContext context)
         {
-            context.ItemCategories.AddOrUpdate(m => m.Category,
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Axe, Category = "Axe" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Bag, Category = "Bag" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Book, Category = "Book" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Bow, Category = "Bow" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Cloth, Category = "Cloth" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Crossbow, Category = "Crossbow" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.FellSword, Category = "Fell Sword" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Flail, Category = "Flail" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Gun, Category = "Gun" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Instrument, Category = "Instrument" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Katana, Category = "Katana" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Knife, Category = "Knife" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.KnightSword, Category = "Knight Sword" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.NinjaBlade, Category = "Ninja Blade" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Pole, Category = "Pole" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Rod, Category = "Rod" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Polearm, Category = "Polearm" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Staff, Category = "Staff" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Sword, Category = "Sword" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.ThrowingItem, Category = "Throwing Item" },
-                new ItemCategory { ItemCategoryID = (int)ItemCategoriesList.Unarmed, Category = "Unarmed" }
-            );
+            foreach (ItemCategory category in Enum.GetNames(typeof(ItemCategoriesList)).Select((Name, Index) => new ItemCategory { ItemCategoryID = Index, Category = Name }).ToList())
+            {
+                context.ItemCategories.AddOrUpdate(category);
+            }
 
             #region Weapons
 
@@ -2473,7 +2454,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             context.Items.AddOrUpdate(m => m.PspName,
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.HairAdornments,
+                ItemCategoryID = (int)ItemCategoriesList.HairAdornment,
                 PspName = "Cachusha",
                 HPBonus = 20,
                 AcquiredViaPoach = "Pig",
@@ -2486,7 +2467,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.HairAdornments,
+                ItemCategoryID = (int)ItemCategoriesList.HairAdornment,
                 PspName = "Barette",
                 HPBonus = 20,
                 AcquiredViaPoach = "Red Chocobo",
@@ -2499,7 +2480,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.HairAdornments,
+                ItemCategoryID = (int)ItemCategoriesList.HairAdornment,
                 PspName = "Ribbon",
                 HPBonus = 10,
                 AcquiredViaPoach = "Wild Boar",
@@ -2517,7 +2498,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             context.Items.AddOrUpdate(m => m.PspName,
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Leather Cap",
                 HPBonus = 8,
                 AcquiredViaLocation = "Magick City of Gariland (Chapter 1)",
@@ -2527,7 +2508,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Plumed Hat",
                 PsxName = "Feather Cap",
                 HPBonus = 16,
@@ -2539,7 +2520,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Red Hood",
                 HPBonus = 24,
                 MPBonus = 8,
@@ -2551,7 +2532,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Headgear",
                 HPBonus = 32,
                 AcquiredViaLocation = "2nd battle Merchant City of Dorter (Chapter 2)",
@@ -2563,7 +2544,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Wizard's Hat",
                 PsxName = "Triangle Hat",
                 HPBonus = 40,
@@ -2577,7 +2558,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Green Beret",
                 HPBonus = 48,
                 AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle (Chapter 2)",
@@ -2589,7 +2570,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Headband",
                 PsxName = "Twist Headband",
                 HPBonus = 56,
@@ -2602,7 +2583,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Celebrant's Miter",
                 PsxName = "Holy Miter",
                 HPBonus = 64,
@@ -2615,7 +2596,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Black Cowl",
                 PsxName = "Black Hood",
                 HPBonus = 72,
@@ -2627,7 +2608,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Gold Hairpin",
                 HPBonus = 80,
                 MPBonus = 50,
@@ -2640,7 +2621,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Lambent Hat",
                 PsxName = "Flash Hat",
                 HPBonus = 88,
@@ -2655,7 +2636,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Thief's Cap",
                 PsxName = "Thief Hat",
                 HPBonus = 100,
@@ -2669,7 +2650,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Brass Coronet",
                 HPBonus = 60,
                 MPBonus = 100,
@@ -2682,7 +2663,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Hats,
+                ItemCategoryID = (int)ItemCategoriesList.Hat,
                 PspName = "Acacia Hat",
                 HPBonus = 120,
                 MPBonus = 20,
@@ -2700,7 +2681,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             context.Items.AddOrUpdate(m => m.PspName,
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Leather Helm",
                 HPBonus = 10,
                 AcquiredViaLocation = "Dycedarg meeting at Eagrose Castle (Chapter 1)",
@@ -2710,7 +2691,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Bronze Helm",
                 HPBonus = 20,
                 AcquiredViaLocation = "Dycedarg meting at Eagrose Castle (Chapter 1)",
@@ -2720,7 +2701,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Iron Helm",
                 HPBonus = 30,
                 AcquiredViaLocation = "Duke Larg meeting at Eagrose Castle (Chapter 1)",
@@ -2731,7 +2712,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Barbut",
                 PsxName = "Barbuta",
                 HPBonus = 40,
@@ -2743,7 +2724,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Mythril Helm",
                 HPBonus = 50,
                 AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
@@ -2754,7 +2735,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Mythril Helm",
                 HPBonus = 50,
                 AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
@@ -2765,7 +2746,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Golden Helm",
                 HPBonus = 60,
                 AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle (Chapter 2)",
@@ -2776,7 +2757,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Close Helmet",
                 PsxName = "Cross Helm",
                 HPBonus = 70,
@@ -2788,7 +2769,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Diamond Helm",
                 HPBonus = 80,
                 AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
@@ -2798,7 +2779,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Platinum Helm",
                 HPBonus = 90,
                 AcquiredViaLocation = "Walled City of Yardrow (Chapter 3)",
@@ -2809,7 +2790,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Circlet",
                 HPBonus = 100,
                 AcquiredViaLocation = "Walled City of Yardrow (Chapter 3)",
@@ -2820,7 +2801,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Crystal Helm",
                 HPBonus = 120,
                 AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
@@ -2831,7 +2812,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Genji Helm",
                 HPBonus = 130,
                 AcquiredViaSteal = "Elmdore",
@@ -2841,7 +2822,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Grand Helm",
                 HPBonus = 150,
                 AcquiredViaTreasureHunt = "Midlight's Deep",
@@ -2852,7 +2833,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Vanguard Helm",
                 HPBonus = 150,
                 MPBonus = 20,
@@ -2863,7 +2844,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Helmets,
+                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Onion Helm",
                 HPBonus = 200,
                 AcquiredViaMode = "Melee",
@@ -2879,7 +2860,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             context.Items.AddOrUpdate(m => m.PspName,
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Hempen Robe",
                 PsxName = "Linen Robe",
                 HPBonus = 10,
@@ -2892,7 +2873,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Silken Robe",
                 PsxName = "Silk Robe",
                 HPBonus = 20,
@@ -2904,7 +2885,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Wizard's Robe",
                 HPBonus = 30,
                 MPBonus = 22,
@@ -2917,7 +2898,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Chameleon Robe",
                 HPBonus = 40,
                 MPBonus = 28,
@@ -2930,7 +2911,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "White Robe",
                 HPBonus = 50,
                 MPBonus = 34,
@@ -2942,7 +2923,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Black Robe",
                 HPBonus = 60,
                 MPBonus = 30,
@@ -2955,7 +2936,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Luminous Robe",
                 PsxName = "Light Robe",
                 HPBonus = 75,
@@ -2967,7 +2948,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Lordly Robe",
                 PsxName = "Robe of Lords",
                 HPBonus = 100,
@@ -2982,7 +2963,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             },
             new Item
             {
-                ItemCategoryID = (int)ItemCategoriesList.Robes,
+                ItemCategoryID = (int)ItemCategoriesList.Robe,
                 PspName = "Sage's Robe",
                 HPBonus = 120,
                 MPBonus = 100,
@@ -2991,6 +2972,648 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 ElementHalved = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
                 Description = "A robe woven from threads that shimmer in all colors of the rainbow. Halves damage taken from elemental magick.",
                 IconFileName = "FF_tactics_sages_robe.png",
+            });
+
+            #endregion
+
+            #region Shields
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Escutcheon",
+                PhysicalEvade = 10,
+                MagicalEvade = 3,
+                AcquiredViaLocation = "Dycedarg meeting at Eagrose Castle (Chapter 1)",
+                Cost = 400,
+                Description = "The most inexpensive shield available. As expected, its defensive abilities are lacking.",
+                IconFileName = "FFT_Escutcheon_1.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Buckler",
+                PhysicalEvade = 13,
+                MagicalEvade = 3,
+                AcquiredViaLocation = "Zeklaus Desert (Chapter 1)",
+                AcquiredViaTreasureHunt = "Lenalian Plateau",
+                Cost = 700,
+                Description = "A small shield for close-quarters fighting. Though easy to use, its ability to block attacks is lacking.",
+                IconFileName = "FFT_Buckler.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Bronze Shield",
+                PhysicalEvade = 16,
+                AcquiredViaLocation = "Lenalian Plateau (Chapter 1)",
+                Cost = 1200,
+                Description = "This bronze shield is rather small, allowing the user to deftly block his opponent's attacks.",
+                IconFileName = "FFT_Bronze_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Round Shield",
+                PhysicalEvade = 19,
+                AcquiredViaLocation = "2nd battle Merchant City of Dorter (Chapter 2)",
+                AcquiredViaTreasureHunt = "Merchant City of Dorter",
+                Cost = 1600,
+                Description = "The surface of this small, sturdy shield has been inlaid with a complex ornamental design.",
+                IconFileName = "FFT_Round_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Mythril Shield",
+                PhysicalEvade = 22,
+                MagicalEvade = 5,
+                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
+                AcquiredViaTreasureHunt = "Castled City of Zaland, Mining Town of Gollund",
+                Cost = 2500,
+                Description = "A shield constructed of the featherlight metal known as mythril. It is surprisingly light and easy to wield.",
+                IconFileName = "FFT_Mythril_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Golden Shield",
+                PsxName = "Gold Shield",
+                PhysicalEvade = 25,
+                AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle (Chapter 2)",
+                AcquiredViaTreasureHunt = "Golgollada Gallows",
+                Cost = 3500,
+                Description = "This mythril shield has been decorated with gold accents and provides excellent protection against physical attacks.",
+                IconFileName = "FFT_Golden_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Ice Shield",
+                PhysicalEvade = 28,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
+                AcquiredViaTreasureHunt = "Monastery Vaults Third Level",
+                Cost = 6000,
+                ElementAbsorbed = "Ice",
+                ElementHalved = "Fire",
+                ElementWeakness = "Lightning",
+                Description = "This mythril shield is inlaid with pale blue gemstones that seem to emit a frigid aura.",
+                IconFileName = "FFT_Ice_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Flame Shield",
+                PhysicalEvade = 30,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
+                Cost = 6500,
+                ElementAbsorbed = "Fire",
+                ElementHalved = "Ice",
+                ElementWeakness = "Water",
+                Description = "This mythril shield is inlaid with deep crimson gemstones that seem to dance with the power of flame.",
+                IconFileName = "FFT_Flame_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Aegis Shield",
+                PhysicalEvade = 10,
+                MagicalEvade = 50,
+                AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
+                Cost = 10000,
+                MagicAttackBoost = 1,
+                Description = "This shield resembles a breastplate worn by a god. It enhances the user's magickal capabilities.",
+                IconFileName = "FFT_Aegis_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Diamond Shield",
+                PhysicalEvade = 34,
+                MagicalEvade = 15,
+                AcquiredViaLocation = "Orbonne Monastery (Chapter 3)",
+                AcquiredViaTreasureHunt = "Finnath Creek",
+                Cost = 12000,
+                Description = "A shield adorned with brilliant, incredibly hard gems that help protect the user from magicks.",
+                IconFileName = "FFT_Diamond_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Platinum Shield",
+                PsxName = "Platina Shield",
+                PhysicalEvade = 37,
+                MagicalEvade = 10,
+                AcquiredViaLocation = "The Horror of Riovanes (Chapter 4)",
+                AcquiredViaTreasureHunt = "Fort Besselat South Wall",
+                Cost = 16000,
+                Description = "This brilliant shield has been forged from a lustrous white alloy of mythril and platinum.",
+                IconFileName = "FFT_Platinum_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Crystal Shield",
+                PhysicalEvade = 40,
+                MagicalEvade = 15,
+                AcquiredViaLocation = "Battle of Fort Besselat (Chapter 4)",
+                AcquiredViaTreasureHunt = "Fort Besselat Sluice",
+                Cost = 21000,
+                Description = "This shield has been inlaid with crystalline jewels discovered deep within the earth.",
+                IconFileName = "FFT_Crystal_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Genji Shield",
+                PhysicalEvade = 43,
+                AcquiredViaSteal = "Elmdore",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Description = "A pitch-black shield made by foreign craftsmen. It is made of iron and has a unique shape.",
+                IconFileName = "FFT_Genji_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Kaiser Shield",
+                PsxName = "Kaiser Plate",
+                PhysicalEvade = 46,
+                MagicalEvade = 20,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                AcquiredViaSteal = "Disorder in the Order",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                ElementBoosted = "Fire, Ice, Lightning",
+                Description = "A shield bearing the name of an ancient emperor. It boosts the damage dealt by certain elemental magicks.",
+                IconFileName = "FFT_Kaiser_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Venetian Shield",
+                PhysicalEvade = 50,
+                MagicalEvade = 25,
+                AcquiredViaSteal = "Disorder in the Order",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                ElementHalved = "Fire, Ice, Lightning",
+                Description = "A shield that has been brilliantly colored using special dyes and pigments. It halves damage from the primary elements.",
+                IconFileName = "FFT_Venetian_Shield.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Reverie Shield",
+                PhysicalEvade = 50,
+                MagicalEvade = 25,
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                ElementHalved = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
+                Description = "A shield imbued with resistance to various attacks.",
+                IconFileName = "FF_tactics_reverie_shield.png",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Escutcheon (II)",
+                PhysicalEvade = 75,
+                MagicalEvade = 50,
+                AcquiredViaTreasureHunt = "Nelveska Temple",
+                Cost = 10,
+                Description = "This shield's blocking capabilities are nearly unrivaled.",
+                IconFileName = "FFT_Escutcheon_2.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shield,
+                PspName = "Onion Shield",
+                PhysicalEvade = 80,
+                MagicalEvade = 75,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Note = "Onion Knight only",
+                Description = "A shield forged for swordsmen who have mastered every technique and achieved knighthood's most exalted rank.",
+                IconFileName = "FF_tactics_onion_shield.png",
+            });
+
+            #endregion
+
+            #endregion
+
+            #region Accessories
+
+            #region Shoes
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Battle Boots",
+                MoveBoost = 1,
+                AcquiredViaLocation = "1st battle Merchant City of Dorter (Chapter 1)",
+                Cost = 1000,
+                Description = "Battle boots made from layers of leather.",
+                IconFileName = "FFT_Battle_Boots.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Spiked Boots",
+                PsxName = "Spike Shoes",
+                JumpBoost = 1,
+                AcquiredViaLocation = "2nd battle Merchant City of Dorter (Chapter 2)",
+                AcquiredViaTreasureHunt = "Araguay Woods",
+                Cost = 1200,
+                Description = "The spikes along the bottoms of these boots improve the wearer's footing, allowing him or her to jump farther.",
+                IconFileName = "FFT_Spike_Boots.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Rubber Boots",
+                AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle",
+                AcquiredViaTreasureHunt = "Lionel Castle",
+                Cost = 1500,
+                ImmuneStatusEffect = "Immobilize",
+                ElementNegated = "Lightning",
+                Description = "These resin boots conform perfect to the shape of the wearer's feet, negating lightning-based magick damage.",
+                IconFileName = "FFT_Rubber_Boots.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Winged Boots",
+                PsxName = "Feather Boots",
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle",
+                AcquiredViaTreasureHunt = "Monastery Vaults (First Level)",
+                Cost = 2500,
+                EquipStatusEffect = "Float",
+                Description = "Lightweight boots decorated with fluffy feathers.",
+                IconFileName = "FFT_Winged_Boots.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Germinas Boots",
+                MoveBoost = 1,
+                JumpBoost = 1,
+                AcquiredViaLocation = "Royal City of Lesalia",
+                Cost = 5000,
+                Description = "Boots that fit the feet perfectly, increasing the wearer's mobility.",
+                IconFileName = "FFT_Germinas_Boots.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Hermes Shoes",
+                PsxName = "Sprint Shoes",
+                SpeedBoost = 1,
+                AcquiredViaLocation = "Walled City of Yardrow",
+                AcquiredViaTreasureHunt = "Limberry Castle (Gate)",
+                Cost = 7000,
+                Description = "Expensive shoes made by a famous cobbler.",
+                IconFileName = "FFT_Hermes_Shoes.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Red Shoes",
+                MagicAttackBoost = 1,
+                MoveBoost = 1,
+                AcquiredViaLocation = "Battle of Fort Besselat",
+                AcquiredViaInitialEquip = "Alma",
+                Cost = 10000,
+                Description = "Shoes that have been dyed a deep crimson.",
+                IconFileName = "FFT_Red_Shoes.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                PspName = "Gaius Caligae",
+                MoveBoost = 2,
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Description = "Military sandals bearing the name of an ancient emperor.",
+                IconFileName = "Ff_tactics_gaius_caligae.png",
+            });
+
+            #endregion
+
+            #region Armguards
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Power Gauntlet",
+                PsxName = "Power Wrist",
+                PhysicalAttackBoost = 1,
+                AcquiredViaLocation = "Zeirchele Falls",
+                Cost = 5000,
+                Description = "A sturdy glove that increases weapon attack power.",
+                IconFileName = "FFT_Power_Gauntlet.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Magepower Glove",
+                PsxName = "Magic Gauntlet",
+                MagicAttackBoost = 2,
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle",
+                Cost = 20000,
+                Description = "A glove that boosts the wearer's magickal attack power.",
+                IconFileName = "FFT_Magepower_Glove.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Bracer",
+                PhysicalAttackBoost = 3,
+                AcquiredViaLocation = "Walled City of Yardrow",
+                AcquiredViaTreasureHunt = "Limberry Castle (Gate)",
+                Cost = 50000,
+                Description = "A thin leather bracer.",
+                IconFileName = "FFT_Bracer.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Genji Glove",
+                PhysicalAttackBoost = 2,
+                MagicAttackBoost = 2,
+                AcquiredViaSteal = "Elmdore",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 10,
+                Description = "A vermillion glove made by a foreign craftsman.",
+                IconFileName = "FFT_Genji_Glove.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Brigand's Gloves",
+                SpeedBoost = 1,
+                AcquiredViaLocation = "Various Outfitters",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 30000,
+                EquipStatusEffect = "Haste",
+                Description = "Gloves that increase the wearer's mobility.",
+                IconFileName = "FF_tactics_brigands_glove.png",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                PspName = "Onion Gloves",
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                Note = "Onion Knight only",
+                ImmuneStatusEffect = "KO, Undead, Stone, Traitor, Blind, Confuse, Silence, Vampire, Berserk, Toad, Poison, Slow, Stop, Charm, Sleep, Immobilize, Disable, Doom",
+                Description = "Gloves forged for swordsmen who have mastered every technique and achieved knighthood's most exalted rank.",
+                IconFileName = "FF_tactics_onion_glove.png",
+            });
+
+            #endregion
+
+            #region Rings
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Protect Ring",
+                PsxName = "Defense Ring",
+                AcquiredViaLocation = "Various Outfitters",
+                AcquiredViaTreasureHunt = "Lionel Castle",
+                ImmuneStatusEffect = "Sleep, Doom",
+                Cost = 5000,
+                Description = "A ring forged from a metal imbued with magick.",
+                IconFileName = "FFT_Protect_Ring.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Magick Ring",
+                PsxName = "Magic Ring",
+                AcquiredViaLocation = "Various Outfitters",
+                ImmuneStatusEffect = "Silence, Berserk",
+                Cost = 10000,
+                Description = "A ring inlaid with a magickal gemstone.",
+                IconFileName = "FFT_Magick_Ring.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Reflect Ring",
+                AcquiredViaLocation = "Various Outfitters",
+                AcquiredViaTreasureHunt = "Monastery Vaults (First Level)",
+                EquipStatusEffect = "Reflect",
+                Cost = 10000,
+                Description = "A ring engraved with arcane symbols that can reflect magick cast upon the wearer.",
+                IconFileName = "FFT_Magick_Ring.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Angel Ring",
+                AcquiredViaTreasureHunt = "Fort Besselat (North Wall)",
+                ImmuneStatusEffect = "Blind",
+                EquipStatusEffect = "Reraise",
+                Cost = 20000,
+                Description = "A ring that bestows an angel's aegis upon its owner.",
+                IconFileName = "FFT_Angel_Ring.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Cursed Ring",
+                PhysicalAttackBoost = 1,
+                MagicAttackBoost = 1,
+                SpeedBoost = 1,
+                AcquiredViaTreasureHunt = "Midlight's Deep",
+                ImmuneStatusEffect = "Traitor",
+                EquipStatusEffect = "Undead",
+                Cost = 10,
+                Description = "A ring forged from metal inhabited by spirits.",
+                IconFileName = "FFT_Cursed_Ring.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Ring,
+                PspName = "Sage's Ring",
+                AcquiredViaMode = "Rendezvous",
+                ElementBoosted = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
+                ElementAbsorbed = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
+                Cost = 10,
+                Description = "A ring bearing a magickal jewel.",
+                IconFileName = "FF_tactics_sages_ring.png",
+            });
+
+            #endregion
+
+            #region Cloaks
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Shoulder Cape",
+                PsxName = "Small Mantle",
+                PhysicalEvade = 10,
+                MagicalEvade = 10,
+                AcquiredViaLocation = "Zeklaus Desert",
+                AcquiredViaTreasureHunt = "Windmill Hut",
+                Cost = 300,
+                Description = "A small woolen cape.",
+                IconFileName = "FFT_Shoulder_Cape.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Leather Cloak",
+                PsxName = "Leather Mantle",
+                PhysicalEvade = 15,
+                MagicalEvade = 15,
+                AcquiredViaLocation = "2nd battle at Merchant City of Dorter",
+                Cost = 800,
+                Description = "A sturdy leather cloak.",
+                IconFileName = "FFT_Leather_Cloak.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Mage's Cloak",
+                PsxName = "Wizard Mantle",
+                PhysicalEvade = 18,
+                MagicalEvade = 18,
+                MagicAttackBoost = 1,
+                AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle",
+                AcquiredViaTreasureHunt = "Lionel Castle",
+                Cost = 2000,
+                Description = "A hooded cloak often worn by mages.",
+                IconFileName = "FFT_Mage's_Cloak.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Elven Cloak",
+                PsxName = "Elf Mantle",
+                PhysicalEvade = 25,
+                MagicalEvade = 25,
+                AcquiredViaLocation = "Royal City of Lesalia",
+                Cost = 8000,
+                Description = "A short cloak made of thin material that has been imbued with a magickal power.",
+                IconFileName = "FFT_Elven_Cloak.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Vampire Cape",
+                PsxName = "Dracula Mantle",
+                PhysicalEvade = 28,
+                MagicalEvade = 28,
+                AcquiredViaLocation = "Walled City of Yardrow",
+                AcquiredViaTreasureHunt = "Limberry Castle Keep",
+                Cost = 15000,
+                Description = "The outside of this cloak is black, while the inside is deep crimson.",
+                IconFileName = "FFT_Vampire_Cape.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Featherweave Cloak",
+                PsxName = "Feather Mantle",
+                PhysicalEvade = 40,
+                MagicalEvade = 30,
+                AcquiredViaLocation = "Battle of Fort Besselat",
+                AcquiredViaTreasureHunt = "Eagrose Castle",
+                Cost = 20000,
+                Description = "This cloak is as light and soft as a feather.",
+                IconFileName = "FFT_Featherwave_Cloak.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                PspName = "Invisibility Cloak",
+                PsxName = "Vanish Mantle",
+                PhysicalEvade = 35,
+                AcquiredViaMode = "Rendezvous",
+                AcquiredViaTreasureHunt = "Mount Germinas",
+                Cost = 10,
+                EquipStatusEffect = "Invisble",
+                Description = "This cloak makes the wearer invisible - until he or she is discovered.",
+                IconFileName = "FFT_Invisibility_Cloak.gif",
+            });
+
+            #endregion
+
+            #region Perfume
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Perfume,
+                PspName = "Cherche",
+                AcquiredViaPoach = "Behemoth King",
+                AcquiredViaMode = "Melee",
+                Cost = 30000,
+                Note = "Females only",
+                EquipStatusEffect = "Float, Reflect",
+                Description = "A perfume with a refreshing fragrance.",
+                IconFileName = "FFT_Cherche.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Perfume,
+                PspName = "Sortilége",
+                PsxName = "Salty Rage",
+                AcquiredViaPoach = "Red Dragon",
+                AcquiredViaMode = "Rendezvous",
+                Cost = 30000,
+                Note = "Females only",
+                EquipStatusEffect = "Protect, Shell",
+                Description = "A perfume with a rich redolence.",
+                IconFileName = "FFT_Sortilege.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Perfume,
+                PspName = "Chantage",
+                AcquiredViaPoach = "Swine",
+                AcquiredViaMode = "Melee/Rendezvous",
+                AcquiredViaSteal = "Meliadoul",
+                Cost = 30000,
+                Note = "Females only",
+                EquipStatusEffect = "Reraise, Regen",
+                Description = "A perfume with a soothing scent.",
+                IconFileName = "FFT_Sortilege.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Perfume,
+                PspName = "Septième",
+                PsxName = "Setiemson",
+                MagicAttackBoost = 1,
+                AcquiredViaPoach = "Swine",
+                Cost = 30000,
+                Note = "Females only",
+                EquipStatusEffect = "Haste, Invisible",
+                Description = "A perfume with an otherworldly aroma.",
+                IconFileName = "FFT_Septieme.gif",
+            });
+
+            #endregion
+
+            #region Lip Rouge
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.LipRouge,
+                PspName = "Tynar Rouge",
+                PhysicalAttackBoost = 3,
+                MagicAttackBoost = 3,
+                AcquiredViaPoach = "Behemoth King",
+                AcquiredViaMode = "Melee",
+                Cost = 10,
+                Note = "PSP Exclusive Event, Females only",
+                ElementBoosted = "Holy",
+                EquipStatusEffect = "Protect, Shell, Haste",
+                Description = "Magickal lip rouge from the popular Feyforge brand. It is a limited-edition product, making it difficult for even the richest noblewomen to obtain.",
+                IconFileName = "FF_tactics_tynar_rouge.png",
             });
 
             #endregion

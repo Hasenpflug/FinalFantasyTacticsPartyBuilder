@@ -25,6 +25,10 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int? HitPercentage { get; set; }
 
+        public int? PhysicalEvade { get; set; }
+
+        public int? MagicalEvade { get; set; }
+
         public string Description { get; set; }
 
         public string SpellEffect { get; set; }
@@ -41,7 +45,11 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int? MagicAttackBoost { get; set; }    
         
-        public int? SpeedBoost { get; set; }    
+        public int? SpeedBoost { get; set; }
+
+        public int? MoveBoost { get; set; }
+
+        public int? JumpBoost { get; set; }
 
         public string Element { get; set; }
 
@@ -52,6 +60,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string ElementHalved { get; set; }
 
         public string ElementNegated { get; set; }
+
+        public string ElementWeakness { get; set; }
 
         public string AcquiredViaMode { get; set; }
 
