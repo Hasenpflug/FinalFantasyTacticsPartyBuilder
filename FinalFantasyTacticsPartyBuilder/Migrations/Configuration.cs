@@ -15,10 +15,247 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
         protected override void Seed(FFTContext context)
         {
-            foreach (ItemCategory category in Enum.GetNames(typeof(ItemCategoriesList)).Select((Name, Index) => new ItemCategory { ItemCategoryID = Index, Category = Name }).ToList())
-            {
-                context.ItemCategories.AddOrUpdate(category);
-            }
+            #region Item Categories
+            context.ItemCategories.AddOrUpdate(m => m.ItemCategoryName,
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Axe,
+                    ItemCategoryName = "Axe",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Bag,
+                    ItemCategoryName = "Bag",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Book,
+                    ItemCategoryName = "Book",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Bow,
+                    ItemCategoryName = "Bow",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Cloth,
+                    ItemCategoryName = "Cloth",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Crossbow,
+                    ItemCategoryName = "Crossbow",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.FellSword,
+                    ItemCategoryName = "Fell Sword",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Flail,
+                    ItemCategoryName = "Flail",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Gun,
+                    ItemCategoryName = "Gun",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Instrument,
+                    ItemCategoryName = "Instrument",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Katana,
+                    ItemCategoryName = "Katana",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                    ItemCategoryName = "Knife",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.KnightSword,
+                    ItemCategoryName = "Knight Sword",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.NinjaBlade,
+                    ItemCategoryName = "Ninja Blade",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Pole,
+                    ItemCategoryName = "Pole",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Rod,
+                    ItemCategoryName = "Rod",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Polearm,
+                    ItemCategoryName = "Polearm",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Staff,
+                    ItemCategoryName = "Staff",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Sword,
+                    ItemCategoryName = "Sword",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.ThrowingItem,
+                    ItemCategoryName = "Throwing Item",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Misc,
+                    EquipmentCategoryName = "Miscellaneous"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Unarmed,
+                    ItemCategoryName = "Unarmed",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
+                    EquipmentCategoryName = "Weapon"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
+                    ItemCategoryName = "Heavy Armour",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
+                    EquipmentCategoryName = "Armor"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                    ItemCategoryName = "Clothes",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
+                    EquipmentCategoryName = "Armor"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.HairAdornment,
+                    ItemCategoryName = "Hair Adornment",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
+                    EquipmentCategoryName = "Helmet"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                    ItemCategoryName = "Hat",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
+                    EquipmentCategoryName = "Helmet"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Helmet,
+                    ItemCategoryName = "Helmet",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
+                    EquipmentCategoryName = "Helmet"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                    ItemCategoryName = "Robe",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
+                    EquipmentCategoryName = "Armor"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                    ItemCategoryName = "Shield",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Shield,
+                    EquipmentCategoryName = "Shield"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Shoe,
+                    ItemCategoryName = "Shoe",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Armguard,
+                    ItemCategoryName = "Armguard",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Ring,
+                    ItemCategoryName = "Ring",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Cloak,
+                    ItemCategoryName = "Cloak",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.Perfume,
+                    ItemCategoryName = "Perfume",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                },
+                new ItemCategory
+                {
+                    ItemCategoryID = (int)ItemCategoriesList.LipRouge,
+                    ItemCategoryName = "LipRouge",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory"
+                });
+            #endregion
 
             #region Weapons
 
@@ -3617,6 +3854,27 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             });
 
             #endregion
+
+            #endregion
+
+            #region Jobs
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    PspName = "Squire",
+                    HPMultiplier = 100,
+                    MPMultiplier = 75,
+                    SpeedMulitplier = 100,
+                    PhysicalAttackMultiplier = 90,
+                    MagicalAttackMultiplier = 80,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                });
+
+            #endregion
+
+            #region Abilities
 
             #endregion
         }

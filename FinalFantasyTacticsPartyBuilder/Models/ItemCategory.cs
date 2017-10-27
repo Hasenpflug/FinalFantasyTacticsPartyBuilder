@@ -6,6 +6,11 @@ using System.Web;
 
 namespace FinalFantasyTacticsPartyBuilder.Models
 {
+    public enum EquipmentCategoriesList
+    {
+        Weapon, Shield, Helmet, Armor, Accessory, Misc
+    }
+
     public enum ItemCategoriesList
     {
         Axe, Bag, Book, Bow, Cloth, Crossbow, FellSword, Flail, Gun, Instrument, Katana, Knife, KnightSword,
@@ -17,7 +22,11 @@ namespace FinalFantasyTacticsPartyBuilder.Models
     {
         [Key]
         public int ItemCategoryID { get; set; }
+       
+        public int EquipmentCategoryID { get; set; }
 
-        public string Category { get; set; }
+        public string ItemCategoryName { get; set; }
+
+        public string EquipmentCategoryName { get; set; }
     }
 }

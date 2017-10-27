@@ -11,6 +11,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
     {
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Ability> Abilities { get; set; }
 
         public FFTContext() : base("DefaultConnection")
         {
