@@ -25,11 +25,14 @@ textarea {
     max-width: 280px;
 }
 
+img {
+    vertical-align: text-top;
+}
+
 #party-overview-container {
     width:100%;
     height:100%;
     background-image: url(Images/party_builder_background.png);
-    z-index: 1;
     padding:60px;
 }
 
@@ -38,12 +41,34 @@ textarea {
     height:75%;
 }
 
+.selection-square {
+    position:absolute;
+    width:40%;
+    height:30%;
+    top:20%;
+    left:28%;
+    transform: rotate(-20deg) skew(50deg);
+    /*background-image: linear-gradient(to right, white, yellow);*/
+    /*background-origin:border-box;*/
+    /*background-size: 100% 5px;*/
+    /*background-position: top left, top right, bottom right, bottom left;*/
+    /*background-repeat: no-repeat;*/    
+    border: 5px yellow solid;
+    z-index:1;
+    visibility:hidden;
+}
+
 .unit-container {
+    position:relative;
     float:left;
     width:20%;
     height:35%;
     margin:2.5%;
     display:inline-block;
+}
+
+.unit-container:hover > .selection-square {
+    visibility:visible;
 }
 
 .menu-container {
@@ -52,7 +77,7 @@ textarea {
     width: 15%;
     height: auto;
     margin-left: 20px;
-    z-index:3;
+    z-index:10;
 }
 
 .menu-container img {
@@ -65,6 +90,7 @@ textarea {
     background-image: url(Images/menu_background.png);
     border: 2px solid black;
     box-shadow: black 3px 3px 3px;
+    font: 50px 'Altima';
     /*margin-top: -10px;*/
 }
 
@@ -76,7 +102,6 @@ textarea {
 .menu li {
     margin: 5px;
     list-style: none;
-    font: 50px 'Altima';
     line-height: 70%;
     
 }
@@ -113,9 +138,11 @@ textarea {
 }
 
 .job-image {
+    position:relative;
     margin: auto;
     display:block;
     width: 18%;
+    z-index:6;
 }
 
 .job-status-container {
@@ -220,12 +247,13 @@ textarea {
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
     padding:2%;
+    z-index:8;
 }
 
 #unit-portrait-menu {
     display:block;
     float:left;
-    width:15%;
+    width:12%;
     height:100%;
 }
 
@@ -244,7 +272,15 @@ textarea {
 }
 
 #unit-status-level-container {
+    display:inline;
+    position:relative;
     margin-left:20%;
+}
+
+#unit-status-experience-container {
+    display:inline;
+    position:relative;
+    margin-left:5%;
 }
 
 #unit-status-hp-container {
@@ -254,9 +290,8 @@ textarea {
 
 #unit-status-mp-container {
     position:relative;
-    top:70%
+    top:60%
 }
-
 
 #unit-status-hp-container .value-bar {
     display:inline;
@@ -273,11 +308,12 @@ textarea {
 }
 
 #unit-status-hp-container .value {
-   display:inline;
+   position:relative;
    left:40%;
 }
 
 #unit-status-hp-container .lower-hp  {
+   position:relative;
    top:10%;
 }
 
@@ -286,18 +322,120 @@ textarea {
    left:40%;
 }
 
+#unit-status-mp-container .value-bar {
+    display:inline;
+    border-top: 3px solid black;
+    border-left:1px solid black;
+    border-right: 1px solid black;
+    top:40%;
+    left:10%;
+    position:absolute;
+    background:linear-gradient(to right, #ba5000, orange);
+    width:40%;
+    height:50%;
+    transform:skewX(-20deg);
+}
+
+#unit-status-mp-container .value {
+   display:inline;
+   left:40%;
+}
+
+#unit-status-mp-container .lower-hp  {
+   top:10%;
+}
+
+#unit-status-mp-container .divider {
+   position:relative;
+   left:40%;
+}
+
 #unit-details-status-container img {
     width:4%;
+    margin-right:-0.5%;
 }
 
 #unit-details-status-container img.small-image {
     width:10%;
 }
 
-
 .unit-details-name-container {
-    display:block;
-    float:left;
-    width:30%;
+    position:relative;
+    left:50%;
+    width:35%;
     height:100%;
 }
+
+#unit-details-name-orb {
+    position:absolute;
+    top:8%;
+    left:3%;
+    width:5%;
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: 1px 1px 20px white;
+}
+
+#unit-details-name-rank-container {
+    position:absolute;
+    top:10%;
+    left:10%;
+}
+
+#unit-details-name-rank-container img {
+    height:16px;
+    background-color: rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+#unit-details-name-rank-container img:last-of-type {
+    margin-left:-25%;
+}
+
+#unit-details-name-name {
+    position:absolute;
+    top:5%;
+    left:18%;
+}
+
+#unit-details-name-job {
+    position:absolute;
+    top:35%;
+    left:18%;
+}
+
+#unit-details-name-brave-container {
+    position:absolute;
+    left:25%;
+    top:80%;
+    width:25%;
+}
+
+#unit-details-name-brave-container img:first-of-type {
+    width:60%;
+    margin-right:5%;
+}
+
+#unit-details-name-brave-container img:not(:first-of-type) {
+    width:8%;
+    margin-right:-5%;
+}
+
+#unit-details-name-faith-container {
+    position:absolute;
+    left:60%;
+    top:80%;
+    width:25%;
+}
+
+#unit-details-name-faith-container img:first-of-type {
+    width:50%;
+    margin-right:5%;
+}
+
+#unit-details-name-faith-container img:not(:first-of-type) {
+    width:8%;
+    margin-right:-5%;
+}
+
+

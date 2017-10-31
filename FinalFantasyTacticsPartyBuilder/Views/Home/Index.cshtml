@@ -4,9 +4,11 @@
 
 <div id="party-overview-container">
     <div id="party-builder-container">
+        
         @for (int i = 0; i < 8; i++)
-        {
+        {            
             <div class="unit-container">
+                <div class="selection-square"></div>
                 <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
                 <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
                 <div class="job-status-container">
@@ -49,11 +51,13 @@
                 <img class="small-image" src="~/Content/Images/level.png" />
                 <img src="~/Content/Images/number_1.png" />
                 <img src="~/Content/Images/number_2.png" />
+            </div>
+            <div id="unit-status-experience-container">
                 <img class="small-image" src="~/Content/Images/experience.png" />
                 <img src="~/Content/Images/number_0.png" />
                 <img src="~/Content/Images/number_0.png" />
-            </div>            
-            <div id="unit-status-hp-container">                
+            </div>
+            <div id="unit-status-hp-container">
                 <img class="hp small-image" src="~/Content/Images/hp.png" />
                 <div class="value-bar"></div>
                 <img class="value upper-hp" src="~/Content/Images/number_9.png" />
@@ -64,7 +68,7 @@
                 <img class="value lower-hp" src="~/Content/Images/number_9.png" />
                 <img class="value lower-hp" src="~/Content/Images/number_1.png" />
             </div>
-            <div id="unit-status-mp-container">                
+            <div id="unit-status-mp-container">
                 <img class="mp small-image" src="~/Content/Images/mp.png" />
                 <div class="value-bar"></div>
                 <img class="value upper-mp" src="~/Content/Images/number_7.png" />
@@ -76,18 +80,36 @@
                 <img class="value lower-mp" src="~/Content/Images/number_2.png" />
             </div>
         </div>
-        <div class="unit-details-name-container menu-container"></div>
-    </div>
-    <div class="menu-container">
-        <img src="~/Content/Images/menu_header.png" />
-        <div class="menu">
-            <ul>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Ability</a></li>
-                <li><a href="#">Change Job</a></li>
-                <li><a href="#">Remove Unit</a></li>
-                <li><a href="#">Order Unit</a></li>
-            </ul>
+        <div class="unit-details-name-container menu">
+            <img id="unit-details-name-orb" src="~/Content/Images/blue_orb.png" />
+            <div id="unit-details-name-rank-container">
+                <img src="~/Content/Images/number_dark_0.png" />
+                <img src="~/Content/Images/number_dark_1.png" />
+            </div>
+            <strong id="unit-details-name-name">Braedon</strong>
+            <strong id="unit-details-name-job">Squire</strong>
+            <div id="unit-details-name-brave-container">
+                <img id="brave-header" src="~/Content/Images/brave_dark.png" />
+                <img src="~/Content/Images/number_dark_7.png" />
+                <img src="~/Content/Images/number_dark_4.png" />
+            </div>
+            <div id="unit-details-name-faith-container">
+                <img src="~/Content/Images/faith_dark.png" />
+                <img src="~/Content/Images/number_dark_6.png" />
+                <img src="~/Content/Images/number_dark_5.png" />
+            </div>
+        </div>
+        <div class="menu-container">
+            <img src="~/Content/Images/menu_header.png" />
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Ability</a></li>
+                    <li><a href="#">Change Job</a></li>
+                    <li><a href="#">Remove Unit</a></li>
+                    <li><a href="#">Order Unit</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
