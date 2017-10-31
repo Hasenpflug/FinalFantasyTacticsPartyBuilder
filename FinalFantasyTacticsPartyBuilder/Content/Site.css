@@ -45,14 +45,9 @@ img {
     position:absolute;
     width:40%;
     height:30%;
-    top:20%;
+    top:40%;
     left:28%;
-    transform: rotate(-20deg) skew(50deg);
-    /*background-image: linear-gradient(to right, white, yellow);*/
-    /*background-origin:border-box;*/
-    /*background-size: 100% 5px;*/
-    /*background-position: top left, top right, bottom right, bottom left;*/
-    /*background-repeat: no-repeat;*/    
+    transform: rotate(-15deg) skew(63deg);
     border: 5px yellow solid;
     z-index:1;
     visibility:hidden;
@@ -67,8 +62,50 @@ img {
     display:inline-block;
 }
 
+#empty-unit-outline {
+    border: 5px dashed black;
+    border-radius:50%;
+    width:50%;
+    height:80%;
+    margin:auto;
+    padding:15% 0 15% 0;
+}
+
+#empty-unit-outline:hover {
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.50);
+    cursor:pointer;
+}
+
+#new-unit-cross-container {
+    position:relative;
+    margin:auto;
+    width:80%;
+    height:80%;
+}
+
+#new-unit-cross {
+    float:left;
+    margin: 0 40% 0 40%;
+    background: green;
+    height: 100%;
+    width: 20%;
+}
+
+#new-unit-cross:after {
+    float:left;
+    background: green;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform:rotate(90deg);
+}
+
+.unit-container:hover {
+    cursor:pointer;
+}
+
 .unit-container:hover > .selection-square {
-    visibility:visible;
+    visibility:visible;    
 }
 
 .menu-container {
@@ -406,12 +443,12 @@ img {
 
 #unit-details-name-brave-container {
     position:absolute;
-    left:25%;
-    top:80%;
-    width:25%;
+    left:20%;
+    top:70%;
+    width:35%;
 }
 
-#unit-details-name-brave-container img:first-of-type {
+/*#unit-details-name-brave-container img:first-of-type {
     width:60%;
     margin-right:5%;
 }
@@ -419,16 +456,16 @@ img {
 #unit-details-name-brave-container img:not(:first-of-type) {
     width:8%;
     margin-right:-5%;
-}
+}*/
 
 #unit-details-name-faith-container {
     position:absolute;
     left:60%;
-    top:80%;
-    width:25%;
+    top:70%;
+    width:35%;
 }
 
-#unit-details-name-faith-container img:first-of-type {
+/*#unit-details-name-faith-container img:first-of-type {
     width:50%;
     margin-right:5%;
 }
@@ -436,6 +473,4 @@ img {
 #unit-details-name-faith-container img:not(:first-of-type) {
     width:8%;
     margin-right:-5%;
-}
-
-
+}*/

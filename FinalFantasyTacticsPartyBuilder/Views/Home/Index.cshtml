@@ -4,9 +4,9 @@
 
 <div id="party-overview-container">
     <div id="party-builder-container">
-        
-        @for (int i = 0; i < 8; i++)
-        {            
+
+        @for (int i = 0; i < 2; i++)
+        {
             <div class="unit-container">
                 <div class="selection-square"></div>
                 <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
@@ -39,7 +39,13 @@
         }
         <div class="unit-container">
             <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
-            <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
+            <a href="#">
+                <div id="empty-unit-outline">
+                    <div id="new-unit-cross-container">
+                        <div id="new-unit-cross"></div>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
     <div class="unit-details-container">
@@ -89,14 +95,18 @@
             <strong id="unit-details-name-name">Braedon</strong>
             <strong id="unit-details-name-job">Squire</strong>
             <div id="unit-details-name-brave-container">
-                <img id="brave-header" src="~/Content/Images/brave_dark.png" />
-                <img src="~/Content/Images/number_dark_7.png" />
-                <img src="~/Content/Images/number_dark_4.png" />
+                <span id="brave-header">Brave</span>
+                <span>74</span>
+                @*<img id="brave-header" src="~/Content/Images/brave_dark.png" />
+                    <img src="~/Content/Images/number_dark_7.png" />
+                    <img src="~/Content/Images/number_dark_4.png" />*@
             </div>
             <div id="unit-details-name-faith-container">
-                <img src="~/Content/Images/faith_dark.png" />
-                <img src="~/Content/Images/number_dark_6.png" />
-                <img src="~/Content/Images/number_dark_5.png" />
+                <span id="faith-header">Faith</span>
+                <span>74</span>
+                @*<img src="~/Content/Images/faith_dark.png" />
+                    <img src="~/Content/Images/number_dark_6.png" />
+                    <img src="~/Content/Images/number_dark_5.png" />*@
             </div>
         </div>
         <div class="menu-container">
