@@ -8,7 +8,8 @@
     padding-top: 50px;
     padding-bottom: 20px;
     width:100%;
-    height:100%;    
+    height:100%;
+    background-image: url(Images/party_builder_background.png); 
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -31,8 +32,7 @@ img {
 
 #party-overview-container {
     width:100%;
-    height:100%;
-    background-image: url(Images/party_builder_background.png);
+    height:100%;    
     padding:60px;
 }
 
@@ -43,13 +43,10 @@ img {
 
 .selection-square {
     position:absolute;
-    width:40%;
-    height:30%;
-    top:40%;
-    left:28%;
-    transform: rotate(-15deg) skew(63deg);
-    border: 5px yellow solid;
-    z-index:1;
+    width:70%;
+    left:15%;
+    top:25%;
+    z-index:0;
     visibility:hidden;
 }
 
@@ -62,13 +59,19 @@ img {
     display:inline-block;
 }
 
+.unit-selector {
+    z-index:20;
+    width:100%;
+    height:auto;
+}
+
 #empty-unit-outline {
     border: 5px dashed black;
     border-radius:50%;
     width:50%;
     height:80%;
     margin:auto;
-    padding:15% 0 15% 0;
+    padding:30px 0 30px 0;
 }
 
 #empty-unit-outline:hover {
@@ -80,37 +83,41 @@ img {
     position:relative;
     margin:auto;
     width:80%;
-    height:80%;
+    height:100%;
 }
 
-#new-unit-cross {
-    float:left;
-    margin: 0 40% 0 40%;
+#new-unit-cross-vertical {
+    position:absolute;
+    left:40%;
     background: green;
     height: 100%;
     width: 20%;
 }
 
-#new-unit-cross:after {
-    float:left;
+#new-unit-cross-horizontal {
+    position:absolute;
+    top:40%;
     background: green;
-    content: "";
-    height: 100%;
+    height: 20%;
     width: 100%;
-    transform:rotate(90deg);
 }
 
-.unit-container:hover {
+.unit-selector:hover {
     cursor:pointer;
 }
 
-.unit-container:hover > .selection-square {
+.unit-selector:hover > .selection-square {
     visibility:visible;    
 }
 
+.unit-selector:visited .unit-details-container {
+    visibility:visible;
+}
+
 .menu-container {
-    position:relative;
-    left:1000px; 
+    position:absolute;
+    top:40%;
+    left:50%; 
     width: 15%;
     height: auto;
     margin-left: 20px;
@@ -285,6 +292,7 @@ img {
     box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
     padding:2%;
     z-index:8;
+    /*visibility:hidden;*/
 }
 
 #unit-portrait-menu {
@@ -448,16 +456,6 @@ img {
     width:35%;
 }
 
-/*#unit-details-name-brave-container img:first-of-type {
-    width:60%;
-    margin-right:5%;
-}
-
-#unit-details-name-brave-container img:not(:first-of-type) {
-    width:8%;
-    margin-right:-5%;
-}*/
-
 #unit-details-name-faith-container {
     position:absolute;
     left:60%;
@@ -465,12 +463,10 @@ img {
     width:35%;
 }
 
-/*#unit-details-name-faith-container img:first-of-type {
-    width:50%;
-    margin-right:5%;
+.job-container {
+    display:inline-block;
+    margin:2px;
+    width:30px;
+    height:30px;
+    background: red;
 }
-
-#unit-details-name-faith-container img:not(:first-of-type) {
-    width:8%;
-    margin-right:-5%;
-}*/

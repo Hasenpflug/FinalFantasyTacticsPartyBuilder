@@ -8,44 +8,59 @@
         @for (int i = 0; i < 2; i++)
         {
             <div class="unit-container">
-                <div class="selection-square"></div>
-                <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
-                <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
-                <div class="job-status-container">
-                    <div class="job-status-hp-container">
-                        <div class="hp-bar"></div>
-                        <img class="hp" src="~/Content/Images/hp.png" />
-                        <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                        <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                        <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                        <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                        <img class="value lower-hp" src="~/Content/Images/number_9.png" />
-                        <img class="value lower-hp" src="~/Content/Images/number_9.png" />
-                        <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                <a href="#" class="unit-selector">
+                    <img src="~/Content/Images/selection-square.png" class="selection-square" />
+                    <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
+                    <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
+                    <div class="job-status-container">
+                        <div class="job-status-hp-container">
+                            <div class="hp-bar"></div>
+                            <img class="hp" src="~/Content/Images/hp.png" />
+                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                            <img class="job-status-divider" src="~/Content/Images/divider.png" />
+                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                        </div>
+                        <div class="job-status-mp-container">
+                            <div class="mp-bar"></div>
+                            <img class="mp" src="~/Content/Images/mp.png" />
+                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                            <img class="job-status-divider" src="~/Content/Images/divider.png" />
+                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                        </div>
                     </div>
-                    <div class="job-status-mp-container">
-                        <div class="mp-bar"></div>
-                        <img class="mp" src="~/Content/Images/mp.png" />
-                        <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                        <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                        <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                        <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                        <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                        <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                        <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                    </div>
-                </div>
+                </a>
             </div>
         }
         <div class="unit-container">
             <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
-            <a href="#">
+            <a href="@Url.Action("Details", "Home")">
                 <div id="empty-unit-outline">
                     <div id="new-unit-cross-container">
-                        <div id="new-unit-cross"></div>
+                        <div id="new-unit-cross-vertical"></div>
+                        <div id="new-unit-cross-horizontal"></div>
                     </div>
                 </div>
             </a>
+        </div>
+    </div>
+    <div class="menu-container">
+        <img src="~/Content/Images/menu_header.png" />
+        <div class="menu">
+            <ul>
+                <li><a href="#">Item</a></li>
+                <li><a href="#">Ability</a></li>
+                <li><a href="#">Change Job</a></li>
+                <li><a href="#">Remove Unit</a></li>
+                <li><a href="#">Order Unit</a></li>
+            </ul>
         </div>
     </div>
     <div class="unit-details-container">
@@ -97,29 +112,11 @@
             <div id="unit-details-name-brave-container">
                 <span id="brave-header">Brave</span>
                 <span>74</span>
-                @*<img id="brave-header" src="~/Content/Images/brave_dark.png" />
-                    <img src="~/Content/Images/number_dark_7.png" />
-                    <img src="~/Content/Images/number_dark_4.png" />*@
             </div>
             <div id="unit-details-name-faith-container">
                 <span id="faith-header">Faith</span>
                 <span>74</span>
-                @*<img src="~/Content/Images/faith_dark.png" />
-                    <img src="~/Content/Images/number_dark_6.png" />
-                    <img src="~/Content/Images/number_dark_5.png" />*@
             </div>
-        </div>
-        <div class="menu-container">
-            <img src="~/Content/Images/menu_header.png" />
-            <div class="menu">
-                <ul>
-                    <li><a href="#">Item</a></li>
-                    <li><a href="#">Ability</a></li>
-                    <li><a href="#">Change Job</a></li>
-                    <li><a href="#">Remove Unit</a></li>
-                    <li><a href="#">Order Unit</a></li>
-                </ul>
-            </div>
-        </div>
+        </div>        
     </div>
 </div>

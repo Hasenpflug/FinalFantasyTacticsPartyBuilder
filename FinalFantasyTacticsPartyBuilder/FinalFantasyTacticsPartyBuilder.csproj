@@ -507,6 +507,7 @@
     <Content Include="Content\Images\number_dark_8.png" />
     <Content Include="Content\Images\number_dark_9.png" />
     <Content Include="Content\Images\party_builder_background.png" />
+    <Content Include="Content\Images\selection-square.png" />
     <Content Include="fonts\webfont.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Altima.svg" />
@@ -570,6 +571,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
