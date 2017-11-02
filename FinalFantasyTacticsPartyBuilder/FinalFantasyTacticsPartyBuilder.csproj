@@ -577,6 +577,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Scripts\wheelnav.min.js.map" />
+    <Content Include="Views\Home\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

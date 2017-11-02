@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Status";
+}
+
+<div id="unit-details-container">
+    <div id="unit-details-header" class="unit-details-container">
+        <div id="unit-portrait-menu" class="menu">
+            <img class="unit-portrait" src="~/Content/Images/Jobs/Squire_Male_Portrait.png" />
+        </div>
+        <div id="unit-details-status-container">
+            <div id="unit-status-level-container">
+                <img class="small-image" src="~/Content/Images/level.png" />
+                <img src="~/Content/Images/number_1.png" />
+                <img src="~/Content/Images/number_2.png" />
+            </div>
+            <div id="unit-status-experience-container">
+                <img class="small-image" src="~/Content/Images/experience.png" />
+                <img src="~/Content/Images/number_0.png" />
+                <img src="~/Content/Images/number_0.png" />
+            </div>
+            <div id="unit-status-hp-container">
+                <img class="hp small-image" src="~/Content/Images/hp.png" />
+                <div class="value-bar"></div>
+                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                <img class="value upper-hp" src="~/Content/Images/number_1.png" />
+                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                <img class="divider" src="~/Content/Images/divider.png" />
+                <img class="value lower-hp" src="~/Content/Images/number_1.png" />
+                <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                <img class="value lower-hp" src="~/Content/Images/number_1.png" />
+            </div>
+            <div id="unit-status-mp-container">
+                <img class="mp small-image" src="~/Content/Images/mp.png" />
+                <div class="value-bar"></div>
+                <img class="value upper-mp" src="~/Content/Images/number_7.png" />
+                <img class="value upper-mp" src="~/Content/Images/number_6.png" />
+                <img class="value upper-mp" src="~/Content/Images/number_5.png" />
+                <img class="divider" src="~/Content/Images/divider.png" />
+                <img class="value lower-mp" src="~/Content/Images/number_4.png" />
+                <img class="value lower-mp" src="~/Content/Images/number_3.png" />
+                <img class="value lower-mp" src="~/Content/Images/number_2.png" />
+            </div>
+        </div>
+        <div class="unit-details-name-container menu">
+            <img id="unit-details-name-orb" src="~/Content/Images/blue_orb.png" />
+            <div id="unit-details-name-rank-container">
+                <img src="~/Content/Images/number_dark_0.png" />
+                <img src="~/Content/Images/number_dark_1.png" />
+            </div>
+            <strong id="unit-details-name-name">Braedon</strong>
+            <strong id="unit-details-name-job">Squire</strong>
+            <div id="unit-details-name-brave-container">
+                <span id="brave-header">Brave</span>
+                <span>74</span>
+            </div>
+            <div id="unit-details-name-faith-container">
+                <span id="faith-header">Faith</span>
+                <span>74</span>
+            </div>
+        </div>
+    </div>
+    <table id="unit-details-overall-stats" class="menu">
+        <tr>
+            <td id="move-stat-header"><span>Move</span></td>
+            <td class="stat-seperator"><span>...</span></td>
+            <td id="move-stat-value"><span>5</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="weapon-stats-header"><span>Weap. Power</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="weapon-icons"></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="unit-power-header"><span>AT</span></td>
+            <td id="class-evasion-header"><span>C-EV</span></td>
+            <td id="spell-evasion-header"><span>S-EV</span></td>
+            <td id="attack-evasion-header"><span>A-EV</span></td>
+        </tr>
+        <tr>
+            <td id="jump-stat-header"><span>Jump</span></td>
+            <td class="stat-seperator"><span>...</span></td>
+            <td id="move-stat-value"><span>3</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="weapon-stats-right-header"><span>R</span></td>
+            <td class="stat-seperator"><span>...</span></td>
+            <td id="weapon-stats-right-damage"><span>004</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td id="weapon-stats-right-hit"><span>05</span></td>
+            <td id="weapon-stats-right-percentage"><span>%</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="physical-icon"><span>Melee</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="physical-power-value"><span>05</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td id="class-evasion-value"><span>10</span></td>
+            <td id="class-evasion-percentage"><span>%</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td id="spell-evasion-value"><span>00</span></td>
+            <td id="spell-evasion-percentage"><span>%</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td id="attack-evasion-value"><span>00</span></td>
+            <td id="attack-evasion-percentage"><span>%</span></td>
+        </tr>
+        <tr>
+            <td id="jump-stat-header"><span>Speed</span></td>
+            <td class="stat-seperator"><span>...</span></td>
+            <td id="move-stat-value"><span>06</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="weapon-stats-right-header"><span>L</span></td>
+            <td class="stat-seperator"><span>...</span></td>
+            <td id="weapon-stats-right-damage"><span>000</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td id="weapon-stats-right-hit"><span>00</span></td>
+            <td id="weapon-stats-right-percentage"><span>%</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="magical-icon"><span>Magic</span></td>
+            <td class="unit-details-table-margin"></td>
+            <td id="magical-power-value"><span>05</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td><span>00</span></td>
+            <td><span>%</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td><span>00</span></td>
+            <td><span>%</span></td>
+            <td class="unit-stat-divider"><span>/</span></td>
+            <td><span>00</span></td>
+            <td><span>%</span></td>
+        </tr>
+    </table>
+</div>
+
