@@ -2,20 +2,104 @@
     ViewBag.Title = "Details";
 }
 
+@Scripts.Render("~/bundles/wheelnav")
 <div id="job-overview-container">
     <div id="job-selection-container">
-        @for (int i = 0; i < 20; i++)
-        {
-            <div class="job-container">
+        @*@for (int i = 0; i < 20; i++)
+            {
+                <div class="job-container">
 
+                </div>
+            }*@
+        <div id='piemenu' data-wheelnav
+             data-wheelnav-slicepath='DonutSlice'
+             data-wheelnav-rotateon
+             data-wheelnav-navangle="90"
+             data-wheelnav-titleheight="100"
+             data-wheelnav-titlewidth="70"
+             data-wheelnav-cssmode
+             data-wheelnav-init>
+            @for (int i = 0; i < 30; i++)
+            {
+                <div data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>
+            }
+        </div>
+    </div>
+    <div id="unit-details-job-container" class="unit-details-container">
+            <div id="unit-portrait-menu" class="menu">
+                <img class="unit-portrait" src="~/Content/Images/Jobs/Squire_Male_Portrait.png" />
             </div>
-        }
-    </div>
-    <div id="job-details-container">
-
+            <div id="unit-details-status-container">
+                <div id="unit-status-level-container">
+                    <img class="small-image" src="~/Content/Images/level.png" />
+                    <img src="~/Content/Images/number_1.png" />
+                    <img src="~/Content/Images/number_2.png" />
+                </div>
+                <div id="unit-status-experience-container">
+                    <img class="small-image" src="~/Content/Images/experience.png" />
+                    <img src="~/Content/Images/number_0.png" />
+                    <img src="~/Content/Images/number_0.png" />
+                </div>
+                <div id="unit-status-hp-container">
+                    <img class="hp small-image" src="~/Content/Images/hp.png" />
+                    <div class="value-bar"></div>
+                    <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                    <img class="value upper-hp" src="~/Content/Images/number_1.png" />
+                    <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                    <img class="divider" src="~/Content/Images/divider.png" />
+                    <img class="value lower-hp" src="~/Content/Images/number_1.png" />
+                    <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                    <img class="value lower-hp" src="~/Content/Images/number_1.png" />
+                </div>
+                <div id="unit-status-mp-container">
+                    <img class="mp small-image" src="~/Content/Images/mp.png" />
+                    <div class="value-bar"></div>
+                    <img class="value upper-mp" src="~/Content/Images/number_7.png" />
+                    <img class="value upper-mp" src="~/Content/Images/number_6.png" />
+                    <img class="value upper-mp" src="~/Content/Images/number_5.png" />
+                    <img class="divider" src="~/Content/Images/divider.png" />
+                    <img class="value lower-mp" src="~/Content/Images/number_4.png" />
+                    <img class="value lower-mp" src="~/Content/Images/number_3.png" />
+                    <img class="value lower-mp" src="~/Content/Images/number_2.png" />
+                </div>
+            </div>
+            <div class="unit-details-name-container menu">
+                <img id="unit-details-name-orb" src="~/Content/Images/blue_orb.png" />
+                <div id="unit-details-name-rank-container">
+                    <img src="~/Content/Images/number_dark_0.png" />
+                    <img src="~/Content/Images/number_dark_1.png" />
+                </div>
+                <strong id="unit-details-name-name">Braedon</strong>
+                <strong id="unit-details-name-job">Squire</strong>
+                <div id="unit-details-name-brave-container">
+                    <span id="brave-header">Brave</span>
+                    <span>74</span>
+                </div>
+                <div id="unit-details-name-faith-container">
+                    <span id="faith-header">Faith</span>
+                    <span>74</span>
+                </div>
+            </div>
+        </div>
+    <div id="job-details-container" class="menu">
+        <div id="job-details-level-container">
+            <img src="~/Content/Images/level.png" />
+            <img src="~/Content/Images/number_8.png" />
+        </div>
+        <span>Squire</span>
     </div>
 </div>
-<div class="unit-details-container">
 
-</div>
+<script>
+    var piemenu = new wheelnav('piemenu');
+    piemenu.centerX = window.innerWidth / 2 + 50;
+    piemenu.centerY = window.innerHeight / 2 - 100;
+    piemenu.selectedPercent = 1.1;
+    piemenu.hoverPercent = 1;
+    piemenu.clockwise = false;
+    piemenu.animatetime = 200;
+    piemenu.maxPercent = 0.60;
+    piemenu.animateeffect = 'linear';
+    piemenu.createWheel();
+</script>
 

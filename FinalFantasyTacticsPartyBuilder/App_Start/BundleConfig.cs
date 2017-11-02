@@ -28,6 +28,13 @@ namespace FinalFantasyTacticsPartyBuilder
                       "~/Content/site.css",
                       "~/Content/Fonts/stylesheet.css",
                       "~/fonts/webfont.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/wheelnav").Include(
+                      "~/Scripts/raphael.icons.min.js",
+                      "~/Scripts/raphael.min.js",
+                      "~/Scripts/wheelnav.js",
+                      "~/Scripts/wheelnav.min.js",
+                      "~/Scripts/wheelnav.min.js.map"));
         }
     }
 }
