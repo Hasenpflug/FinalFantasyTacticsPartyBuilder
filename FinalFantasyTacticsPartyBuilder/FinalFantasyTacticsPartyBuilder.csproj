@@ -479,6 +479,7 @@
     <Content Include="Content\Images\Item Icons\Weapons\Giant%27sAxe-fft-psx.gif" />
     <Content Include="Content\Images\Item Icons\Weapons\Slasher-fft-psx.gif" />
     <Content Include="Content\Images\level.png" />
+    <Content Include="Content\Images\magical-icon.png" />
     <Content Include="Content\Images\menu_cursor.png" />
     <Content Include="Content\Images\menu_header.png" />
     <Content Include="Content\Images\menu_background.png" />
@@ -507,6 +508,7 @@
     <Content Include="Content\Images\number_dark_8.png" />
     <Content Include="Content\Images\number_dark_9.png" />
     <Content Include="Content\Images\party_builder_background.png" />
+    <Content Include="Content\Images\physical-icon.png" />
     <Content Include="Content\Images\selection-square.png" />
     <Content Include="fonts\webfont.css" />
     <Content Include="favicon.ico" />
@@ -523,6 +525,7 @@
     <Content Include="fonts\Altima.otf" />
     <Content Include="fonts\Altima.ttf" />
     <Content Include="fonts\Altima.woff" />
+    <Content Include="FFT Party Builder with Database.docx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
