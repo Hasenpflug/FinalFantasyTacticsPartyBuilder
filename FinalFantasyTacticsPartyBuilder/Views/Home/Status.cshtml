@@ -62,62 +62,112 @@
     </div>
     <div id="unit-details-stats-container">
         <div id="unit-details-overall-stats" class="menu">
-            <div class="fft-row">
+            <div id="base-stats" class="fft-column">
                 <div class="fft-cell" id="move-stat-header"><span>Move</span></div>
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-                <div class="fft-cell" id="move-stat-value"><span>5</span></div>
-                <div class="fft-cell" id="weapon-stats-header"><span>Weap. Power</span></div>
-                <div class="fft-cell" id="weapon-icons"></div>
-                <div class="fft-cell" id="unit-power-header"><span>AT</span></div>
-                <div class="fft-cell" id="class-evasion-header"><span>C-EV</span></div>
-                <div class="fft-cell" id="spell-evasion-header"><span>S-EV</span></div>
-                <div class="fft-cell" id="attack-evasion-header"><span>A-EV</span></div>
-            </div>
-            <div class="fft-row">
                 <div class="fft-cell" id="jump-stat-header"><span>Jump</span></div>
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-                <div class="fft-cell" id="move-stat-value"><span>3</span></div>
-                <div class="fft-cell" id="weapon-stats-right-header"><span>R</span></div>
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-                <div class="fft-cell" id="weapon-stats-right-damage"><span>004</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell" id="weapon-stats-right-hit"><span>05</span></div>
-                <div class="fft-cell  percentage-value"><span>%</span></div>
-                <div class="fft-cell" id="physical-icon"><img src="~/Content/Images/physical-icon.png" /></div>
-                <div class="fft-cell" id="physical-power-value"><span>05</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell" id="class-evasion-value"><span>10</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell" id="spell-evasion-value"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell" id="attack-evasion-value"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
-            </div>
-            <div class="fft-row">
                 <div class="fft-cell" id="speed-stat-header"><span>Speed</span></div>
+            </div>
+            <div class="fft-column">
                 <div class="fft-cell stat-seperator"><span>...</span></div>
+                <div class="fft-cell stat-seperator"><span>...</span></div>
+                <div class="fft-cell stat-seperator"><span>...</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell" id="move-stat-value"><span>5</span></div>
+                <div class="fft-cell" id="jump-stat-value"><span>3</span></div>
                 <div class="fft-cell" id="speed-stat-value"><span>06</span></div>
-                <div class="fft-cell" id="weapon-stats-left-header"><span>L</span></div>
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-                <div class="fft-cell" id="weapon-stats-left-damage"><span>000</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell" id="weapon-stats-left-hit"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
+            </div>
+            <div id="move-weapon-margin" class="fft-column"></div>
+            <div class="fft-column">
+                <div class="fft-cell" id="weapon-stats-header"><span>Weap. Power</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell" id="weapon-stats-right-header"><span>R</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-header"><span>L</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell stat-seperator"><span>...</span></div>
+                    <div class="fft-cell stat-seperator"><span>...</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell" id="weapon-stats-right-damage"><span>004</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-damage"><span>000</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell unit-stat-divider"><span>/</span></div>
+                    <div class="fft-cell unit-stat-divider"><span>/</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell" id="weapon-stats-right-hit"><span>05</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-hit"><span>00</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell  percentage-value"><span>%</span></div>
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                </div>
+            </div>            
+            
+            <div id="weapon-evasion-margin" class="fft-column"></div>
+            <div id="equipment-icons" class="fft-column">
+                <div class="fft-cell" id="physical-icon"><img src="~/Content/Images/physical-icon.png" /></div>
                 <div class="fft-cell" id="magical-icon"><img src="~/Content/Images/magical-icon.png" /></div>
-                <div class="fft-cell" id="magical-power-value"><span>05</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>AT</span></div>
+                <div class="fft-cell"><span>05</span></div>
+                <div class="fft-cell"><span>05</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span></span></div>
                 <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
                 <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>C-EV</span></div>
+                <div class="fft-column">                    
+                    <div class="fft-cell"><span>10</span></div>
+                    <div class="fft-cell"><span>05</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                </div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span></span></div>
                 <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell"><span>00</span></div>
-                <div class="fft-cell percentage-value"><span>%</span></div>
+                <div class="fft-cell unit-stat-divider"><span>/</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>S-EV</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>00</span></div>
+                    <div class="fft-cell"><span>00</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                </div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span></span></div>
+                <div class="fft-cell unit-stat-divider"><span>/</span></div>
+                <div class="fft-cell unit-stat-divider"><span>/</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>A-EV</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>00</span></div>
+                    <div class="fft-cell"><span>00</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                    <div class="fft-cell percentage-value"><span>%</span></div>
+                </div>
             </div>
         </div>
+    </div>
+    <div id="unit-equipment-container" class="menu">
+
     </div>
 </div>
 
