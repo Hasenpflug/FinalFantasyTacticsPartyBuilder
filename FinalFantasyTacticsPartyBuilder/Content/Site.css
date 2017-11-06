@@ -630,5 +630,60 @@ img {
     height:50%;
 }
 
+#unit-equipment-abilities {
+    width:100%;
+    height:100%;
+}
+
+#unit-equipment-slot-icons, #unit-equipment-item-icons, #unit-equipment-ability-icons {
+    height:100%;
+    width:5%;
+}
+
+#unit-equipment-item-icons, #unit-equipment-ability-icons {
+    background-color:rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+#equip-icon {
+    margin:-20% 10% 0;
+    width:80%;
+    float:left;
+}
+
+#unit-equipment-slot-icons .fft-cell, #unit-equipment-item-icons .fft-cell, #unit-equipment-item-names .fft-cell, #unit-equipment-ability-icons .fft-cell,
+#unit-equipment-ability-names .fft-cell {
+    text-align:center;
+    margin: 40% 20%;
+    height:40px;
+}
+
+#unit-equipment-slot-icons .fft-cell img, #unit-equipment-item-icons .fft-cell img, #unit-equipment-ability-icons .fft-cell img {
+    height:100%;
+    max-width:50px;
+}
+
+#unit-equipment-item-names, #unit-equipment-ability-names {
+    height:100%;
+    width:30%;
+}
+
+#ability-icon {
+    width:100%;
+    height:10%;
+    margin:-30% 0%;
+    float:left;
+}
+
+#unit-equipment-item-names .fft-cell, #unit-equipment-ability-names .fft-cell {
+    margin:7% 0%;
+    text-align:left;
+}
+
+#unit-equipment-ability-icons img {
+    max-height:50px;
+    width:100%
+}
+
 
 
