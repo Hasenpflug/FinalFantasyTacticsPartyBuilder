@@ -593,6 +593,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Scripts\wheelnav.min.js.map" />
     <Content Include="Views\Home\Status.cshtml" />
+    <Content Include="Views\Home\Item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
