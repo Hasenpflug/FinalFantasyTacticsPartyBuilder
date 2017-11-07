@@ -697,20 +697,71 @@ img {
     top:-15px;
 }
 
-#equipment-item-container {
-    width:100%;
-    height:100%;
-    display:none;
+#item-lookup-container {
+    position:absolute;
+    width:45%;
+    height:45%;
+    display:normal;
+    z-index:1;
 }
 
 #item-type-selection {
-    width:50%;
-    height:10%;
+    width:100%;
+    height:auto;
     margin-bottom:1%;
 }
 
 #item-selection {
     width:100%;
-    height:50%;
+    height:90%;
+    overflow:auto;
 }
 
+#ability-lookup-container {
+    position:absolute;
+    width:45%;
+    height:50%;
+    display:none;
+    z-index:1;
+}
+
+.item-category {
+    margin:0.5%;
+    display:inline-block;
+    width:30px;
+    height:50px;
+}
+
+.item-category img {
+    vertical-align:bottom;
+}
+
+.item-category:hover {
+    cursor:pointer;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+#item-selection-icons {
+    width:8%;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.weapon-icons {
+    width:80%;
+    margin:10% 10% 50% 10%;
+    
+}
+
+#item-selection-icons img {
+    width:100%;   
+    vertical-align:middle; 
+}
+
+#item-selection-names {
+    /*width:40%;*/
+}
+
+#item-selection-names .fft-cell {
+    /*margin:10% 10% 10% 0%;*/
+    text-align:left;    
+}
