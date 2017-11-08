@@ -587,8 +587,20 @@ img {
     display: inline-block;
 }
 
-.fft-cell {    
+.fft-row {
+    position:relative;
+    width:100%;
+    height:10%;
+    margin:5% 1% 0;
+    /*display:inline-block;*/
+}
+
+.fft-column .fft-cell {    
     text-align:right;
+}
+
+.fft-row .fft-cell {
+    display:inline-block;
 }
 
 #base-stats {
@@ -714,6 +726,7 @@ img {
 #item-selection {
     width:100%;
     height:90%;
+    vertical-align:top;
     overflow:auto;
 }
 
@@ -729,7 +742,7 @@ img {
     margin:0.5%;
     display:inline-block;
     width:30px;
-    height:50px;
+    height:40px;
 }
 
 .item-category img {
@@ -741,27 +754,57 @@ img {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-#item-selection-icons {
-    width:8%;
-    background-color: rgba(0, 0, 0, 0.15);
+#item-selection-icon-background {
+    position:absolute;
+    height:90%;
+    width:65px;
+    background-color:rgba(0, 0, 0, 0.15);
+}
+
+#item-selection .fft-row .fft-cell:nth-child(2) {
+    width:25%;
+    margin-left:3%;
+}
+
+#item-selection .fft-row .fft-cell:nth-child(2):hover {
+    cursor:pointer;
+}
+
+#item-selection .fft-row .fft-cell:last-child {
+    width:10%;
+    margin-left:3%;
+    padding:0.5%;
+    vertical-align:top;
+}
+
+#item-selection .fft-row .fft-cell:last-child:hover {
+    cursor:pointer;
+    background-color:rgba(0, 0, 0, 0.15);
+}
+
+#item-selection .fft-row .fft-cell:nth-child(2):hover:before {
+    position:absolute;
+    top:-10%;
+    left:6%;
+    content: url(Images/menu_cursor.png)
 }
 
 .weapon-icons {
-    width:80%;
-    margin:10% 10% 50% 10%;
-    
+    width:50px;
+    height:50px;
 }
 
-#item-selection-icons img {
-    width:100%;   
-    vertical-align:middle; 
+.item-icon {
+    width:50px;
+    height:50px;
 }
 
-#item-selection-names {
-    /*width:40%;*/
+.item-icon img {
+    width:100%;
+    height:80%;
 }
 
-#item-selection-names .fft-cell {
-    /*margin:10% 10% 10% 0%;*/
-    text-align:left;    
+.weapon-icons img {
+    width:100%;
+    height:80%;
 }
