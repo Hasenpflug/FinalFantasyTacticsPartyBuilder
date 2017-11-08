@@ -334,7 +334,7 @@
                         <div class="fft-cell weapon-icons item-icon">
                             <img src="~/Content/Images/Item Icons/Weapons/FFT_Ragnarok.gif" />
                         </div>
-                        <div class="fft-cell weapon-names">
+                        <div class="fft-cell weapon-names" data-item-power="1">
                             <strong>Nagnarok</strong>
                         </div>
                         <div class="fft-cell item-icon">
@@ -366,7 +366,7 @@
                         <div class="fft-cell weapon-icons item-icon">
                             <img src="~/Content/Images/Item Icons/Weapons/FFT_Broadsword.gif" />
                         </div>
-                        <div class="fft-cell">
+                        <div class="fft-cell" data-item-power="5">
                             <strong>Broadsword</strong>
                         </div>
                         <div class="fft-cell item-icon">
@@ -882,6 +882,14 @@
 </div>
 <script>
     $(document).ready(function () {
+        
+        function calculateItemStatDifference(event)
+        {
+            var rightDamageElement = document.querySelector('#weapon-stats-right-damage > span');
+            var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
+            rightDamageElement.textContent = '+ ' + (parseInt(rightDamageElement.textContent) + itemDamage);
+        }
+
         function toggleItemContainer() {
             var itemLookupContainer = document.getElementById('item-lookup-container');
 
@@ -905,5 +913,6 @@
 
         $('#unit-equipment-item-names .fft-cell').click(toggleItemContainer);
         $('#unit-ability-names .fft-cell').click(toggleAbilityContainer);
+        $('.weapon-names').hover(calculateItemStatDifference);
     });
 </script>
