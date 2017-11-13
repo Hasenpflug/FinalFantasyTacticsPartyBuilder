@@ -808,3 +808,38 @@ img {
     width:100%;
     height:80%;
 }
+
+#item-details-container {
+    position:absolute;
+    top:25%;
+    left:10%;
+    width:80%;
+    height:50%;
+    z-index:1;
+    display:block;
+    outline: solid 400px rgba(0, 0, 0, 0.50);
+}
+
+#item-details-basic-container {
+    font-size:40px;
+    margin:2%;
+}
+
+#item-details-basic-container span {
+    width:20%;
+    margin:5%;
+    font-size:60px;
+}
+
+#item-details-basic-container img {
+    width:35%;
+    margin:5% 25%;
+}
+
+#item-details-weapon-power-container, #item-details-power-boost-container, #item-details-move-jump-speed-container {
+    margin-right:5%;
+}
+
+#item-details-power-boost-container .fft-cell:first-child, #item-details-move-jump-speed-container .fft-cell:first-child {
+    text-align:center;
+}

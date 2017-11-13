@@ -89,7 +89,7 @@
                     <div class="fft-cell stat-seperator"><span>...</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell" id="weapon-stats-right-damage"><span>004</span></div>
+                    <div class="fft-cell" id="weapon-stats-right-damage" data-item-power="4"><span>004</span></div>
                     <div class="fft-cell" id="weapon-stats-left-damage"><span>000</span></div>
                 </div>
                 <div class="fft-column">
@@ -97,7 +97,7 @@
                     <div class="fft-cell unit-stat-divider"><span>/</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell" id="weapon-stats-right-hit"><span>05</span></div>
+                    <div class="fft-cell" id="weapon-stats-right-hit" data-item-hit-percentage="5"><span>05</span></div>
                     <div class="fft-cell" id="weapon-stats-left-hit"><span>00</span></div>
                 </div>
                 <div class="fft-column">
@@ -330,11 +330,11 @@
                 </div>
                 <div id="item-selection" class="menu">
                     <div id="item-selection-icon-background"></div>
-                    <div class="fft-row">                        
+                    <div class="fft-row">
                         <div class="fft-cell weapon-icons item-icon">
                             <img src="~/Content/Images/Item Icons/Weapons/FFT_Ragnarok.gif" />
                         </div>
-                        <div class="fft-cell weapon-names" data-item-power="1">
+                        <div class="fft-cell weapon-names" data-item-power="1" data-item-hit-percentage="1">
                             <strong>Nagnarok</strong>
                         </div>
                         <div class="fft-cell item-icon">
@@ -366,7 +366,7 @@
                         <div class="fft-cell weapon-icons item-icon">
                             <img src="~/Content/Images/Item Icons/Weapons/FFT_Broadsword.gif" />
                         </div>
-                        <div class="fft-cell" data-item-power="5">
+                        <div class="fft-cell weapon-names" data-item-power="5" data-item-hit-percentage="15">
                             <strong>Broadsword</strong>
                         </div>
                         <div class="fft-cell item-icon">
@@ -877,36 +877,145 @@
                     <strong>Ignore Elevation</strong>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="item-details-container" class="menu">
+        <div id="item-details-basic-container" class="fft-column">
+            <img class="fft-cell" src="~/Content/Images/Item Icons/Weapons/FFT_Broadsword.gif" />
+            <span class="fft-cell"><strong>Broadsword</strong></span>            
         </div>        
+        <div id="item-details-weapon-power-container" class="fft-column">
+            <div class="fft-column">
+                <div class="fft-cell"><span>Item. Power</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell" data-item-power="4"><span>004</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell unit-stat-divider"><span>/</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell" data-item-hit-percentage="5"><span>05</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell  percentage-value"><span>%</span></div>
+                </div>
+            </div>
+        </div>
+        <div id="item-details-power-boost-container" class="fft-column">
+            <div class="fft-cell"><span>Item Boosts</span></div>
+            <div class="fft-column item-icon">
+                <img src="~/Content/Images/physical-icon.png" />
+            </div>
+            <div class="fft-column">
+                <span>05</span>
+            </div>
+            <div class="fft-column item-icon">
+                <img src="~/Content/Images/magical-icon.png" />
+            </div>
+            <div class="fft-column">
+                <span>01</span>
+            </div>
+        </div>
+        <div id="item-details-move-jump-speed-container" class="fft-column">
+            <div class="fft-cell"><span>Item Attributes</span></div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>Move</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell stat-seperator"><span>...</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>5</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>Jump</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell stat-seperator"><span>...</span></div>
+            </div>
+            <div class="fft-column">
+                <div class="fft-cell"><span>3</span></div>
+            </div>
+        </div>
+        <div id="item-details-evasion-container" class="fft-column">
+
+        </div>
+        <span id="item-details-description" class="fft-row">
+            <em>This broad-bladed sword is suited for large slashing strokes. It is inexpensive, but not particularly powerful.</em>
+        </span>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        
+    $(document).ready(function ()
+    {
         function calculateItemStatDifference(event)
         {
-            var rightDamageElement = document.querySelector('#weapon-stats-right-damage > span');
+            var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
+            var rightHitElement = document.querySelector('#weapon-stats-right-hit');
+            var rightHit = parseInt(rightHitElement.attributes['data-item-hit-percentage'].nodeValue);
+            var rightDamage = parseInt(rightDamageElement.attributes['data-item-power'].nodeValue);
             var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
-            rightDamageElement.textContent = '+ ' + (parseInt(rightDamageElement.textContent) + itemDamage);
+            var itemHit = parseInt(event.currentTarget.attributes['data-item-hit-percentage'].nodeValue);
+
+            if (itemDamage > rightDamage)
+            {
+                rightDamageElement.firstChild.textContent = '+ ' + (itemDamage - rightDamage);
+                rightDamageElement.firstChild.style.color = 'blue';
+
+            }
+            else if (itemDamage < rightDamage)
+            {
+                rightDamageElement.firstChild.textContent = '- ' + (rightDamage - itemDamage);
+                rightDamageElement.firstChild.style.color = 'red';
+            }
+
+            if (itemHit > rightHit)
+            {
+                rightHitElement.firstChild.textContent = '+ ' + (itemHit - rightHit);
+                rightHitElement.firstChild.style.color = 'blue';
+            }
+            else if (itemHit < rightHit)
+            {
+                rightHitElement.firstChild.textContent = '- ' + (rightHit - itemHit);
+                rightHitElement.firstChild.style.color = 'red';
+            }
         }
 
-        function toggleItemContainer() {
+        function resetItemStat(event)
+        {
+            var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
+            var rightHitElement = document.querySelector('#weapon-stats-right-hit');
+
+            rightDamageElement.firstChild.textContent = '004';
+            rightDamageElement.firstChild.style.color = '#333333';
+            rightHitElement.firstChild.textContent = '05';
+            rightHitElement.firstChild.style.color = '#333333';
+        }
+
+        function toggleItemContainer()
+        {
             var itemLookupContainer = document.getElementById('item-lookup-container');
 
-            if (itemLookupContainer.style.display === 'none') {
+            if (itemLookupContainer.style.display === 'none')
+            {
                 itemLookupContainer.style.display = 'block';
             }
-            else {
+            else
+            {
                 itemLookupContainer.style.display = 'none';
             }
         }
 
-        function toggleAbilityContainer() {
+        function toggleAbilityContainer()
+        {
             var abilityContainer = document.getElementById('ability-lookup-container');
-            if (abilityContainer.style.display === 'none') {
+
+            if (abilityContainer.style.display === 'none')
+            {
                 abilityContainer.style.display = 'block';
             }
-            else {
+            else
+            {
                 abilityContainer.style.display = 'none';
             }
         }
@@ -914,5 +1023,6 @@
         $('#unit-equipment-item-names .fft-cell').click(toggleItemContainer);
         $('#unit-ability-names .fft-cell').click(toggleAbilityContainer);
         $('.weapon-names').hover(calculateItemStatDifference);
+        $('.weapon-names').mouseleave(resetItemStat)
     });
 </script>
