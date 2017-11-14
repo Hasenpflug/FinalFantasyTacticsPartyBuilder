@@ -487,6 +487,8 @@
     <Content Include="Content\Images\Item Icons\Weapons\FFT_Zwill_Straightblade.gif" />
     <Content Include="Content\Images\Item Icons\Weapons\Giant%27sAxe-fft-psx.gif" />
     <Content Include="Content\Images\Item Icons\Weapons\Slasher-fft-psx.gif" />
+    <Content Include="Content\Images\job.png" />
+    <Content Include="Content\Images\jp.png" />
     <Content Include="Content\Images\level.png" />
     <Content Include="Content\Images\magical-icon.png" />
     <Content Include="Content\Images\menu_cursor.png" />
