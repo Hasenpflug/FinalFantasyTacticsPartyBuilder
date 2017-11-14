@@ -592,7 +592,6 @@ img {
     width:100%;
     height:10%;
     margin:5% 1% 0;
-    /*display:inline-block;*/
 }
 
 .fft-column .fft-cell {    
@@ -712,7 +711,8 @@ img {
 #item-lookup-container {
     position:absolute;
     width:45%;
-    height:45%;
+    height:50%;
+    max-height:450px;
     display:normal;
     z-index:1;
 }
@@ -728,6 +728,7 @@ img {
     height:90%;
     vertical-align:top;
     overflow:auto;
+    overflow-x:hidden;
 }
 
 #ability-lookup-container {
@@ -810,36 +811,102 @@ img {
 }
 
 #item-details-container {
+    display:none;
     position:absolute;
     top:25%;
     left:10%;
     width:80%;
-    height:50%;
+    max-width:1600px;
+    max-height:1000px;
     z-index:1;
-    display:block;
     outline: solid 400px rgba(0, 0, 0, 0.50);
 }
 
-#item-details-basic-container {
-    font-size:40px;
-    margin:2%;
+#item-details-close {
+    position:absolute;
+    padding:5px;
+    top:1%;
+    right:1%;
+    border:outset 2px;
 }
 
-#item-details-basic-container span {
-    width:20%;
-    margin:5%;
-    font-size:60px;
+#item-details-close:hover {
+    cursor:pointer;
+    border:inset 2px;
+}
+
+#item-details-attributes-container {
+    margin-bottom: 1%;
+    height:30%;
+}
+
+#item-details-basic-container {
+    font-size: 40px;
+    margin: 2%;
+    float:left;
+}
+
+#item-details-basic-container .fft-cell {
+    font-size:50px;
+    text-align:left;
 }
 
 #item-details-basic-container img {
-    width:35%;
+    width:50px;
+    height:40px;
     margin:5% 25%;
 }
 
 #item-details-weapon-power-container, #item-details-power-boost-container, #item-details-move-jump-speed-container {
-    margin-right:5%;
+    margin: 5% 5% 5% 0;
 }
 
-#item-details-power-boost-container .fft-cell:first-child, #item-details-move-jump-speed-container .fft-cell:first-child {
+#item-details-power-boost-container .fft-cell:first-child, #item-details-move-jump-speed-container .fft-cell:first-child, #item-details-evasion-container .fft-cell:first-child {
+    text-align: center;
+}
+
+#item-details-evasion-container img {
+    width:50px;
+    height:40px;
+}
+
+#item-details-status-effect-container {
+    float:right;
+}
+
+#item-details-element-effect-container {
+    float:left;
+}
+
+#item-details-element-effect-container, #item-details-status-effect-container {
+    width:45%;
+    margin: 0% 1% 1%;
+}
+
+
+#item-details-element-effect-container .fft-row, #item-details-status-effect-container .fft-row {
+    margin: 0 0 0 5%;
+}
+
+#item-details-element-effect-container .fft-row span:first-child, #item-details-status-effect-container .fft-row span:first-child {
+    color:darkred;
+}
+
+#item-details-description {
+    display:block;
+    margin: 2% 1%;
+}
+
+#item-details-acquire-methods .fft-column {
+    width:22%;
+    margin:2% 1%;
+}
+
+#item-details-acquire-methods .fft-column .fft-cell:first-child {
+    color:darkred;
+}
+
+#item-details-acquire-methods .fft-cell {
     text-align:center;
 }
+
