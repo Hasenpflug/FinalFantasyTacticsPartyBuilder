@@ -169,23 +169,85 @@
     <div id="unit-ability-equipment-container">
         <div id="unit-equipment" class="menu">
             <div id="ability-lookup-container">
-                <img src="~/Content/Images/job.png" />
+                <div class="fft-column job-ability-name job-ability-header">
+                    <img class="menu-header-icon fft-cell" src="~/Content/Images/job.png" />
+                </div>
+                <div class="fft-column job-ability-level job-ability-header">
+                    <img class="menu-header-icon fft-cell" src="~/Content/Images/level.png" />
+                </div>
+                <div class="fft-column job-ability-jp job-ability-header">
+                    <img class="menu-header-icon fft-cell" src="~/Content/Images/jp.png" />
+                </div>
                 <div class="menu-header menu">
                     <div class="menu-header-bar"></div>
                 </div>
                 <div id="ability-job-selection" class="menu">
-                    <div class="fft-row">
+                    <div class="fft-column job-ability-name">
                         <div class="fft-cell">
                             <span>Squire</span>
                         </div>
                         <div class="fft-cell">
-                            <span>8</span>
+                            <span>Chemist</span>
                         </div>
                         <div class="fft-cell">
-                            <span>Master!</span>
+                            <span>Knight</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Archer</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Black Mage</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>White Mage</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Monk</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Thief</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Mystic</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Time Mage</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Geomancer</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Dragoon</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Orator</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Summoner</span>
+                        </div>
+                        <div class="fft-cell">
+                            <span>Ninja</span>
                         </div>
                     </div>
+                    <div class="fft-column job-ability-level">
+                        @for (int i = 0; i < 15; i++)
+                        {
+                            <div class="fft-cell">
+                                <span>8</span>
+                            </div>
+                        }                        
+                    </div>
+                    <div class="fft-column job-ability-jp">
+                        @for (int i = 0; i < 15; i++)
+                        {
+                            <div class="fft-cell">
+                                <img src="~/Content/Images/star.png" />
+                                <span>Master!</span>
+                            </div>
+                        }
+                    </div>                    
                 </div>
+                <div class="menu-footer-bar"></div>
             </div>
             <div id="unit-equipment-slot-icons" class="fft-column">
                 <div class="fft-cell">
@@ -901,7 +963,7 @@
                     <span>Range:</span>
                     <span>1</span>
                     <span> 1H / 2H</span>
-                </div>        
+                </div>
                 <span class="fft-cell">Dualwield</span>
                 <span class="fft-cell">Doublehand</span>
             </div>
@@ -1110,7 +1172,7 @@
                 <div class="fft-cell"><span>Multiplayer Mode</span></div>
                 <div class="fft-cell"><span>Melee/Rendezvous</span></div>
             </div>
-           <div class="fft-column">
+            <div class="fft-column">
                 <div class="fft-cell"><span>Initial Equip</span></div>
                 <div class="fft-cell"><span>Luso</span></div>
             </div>
@@ -1198,7 +1260,7 @@
                 itemDetailsContainer.style.display = 'none'
             }
         }
-        
+
         function toggleAbilityContainer()
         {
             var abilityContainer = document.getElementById('ability-lookup-container');

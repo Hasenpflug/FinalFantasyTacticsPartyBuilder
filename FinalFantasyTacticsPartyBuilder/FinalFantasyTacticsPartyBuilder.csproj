@@ -524,6 +524,7 @@
     <Content Include="Content\Images\primary_ability.png" />
     <Content Include="Content\Images\reaction_ability.png" />
     <Content Include="Content\Images\selection-square.png" />
+    <Content Include="Content\Images\star.png" />
     <Content Include="Content\Images\support_ability.png" />
     <Content Include="fonts\webfont.css" />
     <Content Include="favicon.ico" />
