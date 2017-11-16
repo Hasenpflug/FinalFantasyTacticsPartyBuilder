@@ -914,7 +914,7 @@ img {
 .menu-header {
     width: 100%;
     height: 30px;
-    margin-bottom:1%;
+    /*margin-bottom:1%;*/
 }
 
 .menu-header-bar {
@@ -962,8 +962,9 @@ img {
         height: 30px;
     }
 
-#ability-lookup-container > .job-ability-header {
-    margin-top: -2%;
+.job-ability-header {
+    margin-top:-1%;
+    float:left;
 }
 
 #ability-job-selection .fft-cell {
@@ -1009,8 +1010,15 @@ img {
 
 #ability-details-job-container {
     height:15%;
+    margin-top:1%;
     margin-bottom:1%;
 }
+
+#ability-details-job-container {
+    height:15%;
+    margin-bottom:2%;
+}
+
 
 #ability-details-close {
     position: absolute;
@@ -1028,6 +1036,26 @@ img {
 #ability-details-job-selection .fft-cell {
     text-align:left;
 }
+
+#ability-details-action-bar-container .fft-column {
+    float:left;
+    margin-left:2%;
+    margin-top:-2%;
+    width:10%;
+}
+
+#ability-details-action-bar-container .fft-column .fft-cell {
+    width:100%;
+    max-width:40px;
+    max-height:50px;
+    min-height:25px;
+}
+
+#ability-details-action-bar-container .fft-column:first-of-type .fft-cell {
+    max-width:100px;
+    max-height:40px;
+}
+
 
 #ability-details-ability-selection {
     width: 100%;
