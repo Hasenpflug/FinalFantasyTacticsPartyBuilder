@@ -3858,19 +3858,1457 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             #endregion
 
             #region Jobs
+
+            #region Squire 
+
             context.Jobs.AddOrUpdate(m => m.PspName,
                 new Job
                 {
+                    JobID = (int)Jobs.Squire,
                     PspName = "Squire",
                     HPMultiplier = 100,
+                    HPGrowthConstant = 11,
                     MPMultiplier = 75,
+                    MPGrowthConstant = 15,
                     SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
                     PhysicalAttackMultiplier = 90,
+                    PhysicalAttackGrowthConstant = 60,
                     MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
                     BaseMoveLength = 4,
                     BaseJumpHeight = 3,
                     BaseCombatEvasion = 5,
                 });
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Axe,                    
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Sword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Flail,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Squire,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Chemist
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Chemist,
+                    PspName = "Chemist",
+                    HPMultiplier = 80,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 75,
+                    MPGrowthConstant = 16,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 75,
+                    PhysicalAttackGrowthConstant = 75,
+                    MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,                
+                new JobItem
+                {
+                    JobID = (int)Jobs.Chemist,
+                    ItemCategoryID = (int)ItemCategoriesList.Gun,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Chemist,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                },                
+                new JobItem
+                {
+                    JobID = (int)Jobs.Chemist,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Chemist,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Knight
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Knight,
+                    PspName = "Knight",
+                    HPMultiplier = 120,
+                    HPGrowthConstant = 10,
+                    MPMultiplier = 80,
+                    MPGrowthConstant = 15,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 120,
+                    PhysicalAttackGrowthConstant = 40,
+                    MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 10,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Knight,
+                    JobRequiredID = (int)Jobs.Squire,
+                    JobLevelRequiredPsp = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.Sword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.KnightSword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.Helmet,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Knight,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Archer
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Archer,
+                    PspName = "Archer",
+                    HPMultiplier = 100,
+                    HPGrowthConstant = 11,
+                    MPMultiplier = 65,
+                    MPGrowthConstant = 16,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 110,
+                    PhysicalAttackGrowthConstant = 45,
+                    MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 10,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Archer,
+                    JobRequiredID = (int)Jobs.Squire,
+                    JobLevelRequiredPsp = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Archer,
+                    ItemCategoryID = (int)ItemCategoriesList.Bow,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Archer,
+                    ItemCategoryID = (int)ItemCategoriesList.Crossbow,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Archer,
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Archer,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Archer,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region White Mage
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    PspName = "White Mage",
+                    HPMultiplier = 80,
+                    HPGrowthConstant = 10,
+                    MPMultiplier = 120,
+                    MPGrowthConstant = 10,
+                    SpeedMulitplier = 110,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 90,
+                    PhysicalAttackGrowthConstant = 50,
+                    MagicalAttackMultiplier = 110,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    JobRequiredID = (int)Jobs.Chemist,
+                    JobLevelRequiredPsp = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Staff,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.WhiteMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Black Mage
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    PspName = "Black Mage",
+                    HPMultiplier = 75,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 120,
+                    MPGrowthConstant = 9,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 60,
+                    PhysicalAttackGrowthConstant = 60,
+                    MagicalAttackMultiplier = 150,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    JobRequiredID = (int)Jobs.Chemist,
+                    JobLevelRequiredPsp = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Rod,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.BlackMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Monk
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Monk,
+                    PspName = "Monk",
+                    HPMultiplier = 135,
+                    HPGrowthConstant = 9,
+                    MPMultiplier = 80,
+                    MPGrowthConstant = 13,
+                    SpeedMulitplier = 110,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 129,
+                    PhysicalAttackGrowthConstant = 48,
+                    MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 20,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Monk,
+                    JobRequiredID = (int)Jobs.Knight,
+                    JobLevelRequiredPsx = 2,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Monk,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Thief 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Thief,
+                    PspName = "Thief",
+                    HPMultiplier = 90,
+                    HPGrowthConstant = 11,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 16,
+                    SpeedMulitplier = 110,
+                    SpeedGrowthConstant = 90,
+                    PhysicalAttackMultiplier = 100,
+                    PhysicalAttackGrowthConstant = 50,
+                    MagicalAttackMultiplier = 60,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 25,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Thief,
+                    JobRequiredID = (int)Jobs.Archer,
+                    JobLevelRequiredPsx = 2,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Thief,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                }, 
+                new JobItem
+                {
+                    JobID = (int)Jobs.Thief,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Thief,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Mystic
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Mystic,
+                    PspName = "Mystic",
+                    HPMultiplier = 75,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 110,
+                    MPGrowthConstant = 10,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 50,
+                    PhysicalAttackGrowthConstant = 60,
+                    MagicalAttackMultiplier = 120,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mystic,
+                    JobRequiredID = (int)Jobs.WhiteMage,
+                    JobLevelRequiredPsx = 2,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Pole,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Rod,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Staff,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Book,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Mystic,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Time Mage
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    PspName = "Time Mage",
+                    HPMultiplier = 75,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 120,
+                    MPGrowthConstant = 10,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 50,
+                    PhysicalAttackGrowthConstant = 65,
+                    MagicalAttackMultiplier = 130,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    JobRequiredID = (int)Jobs.BlackMage,
+                    JobLevelRequiredPsx = 2,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Staff,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.TimeMage,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Geomancer 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    PspName = "Geomancer",
+                    HPMultiplier = 110,
+                    HPGrowthConstant = 10,
+                    MPMultiplier = 95,
+                    MPGrowthConstant = 11,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 110,
+                    PhysicalAttackGrowthConstant = 45,
+                    MagicalAttackMultiplier = 105,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 10,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    JobRequiredID = (int)Jobs.Monk,
+                    JobLevelRequiredPsx = 3,
+                    JobLevelRequiredPsp = 4
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Sword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Axe,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Geomancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Dragoon 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    PspName = "Dragoon",
+                    HPMultiplier = 120,
+                    HPGrowthConstant = 10,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 15,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 120,
+                    PhysicalAttackGrowthConstant = 40,
+                    MagicalAttackMultiplier = 50,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 15,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    JobRequiredID = (int)Jobs.Thief,
+                    JobLevelRequiredPsx = 3,
+                    JobLevelRequiredPsp = 4
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    ItemCategoryID = (int)ItemCategoriesList.Polearm,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    ItemCategoryID = (int)ItemCategoriesList.Helmet,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dragoon,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Orator 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Orator,
+                    PspName = "Orator",
+                    HPMultiplier = 80,
+                    HPGrowthConstant = 11,
+                    MPMultiplier = 70,
+                    MPGrowthConstant = 18,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 75,
+                    PhysicalAttackGrowthConstant = 55,
+                    MagicalAttackMultiplier = 75,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Orator,
+                    JobRequiredID = (int)Jobs.Mystic,
+                    JobLevelRequiredPsx = 2,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Orator,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Orator,
+                    ItemCategoryID = (int)ItemCategoriesList.Gun,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Orator,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Orator,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Orator,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Summoner
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Summoner,
+                    PspName = "Summoner",
+                    HPMultiplier = 70,
+                    HPGrowthConstant = 13,
+                    MPMultiplier = 125,
+                    MPGrowthConstant = 8,
+                    SpeedMulitplier = 90,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 50,
+                    PhysicalAttackGrowthConstant = 70,
+                    MagicalAttackMultiplier = 125,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Summoner,
+                    JobRequiredID = (int)Jobs.TimeMage,
+                    JobLevelRequiredPsp = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Summoner,
+                    ItemCategoryID = (int)ItemCategoriesList.Rod,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Summoner,
+                    ItemCategoryID = (int)ItemCategoriesList.Staff,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Summoner,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Summoner,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Samurai 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Samurai,
+                    PspName = "Samurai",
+                    HPMultiplier = 75,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 75,
+                    MPGrowthConstant = 14,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 128,
+                    PhysicalAttackGrowthConstant = 45,
+                    MagicalAttackMultiplier = 90,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 20,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Samurai,
+                    JobRequiredID = (int)Jobs.Knight,
+                    JobLevelRequiredPsp = 4,
+                    JobLevelRequiredPsx = 3
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Samurai,
+                    JobRequiredID = (int)Jobs.Monk,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Samurai,
+                    JobRequiredID = (int)Jobs.Dragoon,
+                    JobLevelRequiredPsp = 2,
+                    JobLevelRequiredPsx = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Samurai,
+                    ItemCategoryID = (int)ItemCategoriesList.Katana,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Samurai,
+                    ItemCategoryID = (int)ItemCategoriesList.Helmet,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Samurai,
+                    ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Samurai,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Ninja 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Ninja,
+                    PspName = "Ninja",
+                    HPMultiplier = 70,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 13,
+                    SpeedMulitplier = 120,
+                    SpeedGrowthConstant = 80,
+                    PhysicalAttackMultiplier = 120,
+                    PhysicalAttackGrowthConstant = 43,
+                    MagicalAttackMultiplier = 75,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 30,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Ninja,
+                    JobRequiredID = (int)Jobs.Archer,
+                    JobLevelRequiredPsp = 4,
+                    JobLevelRequiredPsx = 3
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Ninja,
+                    JobRequiredID = (int)Jobs.Thief,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Ninja,
+                    JobRequiredID = (int)Jobs.Geomancer,
+                    JobLevelRequiredPsp = 2,
+                    JobLevelRequiredPsx = 2
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Ninja,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Ninja,
+                    ItemCategoryID = (int)ItemCategoriesList.NinjaBlade,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Ninja,
+                    ItemCategoryID = (int)ItemCategoriesList.Flail,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Ninja,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Ninja,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Arithmetician 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    PspName = "Arithmetician",
+                    HPMultiplier = 65,
+                    HPGrowthConstant = 14,
+                    MPMultiplier = 80,
+                    MPGrowthConstant = 10,
+                    SpeedMulitplier = 50,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 50,
+                    PhysicalAttackGrowthConstant = 70,
+                    MagicalAttackMultiplier = 70,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    JobRequiredID = (int)Jobs.WhiteMage,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    JobRequiredID = (int)Jobs.BlackMage,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    JobRequiredID = (int)Jobs.Mystic,
+                    JobLevelRequiredPsp = 4,
+                    JobLevelRequiredPsx = 3
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    JobRequiredID = (int)Jobs.TimeMage,
+                    JobLevelRequiredPsp = 4,
+                    JobLevelRequiredPsx = 3
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    ItemCategoryID = (int)ItemCategoriesList.Pole,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    ItemCategoryID = (int)ItemCategoriesList.Book,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Arithmetician,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                }
+            );
+
+            #endregion
+
+            #region Dancer 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Dancer,
+                    PspName = "Dancer",
+                    HPMultiplier = 60,
+                    HPGrowthConstant = 20,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 20,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 110,
+                    PhysicalAttackGrowthConstant = 50,
+                    MagicalAttackMultiplier = 95,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Dancer,
+                    JobRequiredID = (int)Jobs.Geomancer,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Dancer,
+                    JobRequiredID = (int)Jobs.Dragoon,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Knife,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Cloth,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Dancer,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Bard 
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Bard,
+                    PspName = "Bard",
+                    HPMultiplier = 55,
+                    HPGrowthConstant = 20,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 20,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 30,
+                    PhysicalAttackGrowthConstant = 80,
+                    MagicalAttackMultiplier = 115,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Bard,
+                    JobRequiredID = (int)Jobs.Summoner,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Bard,
+                    JobRequiredID = (int)Jobs.Orator,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.Bard,
+                    ItemCategoryID = (int)ItemCategoriesList.Instrument,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Bard,
+                    ItemCategoryID = (int)ItemCategoriesList.Hat,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.Bard,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Mime
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.Mime,
+                    PspName = "Mime",
+                    HPMultiplier = 140,
+                    HPGrowthConstant = 6,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 30,
+                    SpeedMulitplier = 120,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 120,
+                    PhysicalAttackGrowthConstant = 35,
+                    MagicalAttackMultiplier = 115,
+                    MagicalAttackGrowthConstant = 40,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Squire,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 8
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Chemist,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 8
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Geomancer,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Dragoon,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Orator,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.Mime,
+                    JobRequiredID = (int)Jobs.Summoner,
+                    JobLevelRequiredPsp = 5,
+                    JobLevelRequiredPsx = 4
+                }
+            );
+
+            #endregion
+
+            #region Dark Knight
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    PspName = "Dark Knight",
+                    HPMultiplier = 80,
+                    HPGrowthConstant = 12,
+                    MPMultiplier = 90,
+                    MPGrowthConstant = 20,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 140,
+                    PhysicalAttackGrowthConstant = 40,
+                    MagicalAttackMultiplier = 80,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 0,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.Knight,
+                    JobLevelRequiredPsp = -1
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.BlackMage,
+                    JobLevelRequiredPsp = -1
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.Geomancer,
+                    JobLevelRequiredPsp = 8
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.Dragoon,
+                    JobLevelRequiredPsp = 8
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.Samurai,
+                    JobLevelRequiredPsp = 8
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    JobRequiredID = (int)Jobs.Ninja,
+                    JobLevelRequiredPsp = 8
+                }
+            );
+
+            context.JobItems.AddOrUpdate(m => m.JobID,
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Sword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.FellSword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Axe,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.KnightSword,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Flail,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Shield,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Helmet,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Robe,
+                },
+                new JobItem
+                {
+                    JobID = (int)Jobs.DarkKnight,
+                    ItemCategoryID = (int)ItemCategoriesList.Clothes,
+                }
+            );
+
+            #endregion
+
+            #region Onion Knight Basic
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.OnionKnightBasic,
+                    PspName = "Onion Knight (1 - 7)",
+                    HPMultiplier = 50,
+                    HPGrowthConstant = 13,
+                    MPMultiplier = 50,
+                    MPGrowthConstant = 13,
+                    SpeedMulitplier = 100,
+                    SpeedGrowthConstant = 100,
+                    PhysicalAttackMultiplier = 50,
+                    PhysicalAttackGrowthConstant = 80,
+                    MagicalAttackMultiplier = 50,
+                    MagicalAttackGrowthConstant = 50,
+                    BaseMoveLength = 3,
+                    BaseJumpHeight = 3,
+                    BaseCombatEvasion = 5,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.OnionKnightBasic,
+                    JobRequiredID = (int)Jobs.Squire,
+                    JobLevelRequiredPsp = 6
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.OnionKnightBasic,
+                    JobRequiredID = (int)Jobs.Chemist,
+                    JobLevelRequiredPsp = 6
+                }
+            );
+
+            #endregion
+
+            #region Onion Knight Mastered
+
+            context.Jobs.AddOrUpdate(m => m.PspName,
+                new Job
+                {
+                    JobID = (int)Jobs.OnionKnightMastered,
+                    PspName = "Onion Knight (8)",
+                    HPMultiplier = 150,
+                    HPGrowthConstant = 6,
+                    MPMultiplier = 140,
+                    MPGrowthConstant = 8,
+                    SpeedMulitplier = 120,
+                    SpeedGrowthConstant = 80,
+                    PhysicalAttackMultiplier = 130,
+                    PhysicalAttackGrowthConstant = 35,
+                    MagicalAttackMultiplier = 120,
+                    MagicalAttackGrowthConstant = 40,
+                    BaseMoveLength = 4,
+                    BaseJumpHeight = 4,
+                    BaseCombatEvasion = 30,
+                }
+            );
+
+            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.OnionKnightMastered,
+                    JobRequiredID = (int)Jobs.Squire,
+                    JobLevelRequiredPsp = 6
+                },
+                new JobPrerequisites
+                {
+                    JobID = (int)Jobs.OnionKnightMastered,
+                    JobRequiredID = (int)Jobs.Chemist,
+                    JobLevelRequiredPsp = 6
+                }
+            );
+
+            #endregion
 
             #endregion
 
