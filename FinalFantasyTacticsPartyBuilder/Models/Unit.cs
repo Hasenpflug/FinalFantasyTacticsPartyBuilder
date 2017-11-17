@@ -16,6 +16,14 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int Gender { get; set; }
 
+        public int CurrentHP { get; set; }
+
+        public int MaxHP { get; set; }        
+
+        public int CurrentMP { get; set; }
+
+        public int MaxMP { get; set; }        
+
         public int RawHP { get; set; }
 
         public int RawMP { get; set; }

@@ -5314,6 +5314,439 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Abilities
 
+            #region White Mage
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Cure",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 6,
+                Range = 4,
+                Radius = 2,
+                Height = 1,
+                Speed = 25,
+                JpNeededToLearnPsp = 50,
+                Description = "White Magick that soothes injuries, restoring HP.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                HealingEquation = "(14 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Life's refreshing breeze, blow in energy! Cure!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Cura",
+                PsxName = "Cure 2",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 10,
+                Range = 4,
+                Radius = 2,
+                Height = 1,
+                Speed = 20,
+                JpNeededToLearnPsp = 180,
+                Description = "White Magick that soothes injuries, restoring HP.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                HealingEquation = "(20 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Life's refreshing breeze, heal from the sky! Cure2!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Curaga",
+                PsxName = "Cure 3",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 16,
+                Range = 4,
+                Radius = 2,
+                Height = 2,
+                Speed = 15,
+                JpNeededToLearnPsp = 450,
+                Description = "White Magick that soothes injuries, restoring HP.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                HealingEquation = "(30 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Blessing breeze, blow in energy! Cure3!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Curaja",
+                PsxName = "Cure 4",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 20,
+                Range = 4,
+                Radius = 2,
+                Height = 3,
+                Speed = 10,
+                JpNeededToLearnPsp = 800,
+                JpNeededToLearnPsx = 700,
+                Description = "White Magick that soothes injuries, restoring HP.",
+                CanBeReflected = false,
+                UsedWithArithmetics = false,
+                HealingEquation = "(40 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Mighty breeze, heal from the sky! Cure4!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Raise",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 10,
+                Range = 4,
+                Radius = 1,
+                Speed = 25,
+                JpNeededToLearnPsp = 200,
+                JpNeededToLearnPsx = 180,
+                Description = "White Magick to fetch a warrior from the brink of death.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                HealingEquation = "Restores 50% of Max HP.",
+                SuccessRateEquation = "(180 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                RemoveStatusEffect = "KO",
+                Quote = "Spirits of life, return to us! Raise!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Arise",
+                PsxName = "Raise 2",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 20,
+                Range = 4,
+                Radius = 1,
+                Speed = 10,
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 500,
+                Description = "White Magick to fetch a warrior from the brink of death and fully restore HP as well.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                HealingEquation = "Restores 100% of Max HP.",
+                SuccessRateEquation = "(160 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                RemoveStatusEffect = "KO",
+                Quote = "Spirits of life, give a new life to the soul! Raise2!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Reraise",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 16,
+                Range = 3,
+                Radius = 1,
+                Speed = 15,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 800,
+                Description = "White Magick that endows a unit with a protective force that will revive him or her only once after being KO'd.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                AddStatusEffect = "Reraise",
+                SuccessRateEquation = "(140 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Inject life's energy! Reraise!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Regen",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 8,
+                Range = 3,
+                Radius = 2,
+                Height = 0,
+                Speed = 25,
+                JpNeededToLearnPsp = 350,
+                JpNeededToLearnPsx = 300,
+                Description = "White Magick that invigorates the life force, gradually restoring HP as long as its protection is in effect.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                AddStatusEffect = "Regen",
+                SuccessRateEquation = "(170 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Share lives with all things in nature.... Regen!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Protect",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 6,
+                Range = 3,
+                Radius = 2,
+                Height = 0,
+                Speed = 25,
+                JpNeededToLearnPsp = 70,
+                Description = "White Magick that conjures up invisible armor made of air to protect the body from direct blows.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                AddStatusEffect = "Protect",
+                SuccessRateEquation = "(200 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Precious light, be our armor to protect us! Protect!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Protectja",
+                PsxName = "Protect 2",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 24,
+                Range = 3,
+                Radius = 2,
+                Height = 3,
+                Speed = 15,
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 500,
+                Description = "White Magick that conjures up invisible armor made of air to protect the body from direct blows.",
+                CanBeReflected = false,
+                UsedWithArithmetics = false,
+                AddStatusEffect = "Protect",
+                SuccessRateEquation = "(120 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Shining light, shield from all directions! Protect2!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Shell",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 6,
+                Range = 3,
+                Radius = 2,
+                Height = 0,
+                Speed = 25,
+                JpNeededToLearnPsp = 70,
+                Description = "White Magick that conjures up invisible, mystical veil to protect the body from magick.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                AddStatusEffect = "Shell",
+                SuccessRateEquation = "(200 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Silent light, shield from evil! Shell!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Shellja",
+                PsxName = "Shell 2",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 20,
+                Range = 3,
+                Radius = 2,
+                Height = 3,
+                Speed = 15,
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 500,
+                Description = "White Magick that conjures up invisible, mystical veil to protect the body from magick.",
+                CanBeReflected = false,
+                UsedWithArithmetics = false,
+                AddStatusEffect = "Shell",
+                SuccessRateEquation = "(120 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Enduring light, shield from roaring magic! Shell2!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Wall",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 24,
+                Range = 3,
+                Radius = 1,
+                Height = 0,
+                Speed = 25,
+                JpNeededToLearnPsp = 400,
+                JpNeededToLearnPsx = 380,
+                Description = "White Magick that conjures up an invisible barrier to protect the body from physical and magickal blows.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                AddStatusEffect = "Protect, Shell",
+                SuccessRateEquation = "(140 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Ancient light, rise and revive! Wall!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Esuna",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 18,
+                Range = 3,
+                Radius = 2,
+                Height = 2,
+                Speed = 34,
+                JpNeededToLearnPsp = 300,
+                JpNeededToLearnPsx = 280,
+                Description = "White Magick that removes negative status effects.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                RemoveStatusEffect = "Stone, Blind, Confuse, Silence, Berserk, Toad, Poison, Sleep, Immobilize, Disable",
+                SuccessRateEquation = "(190 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Heavenly wind, carry us to a fountain of power! Esuna!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Holy",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 56,
+                Range = 5,
+                Radius = 1,
+                Height = 0,
+                Speed = 17,
+                JpNeededToLearnPsp = 600,
+                Description = "White Magick that attacks the target with sacred light.",
+                CanBeReflected = true,
+                UsedWithArithmetics = true,
+                Element = "Holy",
+                SuccessRateEquation = "(50 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Bright light, shine down on bloody impurity! Holy!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Regenerate",
+                PsxName = "Regenerator",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 400,
+                Description = "Receive the blessing of HP regeneration.",
+                Trigger = "HP Loss",
+                AddStatusEffect = "Regen",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.WhiteMage,
+                PspName = "Arcane Defense",
+                PsxName = "Magic DefendUP",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                Description = "Take less damage from magickal attacks.",
+            });
+
+            #endregion
+
+            #region Squire
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Focus",
+                PsxName = "Accumulate",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                Description = "Increase physical attack power.",
+                AmountBoost = "+1 Physical Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Rush",
+                PsxName = "Dash",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 1,
+                Height = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 80,
+                Description = "Attack by ramming into the enemy's body.",
+                DamageEquation = "Physical Attack x (Random: 1 to 4)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Stone",
+                PsxName = "Throw Stone",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Height = -1,
+                Speed = -1,
+                JpNeededToLearnPsp = 90,
+                Description = "Lob a stone at a far-off foe.",
+                DamageEquation = "Physical Attack x (Random: 1 to 2)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Salve",
+                PsxName = "Heal",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 1,
+                Height = 2,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "Remove several status ailments.",
+                RemoveStatusEffect = "Blind, Silence, Poison"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Salve",
+                PsxName = "Heal",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "Remove several status ailments.",
+                RemoveStatusEffect = "Blind, Silence, Poison"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Counter Tackle",
+                AbilityType = (int)AbilityType.Reaction,
+                Trigger = "Physical Attack",
+                JpNeededToLearnPsp = 180,
+                Description = "Counterattack with a tackle."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Equip Axes",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 170,
+                ItemEquipID = (int)ItemCategoriesList.Axe,
+                Description = "Equip axes, regardless of job."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Beastmaster",
+                PsxName = "Monster Skill",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 200,
+                Description = "Add an ability to all monsters in neighboring tiles with an elevation difference of 3h or less."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Defend",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 50,
+                Description = "Defend oneself against an attack. Adds the Defend command."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "JP Boost",
+                PsxName = "Gained JP Up",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 250,
+                Description = "Increase the amount of JP earned in battle."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Squire,
+                PspName = "Move +1",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 200,
+                MoveBoost = 1,
+                Description = "Increase Move by 1."
+            });
+
+            #endregion
+
             #endregion
         }
     }

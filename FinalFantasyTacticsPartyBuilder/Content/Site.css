@@ -283,14 +283,14 @@ img {
 .unit-details-container {
     width: 90%;
     left: 5%;
-    height: 25%;
+    /*height: 25%;*/
     bottom: 8%;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
     padding: 2%;
     z-index: 8;
-    /*visibility:hidden;*/
+    display:none;
 }
 
 #unit-portrait-menu {
@@ -1055,7 +1055,6 @@ img {
     max-width:100px;
     max-height:40px;
 }
-
 
 #ability-details-ability-selection {
     width: 100%;

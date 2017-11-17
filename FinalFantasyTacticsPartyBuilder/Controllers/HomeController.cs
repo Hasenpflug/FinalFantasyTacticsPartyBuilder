@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FinalFantasyTacticsPartyBuilder.Models;
+using FinalFantasyTacticsPartyBuilder.View_Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,17 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult GetUnitPanelPartial(string maxHP, string maxMP)
+        {
+            UnitOverviewHpMpViewModel unitHP = new UnitOverviewHpMpViewModel
+            {
+                HpDigits = maxHP.ToCharArray(),
+                MpDigits = maxMP.ToCharArray()
+            };
+
+            return PartialView("~/Views/Home/_UnitOverviewPartial.cshtml", unitHP);
         }
 
         public ActionResult Details()

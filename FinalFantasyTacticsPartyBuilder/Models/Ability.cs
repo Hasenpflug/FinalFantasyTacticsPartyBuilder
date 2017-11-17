@@ -24,6 +24,50 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string PsxName { get; set; }
 
+        public int? MPCost { get; set; }
+
+        public int? Range { get; set; }
+
+        public int? Radius { get; set; }
+
+        public int? Height { get; set; }
+
+        public int? Speed { get; set; }
+
+        public int? ItemEquipID { get; set; }
+
+        public string Element { get; set; }
+
+        public int? MoveBoost { get; set; }
+
+        public int? JumpBoost { get; set; }
+
+        public string AmountBoost { get; set; }
+
+        public int JpNeededToLearnPsp { get; set; }
+
+        public int? JpNeededToLearnPsx { get; set; }
+
+        public bool CanBeReflected { get; set; }
+        
+        public bool UsedWithArithmetics { get; set; }
+
+        public string DamageEquation { get; set; }
+
+        public string HealingEquation { get; set; }
+
+        public string SuccessRateEquation { get; set; }
+
+        public string AddStatusEffect { get; set; }
+
+        public string RemoveStatusEffect { get; set; }
+
+        public string Trigger { get; set; }
+
+        public string Description { get; set; }
+
+        public string Quote { get; set; }
+
         public virtual Job Job { get; set; }
     }
 }
