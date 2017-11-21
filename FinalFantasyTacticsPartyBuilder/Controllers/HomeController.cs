@@ -15,15 +15,14 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return View();
         }
 
-        public ActionResult GetUnitPanelPartial(string maxHP, string maxMP)
+        public ActionResult GetUnitPanelPartial(List<UnitOverviewHpMpViewModel> units)
         {
-            UnitOverviewHpMpViewModel unitHP = new UnitOverviewHpMpViewModel
-            {
-                HpDigits = maxHP.ToCharArray(),
-                MpDigits = maxMP.ToCharArray()
-            };
+            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
+        }
 
-            return PartialView("~/Views/Home/_UnitOverviewPartial.cshtml", unitHP);
+        public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
+        {
+            return PartialView("~/Views/Home/_UnitOverviewStatusPartial.cshtml", unit);
         }
 
         public ActionResult Details()

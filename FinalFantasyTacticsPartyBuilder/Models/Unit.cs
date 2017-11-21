@@ -14,13 +14,13 @@ namespace FinalFantasyTacticsPartyBuilder.Models
     {
         public int UnitID { get; set; }
 
+        public int Position { get; set; }
+
         public int Gender { get; set; }
 
-        public int CurrentHP { get; set; }
+        public int Job { get; set; }
 
-        public int MaxHP { get; set; }        
-
-        public int CurrentMP { get; set; }
+        public int MaxHP { get; set; }
 
         public int MaxMP { get; set; }        
 
@@ -33,5 +33,13 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public int RawPhysicalAttack { get; set; }
 
         public int RawMagicalAttack { get; set; }
+
+        public int Level { get; set; }
+
+        public int Experience { get; set; }
+
+        public int Brave { get; set; }
+
+        public int Faith { get; set; }
     }
 }

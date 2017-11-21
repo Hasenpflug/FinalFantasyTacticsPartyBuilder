@@ -4,41 +4,40 @@
 
 <div id="party-overview-container">
     <div id="party-builder-container">
-
-        @for (int i = 0; i < 2; i++)
-        {
-            <div class="unit-container">
-                <a href="#" class="unit-selector">
-                    <img src="~/Content/Images/selection-square.png" class="selection-square" />
-                    <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
-                    <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
-                    <div class="job-status-container">
-                        <div class="job-status-hp-container">
-                            <div class="hp-bar"></div>
-                            <img class="hp" src="~/Content/Images/hp.png" />
-                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                            <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                            <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
-                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
-                            <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+        @*@for (int i = 0; i < 2; i++)
+            {
+                <div class="unit-container">
+                    <a href="#" class="unit-selector">
+                        <img src="~/Content/Images/selection-square.png" class="selection-square" />
+                        <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
+                        <img class="job-image" src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
+                        <div class="job-status-container">
+                            <div class="job-status-hp-container">
+                                <div class="hp-bar"></div>
+                                <img class="hp" src="~/Content/Images/hp.png" />
+                                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                                <img class="job-status-divider" src="~/Content/Images/divider.png" />
+                                <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                                <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                                <img class="value lower-hp" src="~/Content/Images/number_9.png" />
+                            </div>
+                            <div class="job-status-mp-container">
+                                <div class="mp-bar"></div>
+                                <img class="mp" src="~/Content/Images/mp.png" />
+                                <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                                <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                                <img class="value upper-mp" src="~/Content/Images/number_9.png" />
+                                <img class="job-status-divider" src="~/Content/Images/divider.png" />
+                                <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                                <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                                <img class="value lower-mp" src="~/Content/Images/number_9.png" />
+                            </div>
                         </div>
-                        <div class="job-status-mp-container">
-                            <div class="mp-bar"></div>
-                            <img class="mp" src="~/Content/Images/mp.png" />
-                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                            <img class="value upper-mp" src="~/Content/Images/number_9.png" />
-                            <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                            <img class="value lower-mp" src="~/Content/Images/number_9.png" />
-                        </div>
-                    </div>
-                </a>
-            </div>
-        }
+                    </a>
+                </div>
+            }*@
         <div class="unit-container">
             <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
             <a href="@Url.Action("Details", "Home")">
@@ -51,20 +50,20 @@
             </a>
         </div>
     </div>
-    <div class="menu-container">
+    @*<div class="menu-container">
         <img src="~/Content/Images/menu_header.png" />
         <div class="menu">
             <ul>
-                <li><a href="#">Item</a></li>
+                <li><a id="clickTest" href="#">Item</a></li>
                 <li><a href="#">Ability</a></li>
                 <li><a href="#">Change Job</a></li>
                 <li><a href="#">Remove Unit</a></li>
                 <li><a href="#">Order Unit</a></li>
             </ul>
         </div>
-    </div>
-    <div class="unit-details-container">
-        <div id="unit-portrait-menu" class="menu">
+    </div>*@
+
+    @*<div id="unit-portrait-menu" class="menu">
             <img class="unit-portrait" src="~/Content/Images/Jobs/Squire_Male_Portrait.png" />
         </div>
         <div id="unit-details-status-container">
@@ -117,9 +116,47 @@
                 <span id="faith-header">Faith</span>
                 <span>74</span>
             </div>
-        </div>        
-    </div>
+        </div>*@
 </div>
 <script>
+    var UnitOverview = function ()
+    {
+        $(document).ready(function ()
+        {
+            if (typeof (Storage) !== 'undefined')
+            {
+                var unitData = {
+                    units: [{ 'hpDigits': ['4', '3'], 'mpDigits': ['1', '1'], 'position': '1', 'job': '1', 'level': '1', 'experience': '46', 'brave': '67', 'faith': '58' },
+                        { 'hpDigits': ['3', '8'], 'mpDigits': ['1', '3'], 'position': '2', 'job': '1', 'level': '99', 'experience': '46', 'brave': '97', 'faith': '0' }]
+                }
 
+                localStorage.setItem("unitData", JSON.stringify(unitData));
+            }
+        });
+
+        $("#clickTest").click(renderUnitPanels);
+        $('body').on('click', '.unit-container', renderUnitStatus);
+
+        function renderUnitPanels()
+        {
+            var unitData = JSON.parse(localStorage.getItem('unitData'));
+            $.post('/Home/GetUnitPanelPartial', unitData, function (data)
+            {
+                $('#party-builder-container').prepend(data);
+            });
+        }
+
+        function renderUnitStatus()
+        {
+            var unitData = JSON.parse(localStorage.getItem('unitData'));
+
+            $.post('/Home/GetUnitOverviewPartial', unitData, function (data)
+            {
+                $('#party-builder-container').append(data);
+            });
+
+            $('body').off('click', '.unit-container');
+        }
+
+    }();
 </script>

@@ -189,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
+    <Compile Include="View_Models\UnitOverviewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -599,8 +600,8 @@
     <Content Include="Scripts\wheelnav.min.js.map" />
     <Content Include="Views\Home\Status.cshtml" />
     <Content Include="Views\Home\Item.cshtml" />
-    <Content Include="Views\Home\_UnitDetailsStatus.cshtml" />
-    <Content Include="Views\Home\_UnitOverviewPanel.cshtml" />
+    <Content Include="Views\Home\_UnitOverviewStatusPartial.cshtml" />
+    <Content Include="Views\Home\_UnitOverviewPanelPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

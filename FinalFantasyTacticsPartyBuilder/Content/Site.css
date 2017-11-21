@@ -199,7 +199,7 @@ img {
 }
 
     .job-status-hp-container img {
-        height: 55%;
+        height:25px;
         margin-right: -4px;
     }
 
@@ -214,7 +214,7 @@ img {
 }
 
     .job-status-mp-container img {
-        height: 55%;
+        height:25px;
         margin-right: -4px;
     }
 
@@ -290,7 +290,6 @@ img {
     box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
     padding: 2%;
     z-index: 8;
-    display:none;
 }
 
 #unit-portrait-menu {
