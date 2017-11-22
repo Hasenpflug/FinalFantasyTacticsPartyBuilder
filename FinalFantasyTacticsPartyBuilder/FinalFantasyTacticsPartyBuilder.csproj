@@ -490,6 +490,8 @@
     <Content Include="Content\Images\Item Icons\Weapons\Giant%27sAxe-fft-psx.gif" />
     <Content Include="Content\Images\Item Icons\Weapons\Slasher-fft-psx.gif" />
     <Content Include="Content\Images\job.png" />
+    <Content Include="Content\Images\Jobs\Squire_Female_Portrait.png" />
+    <Content Include="Content\Images\Jobs\Squire_Female_Standing.png" />
     <Content Include="Content\Images\jp.png" />
     <Content Include="Content\Images\level.png" />
     <Content Include="Content\Images\magical-icon.png" />

@@ -15,13 +15,35 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return View();
         }
 
-        public ActionResult GetUnitPanelPartial(List<UnitOverviewHpMpViewModel> units)
+        public ActionResult GetUnitPanelPartial(List<UnitOverviewViewModel> units)
         {
-            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
+            foreach (UnitOverviewViewModel unit in units)
+            {
+                unitAttributeDigits.Add(new UnitOverviewHpMpViewModel
+                {
+                    HpDigits = unit.MaxHP.ToString().ToCharArray(),
+                    MpDigits = unit.MaxMP.ToString().ToCharArray()
+                });
+            }
+
+            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", unitAttributeDigits);
         }
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
         {
+            unit.JobName = Enum.GetName(typeof(Jobs), unit.Job);
+            unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
+            unit.JobPortraitPath = String.Format("~/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName, unit.GenderName);
+
+            unit.AttributeDigits = new UnitOverviewHpMpViewModel
+            {
+                HpDigits = unit.MaxHP.ToString().ToCharArray(),
+                MpDigits = unit.MaxMP.ToString().ToCharArray(),
+                ExperienceDigits = unit.Experience < 10 ? ("0" + unit.Experience.ToString()).ToCharArray() : unit.Experience.ToString().ToCharArray(),
+                LevelDigits = unit.Level < 10 ? ("0" + unit.Level.ToString()).ToCharArray() : unit.Level.ToString().ToCharArray(),
+                PositionDigits = unit.Position < 10 ? ("0" + unit.Position.ToString()).ToCharArray() : unit.Position.ToString().ToCharArray()
+            };
+
             return PartialView("~/Views/Home/_UnitOverviewStatusPartial.cshtml", unit);
         }
 

@@ -5706,7 +5706,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 PspName = "Equip Axes",
                 AbilityType = (int)AbilityType.Support,
                 JpNeededToLearnPsp = 170,
-                ItemEquipID = (int)ItemCategoriesList.Axe,
+                ItemEquipIDs = ItemCategoriesList.Axe.ToString(),
                 Description = "Equip axes, regardless of job."
             },
             new Ability
@@ -5743,6 +5743,533 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 JpNeededToLearnPsp = 200,
                 MoveBoost = 1,
                 Description = "Increase Move by 1."
+            });
+
+            #endregion
+
+            #region Chemist 
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Potion",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 30,
+                HPRestored = 30,
+                Description = "Use a potion to restore HP or inflict damage on the undead.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Hi-Potion",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                HPRestored = 70,
+                Description = "Use a Hi-Potion to restore HP. A more potent draught than a Potion.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "X-Potion",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                HPRestored = 150,
+                Description = "Use an X-Potion to restore HP. A more potent draught than a Hi-Potion.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Ether",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                MPRestored = 20,
+                Description = "Use an ether to restore MP.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Hi-Ether",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                MPRestored = 50,
+                Description = "Use a Hi-Ether to restore MP. A more potent draught than an Ether.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Elixir",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 900,
+                Description = "Use an elixir to fully restore HP and MP.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Antidote",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 70,
+                RemoveStatusEffect = "Poison",
+                Description = "Use an antidote to nullify poison.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Eye Drops",
+                PsxName = "Eye Drop",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 80,
+                RemoveStatusEffect = "Blind",
+                Description = "Use eye drops when vision has been magickally compromised.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Echo Herbs",
+                PsxName = "Echo Grass",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 80,
+                RemoveStatusEffect = "Silence",
+                Description = "Use echo herbs to restore a unit's power of speech, permitting them to cast magicks once again.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Maiden's Kiss",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                RemoveStatusEffect = "Toad",
+                Description = "Use a maiden's kiss to change a unit that has been transformed into a toad back to its original form.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Gold Needle",
+                PsxName = "Soft",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                RemoveStatusEffect = "Stone",
+                Description = "Use a gold needle to change a petrified unit back to normal. Breaks after one use.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Holy Water",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                RemoveStatusEffect = "Undead, Vampire",
+                Description = "Use holy water to lift the curse of undeath from a unit.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Remedy",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 700,
+                RemoveStatusEffect = "Poison, Blind, Silence, Toad, Stone, Confuse, Oil, Sleep",
+                Description = "Use a remedy to cure various status effects.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Phoenix Down",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 90,
+                RemoveStatusEffect = "KO",
+                Description = "Use phoenix down to restore life to a fallen unit. Vanishes after one use.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Auto Potion",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 400,
+                Trigger = "HP Loss",
+                Description = "Use a Potion to restore HP.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Throw Items",
+                PsxName = "Throw Item",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 350,
+                Description = "Throw items within an increased radius, even if not a Chemist.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Safeguard",
+                PsxName = "Maintenance",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 250,
+                Description = "Prevent equipment from being destroyed or stolen.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Reequip",
+                PsxName = "Equip Change",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 0,
+                Description = "Change equipment mid-battle. Adds the Reequip command.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Chemist,
+                PspName = "Treasure Hunter",
+                PsxName = "Move-Find Item",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 100,
+                Description = "Discover items hidden on tiles upon moving to them.",
+            });
+
+            #endregion
+
+            #region Knight
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Helm",
+                PsxName = "Head Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                AddStatusEffect = "Destroy Headgear",
+                SuccessRateEquation = "45 + Physical Attack + Weapon Strength",
+                Description = "A technique that destroys the item equipped on the target's head.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Armor",
+                PsxName = "Armor Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                AddStatusEffect = "Destroy Armor",
+                SuccessRateEquation = "40 + Physical Attack + Weapon Strength",
+                Description = "A technique that destroys the item equipped on the target's body.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Shield",
+                PsxName = "Shield Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                AddStatusEffect = "Destroy Shield",
+                SuccessRateEquation = "55 + Physical Attack + Weapon Strength",
+                Description = "A technique that destroys the target's equipped shield.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Weapon",
+                PsxName = "Weapon Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                AddStatusEffect = "Destroy Weapon",
+                SuccessRateEquation = "30 + Physical Attack + Weapon Strength",
+                Description = "A technique that destroys the target's equipped weapon.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend MP",
+                PsxName = "Magic Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                AmountDamage = "50% of Target's Max MP",
+                SuccessRateEquation = "50 + Physical Attack",
+                Description = "A technique that reduces the target's MP.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Speed",
+                PsxName = "Speed Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                AmountDamage = "-2 Speed",
+                SuccessRateEquation = "50 + Physical Attack",
+                Description = "A technique that reduces the target's Speed.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Power",
+                PsxName = "Power Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                AmountDamage = "-3 Physical Attack",
+                SuccessRateEquation = "50 + Physical Attack",
+                Description = "A technique that reduces the target's physical attack power.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Rend Magick",
+                PsxName = "Mind Break",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                AmountDamage = "-3 Magic Attack",
+                SuccessRateEquation = "50 + Physical Attack",
+                Description = "A technique that reduces the target's magickal attack power.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Parry",
+                PsxName = "Weapon Guard",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 200,
+                Trigger = "Physical Attack",
+                Description = "Block physical attacks with the equipped weapon.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Equip Heavy Armor",
+                PsxName = "Equip Armor",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 500,
+                ItemEquipIDs = String.Format("{0}, {1}", ItemCategoriesList.HeavyArmour, ItemCategoriesList.Helmet),
+                Description = "Equip helms and armor, regardless of job.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Equip Shields",
+                PsxName = "Equip Shield",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 250,
+                ItemEquipIDs = ItemCategoriesList.Shield.ToString(),
+                Description = "Equip shields, regardless of job.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Knight,
+                PspName = "Equip Swords",
+                PsxName = "Equip Sword",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                ItemEquipIDs = ItemCategoriesList.Sword.ToString(),
+                Description = "Equip swords, regardless of job.",
+            });
+
+            #endregion
+
+            #region Archer 
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +1",
+                PsxName = "Charge +1",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +2",
+                PsxName = "Charge +2",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +3",
+                PsxName = "Charge +3",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +4",
+                PsxName = "Charge +4",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 250,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +5",
+                PsxName = "Charge +5",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +7",
+                PsxName = "Charge +7",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +10",
+                PsxName = "Charge +10",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 700,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Aim +20",
+                PsxName = "Charge +20",
+                AbilityType = (int)AbilityType.Command,
+                Range = -1,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 1200,
+                Description = "Carefully aim to strike for increased damage. Attack power increases with longer charge time.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Adrenaline Rush",
+                PsxName = "Speed Save",
+                AbilityType = (int)AbilityType.Reaction,
+                Trigger = "HP Loss",
+                JpNeededToLearnPsp = 900,
+                Description = "Increase Speed.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Archer's Bane",
+                PsxName = "Arrow Guard",
+                AbilityType = (int)AbilityType.Reaction,
+                Trigger = "Bow/Crossbow Attack",
+                JpNeededToLearnPsp = 450,
+                Description = "Dodge arrow and bolt attacks.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Equip Crossbows",
+                AbilityType = (int)AbilityType.Support,
+                ItemEquipIDs = ItemCategoriesList.Crossbow.ToString(),
+                JpNeededToLearnPsp = 350,
+                Description = "Equip crossbows, regardless of job.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Concentrate",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                Description = "	Make attacks unblockable. If an enemy is in the targeted tile, it will always be a hit.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Archer,
+                PspName = "Jump +1",
+                AbilityType = (int)AbilityType.Movement,
+                JumpBoost = 1,
+                JpNeededToLearnPsp = 200,
+                Description = "Increase Jump by 1.",
             });
 
             #endregion

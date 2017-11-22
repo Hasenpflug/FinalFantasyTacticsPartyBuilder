@@ -1,7 +1,7 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models
-@model List<UnitOverviewHpMpViewModel>
+@model List<UnitOverviewViewModel>
 
-@foreach (UnitOverviewHpMpViewModel unit in Model)
+@foreach (UnitOverviewViewModel unit in Model)
 {
     <div class="unit-container">
         <a href="#" class="unit-selector">
@@ -12,27 +12,27 @@
                 <div class="job-status-hp-container">
                     <div class="hp-bar"></div>
                     <img class="hp" src="~/Content/Images/hp.png" />
-                    @for (int i = 0; i < unit.HpDigits.Length; i++)
+                    @for (int i = 0; i < unit.AttributeDigits.HpDigits.Length; i++)
                     {
-                        <img class="value upper-hp" src="~/Content/Images/number_@(unit.HpDigits[i]).png" />
+                        <img class="value upper-hp" src="~/Content/Images/number_@(unit.AttributeDigits.HpDigits[i]).png" />
                     }
                     <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                    @for (int i = 0; i < unit.HpDigits.Length; i++)
+                    @for (int i = 0; i < unit.AttributeDigits.HpDigits.Length; i++)
                     {
-                        <img class="value lower-hp" src="~/Content/Images/number_@(unit.HpDigits[i]).png" />
+                        <img class="value lower-hp" src="~/Content/Images/number_@(unit.AttributeDigits.HpDigits[i]).png" />
                     }
                 </div>
                 <div class="job-status-mp-container">
                     <div class="mp-bar"></div>
                     <img class="mp" src="~/Content/Images/mp.png" />
-                    @for (int i = 0; i < unit.MpDigits.Length; i++)
+                    @for (int i = 0; i < unit.AttributeDigits.MpDigits.Length; i++)
                     {
-                        <img class="value upper-mp" src="~/Content/Images/number_@(unit.MpDigits[i]).png" />
+                        <img class="value upper-mp" src="~/Content/Images/number_@(unit.AttributeDigits.MpDigits[i]).png" />
                     }
                     <img class="job-status-divider" src="~/Content/Images/divider.png" />
-                    @for (int i = 0; i < unit.MpDigits.Length; i++)
+                    @for (int i = 0; i < unit.AttributeDigits.MpDigits.Length; i++)
                     {
-                        <img class="value lower-mp" src="~/Content/Images/number_@(unit.MpDigits[i]).png" />
+                        <img class="value lower-mp" src="~/Content/Images/number_@(unit.AttributeDigits.MpDigits[i]).png" />
                     }
                 </div>
             </div>

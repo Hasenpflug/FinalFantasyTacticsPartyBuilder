@@ -126,15 +126,15 @@
             if (typeof (Storage) !== 'undefined')
             {
                 var unitData = {
-                    units: [{ 'hpDigits': ['4', '3'], 'mpDigits': ['1', '1'], 'position': '1', 'job': '1', 'level': '1', 'experience': '46', 'brave': '67', 'faith': '58' },
-                        { 'hpDigits': ['3', '8'], 'mpDigits': ['1', '3'], 'position': '2', 'job': '1', 'level': '99', 'experience': '46', 'brave': '97', 'faith': '0' }]
+                    units: [{ 'unitName': 'Braedon', 'maxhp': '43', 'maxmp': '11', 'gender': '0', 'position': '1', 'job': '1', 'level': '1', 'experience': '46', 'brave': '67', 'faith': '58' },
+                        { 'unitName': 'Braedina', 'maxhp': '38', 'maxmp': '13', 'gender': '1', 'position': '2', 'job': '1', 'level': '99', 'experience': '46', 'brave': '97', 'faith': '0' }]
                 }
 
                 localStorage.setItem("unitData", JSON.stringify(unitData));
+                renderUnitPanels();
             }
         });
 
-        $("#clickTest").click(renderUnitPanels);
         $('body').on('click', '.unit-container', renderUnitStatus);
 
         function renderUnitPanels()

@@ -34,7 +34,7 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int? Speed { get; set; }
 
-        public int? ItemEquipID { get; set; }
+        public string ItemEquipIDs { get; set; }
 
         public string Element { get; set; }
 
@@ -43,6 +43,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public int? JumpBoost { get; set; }
 
         public string AmountBoost { get; set; }
+
+        public string AmountDamage { get; set; }
 
         public int JpNeededToLearnPsp { get; set; }
 
@@ -61,6 +63,10 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string AddStatusEffect { get; set; }
 
         public string RemoveStatusEffect { get; set; }
+
+        public int HPRestored { get; set; }
+
+        public int MPRestored { get; set; }
 
         public string Trigger { get; set; }
 

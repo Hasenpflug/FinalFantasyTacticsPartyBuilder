@@ -9,9 +9,19 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
     {
         public int UnitID { get; set; }
 
-        public int Position { get; set; }        
+        public string UnitName { get; set; }
+
+        public int Position { get; set; }    
+        
+        public int Gender { get; set; }
+
+        public string GenderName { get; set; }
 
         public int Job { get; set; }
+
+        public string JobName { get; set; }
+
+        public string JobPortraitPath { get; set; }
 
         public int MaxHP { get; set; }
 
@@ -24,5 +34,7 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
         public int Brave { get; set; }
 
         public int Faith { get; set; }
+
+        public UnitOverviewHpMpViewModel AttributeDigits { get; set; }
     }
 }
