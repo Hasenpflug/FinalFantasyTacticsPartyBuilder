@@ -39,6 +39,10 @@ namespace FinalFantasyTacticsPartyBuilder
                       "~/Scripts/wheelnav.js",
                       "~/Scripts/wheelnav.min.js",
                       "~/Scripts/wheelnav.min.js.map"));
+
+            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+                      "~/Scripts/Chart.bundle.min.js"
+                ));
         }
     }
 }

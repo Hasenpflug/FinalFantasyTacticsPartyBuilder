@@ -547,6 +547,7 @@
     <Content Include="fonts\Altima.woff" />
     <Content Include="FFT Party Builder with Database.docx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

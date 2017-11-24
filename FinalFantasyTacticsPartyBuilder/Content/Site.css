@@ -574,6 +574,36 @@ img {
     border: 5px outset;
 }
 
+#job-modifier-chart-container, #job-growth-chart-container  {
+    position:absolute;
+    width:40%;
+    /*background-color:white;*/
+    top:25%;
+}
+
+#job-modifier-chart-container {
+    left:0;   
+}
+
+#job-growth-chart-container {
+    left:60%;
+}
+
+#job-move-chart-container {
+    position:absolute;
+    left: 0;
+    top:65%;
+    width:20%;
+    /*background-color:white;*/
+}
+
+#job-evasion-chart-container {
+    position:absolute;
+    left: 21%;
+    top:65%;
+    width:15%;
+    /*background-color:white;*/
+}
 
 #unit-details-container {
     padding: 2%;
