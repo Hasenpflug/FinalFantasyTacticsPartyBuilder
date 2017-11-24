@@ -19,21 +19,21 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         {
             foreach (UnitOverviewViewModel unit in units)
             {
-                unitAttributeDigits.Add(new UnitOverviewHpMpViewModel
+                unit.AttributeDigits = new UnitOverviewHpMpViewModel
                 {
                     HpDigits = unit.MaxHP.ToString().ToCharArray(),
                     MpDigits = unit.MaxMP.ToString().ToCharArray()
-                });
+                };
             }
 
-            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", unitAttributeDigits);
+            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
         }
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
         {
             unit.JobName = Enum.GetName(typeof(Jobs), unit.Job);
             unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
-            unit.JobPortraitPath = String.Format("~/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName, unit.GenderName);
+            unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName, unit.GenderName);
 
             unit.AttributeDigits = new UnitOverviewHpMpViewModel
             {
@@ -45,6 +45,16 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             };
 
             return PartialView("~/Views/Home/_UnitOverviewStatusPartial.cshtml", unit);
+        }
+
+        public ActionResult GetUnitMenuPartial(string unitPositionID)
+        {
+            return PartialView("~/Views/Home/_UnitOverviewMenuPartial.cshtml", unitPositionID);
+        }
+
+        public ActionResult GetJobOverviewPartial()
+        {
+            return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");
         }
 
         public ActionResult Details()

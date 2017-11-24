@@ -1,0 +1,40 @@
+﻿<div id="job-overview-container">
+    <div id="job-selection-container">
+        <div id='piemenu' data-wheelnav
+             data-wheelnav-slicepath='DonutSlice'
+             data-wheelnav-rotateon
+             data-wheelnav-navangle="90"
+             data-wheelnav-titleheight="100"
+             data-wheelnav-titlewidth="70"
+             data-wheelnav-cssmode
+             data-wheelnav-init>
+            @for (int i = 0; i < 30; i++)
+            {
+                <div data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>
+            }
+        </div>
+    </div>
+    <div id="job-details-container" class="menu">
+        <div id="job-details-level-container">
+            <img src="~/Content/Images/level.png" />
+            <img src="~/Content/Images/number_8.png" />
+        </div>
+        <span>Squire</span>
+    </div>
+    <div id="job-gender-container" class="menu">
+        <span selected="true">Male Soldier</span>
+        <span selected="false">Female Soldier</span>
+    </div>
+</div>
+<script>
+    var piemenu = new wheelnav('piemenu');
+    piemenu.centerX = window.innerWidth / 2 + 50;
+    piemenu.centerY = window.innerHeight / 2 - 100;
+    piemenu.selectedPercent = 1.1;
+    piemenu.hoverPercent = 1;
+    piemenu.clockwise = false;
+    piemenu.animatetime = 200;
+    piemenu.maxPercent = 0.60;
+    piemenu.animateeffect = 'linear';
+    piemenu.createWheel();
+</script>

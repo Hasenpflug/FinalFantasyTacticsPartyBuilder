@@ -536,7 +536,9 @@ img {
 }
 
 #job-details-container {
-    margin: auto;
+    margin-left:35%;
+    margin-right:1%;
+    float:left;
     width: 20%;
     height: 10%;
     max-width: 280px;
@@ -555,6 +557,23 @@ img {
 #job-details-container span {
     margin: 0 35%;
 }
+
+#job-gender-container {
+    float: left;
+    padding: 1.5% 2%;
+    height: 10%;
+    max-width: 440px;
+}
+
+#job-gender-container span[selected=true] {
+    background-color:rgba(0, 0, 0, 0.10);
+    border: 5px inset;
+}
+
+#job-gender-container span[selected=false] {
+    border: 5px outset;
+}
+
 
 #unit-details-container {
     padding: 2%;

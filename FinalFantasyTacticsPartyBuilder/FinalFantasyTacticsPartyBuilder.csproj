@@ -604,6 +604,8 @@
     <Content Include="Views\Home\Item.cshtml" />
     <Content Include="Views\Home\_UnitOverviewStatusPartial.cshtml" />
     <Content Include="Views\Home\_UnitOverviewPanelPartial.cshtml" />
+    <Content Include="Views\Home\_UnitOverviewMenuPartial.cshtml" />
+    <Content Include="Views\Home\_JobOverviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

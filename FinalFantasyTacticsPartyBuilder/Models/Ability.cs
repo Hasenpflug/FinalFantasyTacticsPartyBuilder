@@ -42,6 +42,10 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public int? JumpBoost { get; set; }
 
+        public bool MagicAttackModifier { get; set; }
+
+        public bool PhysicalDefenceModifier { get; set; }
+
         public string AmountBoost { get; set; }
 
         public string AmountDamage { get; set; }
@@ -58,15 +62,21 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string HealingEquation { get; set; }
 
+        public string EnergizeEquation { get; set; }
+
         public string SuccessRateEquation { get; set; }
 
         public string AddStatusEffect { get; set; }
 
         public string RemoveStatusEffect { get; set; }
 
-        public int HPRestored { get; set; }
+        public int? HPRestored { get; set; }
 
-        public int MPRestored { get; set; }
+        public string HealthDrainedEquation { get; set; }
+
+        public string MpDrainedEquation { get; set; }
+
+        public int? MPRestored { get; set; }
 
         public string Trigger { get; set; }
 
