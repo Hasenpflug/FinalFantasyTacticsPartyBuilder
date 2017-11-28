@@ -576,33 +576,36 @@ img {
 
 #job-modifier-chart-container, #job-growth-chart-container  {
     position:absolute;
-    width:40%;
-    /*background-color:white;*/
-    top:25%;
+    width:25%;
+    height:40%;    
 }
 
 #job-modifier-chart-container {
-    left:0;   
+    top:10%;
+    left:5%;   
 }
 
 #job-growth-chart-container {
-    left:60%;
+    left:5%;
+    top: 53%;
 }
 
 #job-move-chart-container {
+    padding:1%;
     position:absolute;
-    left: 0;
-    top:65%;
+    left: 75%;
+    top:10%;
     width:20%;
-    /*background-color:white;*/
+    height:20%
 }
 
 #job-evasion-chart-container {
+    padding:1%;
     position:absolute;
-    left: 21%;
-    top:65%;
+    left: 75%;
+    top:35%;
     width:15%;
-    /*background-color:white;*/
+    height:15%;
 }
 
 #unit-details-container {
