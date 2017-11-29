@@ -8,8 +8,16 @@
              data-wheelnav-titlewidth="70"
              data-wheelnav-cssmode
              data-wheelnav-init>           
-            <div onmousedown="updateChartData" data-job-id="1" data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>
-            <div data-wheelnav-navitemimg="/Content/Images/Jobs/Chemist_Male_Standing.png"></div>
+            @*<div onmouseup="updateChartData({'data-job-id:': '1', });" data-job-id="1" data-job-name="Squire" data-job-hpm="100" data-job-hpc="11" data-job-mpm="75" data-job-mpc="15" data-job-spm="100" data-job-spc="100"
+                 data-job-pam="90" data-job-pac="60" data-job-mam="80" data-job-mac="50" data-job-move="4" data-job-jump="3" data-job-evasion="5"
+                  data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>*@
+            <div onmouseup="updateChartData({'id': '1', 'name': 'Squire', 'hpm': '100', 'hpc': '11', 'mpm': '75', 'mpc': '15',
+                'spm': '100', 'spc': '100', 'pam': '90', 'pac': '60', 'mam': '80', 'mac': '50', 'move': '4',
+                'jump': '3', 'evasion':'5'});"
+                 data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>
+            <div onmouseup="updateChartData({'id': '2', 'name': 'Chemist', 'hpm': '90', 'hpc': '11', 'mpm': '120', 'mpc': '15',
+                'spm': '110', 'spc': '100', 'pam': '110', 'pac': '60', 'mam': '100', 'mac': '50', 'move': '4',
+                'jump': '3', 'evasion':'5'});" data-wheelnav-navitemimg="/Content/Images/Jobs/Chemist_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Knight_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Archer_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Monk_Male_Standing.png"></div>
@@ -55,23 +63,18 @@
 <div id="job-evasion-chart-container" class="menu">
     <canvas id="job-evasion-chart"></canvas>
 </div>
-<script>
+<script>    
 
-    function updateChartData(event)
-    {
-        event.attrbiute
-    }
-
-    var piemenu = new wheelnav('piemenu');
-    piemenu.centerX = window.innerWidth / 2 - 50;
-    piemenu.centerY = window.innerHeight / 3;
-    piemenu.selectedPercent = 1.1;
-    piemenu.hoverPercent = 1;
-    piemenu.clockwise = false;
-    piemenu.animatetime = 200;
-    piemenu.maxPercent = 0.50;
-    piemenu.animateeffect = 'linear';
-    piemenu.createWheel();
+    //var piemenu = new wheelnav('piemenu');
+    //piemenu.centerX = window.innerWidth / 2 - 50;
+    //piemenu.centerY = window.innerHeight / 3;
+    //piemenu.selectedPercent = 1.1;
+    //piemenu.hoverPercent = 1;
+    //piemenu.clockwise = false;
+    //piemenu.animatetime = 200;
+    //piemenu.maxPercent = 0.50;
+    //piemenu.animateeffect = 'linear';
+    //piemenu.createWheel();
 
     var modifierChartCanvas = document.getElementById('job-modifier-chart');
     var modifierChart = new Chart(modifierChartCanvas, {

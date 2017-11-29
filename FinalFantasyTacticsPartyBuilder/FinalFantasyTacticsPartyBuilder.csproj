@@ -510,6 +510,10 @@
     <Content Include="Content\Images\Jobs\Chemist_Male_Standing.png" />
     <Content Include="Content\Images\Jobs\Dancer_Female_Portrait.png" />
     <Content Include="Content\Images\Jobs\Dancer_Female_Standing.png" />
+    <Content Include="Content\Images\Jobs\DarkKnight_Female_Portrait.png" />
+    <Content Include="Content\Images\Jobs\DarkKnight_Female_Standing.png" />
+    <Content Include="Content\Images\Jobs\DarkKnight_Male_Portrait.png" />
+    <Content Include="Content\Images\Jobs\DarkKnight_Male_Standing.png" />
     <Content Include="Content\Images\Jobs\Dragoon_Female_Portrait.png" />
     <Content Include="Content\Images\Jobs\Dragoon_Female_Standing.png" />
     <Content Include="Content\Images\Jobs\Dragoon_Male_Portrait.png" />
@@ -538,6 +542,10 @@
     <Content Include="Content\Images\Jobs\Ninja_Female_Standing.png" />
     <Content Include="Content\Images\Jobs\Ninja_Male_Portrait.png" />
     <Content Include="Content\Images\Jobs\Ninja_Male_Standing.png" />
+    <Content Include="Content\Images\Jobs\OnionKnight_Female_Portrait.png" />
+    <Content Include="Content\Images\Jobs\OnionKnight_Female_Standing.png" />
+    <Content Include="Content\Images\Jobs\OnionKnight_Male_Portrait.png" />
+    <Content Include="Content\Images\Jobs\OnionKnight_Male_Standing.png" />
     <Content Include="Content\Images\Jobs\Oracle_Female_Portrait.png" />
     <Content Include="Content\Images\Jobs\Oracle_Female_Standing.png" />
     <Content Include="Content\Images\Jobs\Oracle_Male_Portrait.png" />

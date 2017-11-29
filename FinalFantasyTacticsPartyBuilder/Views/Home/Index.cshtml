@@ -87,6 +87,32 @@
             });
         }
 
+        function updateChartData(jobData)
+        {
+            var config = { type: 'radar' }
+            var modifierChartCanvas = document.getElementById('job-modifier-chart').getContext('2d');
+            var modifierChart = new Chart(modifierChartCanvas, config);
+            modifierChart.data.labels = ["HPM", "MPM", "SPM", "PAM", "MAM"];
+            modifierChart.data.datasets = [{ data: [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mpm)]}];
+            modifierChart.update();
+        }
+
+        function initializeJobWheel()
+        {
+            var piemenu = new wheelnav('piemenu');
+            piemenu.centerX = window.innerWidth / 2 - 50;
+            piemenu.centerY = window.innerHeight / 3;
+            piemenu.selectedPercent = 1.1;
+            piemenu.hoverPercent = 1;
+            piemenu.clockwise = false;
+            piemenu.animatetime = 200;
+            piemenu.maxPercent = 0.50;
+            piemenu.animateeffect = 'linear';
+            piemenu.createWheel();
+        }
+
+        window['updateChartData'] = updateChartData;
+
     }();
 </script>
 
