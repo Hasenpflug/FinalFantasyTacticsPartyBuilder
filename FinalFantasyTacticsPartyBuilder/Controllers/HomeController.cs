@@ -3,6 +3,7 @@ using FinalFantasyTacticsPartyBuilder.View_Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -52,9 +53,34 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitOverviewMenuPartial.cshtml", unitPositionID);
         }
 
-        public ActionResult GetJobOverviewPartial()
+        public ActionResult GetJobOverviewPartial(string gender)
         {
-            return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");
+            List<JobOverviewViewModel> viewModels;
+
+            using (FFTContext context = new FFTContext())
+            {
+                viewModels = context.Jobs.Where(m => gender == "Male" ? !m.IsFemaleOnly : !m.IsMaleOnly).Select(m => new JobOverviewViewModel
+                {
+                    JobID = m.JobID, 
+                    Name = (m.PspName.Contains("(") ? m.PspName.Remove(m.PspName.IndexOf("(")) : m.PspName).Replace(" ", ""),
+                    Gender = gender, 
+                    HPMultiplier = m.HPMultiplier, 
+                    HPGrowthConstant = m.HPGrowthConstant, 
+                    MPMultiplier = m.MPMultiplier, 
+                    MPGrowthConstant = m.MPGrowthConstant, 
+                    SpeedMulitplier = m.SpeedMulitplier, 
+                    SpeedGrowthConstant = m.SpeedGrowthConstant,
+                    PhysicalAttackMultiplier = m.PhysicalAttackMultiplier, 
+                    PhysicalAttackGrowthConstant = m.PhysicalAttackGrowthConstant, 
+                    MagicalAttackMultiplier = m.MagicalAttackMultiplier,
+                    MagicalAttackGrowthConstant = m.MagicalAttackGrowthConstant,
+                    BaseMoveLength = m.BaseMoveLength, 
+                    BaseJumpHeight = m.BaseJumpHeight,
+                    BaseCombatEvasion = m.BaseCombatEvasion        
+                }).ToList();
+            }
+
+            return PartialView("~/Views/Home/_JobOverviewPartial.cshtml", viewModels);
         }
 
         public ActionResult Details()

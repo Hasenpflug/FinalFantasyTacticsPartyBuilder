@@ -18,8 +18,15 @@
     </div>
 </div>
 <script>
-    var UnitOverview = function ()
+    var JobOverview = function ()
     {
+        var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart;
+
+        function getModifierChart()
+        {
+            return modifierChart;
+        }
+
         $(document).ready(function ()
         {
             if (typeof (Storage) !== 'undefined')
@@ -80,26 +87,25 @@
 
         function renderJobSelectionPanel(event)
         {
-            $.post('/Home/GetJobOverviewPartial', function (data)
+            $.post('/Home/GetJobOverviewPartial', { gender: 'Male' } , function (data)
             {
                 $('#party-overview-container').contents().remove();
                 $('#party-overview-container').append(data);
             });
         }
 
-        function updateChartData(jobData)
+        function updateChartData(chart, jobData)
         {
-            var config = { type: 'radar' }
-            var modifierChartCanvas = document.getElementById('job-modifier-chart').getContext('2d');
-            var modifierChart = new Chart(modifierChartCanvas, config);
-            modifierChart.data.labels = ["HPM", "MPM", "SPM", "PAM", "MAM"];
-            modifierChart.data.datasets = [{ data: [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mpm)]}];
+            //var config = { type: 'radar' }
+            //var modifierChartCanvas = document.getElementById('job-modifier-chart').getContext('2d');
+            //modifierChart.data.labels = ["HPM", "MPM", "SPM", "PAM", "MAM"];
+            modifierChart.data.datasets[0].data = [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mpm)];
             modifierChart.update();
         }
 
         function initializeJobWheel()
         {
-            var piemenu = new wheelnav('piemenu');
+            piemenu = new wheelnav('piemenu');
             piemenu.centerX = window.innerWidth / 2 - 50;
             piemenu.centerY = window.innerHeight / 3;
             piemenu.selectedPercent = 1.1;
@@ -111,7 +117,155 @@
             piemenu.createWheel();
         }
 
-        window['updateChartData'] = updateChartData;
+        function initializeJobModifierChart()
+        {
+            modifierChartCanvas = document.getElementById('job-modifier-chart');
+            modifierChart = new Chart(modifierChartCanvas, {
+                type: 'radar',
+                data: {
+                    labels: ["HPM", "MPM", "SPM", "PAM", "MAM"],
+                    datasets: [{
+                        label: 'Job Stat Modifiers',
+                        data: [100, 80, 100, 110, 80],
+                        borderColor: 'rgba(255, 0, 0, 0.5)',
+                        backgroundColor: 'rgba(255, 0, 0, 0.34)',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'yellow',
+                        defaultFontFamily: 'Altima',
+                        defaultFontSize: '60'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scale: {
+                        ticks: {
+                            suggestedMin: 60,
+                            suggestedMax: 140,
+                            stepSize: 10,
+                            display: false
+                        },
+                        pointLabels: {
+                            fontSize: 60,
+                            fontFamily: 'Altima'
+                        }
+                    },
+                    legend: false
+                }
+            });
+        }
+
+        function initializeJobGrowthChart(data)
+        {
+            growthChartCanvas = document.getElementById('job-growth-chart');
+            growthChart = new Chart(growthChartCanvas, {
+                type: 'radar',
+                data: {
+                    labels: ["HPC", "MPC", "SPC", "PAC", "MAC"],
+                    datasets: [{
+                        label: 'Job Stat Constants',
+                        data: [100, 80, 100, 110, 80],
+                        borderColor: 'rgba(255, 0, 0, 0.5)',
+                        backgroundColor: 'rgba(255, 0, 0, 0.34)',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'yellow',
+                        defaultFontFamily: 'Altima',
+                        defaultFontSize: '60'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scale: {
+                        ticks: {
+                            suggestedMin: 60,
+                            suggestedMax: 140,
+                            stepSize: 10,
+                            display: false
+                        },
+                        pointLabels: {
+                            fontSize: 60,
+                            fontFamily: 'Altima'
+                        }
+                    },
+                    legend: false
+                }
+            });
+        }
+
+        function initializeJobMoveChart(data)
+        {
+            baseMoveJumpChartCanvas = document.getElementById('job-move-chart');
+            baseMoveJumpChart = new Chart(baseMoveJumpChartCanvas, {
+                type: 'bar',
+                data: {
+                    labels: ["Move", "Jump"],
+                    datasets: [{
+                        label: 'Job Move Attributes',
+                        data: [4, 3],
+                        backgroundColor: 'rgba(255, 0, 0, 0.34)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 5,
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 40,
+                                fontFamily: 'Altima'
+                            }
+                        }]
+                    },
+                    legend: false
+                }
+            });
+        }
+        
+        function initializeJobEvasionChart()
+        {
+            baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
+            baseEvasionChart = new Chart(baseEvasionChartCanvas, {
+                type: 'bar',
+                data: {
+                    labels: ["Evasion"],
+                    datasets: [{
+                        label: 'Job Base Evasion',
+                        data: [5],
+                        backgroundColor: 'rgba(255, 0, 0, 0.34)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 40,
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 40,
+                                fontFamily: 'Altima'
+                            }
+                        }]
+                    },
+                    legend: false
+                }
+            });
+        }
+
+        //window['initializeJobWheel'] = initializeJobWheel;
+        //window['updateChartData'] = updateChartData;
+
+        return {
+            getModifierChart: getModifierChart,
+            initializeJobWheel: initializeJobWheel,
+            initializeJobModifierChart: initializeJobModifierChart,
+            updateChartData: updateChartData
+        }
 
     }();
 </script>

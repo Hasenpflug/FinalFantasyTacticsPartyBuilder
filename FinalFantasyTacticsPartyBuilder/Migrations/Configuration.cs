@@ -444,20 +444,6 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 Description = "A book said to contain all words in all languages.",
                 Cost = 30000,
                 IconFileName = "FFT_Omnilex.gif"
-            },
-            new Item
-            {
-                ItemCategoryID = (int)ItemCategoriesList.Book,
-                PspName = "Omnilex",
-                PsxName = "Madlemgen",
-                AttackPower = 11,
-                HitPercentage = 15,
-                AcquiredViaPoach = "Greater Malboro",
-                AcquiredViaMode = "Rendezvous",
-                AcquiredViaCatch = "Level 95+ Ninjas",
-                Description = "A book said to contain all words in all languages.",
-                Cost = 30000,
-                IconFileName = "FFT_Omnilex.gif"
             });
 
             #endregion
@@ -2973,17 +2959,6 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             new Item
             {
                 ItemCategoryID = (int)ItemCategoriesList.Helmet,
-                PspName = "Mythril Helm",
-                HPBonus = 50,
-                AcquiredViaLocation = "Zeirchele Falls (Chapter 2)",
-                AcquiredViaTreasureHunt = "Castled City of Zaland, Mining Town of Gollund",
-                Cost = 2100,
-                Description = "A helm made from the valuable metal known as mythril. It is very sturdy and surprisingly lightweight.",
-                IconFileName = "FFT_Mythril_Helm.gif",
-            },
-            new Item
-            {
-                ItemCategoryID = (int)ItemCategoriesList.Helmet,
                 PspName = "Golden Helm",
                 HPBonus = 60,
                 AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle (Chapter 2)",
@@ -3881,7 +3856,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     BaseCombatEvasion = 5,
                 });
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Squire,
@@ -3939,7 +3914,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,                
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,                
                 new JobItem
                 {
                     JobID = (int)Jobs.Chemist,
@@ -3987,7 +3962,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Knight,
@@ -3996,7 +3971,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Knight,
@@ -4054,7 +4029,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Archer,
@@ -4063,7 +4038,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Archer,
@@ -4116,7 +4091,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.WhiteMage,
@@ -4125,7 +4100,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.WhiteMage,
@@ -4173,7 +4148,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.BlackMage,
@@ -4182,7 +4157,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.BlackMage,
@@ -4230,7 +4205,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Monk,
@@ -4240,7 +4215,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Monk,
@@ -4273,7 +4248,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Thief,
@@ -4283,7 +4258,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Thief,
@@ -4326,7 +4301,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Mystic,
@@ -4336,7 +4311,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Mystic,
@@ -4399,7 +4374,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.TimeMage,
@@ -4409,7 +4384,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.TimeMage,
@@ -4457,7 +4432,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Geomancer,
@@ -4467,7 +4442,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Geomancer,
@@ -4525,7 +4500,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Dragoon,
@@ -4535,7 +4510,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Dragoon,
@@ -4588,7 +4563,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Orator,
@@ -4598,7 +4573,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Orator,
@@ -4651,7 +4626,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Summoner,
@@ -4660,7 +4635,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Summoner,
@@ -4708,7 +4683,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Samurai,
@@ -4732,7 +4707,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Samurai,
@@ -4780,7 +4755,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Ninja,
@@ -4804,7 +4779,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Ninja,
@@ -4857,7 +4832,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Arithmetician,
@@ -4888,7 +4863,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Arithmetician,
@@ -4925,6 +4900,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Dancer,
                     PspName = "Dancer",
+                    IsFemaleOnly = true,
                     HPMultiplier = 60,
                     HPGrowthConstant = 20,
                     MPMultiplier = 50,
@@ -4941,7 +4917,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Dancer,
@@ -4958,7 +4934,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Dancer,
@@ -4990,6 +4966,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Bard,
                     PspName = "Bard",
+                    IsMaleOnly = true,
                     HPMultiplier = 55,
                     HPGrowthConstant = 20,
                     MPMultiplier = 50,
@@ -5006,7 +4983,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Bard,
@@ -5023,7 +5000,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Bard,
@@ -5066,7 +5043,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Mime,
@@ -5136,7 +5113,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.DarkKnight,
@@ -5175,7 +5152,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobID,
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.DarkKnight,
@@ -5253,7 +5230,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.OnionKnightBasic,
@@ -5293,7 +5270,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.OnionKnightMastered,
@@ -5673,19 +5650,6 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 Range = 1,
                 Radius = 1,
                 Height = 2,
-                Speed = -1,
-                JpNeededToLearnPsp = 150,
-                Description = "Remove several status ailments.",
-                RemoveStatusEffect = "Blind, Silence, Poison"
-            },
-            new Ability
-            {
-                JobID = (int)Jobs.Squire,
-                PspName = "Salve",
-                PsxName = "Heal",
-                AbilityType = (int)AbilityType.Command,
-                Range = 1,
-                Radius = 1,
                 Speed = -1,
                 JpNeededToLearnPsp = 150,
                 Description = "Remove several status ailments.",

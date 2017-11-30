@@ -1,4 +1,7 @@
-﻿<div id="job-overview-container">
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model List<JobOverviewViewModel>
+
+<div id="job-overview-container">
     <div id="job-selection-container">
         <div id='piemenu' data-wheelnav
              data-wheelnav-slicepath='DonutSlice'
@@ -11,11 +14,18 @@
             @*<div onmouseup="updateChartData({'data-job-id:': '1', });" data-job-id="1" data-job-name="Squire" data-job-hpm="100" data-job-hpc="11" data-job-mpm="75" data-job-mpc="15" data-job-spm="100" data-job-spc="100"
                  data-job-pam="90" data-job-pac="60" data-job-mam="80" data-job-mac="50" data-job-move="4" data-job-jump="3" data-job-evasion="5"
                   data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>*@
-            <div onmouseup="updateChartData({'id': '1', 'name': 'Squire', 'hpm': '100', 'hpc': '11', 'mpm': '75', 'mpc': '15',
+            @foreach (JobOverviewViewModel job in Model)
+            {
+                <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': @job.JobID, 'name': @job.Name, 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant, 
+                     'mpm': @job.MPMultiplier, 'mpc': @job.MPGrowthConstant, 'spm': @job.SpeedMulitplier, 'spc': @job.SpeedGrowthConstant, 'pam': @job.PhysicalAttackMultiplier, 
+                     'pac': @job.PhysicalAttackGrowthConstant, 'mam': @job.MagicalAttackMultiplier, 'mac': @job.MagicalAttackGrowthConstant, 'move': @job.BaseMoveLength, 
+                     'jump': @job.BaseJumpHeight, 'evasion': @job.BaseCombatEvasion});" data-wheelnav-navitemimg="/Content/Images/Jobs/@(job.Name)_@(job.Gender)_Standing.png"></div>
+            }
+            @*<div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': '1', 'name': 'Squire', 'hpm': '100', 'hpc': '11', 'mpm': '75', 'mpc': '15',
                 'spm': '100', 'spc': '100', 'pam': '90', 'pac': '60', 'mam': '80', 'mac': '50', 'move': '4',
                 'jump': '3', 'evasion':'5'});"
                  data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>
-            <div onmouseup="updateChartData({'id': '2', 'name': 'Chemist', 'hpm': '90', 'hpc': '11', 'mpm': '120', 'mpc': '15',
+            <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': '2', 'name': 'Chemist', 'hpm': '90', 'hpc': '11', 'mpm': '120', 'mpc': '15',
                 'spm': '110', 'spc': '100', 'pam': '110', 'pac': '60', 'mam': '100', 'mac': '50', 'move': '4',
                 'jump': '3', 'evasion':'5'});" data-wheelnav-navitemimg="/Content/Images/Jobs/Chemist_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Knight_Male_Standing.png"></div>
@@ -36,7 +46,7 @@
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Bard_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/Mime_Male_Standing.png"></div>
             <div data-wheelnav-navitemimg="/Content/Images/Jobs/DarkKnight_Male_Standing.png"></div>
-            <div data-wheelnav-navitemimg="/Content/Images/Jobs/OnionKnight_Male_Standing.png"></div>
+            <div data-wheelnav-navitemimg="/Content/Images/Jobs/OnionKnight_Male_Standing.png"></div>*@
         </div>
     </div>
     <div id="job-details-container" class="menu">
@@ -47,8 +57,8 @@
         <span>Squire</span>
     </div>
     <div id="job-gender-container" class="menu">
-        <span selected="true">Male Soldier</span>
-        <span selected="false">Female Soldier</span>
+        <span id="gender-male-button" selected="true">Male Soldier</span>
+        <span id="gender-female-button" selected="false">Female Soldier</span>
     </div>
 </div>
 <div id="job-modifier-chart-container" class="menu">
@@ -63,144 +73,135 @@
 <div id="job-evasion-chart-container" class="menu">
     <canvas id="job-evasion-chart"></canvas>
 </div>
-<script>    
+<script>
+    JobOverview.initializeJobWheel();
+    JobOverview.initializeJobModifierChart();
 
-    //var piemenu = new wheelnav('piemenu');
-    //piemenu.centerX = window.innerWidth / 2 - 50;
-    //piemenu.centerY = window.innerHeight / 3;
-    //piemenu.selectedPercent = 1.1;
-    //piemenu.hoverPercent = 1;
-    //piemenu.clockwise = false;
-    //piemenu.animatetime = 200;
-    //piemenu.maxPercent = 0.50;
-    //piemenu.animateeffect = 'linear';
-    //piemenu.createWheel();
+    //var modifierChartCanvas = document.getElementById('job-modifier-chart');
+    //var modifierChart = new Chart(modifierChartCanvas, {
+    //    type: 'radar',
+    //    data: {
+    //        labels: ["HPM", "MPM", "SPM", "PAM", "MAM"],
+    //        datasets: [{
+    //            label: 'Job Stat Modifiers',
+    //            data: [100, 80, 100, 110, 80],
+    //            borderColor: 'rgba(255, 0, 0, 0.5)',
+    //            backgroundColor: 'rgba(255, 0, 0, 0.34)',
+    //            pointBackgroundColor: 'white',
+    //            pointBorderColor: 'yellow',
+    //            defaultFontFamily: 'Altima',
+    //            defaultFontSize: '60'
+    //        }]
+    //    },
+    //    options: {
+    //        maintainAspectRatio: false,
+    //        scale: {
+    //            ticks: {
+    //                suggestedMin: 60,
+    //                suggestedMax: 140,
+    //                stepSize: 10,
+    //                display: false
+    //            }, 
+    //            pointLabels: {
+    //                fontSize: 60,
+    //                fontFamily: 'Altima'
+    //            }                
+    //        },
+    //        legend: false
+    //    }
+    //});
 
-    var modifierChartCanvas = document.getElementById('job-modifier-chart');
-    var modifierChart = new Chart(modifierChartCanvas, {
-        type: 'radar',
-        data: {
-            labels: ["HPM", "MPM", "SPM", "PAM", "MAM"],
-            datasets: [{
-                label: 'Job Stat Modifiers',
-                data: [100, 80, 100, 110, 80],
-                borderColor: 'rgba(255, 0, 0, 0.5)',
-                backgroundColor: 'rgba(255, 0, 0, 0.34)',
-                pointBackgroundColor: 'white',
-                pointBorderColor: 'yellow',
-                defaultFontFamily: 'Altima',
-                defaultFontSize: '60'
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            scale: {
-                ticks: {
-                    suggestedMin: 60,
-                    suggestedMax: 140,
-                    stepSize: 10,
-                    display: false
-                }, 
-                pointLabels: {
-                    fontSize: 60,
-                    fontFamily: 'Altima'
-                }                
-            },
-            legend: false
-        }
-    });
+    //var growthChartCanvas = document.getElementById('job-growth-chart');
+    //var growthChart = new Chart(growthChartCanvas, {
+    //    type: 'radar',
+    //    data: {
+    //        labels: ["HPC", "MPC", "SPC", "PAC", "MAC"],
+    //        datasets: [{
+    //            label: 'Job Stat Constants',
+    //            data: [100, 80, 100, 110, 80],
+    //            borderColor: 'rgba(255, 0, 0, 0.5)',
+    //            backgroundColor: 'rgba(255, 0, 0, 0.34)',
+    //            pointBackgroundColor: 'white',
+    //            pointBorderColor: 'yellow',
+    //            defaultFontFamily: 'Altima',
+    //            defaultFontSize: '60'
+    //        }]
+    //    },
+    //    options: {
+    //        maintainAspectRatio: false,
+    //        scale: {
+    //            ticks: {
+    //                suggestedMin: 60,
+    //                suggestedMax: 140,
+    //                stepSize: 10,
+    //                display: false
+    //            },
+    //            pointLabels: {
+    //                fontSize: 60,
+    //                fontFamily: 'Altima'
+    //            }
+    //        },
+    //        legend: false
+    //    }
+    //});
 
-    var growthChartCanvas = document.getElementById('job-growth-chart');
-    var growthChart = new Chart(growthChartCanvas, {
-        type: 'radar',
-        data: {
-            labels: ["HPC", "MPC", "SPC", "PAC", "MAC"],
-            datasets: [{
-                label: 'Job Stat Constants',
-                data: [100, 80, 100, 110, 80],
-                borderColor: 'rgba(255, 0, 0, 0.5)',
-                backgroundColor: 'rgba(255, 0, 0, 0.34)',
-                pointBackgroundColor: 'white',
-                pointBorderColor: 'yellow',
-                defaultFontFamily: 'Altima',
-                defaultFontSize: '60'
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            scale: {
-                ticks: {
-                    suggestedMin: 60,
-                    suggestedMax: 140,
-                    stepSize: 10,
-                    display: false
-                },
-                pointLabels: {
-                    fontSize: 60,
-                    fontFamily: 'Altima'
-                }
-            },
-            legend: false
-        }
-    });
+    //var baseMoveJumpChartCanvas = document.getElementById('job-move-chart');
+    //var baseMoveJumpChart = new Chart(baseMoveJumpChartCanvas, {
+    //    type: 'bar',
+    //    data: {
+    //        labels: ["Move", "Jump"],
+    //        datasets: [{
+    //            label: 'Job Move Attributes',
+    //            data: [4, 3],
+    //            backgroundColor: 'rgba(255, 0, 0, 0.34)'
+    //        }]
+    //    },
+    //    options: {
+    //        scales: {
+    //            yAxes: [{
+    //                ticks: {
+    //                    min: 0,
+    //                    max: 5,
+    //                }
+    //            }],
+    //            xAxes: [{
+    //                ticks: {
+    //                    fontSize: 40,
+    //                    fontFamily: 'Altima'
+    //                }
+    //            }]
+    //        },
+    //        legend: false
+    //    }
+    //});
 
-    var baseMoveJumpChartCanvas = document.getElementById('job-move-chart');
-    var baseMoveJumpChart = new Chart(baseMoveJumpChartCanvas, {
-        type: 'bar',
-        data: {
-            labels: ["Move", "Jump"],
-            datasets: [{
-                label: 'Job Move Attributes',
-                data: [4, 3],
-                backgroundColor: 'rgba(255, 0, 0, 0.34)'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        min: 0,
-                        max: 5,
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        fontSize: 40,
-                        fontFamily: 'Altima'
-                    }
-                }]
-            },
-            legend: false
-        }
-    });
-
-    var baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
-    var baseEvasionChart = new Chart(baseEvasionChartCanvas, {
-        type: 'bar',
-        data: {
-            labels: ["Evasion"],
-            datasets: [{
-                label: 'Job Base Evasion',
-                data: [5],
-                backgroundColor: 'rgba(255, 0, 0, 0.34)'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        min: 0,
-                        max: 40,
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        fontSize: 40,
-                        fontFamily: 'Altima'
-                    }
-                }]
-            },
-            legend: false
-        }
-    });
+    //var baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
+    //var baseEvasionChart = new Chart(baseEvasionChartCanvas, {
+    //    type: 'bar',
+    //    data: {
+    //        labels: ["Evasion"],
+    //        datasets: [{
+    //            label: 'Job Base Evasion',
+    //            data: [5],
+    //            backgroundColor: 'rgba(255, 0, 0, 0.34)'
+    //        }]
+    //    },
+    //    options: {
+    //        scales: {
+    //            yAxes: [{
+    //                ticks: {
+    //                    min: 0,
+    //                    max: 40,
+    //                }
+    //            }],
+    //            xAxes: [{
+    //                ticks: {
+    //                    fontSize: 40,
+    //                    fontFamily: 'Altima'
+    //                }
+    //            }]
+    //        },
+    //        legend: false
+    //    }
+    //});
 </script>
