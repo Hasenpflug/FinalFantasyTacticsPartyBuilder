@@ -56,28 +56,72 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult GetJobOverviewPartial(string gender)
         {
             List<JobOverviewViewModel> viewModels;
+            JobOverviewRangeViewModel rangeViewModel;
 
             using (FFTContext context = new FFTContext())
             {
                 viewModels = context.Jobs.Where(m => gender == "Male" ? !m.IsFemaleOnly : !m.IsMaleOnly).Select(m => new JobOverviewViewModel
                 {
                     JobID = m.JobID, 
-                    Name = (m.PspName.Contains("(") ? m.PspName.Remove(m.PspName.IndexOf("(")) : m.PspName).Replace(" ", ""),
+                    FileName = (m.PspName.Contains("(") ? m.PspName.Remove(m.PspName.IndexOf("(")) : m.PspName).Replace(" ", ""),
+                    DisplayName = m.PspName,
                     Gender = gender, 
-                    HPMultiplier = m.HPMultiplier, 
-                    HPGrowthConstant = m.HPGrowthConstant, 
-                    MPMultiplier = m.MPMultiplier, 
-                    MPGrowthConstant = m.MPGrowthConstant, 
-                    SpeedMulitplier = m.SpeedMulitplier, 
+                    HPMultiplier = m.HPMultiplier,
+                    HPGrowthConstant = m.HPGrowthConstant,
+                    HPGrowthConstantLabel = m.HPGrowthConstant,
+                    MPMultiplier = m.MPMultiplier,
+                    MPGrowthConstant = m.MPGrowthConstant,
+                    MPGrowthConstantLabel = m.MPGrowthConstant, 
+                    SpeedMulitplier = m.SpeedMulitplier,
                     SpeedGrowthConstant = m.SpeedGrowthConstant,
-                    PhysicalAttackMultiplier = m.PhysicalAttackMultiplier, 
-                    PhysicalAttackGrowthConstant = m.PhysicalAttackGrowthConstant, 
+                    SpeedGrowthConstantLabel = m.SpeedGrowthConstant,
+                    PhysicalAttackMultiplier = m.PhysicalAttackMultiplier,
+                    PhysicalAttackGrowthConstant = m.PhysicalAttackGrowthConstant,
+                    PhysicalAttackGrowthConstantLabel = m.PhysicalAttackGrowthConstant, 
                     MagicalAttackMultiplier = m.MagicalAttackMultiplier,
                     MagicalAttackGrowthConstant = m.MagicalAttackGrowthConstant,
+                    MagicalAttackGrowthConstantLabel = m.MagicalAttackGrowthConstant,
                     BaseMoveLength = m.BaseMoveLength, 
                     BaseJumpHeight = m.BaseJumpHeight,
                     BaseCombatEvasion = m.BaseCombatEvasion        
                 }).ToList();
+
+                rangeViewModel = new JobOverviewRangeViewModel
+                {
+                    HPGrowthConstantMax = context.Jobs.Max(c => c.HPGrowthConstant),
+                    HPGrowthConstantMin = context.Jobs.Min(c => c.HPGrowthConstant),
+                    MPGrowthConstantMax = context.Jobs.Max(c => c.MPGrowthConstant),
+                    MPGrowthConstantMin = context.Jobs.Min(c => c.MPGrowthConstant),
+                    SpeedGrowthConstantMax = context.Jobs.Max(c => c.SpeedGrowthConstant),
+                    SpeedGrowthConstantMin = context.Jobs.Min(c => c.SpeedGrowthConstant),
+                    PhysicalAttackGrowthConstantMax = context.Jobs.Max(c => c.PhysicalAttackGrowthConstant),
+                    PhysicalAttackGrowthConstantMin = context.Jobs.Min(c => c.PhysicalAttackGrowthConstant),
+                    MagicalAttackGrowthConstantMax = context.Jobs.Max(c => c.MagicalAttackGrowthConstant),
+                    MagicalAttackGrowthConstantMin = context.Jobs.Min(c => c.MagicalAttackGrowthConstant)
+                };
+
+                int commonDenominator = (new int[] { rangeViewModel.HPGrowthConstantMax, rangeViewModel.MPGrowthConstantMax, rangeViewModel.SpeedGrowthConstantMax,
+                    rangeViewModel.PhysicalAttackGrowthConstantMax, rangeViewModel.MagicalAttackGrowthConstantMax}).Max();
+                rangeViewModel.HPGrowthConstantMultiplier = (float)commonDenominator / (float)rangeViewModel.HPGrowthConstantMax;
+                rangeViewModel.MPGrowthConstantMultiplier = (float)commonDenominator / (float)rangeViewModel.MPGrowthConstantMax;
+                rangeViewModel.SpeedGrowthConstantMultiplier = (float)commonDenominator / (float)rangeViewModel.SpeedGrowthConstantMax;
+                rangeViewModel.PhysicalAttackGrowthConstantMultiplier = (float)commonDenominator / (float)rangeViewModel.PhysicalAttackGrowthConstantMax;
+                rangeViewModel.MagicalAttackGrowthConstantMultiplier = (float)commonDenominator / (float)rangeViewModel.MagicalAttackGrowthConstantMax;
+
+                foreach (JobOverviewViewModel viewModel in viewModels)
+                {
+                    viewModel.HPGrowthConstant = (int)((rangeViewModel.HPGrowthConstantMax + rangeViewModel.HPGrowthConstantMin - viewModel.HPGrowthConstant) * 
+                        rangeViewModel.HPGrowthConstantMultiplier);
+                    viewModel.MPGrowthConstant = (int)((rangeViewModel.MPGrowthConstantMax + rangeViewModel.MPGrowthConstantMin - viewModel.MPGrowthConstant) * 
+                        rangeViewModel.MPGrowthConstantMultiplier);
+                    viewModel.SpeedGrowthConstant = (int)((rangeViewModel.SpeedGrowthConstantMax + rangeViewModel.SpeedGrowthConstantMin - viewModel.SpeedGrowthConstant) * 
+                        rangeViewModel.SpeedGrowthConstantMultiplier);
+                    viewModel.PhysicalAttackGrowthConstant = (int)((rangeViewModel.PhysicalAttackGrowthConstantMax + rangeViewModel.PhysicalAttackGrowthConstantMin - 
+                        viewModel.PhysicalAttackGrowthConstant) * rangeViewModel.PhysicalAttackGrowthConstantMultiplier);
+                    viewModel.MagicalAttackGrowthConstant = (int)((rangeViewModel.MagicalAttackGrowthConstantMax + rangeViewModel.MagicalAttackGrowthConstantMin - 
+                        viewModel.MagicalAttackGrowthConstant) * rangeViewModel.MagicalAttackGrowthConstantMultiplier);
+
+                }
             }
 
             return PartialView("~/Views/Home/_JobOverviewPartial.cshtml", viewModels);

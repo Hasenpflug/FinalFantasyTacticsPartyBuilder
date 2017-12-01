@@ -96,11 +96,15 @@
 
         function updateChartData(chart, jobData)
         {
-            //var config = { type: 'radar' }
-            //var modifierChartCanvas = document.getElementById('job-modifier-chart').getContext('2d');
-            //modifierChart.data.labels = ["HPM", "MPM", "SPM", "PAM", "MAM"];
-            modifierChart.data.datasets[0].data = [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mpm)];
+            document.getElementById('job-name').innerHTML = jobData.name;
+            modifierChart.data.datasets[0].data = [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mam)];
+            growthChart.data.datasets[0].data = [parseInt(jobData.hpc), parseInt(jobData.mpc), parseInt(jobData.spc), parseInt(jobData.pac), parseInt(jobData.mac)];
+            baseMoveJumpChart.data.datasets[0].data = [parseInt(jobData.move), parseInt(jobData.jump)];
+            baseEvasionChart.data.datasets[0].data = [parseInt(jobData.evasion)];
             modifierChart.update();
+            growthChart.update();
+            baseMoveJumpChart.update();
+            baseEvasionChart.update();
         }
 
         function initializeJobWheel()
@@ -120,6 +124,7 @@
         function initializeJobModifierChart()
         {
             modifierChartCanvas = document.getElementById('job-modifier-chart');
+            modifierChartCanvas.wid
             modifierChart = new Chart(modifierChartCanvas, {
                 type: 'radar',
                 data: {
@@ -139,8 +144,8 @@
                     maintainAspectRatio: false,
                     scale: {
                         ticks: {
-                            suggestedMin: 60,
-                            suggestedMax: 140,
+                            suggestedMin: 40,
+                            suggestedMax: 160,
                             stepSize: 10,
                             display: false
                         },
@@ -149,9 +154,11 @@
                             fontFamily: 'Altima'
                         }
                     },
-                    legend: false
+                    legend: false                    
                 }
             });
+
+            modifierChart.resize();
         }
 
         function initializeJobGrowthChart(data)
@@ -176,8 +183,8 @@
                     maintainAspectRatio: false,
                     scale: {
                         ticks: {
-                            suggestedMin: 60,
-                            suggestedMax: 140,
+                            suggestedMin: 0,
+                            suggestedMax: 100,
                             stepSize: 10,
                             display: false
                         },
@@ -186,9 +193,20 @@
                             fontFamily: 'Altima'
                         }
                     },
-                    legend: false
+                    legend: false,
+                    //tooltips: {
+                    //    mode: 'label',
+                    //    callbacks: {
+                    //        label: function (tooltipItem, data)
+                    //        {
+                    //            return 'Does this work?';
+                    //        }
+                    //    }
+                    //}
                 }
             });
+
+            growthChart.resize();
         }
 
         function initializeJobMoveChart(data)
@@ -222,6 +240,8 @@
                     legend: false
                 }
             });
+
+            baseMoveJumpChart.resize();
         }
         
         function initializeJobEvasionChart()
@@ -255,15 +275,17 @@
                     legend: false
                 }
             });
-        }
 
-        //window['initializeJobWheel'] = initializeJobWheel;
-        //window['updateChartData'] = updateChartData;
+            baseEvasionChart.resize();
+        }
 
         return {
             getModifierChart: getModifierChart,
             initializeJobWheel: initializeJobWheel,
             initializeJobModifierChart: initializeJobModifierChart,
+            initializeJobGrowthChart: initializeJobGrowthChart,
+            initializeJobMoveChart: initializeJobMoveChart,
+            initializeJobEvasionChart: initializeJobEvasionChart,
             updateChartData: updateChartData
         }
 

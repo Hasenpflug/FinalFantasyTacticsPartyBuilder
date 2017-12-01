@@ -16,10 +16,10 @@
                   data-wheelnav-navitemimg="/Content/Images/Jobs/Squire_Male_Standing.png"></div>*@
             @foreach (JobOverviewViewModel job in Model)
             {
-                <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': @job.JobID, 'name': @job.Name, 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant, 
+                <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': @job.JobID, 'name': '@job.DisplayName', 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant, 
                      'mpm': @job.MPMultiplier, 'mpc': @job.MPGrowthConstant, 'spm': @job.SpeedMulitplier, 'spc': @job.SpeedGrowthConstant, 'pam': @job.PhysicalAttackMultiplier, 
                      'pac': @job.PhysicalAttackGrowthConstant, 'mam': @job.MagicalAttackMultiplier, 'mac': @job.MagicalAttackGrowthConstant, 'move': @job.BaseMoveLength, 
-                     'jump': @job.BaseJumpHeight, 'evasion': @job.BaseCombatEvasion});" data-wheelnav-navitemimg="/Content/Images/Jobs/@(job.Name)_@(job.Gender)_Standing.png"></div>
+                     'jump': @job.BaseJumpHeight, 'evasion': @job.BaseCombatEvasion});" data-wheelnav-navitemimg="/Content/Images/Jobs/@(job.FileName)_@(job.Gender)_Standing.png"></div>
             }
             @*<div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': '1', 'name': 'Squire', 'hpm': '100', 'hpc': '11', 'mpm': '75', 'mpc': '15',
                 'spm': '100', 'spc': '100', 'pam': '90', 'pac': '60', 'mam': '80', 'mac': '50', 'move': '4',
@@ -52,13 +52,17 @@
     <div id="job-details-container" class="menu">
         <div id="job-details-level-container">
             <img src="~/Content/Images/level.png" />
-            <img src="~/Content/Images/number_8.png" />
+            <img src="~/Content/Images/number_1.png" />
         </div>
-        <span>Squire</span>
+        <span id="job-name">Squire</span>
     </div>
     <div id="job-gender-container" class="menu">
         <span id="gender-male-button" selected="true">Male Soldier</span>
         <span id="gender-female-button" selected="false">Female Soldier</span>
+    </div>
+    <div id="job-confirm-container">
+        <span id="job-confirm-button"></span>
+
     </div>
 </div>
 <div id="job-modifier-chart-container" class="menu">
@@ -76,6 +80,9 @@
 <script>
     JobOverview.initializeJobWheel();
     JobOverview.initializeJobModifierChart();
+    JobOverview.initializeJobGrowthChart();
+    JobOverview.initializeJobMoveChart();
+    JobOverview.initializeJobEvasionChart();
 
     //var modifierChartCanvas = document.getElementById('job-modifier-chart');
     //var modifierChart = new Chart(modifierChartCanvas, {

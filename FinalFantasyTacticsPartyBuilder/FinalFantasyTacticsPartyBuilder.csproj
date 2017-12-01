@@ -192,6 +192,7 @@
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="View_Models\JobOverviewRangeViewModel.cs" />
     <Compile Include="View_Models\JobOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
