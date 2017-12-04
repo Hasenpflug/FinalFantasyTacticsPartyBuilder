@@ -561,7 +561,9 @@ img {
 
 #job-gender-container {
     float: left;
-    padding: 1.5% 2%;
+    /*padding: 1.5% 2%;*/
+    text-align:center;
+    line-height:175%;
     height: 10%;
     max-width: 440px;
 }
@@ -573,6 +575,32 @@ img {
 
 #job-gender-container span[selected=false] {
     border: 5px outset;
+}
+
+#job-confirm-container {
+    float:left;    
+    margin-left:1%;
+    width:10%;
+    height:10%;
+    text-align:center;
+    line-height:175%
+}
+
+#job-confirm-container span {
+    position:relative;
+    padding:1%;
+    border: 5px outset;    
+}
+
+#job-confirm-container span:hover {
+    cursor:pointer;
+}
+
+#job-confirm-container span:hover:before {
+    content: url(Images/menu_cursor.png);
+    position: absolute;
+    left: -40px;
+    top: -30px;
 }
 
 #job-modifier-chart-container, #job-growth-chart-container  {

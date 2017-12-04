@@ -38,13 +38,23 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string Element { get; set; }
 
+        public string Terrain { get; set; }
+
         public int? MoveBoost { get; set; }
 
         public int? JumpBoost { get; set; }
 
+        public bool IsMaleOnly { get; set; }
+
+        public bool IsFemaleOnly { get; set; }
+
         public bool MagicAttackModifier { get; set; }
 
+        public bool PhysicalAttackModifier { get; set; }
+
         public bool PhysicalDefenceModifier { get; set; }
+
+        public int HpPercentBoost { get; set; }
 
         public string AmountBoost { get; set; }
 

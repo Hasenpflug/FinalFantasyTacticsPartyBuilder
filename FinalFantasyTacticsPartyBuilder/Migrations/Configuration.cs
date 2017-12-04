@@ -7484,6 +7484,1807 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #endregion
 
+            #region Geomancer 
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Sinkhole",
+                PsxName = "Pitfall",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage by opening rifts in space-time.",
+                Terrain = "Soil, Wasteland, Road",
+                AddStatusEffect = "Immobilize",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Torrent",
+                PsxName = "Water Ball",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of water.",
+                Terrain = "Canal, River, Lake, Ocean, Waterfall",
+                Element = "Water",
+                AddStatusEffect = "Toad",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Tanglevine",
+                PsxName = "Hell's Ivy",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of plants.",
+                Terrain = "Grassland, Underbrush, Vines",
+                AddStatusEffect = "Stop",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Contortion",
+                PsxName = "Carve Model",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of stone.",
+                Terrain = "Gravel, Flagstone, Stone Wall, Earthen Wall, Gravestone",
+                AddStatusEffect = "Stone",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Tremor",
+                PsxName = "Local Quake",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of rock.",
+                Terrain = "Stone Outcropping, Basalt",
+                Element = "Earth",
+                AddStatusEffect = "Confuse",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Wind Slash",
+                PsxName = "Kamaitachi",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of air.",
+                Terrain = "Book, Tree, Brick, Bridge, Furnishings, Iron Plate, Moss, Coffin",
+                Element = "Wind",
+                AddStatusEffect = "Disable",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Will-o'-the-Wisp",
+                PsxName = "Demon Fire",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of the surrounding terrain.",
+                Terrain = "Wooden Floor, Carpet, Coffer, Stairs, Wooden Deck",
+                Element = "Fire",
+                AddStatusEffect = "Sleep",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Quicksand",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of water.",
+                Terrain = "Marsh, Swamp, Poisonous Fen",
+                Element = "Water",
+                AddStatusEffect = "Doom",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Sandstorm",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of dust.",
+                Terrain = "Sand, Stalactite, Salt Flat",
+                Element = "Wind",
+                AddStatusEffect = "Blind",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Snowstorm",
+                PsxName = "Blizzard",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of snow.",
+                Terrain = "Snow, Ice",
+                Element = "Ice",
+                AddStatusEffect = "Silence",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Wind Blast",
+                PsxName = "Gusty Wind",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of wind.",
+                Terrain = "Roof, Chimney",
+                Element = "Wind",
+                AddStatusEffect = "Slow",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Magma Surge",
+                PsxName = "Lava Ball",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 2,
+                Height = 0,
+                Speed = -1,
+                JpNeededToLearnPsp = 150,
+                Description = "A geomancy skill that inflicts damage with the power of magma.",
+                Terrain = "Lava, Machinery",
+                Element = "Fire",
+                AddStatusEffect = "KO",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Nature's Wrath",
+                PsxName = "Counter Flood",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 300,
+                Description = "Counterattack with a geomancy skill.",
+                Trigger = "Physical Attack, Geomancy"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Attack Boost",
+                PsxName = "Attack UP",
+                PhysicalAttackModifier = true,
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                Description = "Inflict greater damage with physical attacks."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Ignore Terrain",
+                PsxName = "Any Ground",                
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 220,
+                Description = "Move unimpeded through watery terrain."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Geomancer,
+                PspName = "Lava Walking",
+                PsxName = "Move on Lava",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 150,
+                Description = "Walk across and even stop on the surface of lava."
+            });
+
+            #endregion
+
+            #region Dragoon 
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Horizontal Jump 2",
+                AbilityType = (int)AbilityType.Command,
+                Range = 2,
+                Radius = 1,
+                Height = 0,
+                JpNeededToLearnPsp = 150,
+                Description = "Jump 2 tiles horizontally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Horizontal Jump 3",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 0,
+                JpNeededToLearnPsp = 350,
+                JpNeededToLearnPsx = 300,
+                Description = "Jump 3 tiles horizontally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Horizontal Jump 4",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 1,
+                Height = 0,
+                JpNeededToLearnPsp = 550,
+                JpNeededToLearnPsx = 450,
+                Description = "Jump 4 tiles horizontally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Horizontal Jump 5",
+                AbilityType = (int)AbilityType.Command,
+                Range = 5,
+                Radius = 1,
+                Height = 0,
+                JpNeededToLearnPsp = 800,
+                JpNeededToLearnPsx = 600,
+                Description = "Jump 5 tiles horizontally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Horizontal Jump 8",
+                AbilityType = (int)AbilityType.Command,
+                Range = 8,
+                Radius = 1,
+                Height = 0,
+                JpNeededToLearnPsp = 1100,
+                JpNeededToLearnPsx = 900,
+                Description = "Jump 8 tiles horizontally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 2",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 2,
+                JpNeededToLearnPsp = 100,
+                Description = "Jump 2 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 3",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 3,
+                JpNeededToLearnPsp = 250,
+                JpNeededToLearnPsx = 200,
+                Description = "Jump 3 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 4",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 4,
+                JpNeededToLearnPsp = 400,
+                JpNeededToLearnPsx = 300,
+                Description = "Jump 4 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 5",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 5,
+                JpNeededToLearnPsp = 550,
+                JpNeededToLearnPsx = 400,
+                Description = "Jump 5 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 6",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 6,
+                JpNeededToLearnPsp = 700,
+                JpNeededToLearnPsx = 500,
+                Description = "Jump 6 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 7",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 7,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 600,
+                Description = "Jump 7 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Vertical Jump 8",
+                AbilityType = (int)AbilityType.Command,
+                Range = 0,
+                Radius = 1,
+                Height = 8,
+                JpNeededToLearnPsp = 1050,
+                JpNeededToLearnPsx = 900,
+                Description = "Jump 8 tiles vertically."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Dragonheart",
+                PsxName = "Dragon Spirit",
+                AbilityType = (int)AbilityType.Reaction,
+                Description = "Recover from KO status.",
+                AddStatusEffect = "Reraise",
+                Trigger = "Physical Attack",
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 560,
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Equip Polearms",
+                PsxName = "Equip Spears",
+                AbilityType = (int)AbilityType.Support,
+                Description = "Equip polearms, regardless of job.",
+                ItemEquipIDs = ItemCategoriesList.Polearm.ToString(),
+                JpNeededToLearnPsp = 400
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dragoon,
+                PspName = "Ignore Elevation",
+                PsxName = "Ignore Height",
+                AbilityType = (int)AbilityType.Movement,
+                Description = "Move to tiles of any height, regardless of Jump attribute.",
+                JpNeededToLearnPsp = 700
+            });
+
+            #endregion
+
+            #region Orator
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Entice",
+                PsxName = "Invitation",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "A speechcraft skill that persuades a foe to become an ally.",
+                AddStatusEffect = "Traitor",
+                SuccessRateEquation = "20 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Stall",
+                PsxName = "Persuade",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "A speechcraft skill that persuades a foe to wait before acting. Resets the target's CT count.",
+                SuccessRateEquation = "30 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Praise",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                Description = "A speechcraft skill that praises the target's feats and strengths, increasing his or her Bravery.",
+                AmountBoost = "+4 Bravery",
+                SuccessRateEquation = "50 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Intimidate",
+                PsxName = "Threaten",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                Description = "A speechcraft skill that plays upon the doubts and fears of the target, decreasing his or her Bravery.",
+                AmountBoost = "-20 Bravery",
+                SuccessRateEquation = "90 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Preach",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                Description = "A speechcraft skill that explains the nature of divine miracles, deepening belief and increasing Faith.",
+                AmountBoost = "+4 Faith",
+                SuccessRateEquation = "50 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Enlighten",
+                PsxName = "Solution",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                Description = "A speechcraft skill that decreases Faith by using cold logic and secular doctrine.",
+                AmountBoost = "-20 Faith",
+                SuccessRateEquation = "90 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Condemn",
+                PsxName = "Death Sentence",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 500,
+                Description = "A speechcraft skill that convinces the target that his or her demise is soon at hand.",
+                AddStatusEffect = "Doom",
+                SuccessRateEquation = "30 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Beg",
+                PsxName = "Negotiate",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "A speechcraft skill that spins tales in return for gil.",
+                AmountBoost = "Level x Speed",
+                SuccessRateEquation = "90 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Insult",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                Description = "A speechcraft skill that infuriates with foul invective.",
+                AddStatusEffect = "Berserk",
+                SuccessRateEquation = "40 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Mimic Darlavon",
+                PsxName = "Mimic Daravon",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 2,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                Description = "A speechcraft skill that uses dull tales to induce slumber.",
+                AddStatusEffect = "Sleep",
+                SuccessRateEquation = "40 + Magic Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Earplug",
+                PsxName = "Finger Guard",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 300,
+                Description = "Avoid the effects of Speechcraft.",
+                Trigger = "Speechcraft"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Equip Guns",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 800,
+                JpNeededToLearnPsx = 750,
+                Description = "Equip guns, regardless of job.",
+                ItemEquipIDs = ItemCategoriesList.Gun.ToString(),
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Tame",
+                PsxName = "Train",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 500,
+                JpNeededToLearnPsx = 450,
+                Description = "Force a critically wounded enemy monster to become an ally."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Orator,
+                PspName = "Beast Tongue",
+                PsxName = "Monster Talk",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 100,
+                Description = "Gain the ability to use Speechcraft against monsters, even if not an orator."
+            });
+
+            #endregion
+
+            #region Summoner
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Moogle",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 8,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 34,
+                JpNeededToLearnPsp = 110,
+                Description = "An esper that soothes injuries with a purifying breeze, restoring HP.",
+                HealingEquation = "(10 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Kupo! Round and round you go! Moogle!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Shiva",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 24,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 25,
+                JpNeededToLearnPsp = 200,
+                Description = "An esper with punishingly frigid breath.",
+                Element = "Ice",
+                DamageEquation = "(20 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Wind, fade to silence and light, give us power! Shiva!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Ramuh",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 24,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 25,
+                JpNeededToLearnPsp = 200,
+                Description = "An esper that relentlessly rains down lightning.",
+                Element = "Lightning",
+                DamageEquation = "(20 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Master of creation, impart thy help! Ramuh!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Ifrit",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 24,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 25,
+                JpNeededToLearnPsp = 200,
+                Description = "An esper whose breath of flame scorches the battlefield.",
+                Element = "Fire",
+                DamageEquation = "(20 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "King of flames, burn into cinders! Ifrit!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Titan",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 30,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 20,
+                JpNeededToLearnPsp = 220,
+                Description = "An esper that levels the earth with a mighty blow.",
+                Element = "Earth",
+                DamageEquation = "(22 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Bear down with land energy! Titan!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Golem",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 40,
+                Range = -1,
+                Radius = -1,
+                Height = -1,
+                Speed = 34,
+                JpNeededToLearnPsp = 500,
+                Description = "An esper that absorbs damage from physical attacks on behalf of allies until its limit is reached.",
+                SuccessRateEquation = "(200 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Earth-minded soul, protect us! Golem!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Carbuncle",
+                PsxName = "Carbunkle",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 30,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 25,
+                JpNeededToLearnPsp = 350,
+                Description = "An esper whose ruby light reflects magicks cast on allies.",
+                AddStatusEffect = "Reflect",
+                SuccessRateEquation = "(150 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Impart light to fight our holy war! Carbunkle!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Bahamut",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 60,
+                Range = 4,
+                Radius = 4,
+                Height = 3,
+                Speed = 10,
+                JpNeededToLearnPsp = 1600,
+                Description = "An esper that attacks with its fearsome breath.",
+                DamageEquation = "(42 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Scorch with dragon flame! Bahamut!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Odin",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 50,
+                Range = 4,
+                Radius = 4,
+                Height = 3,
+                Speed = 12,
+                JpNeededToLearnPsp = 900,
+                Description = "An esper that charges through the battlefield astride a fearsome mount, doing great damage.",
+                DamageEquation = "(36 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Slash away with the Land's fury! Odin!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Leviathan",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 48,
+                Range = 4,
+                Radius = 4,
+                Height = 3,
+                Speed = 12,
+                JpNeededToLearnPsp = 860,
+                JpNeededToLearnPsx = 850,
+                Description = "An esper that engulfs the battlefield in a massive tidal wave.",
+                Element = "Water",
+                DamageEquation = "(34 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Sea fang, attack with water's power! Leviathan!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Salamander",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 48,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 12,
+                JpNeededToLearnPsp = 860,
+                JpNeededToLearnPsx = 820,
+                Description = "An esper that scorches the battlefield with its savage flames.",
+                Element = "Fire",
+                DamageEquation = "(34 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Evil flames, entrust your power to us! Salamander!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Sylph",
+                PsxName = "Silf",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 26,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 20,
+                JpNeededToLearnPsp = 400,
+                Description = "An esper that employs the lingering life force of windswept leaves to silence enemies.",
+                AddStatusEffect = "Silence",
+                SuccessRateEquation = "(150 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Show us to put our lives back on track! Silf!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Faerie",
+                PsxName = "Fairy",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 26,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 25,
+                JpNeededToLearnPsp = 400,
+                JpNeededToLearnPsx = 460,
+                Description = "An esper that restores HP.",
+                HealingEquation = "(20 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Shiny crystal light, energize! Fairy!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Lich",
+                PsxName = "Rich",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 40,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 12,
+                JpNeededToLearnPsp = 600,
+                Description = "An esper born in, of, and to darkness. Deals out devastating dark damage.",
+                Element = "Dark",
+                DamageEquation = "50% of Target's Max HP",
+                SuccessRateEquation = "(150 + Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Death song, death door, death river awaiting! Rich!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Cyclops",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 62,
+                Range = 4,
+                Radius = 3,
+                Height = 2,
+                Speed = 12,
+                JpNeededToLearnPsp = 1000,
+                Description = "An esper whose forceful blows tear the battlefield asunder.",
+                DamageEquation = "(44 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Scatter frozen blades of air! Clops!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Zodiark",
+                PsxName = "Zodiac",
+                AbilityType = (int)AbilityType.Command,
+                MPCost = 99,
+                Range = 4,
+                Radius = 4,
+                Height = 3,
+                Speed = 10,
+                JpNeededToLearnPsp = -1,
+                Description = "An esper that bathes the earth in radiant beams of focused starlight.",
+                DamageEquation = "(90 x Magic Attack) x (Faith/100) x (TargetFaith/100)",
+                Quote = "Attack by the Master of commandments! Zodiac!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Critical: Recover MP",
+                PsxName = "MP Restore",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 400,
+                Trigger = "Critical",
+                Description = "Recover MP when critically wounded.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Summoner,
+                PspName = "Halve MP",
+                PsxName = "Half of MP",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 900,
+                Description = "Reduce MP consumption by half when using magicks.",
+            });
+
+            #endregion
+
+            #region Samurai
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Ashura",
+                PsxName = "Asura Knife",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "A technique that releases the spirit in the user's katana, causing an unseen specter-sword to slash at the target.",
+                DamageEquation = "8 x Magic Attack",
+                Quote = "Legendary sword that kills freely! Asura!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Kotetsu",
+                PsxName = "Koutetsu",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 200,
+                JpNeededToLearnPsx = 180,
+                Description = "A technique that releases the spirit in the user's katana, loosing a wave of howling dark spirits.",
+                DamageEquation = "12 x Magic Attack",
+                Quote = "Evil souls of the dark, gather here... Koutetsu!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Osafune",
+                PsxName = "Bizen Boat",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                JpNeededToLearnPsx = 260,
+                Description = "A technique that releases the spirit in the user's katana, sending the whispering dead to feed on the target's MP.",
+                AmountDamage = "4 x Magic Attack",
+                Quote = "Nihilistic sky, inhale magic power... Bizen Boat!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Murasame",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 400,
+                JpNeededToLearnPsx = 340,
+                Description = "A technique that releases the spirit in the user's katana, raining tears of an enlightened soul to restore HP.",
+                HealingEquation = "12 x Magic Attack",
+                Quote = "No more loss of precious life... Murasame!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Ame-no-Murakumo",
+                PsxName = "Heaven's Cloud",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 500,
+                JpNeededToLearnPsx = 420,
+                Description = "A technique that releases the spirit in the user's katana, releasing a phantom of pure mist to attack the target.",
+                AddStatusEffect = "Slow",
+                DamageEquation = "14 x Magic Attack",
+                Quote = "Yagumo rising, all who know god! Heaven's Cloud!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Kiyomori",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 500,
+                Description = "A technique that releases the spirit in the user's katana, bestowing the protection of its effervescent life force.",
+                AddStatusEffect = "Protect, Shell",
+                Quote = "Innocent sword, slash evils and protect! Kiyomori!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Muramasa",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 700,
+                JpNeededToLearnPsx = 580,
+                Description = "A technique that releases the spirit in the user's katana. Only a living soul will quell its tumult.",
+                AddStatusEffect = "Confuse, Doom",
+                DamageEquation = "18 x Magic Attack",
+                Quote = "Summon all ghosts of the sword! Attack! Muramasa!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Kiku-ichimonji",
+                PsxName = "Kikuichimoji",
+                AbilityType = (int)AbilityType.Command,
+                Range = 4,
+                Radius = 8,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 800,
+                JpNeededToLearnPsx = 660,
+                Description = "A technique that releases the spirit in the user's katana, wreaking havoc with its all-consuming hatred.",
+                DamageEquation = "16 x Magic Attack",
+                Quote = "Brave weapon, turn to a deadly blaze! Kikuichimoji!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Masamune",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 900,
+                JpNeededToLearnPsx = 740,
+                Description = "A technique that releases the spirit in the user's katana, bestowing physical healing and increased speed.",
+                AddStatusEffect = "Regen, Haste",
+                Quote = "Sword of fury, inject power! Masamune!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Chirijiraden",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 820,
+                Description = "A technique that releases the spirit in the user's katana, which pursues the living as a band of blue flame.",
+                DamageEquation = "30 x Magic Attack",
+                Quote = "Flame-eating sword, swipe away the evils! Chirijiraden!"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Bonecrusher",
+                PsxName = "Meatbone Slash",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 200,
+                Description = "Deal damage equal to own maximum HP when critically wounded.",
+                Trigger = "Critical"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Shirahadori",
+                PsxName = "Blade Grasp",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 700,
+                Description = "Evade non-ranged physical attacks.",
+                Trigger = "Physical Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Equip Katana",
+                PsxName = "Equip Knife",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                Description = "Equip katana, regardless of job.",
+                ItemEquipIDs = ItemCategoriesList.Katana.ToString()
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Doublehand",
+                PsxName = "Two Hands",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 900,
+                Description = "Wield a weapon with both hands, increasing its destructive power."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Samurai,
+                PspName = "Swim",
+                PsxName = "Move in Water",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 300,
+                Description = "Swim through and even act in deep water."
+            });
+
+            #endregion
+
+            #region Ninja
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Shuriken",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 50,
+                Description = "Attack by throwing shuriken from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Bomb",
+                PsxName = "Ball",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 70,
+                Description = "Attack by throwing bombs from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Knife",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing knives from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Sword",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing swords from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Flail",
+                PsxName = "Hammer",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing flails from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Katana",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing katana from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Ninja Blade",
+                PsxName = "Ninja Sword",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing ninja blades from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Axe",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 120,
+                Description = "Attack by throwing axes from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Polearm",
+                PsxName = "Spear",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing polearms from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Pole",
+                PsxName = "Stick",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing poles from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Knight's Sword",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing knight's swords from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Book",
+                PsxName = "Dictionary",
+                AbilityType = (int)AbilityType.Command,
+                Radius = 1,
+                Height = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 100,
+                Description = "Attack by throwing books from inventory.",
+                DamageEquation = "Speed x Weapon Power"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Vanish",
+                PsxName = "Sunken State",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 900,
+                Trigger = "Physical Attack",
+                Description = "Become transparent.",
+                AddStatusEffect = "Invisible"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Reflexes",
+                PsxName = "Abandon",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 400,
+                Trigger = "Always Activated",
+                Description = "Block attacks with greater ease.",
+                AddStatusEffect = "Doubles physical and magical Evade rates"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Dual Wield",
+                PsxName = "Two Swords",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 1000,
+                JpNeededToLearnPsx = 900,
+                Description = "Wield a weapon in each hand, attacking twice each turn, even if not a ninja.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Ninja,
+                PspName = "Waterwalking",
+                PsxName = "Walk on Water",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 420,
+                Description = "Walk across and even stop on the surface of water.",
+            });
+
+            #endregion
+
+            #region Arithmetician
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "CT",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 250,
+                Description = "Base arithmetick algorithm on the target's CT."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Level",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 350,
+                Description = "Base arithmetick algorithm on the target's level."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "EXP",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 200,
+                Description = "Base arithmetick algorithm on the target's EXP."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Height",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 250,
+                Description = "Base arithmetick algorithm on the height of the target's current tile."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Prime",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 300,
+                Description = "An algorithm for targeting units whose specified attribute is a prime number. A prime number is a number only divisible by 1 and itself."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Multiple of 5",
+                PsxName = "5",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 200,
+                Description = "An algorithm for targeting units whose specified attribute is a multiple of 5."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Multiple of 4",
+                PsxName = "4",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 400,
+                Description = "An algorithm for targeting units whose specified attribute is a multiple of 4."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Multiple of 3",
+                PsxName = "3",
+                AbilityType = (int)AbilityType.Command,
+                JpNeededToLearnPsp = 600,
+                Description = "An algorithm for targeting units whose specified attribute is a multiple of 3."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Cup of Life",
+                PsxName = "Distribute",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 200,
+                Trigger = "HP Restored",
+                Description = "When HP is restored, distribute any excess among one's allies."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Soulbind",
+                PsxName = "Damage Split",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 300,
+                Trigger = "HP Loss",
+                Description = "Split any damage taken with the opponent who inflicted it."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "EXP Boost",
+                PsxName = "Gained Exp UP",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 350,
+                Description = "Earn more EXP for the same actions."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Accrue EXP",
+                PsxName = "Move-Get Exp",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 400,
+                Description = "Obtain EXP upon moving."
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Arithmetician,
+                PspName = "Accrue JP",
+                PsxName = "Move-Get JP",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 400,
+                Description = "Obtain JP upon moving."
+            });
+
+            #endregion
+
+            #region Dancer 
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Witch Hunt",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 17,
+                JpNeededToLearnPsp = 100,
+                Description = "A dance whose esoteric moves reduce enemies' MP.",
+                AmountDamage = "20 + Physical Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Mincing Minuet",
+                PsxName = "Wiznaibu",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 17,
+                JpNeededToLearnPsp = 100,
+                Description = "A dance whose fervent steps damage enemies' HP.",
+                AmountDamage = "10 + Physical Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Slow Dance",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 13,
+                JpNeededToLearnPsp = 100,
+                Description = "A dance whose sedate pace reduces enemies' Speed.",
+                AmountDamage = "-1 Speed",
+                SuccessRateEquation = "50% Accuracy Per Target"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Polka",
+                PsxName = "Polka Polka",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 13,
+                JpNeededToLearnPsp = 100,
+                Description = "A quick, vivacious dance that reduces enemies' physical attack power.",
+                AmountDamage = "-1 Physical Attack",
+                SuccessRateEquation = "50% Accuracy Per Target"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Heathen Frolick",
+                PsxName = "Disillusion",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 10,
+                JpNeededToLearnPsp = 100,
+                Description = "An exotic dance that clouds the mind, reducing enemies' magickal attack power.",
+                AmountDamage = "-1 Magic Attack",
+                SuccessRateEquation = "50% Accuracy Per Target"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Forbidden Dance",
+                PsxName = "Nameless Dance",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 10,
+                JpNeededToLearnPsp = 100,
+                Description = "A mesmerizing dance that inflicts status effects.",
+                AddStatusEffect = "Blind, Confuse, Silence, Toad, Poison, Slow, Stop, Sleep",
+                SuccessRateEquation = "50% Accuracy Per Target"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Last Waltz",
+                PsxName = "Last Dance",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 5,
+                JpNeededToLearnPsp = 100,
+                Description = "The ultimate dance. Drops the CT of all enemies to zero.",
+                SuccessRateEquation = "50% Accuracy Per Target"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Fury",
+                PsxName = "A Save",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 600,
+                JpNeededToLearnPsx = 550,
+                Description = "Increase physical attack power.",
+                Trigger = "HP Loss",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Bravery Boost",
+                PsxName = "Brave UP",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 700,
+                JpNeededToLearnPsx = 500,
+                Description = "Increase Bravery.",
+                Trigger = "Physical Attack",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Jump +3",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 1000,
+                JumpBoost = 3,
+                Description = "Increase Jump by 3"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Dancer,
+                PspName = "Fly",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 5000,
+                JpNeededToLearnPsx = 1200,
+                Description = "Fly over enemies as well as any other obstacles."
+            });
+
+            #endregion
+
+            #region Bard
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Seraph Song",
+                PsxName = "Angel Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 17,
+                JpNeededToLearnPsp = 100,
+                Description = "A song pleading for angelic protection. Restores MP.",
+                AmountDamage = "20 + Magic Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Life's Anthem",
+                PsxName = "Life Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 17,
+                JpNeededToLearnPsp = 100,
+                Description = "A song praising the vibrance of life. Restores HP.",
+                AmountDamage = "10 + Magic Attack"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Rousing Melody",
+                PsxName = "Cheer Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 13,
+                JpNeededToLearnPsp = 100,
+                Description = "A song of encouragement and inspiration. Increases Speed.",
+                AmountBoost = "+1 Speed",
+                SuccessRateEquation = "50% Accuracy Per Target",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Battle Chant",
+                PsxName = "Battle Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 13,
+                JpNeededToLearnPsp = 100,
+                Description = "A gallant song of battles fought and won. Increases physical attack power.",
+                AmountBoost = "+1 Physical Attack",
+                SuccessRateEquation = "50% Accuracy Per Target",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Magickal Refrain",
+                PsxName = "Magic Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 10,
+                JpNeededToLearnPsp = 100,
+                Description = "A song of the laws of sorcery and of the source of magick.Increases magickal attack power.",
+                AmountBoost = "+1 Magic Attack",
+                SuccessRateEquation = "50% Accuracy Per Target",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Nameless Song",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 10,
+                JpNeededToLearnPsp = 100,
+                Description = "A thoroughly mysterious song passed down through many an age. Bestows various types of protection.",
+                AddStatusEffect = "Reraise, Regen, Protect, Shell, Haste",
+                SuccessRateEquation = "50% Accuracy Per Target",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Finale",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = -1,
+                Speed = 5,
+                JpNeededToLearnPsp = 100,
+                Description = "The ultimate song. Increases allies' CT to 100.",
+                SuccessRateEquation = "50% Accuracy Per Target",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Magick Boost",
+                PsxName = "MA Save",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 500,
+                JpNeededToLearnPsx = 450,
+                Trigger = "HP Loss",
+                Description = "Increase magickal attack power.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Faith Boost",
+                PsxName = "Face Up",
+                AbilityType = (int)AbilityType.Reaction,
+                JpNeededToLearnPsp = 700,
+                JpNeededToLearnPsx = 500,
+                Trigger = "Magick",
+                Description = "Increase Faith.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Move +3",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 1000,
+                MoveBoost = 3,
+                Description = "Increase Move by 3.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.Bard,
+                PspName = "Fly",
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 5000,
+                JpNeededToLearnPsx = 1200,
+                Description = "Fly over enemies as well as any other obstacles.",
+            });
+
+            #endregion
+
+            #region Dark Knight
+
+            context.Abilities.AddOrUpdate(m => m.PspName,
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Sanguine Sword",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 500,
+                Description = "Absorb HP from the target.",
+                Element = "Dark",
+                AmountDamage = "0.8 x Physical Attack x (Weapon Power + Ability Power)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Infernal Strike",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 1,
+                Speed = -1,
+                JpNeededToLearnPsp = 500,
+                Description = "Absorb MP from the target.",
+                Element = "Dark",
+                AmountDamage = "0.8 x Physical Attack x (Weapon Power + Ability Power)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Crushing Blow",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 2,
+                Speed = -1,
+                JpNeededToLearnPsp = 300,
+                Description = "Inflict damage with a sinister sword.",
+                Element = "Dark",
+                AddStatusEffect = "Stop",
+                AmountDamage = "Physical Attack x (Weapon Power + Ability Power)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Abyssal Blade",
+                AbilityType = (int)AbilityType.Command,
+                Range = 3,
+                Radius = 2,
+                Speed = -1,
+                JpNeededToLearnPsp = 1000,
+                Description = "Sacrifice own HP to deal damage to others, with the nearest units suffering the most damage.",
+                Element = "Dark",
+                AmountDamage = "(Physical Attack x Magical Attack * Weapon Factor) + (0.33 * Maximum HP)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Unholy Sacrifice",
+                AbilityType = (int)AbilityType.Command,
+                Range = 1,
+                Radius = 3,
+                Speed = -1,
+                JpNeededToLearnPsp = 1200,
+                Description = "Sacrifice own HP to deal extensive damage to all units in range.",
+                Element = "Dark",
+                AddStatusEffect = "Slow",
+                AmountDamage = "(Physical Attack x Magical Attack * Weapon Factor) + (0.33 * Maximum HP)"
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "HP Boost",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 2000,
+                HpPercentBoost = 20,
+                Description = "Increase maximum HP by 20 percent.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Vehemence",
+                AbilityType = (int)AbilityType.Support,
+                JpNeededToLearnPsp = 400,
+                Description = "Increase attack power by 50 percent and decrease defensive power by 50 percent.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Jump +3",
+                IsMaleOnly = true,
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 1000,
+                JumpBoost = 3,
+                Description = "Increase Jump by 3.",
+            },
+            new Ability
+            {
+                JobID = (int)Jobs.DarkKnight,
+                PspName = "Move +3",
+                IsFemaleOnly = true,
+                AbilityType = (int)AbilityType.Movement,
+                JpNeededToLearnPsp = 1000,
+                MoveBoost = 3,
+                Description = "Increase Movement by 3.",
+            });
+
+            #endregion
+
             #endregion
         }
     }
