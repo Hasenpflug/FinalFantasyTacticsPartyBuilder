@@ -20,7 +20,8 @@
 <script>
     var JobOverview = function ()
     {
-        var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart;
+        var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
+            selectedJobData;
 
         function getModifierChart()
         {
@@ -31,18 +32,17 @@
         {
             if (typeof (Storage) !== 'undefined')
             {
-                var unitData = {
-                    units: [{ 'unitName': 'Braedon', 'maxhp': '43', 'maxmp': '11', 'gender': '0', 'position': '0', 'job': '1', 'level': '1', 'experience': '46', 'brave': '67', 'faith': '58' },
-                        { 'unitName': 'Braedina', 'maxhp': '947', 'maxmp': '313', 'gender': '1', 'position': '1', 'job': '1', 'level': '99', 'experience': '46', 'brave': '97', 'faith': '0' }]
-                }
+                var unitData = { units: [] }
 
                 localStorage.setItem("unitData", JSON.stringify(unitData));
                 renderUnitPanels();
             }
         });
 
-        $('.new-unit-selector').click(renderJobSelectionPanel);
+        $('.new-unit-selector').click(renderJobOverviewPanel);
         $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
+        $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
+        $('body').on('click', '#job-confirm-button', hireUnit);
 
         function renderUnitPanels()
         {
@@ -64,7 +64,7 @@
                 {
                     unitData = unitData.units[i];
                     break;
-                }                
+                }
             }
 
             $('.unit-details-container').remove();
@@ -85,22 +85,60 @@
             });
         }
 
-        function renderJobSelectionPanel(event)
+        function renderJobOverviewPanel()
         {
-            $.post('/Home/GetJobOverviewPartial', { gender: 'Male' } , function (data)
-            {
+            $.post('/Home/GetJobOverviewPartial', function (data)
+            {                
                 $('#party-overview-container').contents().remove();
-                $('#party-overview-container').append(data);
+                $('#party-overview-container').append(data);                
+                renderJobSelectionPanel('Male');                
             });
+        }
+
+        function renderJobSelectionPanel(gender)
+        {
+            $.post('/Home/GetJobSelectionPartial', { gender: gender }, function (data)
+            {
+                $('#job-selection-container').remove();
+                $('#job-overview-container').prepend(data);
+                initializeJobWheel();
+                initializeJobModifierChart();
+                initializeJobGrowthChart();
+                initializeJobMoveChart();
+                initializeJobEvasionChart();
+            });
+        }
+
+        function hireUnit()
+        {
+            var localUnitData = JSON.parse(localStorage.getItem('unitData'));
+            var newUnitData = new Unit();
+            unitData.jobID = selectedJobData.jobID;
+            $.post('/Home/GetJobOverviewPartial', newUnitData, function (data)
+            {                
+                $('#party-overview-container').contents().remove();
+                $('#party-overview-container').append(data);                
+                renderJobSelectionPanel('Male');                
+            });
+
+            unitData.units.push({unitName: selectedJobData.})
+        }
+
+        function dismissUnit()
+        {
+            
         }
 
         function updateChartData(chart, jobData)
         {
-            document.getElementById('job-name').innerHTML = jobData.name;
-            modifierChart.data.datasets[0].data = [parseInt(jobData.hpm), parseInt(jobData.mpm), parseInt(jobData.spm), parseInt(jobData.pam), parseInt(jobData.mam)];
-            growthChart.data.datasets[0].data = [parseInt(jobData.hpc), parseInt(jobData.mpc), parseInt(jobData.spc), parseInt(jobData.pac), parseInt(jobData.mac)];
-            baseMoveJumpChart.data.datasets[0].data = [parseInt(jobData.move), parseInt(jobData.jump)];
-            baseEvasionChart.data.datasets[0].data = [parseInt(jobData.evasion)];
+            selectedJobData = jobData;
+            document.getElementById('job-name').innerHTML = selectedJobData.name;
+            modifierChart.data.datasets[0].data = [parseInt(selectedJobData.hpm), parseInt(selectedJobData.mpm), parseInt(selectedJobData.spm), parseInt(selectedJobData.pam),
+                parseInt(selectedJobData.mam)];
+            growthChart.data.datasets[0].data = [parseInt(selectedJobData.hpc), parseInt(selectedJobData.mpc), parseInt(selectedJobData.spc), parseInt(selectedJobData.pac),
+                parseInt(selectedJobData.mac)];
+            baseMoveJumpChart.data.datasets[0].data = [parseInt(selectedJobData.move), parseInt(selectedJobData.jump)];
+            baseEvasionChart.data.datasets[0].data = [parseInt(selectedJobData.evasion)];
             modifierChart.update();
             growthChart.update();
             baseMoveJumpChart.update();
@@ -121,6 +159,27 @@
             piemenu.createWheel();
         }
 
+        function updateJobWheel(event)
+        {
+            if (piemenu !== 'undefined')
+            {
+                piemenu.removeWheel();
+            }
+
+            var gender = event.currentTarget.attributes['data-gender'].nodeValue;
+            renderJobSelectionPanel(gender);
+            if (gender === 'Male')
+            {
+                document.getElementById('gender-male-button').setAttribute('selected', true)
+                document.getElementById('gender-female-button').setAttribute('selected', false)
+            }
+            else
+            {
+                document.getElementById('gender-male-button').setAttribute('selected', false);
+                document.getElementById('gender-female-button').setAttribute('selected', true)
+            }
+        }
+
         function initializeJobModifierChart()
         {
             modifierChartCanvas = document.getElementById('job-modifier-chart');
@@ -131,7 +190,7 @@
                     labels: ["HPM", "MPM", "SPM", "PAM", "MAM"],
                     datasets: [{
                         label: 'Job Stat Modifiers',
-                        data: [100, 80, 100, 110, 80],
+                        data: [100, 75, 100, 90, 80],
                         borderColor: 'rgba(255, 0, 0, 0.5)',
                         backgroundColor: 'rgba(255, 0, 0, 0.34)',
                         pointBackgroundColor: 'white',
@@ -154,7 +213,7 @@
                             fontFamily: 'Altima'
                         }
                     },
-                    legend: false                    
+                    legend: false
                 }
             });
 
@@ -170,7 +229,7 @@
                     labels: ["HPC", "MPC", "SPC", "PAC", "MAC"],
                     datasets: [{
                         label: 'Job Stat Constants',
-                        data: [100, 80, 100, 110, 80],
+                        data: [75, 76, 80, 68, 80],
                         borderColor: 'rgba(255, 0, 0, 0.5)',
                         backgroundColor: 'rgba(255, 0, 0, 0.34)',
                         pointBackgroundColor: 'white',
@@ -194,15 +253,6 @@
                         }
                     },
                     legend: false,
-                    //tooltips: {
-                    //    mode: 'label',
-                    //    callbacks: {
-                    //        label: function (tooltipItem, data)
-                    //        {
-                    //            return 'Does this work?';
-                    //        }
-                    //    }
-                    //}
                 }
             });
 
@@ -243,7 +293,7 @@
 
             baseMoveJumpChart.resize();
         }
-        
+
         function initializeJobEvasionChart()
         {
             baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
@@ -277,6 +327,35 @@
             });
 
             baseEvasionChart.resize();
+        }
+    
+        function Unit()
+        {
+            this.name = '',
+            this.maxhp = 0,
+            this.maxmp = 0,
+            this.gender = 0,
+            this.position = 0,
+            this.jobID = 1,
+            this.jobName = '',
+            this.hpc = 0,
+            this.mpc = 0,
+            this.spc = 0,
+            this.pac = 0,
+            this.mac = 0,
+            this.secondaryJobID = 1,
+            this.reactionID = 1
+            this.supportID = 1,
+            this.movementID = 1,
+            this.weaponID = 1,
+            this.shieldID = 1,
+            this.headID = 1,
+            this.bodyID = 1,
+            this.accessoryID = 1,
+            this.level = 1,
+            this.experience = 0,
+            this.brave = 0,
+            this.faith = 0
         }
 
         return {

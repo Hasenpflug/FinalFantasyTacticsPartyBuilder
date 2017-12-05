@@ -1,0 +1,22 @@
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model List<JobOverviewViewModel>
+
+<div id="job-selection-container">
+    <div id='piemenu' data-wheelnav
+         data-wheelnav-slicepath='DonutSlice'
+         data-wheelnav-rotateon
+         data-wheelnav-navangle="90"
+         data-wheelnav-titleheight="100"
+         data-wheelnav-titlewidth="70"
+         data-wheelnav-cssmode
+         data-wheelnav-init>
+        @foreach (JobOverviewViewModel job in Model)
+        {
+            <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': @job.JobID, 'name': '@job.DisplayName', 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant,
+                     'mpm': @job.MPMultiplier, 'mpc': @job.MPGrowthConstant, 'spm': @job.SpeedMulitplier, 'spc': @job.SpeedGrowthConstant, 'pam': @job.PhysicalAttackMultiplier,
+                     'pac': @job.PhysicalAttackGrowthConstant, 'mam': @job.MagicalAttackMultiplier, 'mac': @job.MagicalAttackGrowthConstant, 'move': @job.BaseMoveLength,
+                     'jump': @job.BaseJumpHeight, 'evasion': @job.BaseCombatEvasion});" data-wheelnav-navitemimg="/Content/Images/Jobs/@(job.FileName)_@(job.Gender)_Standing.png"></div>
+        }
+    </div>
+</div>
+

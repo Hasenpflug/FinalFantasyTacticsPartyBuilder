@@ -174,10 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711302144043_TheGreatSeeding.cs" />
-    <Compile Include="Migrations\201711302144043_TheGreatSeeding.Designer.cs">
-      <DependentUpon>201711302144043_TheGreatSeeding.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ability.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -194,6 +190,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="View_Models\JobOverviewRangeViewModel.cs" />
     <Compile Include="View_Models\JobOverviewViewModel.cs" />
+    <Compile Include="View_Models\UnitDetailsViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
   </ItemGroup>
@@ -693,6 +690,7 @@
     <Content Include="Views\Home\_UnitOverviewPanelPartial.cshtml" />
     <Content Include="Views\Home\_UnitOverviewMenuPartial.cshtml" />
     <Content Include="Views\Home\_JobOverviewPartial.cshtml" />
+    <Content Include="Views\Home\_JobSelectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -704,11 +702,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711302144043_TheGreatSeeding.resx">
-      <DependentUpon>201711302144043_TheGreatSeeding.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

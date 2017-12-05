@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace FinalFantasyTacticsPartyBuilder.Controllers
@@ -32,7 +33,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
         {
-            unit.JobName = Enum.GetName(typeof(Jobs), unit.Job);
+            unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
             unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
             unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName, unit.GenderName);
 
@@ -53,7 +54,12 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitOverviewMenuPartial.cshtml", unitPositionID);
         }
 
-        public ActionResult GetJobOverviewPartial(string gender)
+        public ActionResult GetJobOverviewPartial()
+        {
+            return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");
+        }
+
+        public ActionResult GetJobSelectionPartial(string gender)
         {
             List<JobOverviewViewModel> viewModels;
             JobOverviewRangeViewModel rangeViewModel;
@@ -124,8 +130,18 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 }
             }
 
-            return PartialView("~/Views/Home/_JobOverviewPartial.cshtml", viewModels);
+            return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
+
+        //public ActionResult PopulateNewUnitData(int jobID)
+        //{
+            //UnitDetailsViewModel unit = new UnitDetailsViewModel
+            //{
+
+            //}
+
+            //return Json.Json.
+        //}
 
         public ActionResult Details()
         {

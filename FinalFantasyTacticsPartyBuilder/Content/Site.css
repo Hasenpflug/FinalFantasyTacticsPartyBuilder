@@ -559,8 +559,34 @@ img {
     text-align:center;
 }
 
+.fft-button {
+    padding:1%;
+    border: 5px outset;
+}
+
+.fft-button:hover {
+    cursor: pointer;
+}
+
+.fft-button:hover:before {
+    content: url(Images/menu_cursor.png);
+    position: absolute;
+    left:-5%;
+    top: -10%;
+}
+
+.fft-button[selected=true] {
+    background-color:rgba(0, 0, 0, 0.10);
+    border: 5px inset;
+}
+
+.fft-button[selected=false] {
+    border: 5px outset;
+}
+
 #job-gender-container {
     float: left;
+    position:relative;
     /*padding: 1.5% 2%;*/
     text-align:center;
     line-height:175%;
@@ -568,17 +594,9 @@ img {
     max-width: 440px;
 }
 
-#job-gender-container span[selected=true] {
-    background-color:rgba(0, 0, 0, 0.10);
-    border: 5px inset;
-}
-
-#job-gender-container span[selected=false] {
-    border: 5px outset;
-}
-
 #job-confirm-container {
-    float:left;    
+    float:left;
+    position:relative;
     margin-left:1%;
     width:10%;
     height:10%;
@@ -586,21 +604,16 @@ img {
     line-height:175%
 }
 
-#job-confirm-container span {
-    position:relative;
-    padding:1%;
-    border: 5px outset;    
-}
-
-#job-confirm-container span:hover {
-    cursor:pointer;
-}
-
-#job-confirm-container span:hover:before {
+#gender-male-button:hover:before {
     content: url(Images/menu_cursor.png);
-    position: absolute;
-    left: -40px;
-    top: -30px;
+    position:absolute;
+    left:0px;
+}
+
+#gender-female-button:hover:before {
+    content: url(Images/menu_cursor.png);
+    position:absolute;
+    left:40%;
 }
 
 #job-modifier-chart-container, #job-growth-chart-container  {
