@@ -19,16 +19,21 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
         public ActionResult GetUnitPanelPartial(List<UnitOverviewViewModel> units)
         {
-            foreach (UnitOverviewViewModel unit in units)
+            if (units != null)
             {
-                unit.AttributeDigits = new UnitOverviewHpMpViewModel
+                foreach (UnitOverviewViewModel unit in units)
                 {
-                    HpDigits = unit.MaxHP.ToString().ToCharArray(),
-                    MpDigits = unit.MaxMP.ToString().ToCharArray()
-                };
+                    unit.AttributeDigits = new UnitOverviewHpMpViewModel
+                    {
+                        HpDigits = unit.MaxHP.ToString().ToCharArray(),
+                        MpDigits = unit.MaxMP.ToString().ToCharArray()
+                    };
+                }
+
+                return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", null);
             }
 
-            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
+            return null;
         }
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
@@ -68,28 +73,28 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             {
                 viewModels = context.Jobs.Where(m => gender == "Male" ? !m.IsFemaleOnly : !m.IsMaleOnly).Select(m => new JobOverviewViewModel
                 {
-                    JobID = m.JobID, 
+                    JobID = m.JobID,
                     FileName = (m.PspName.Contains("(") ? m.PspName.Remove(m.PspName.IndexOf("(")) : m.PspName).Replace(" ", ""),
                     DisplayName = m.PspName,
-                    Gender = gender, 
+                    Gender = gender,
                     HPMultiplier = m.HPMultiplier,
                     HPGrowthConstant = m.HPGrowthConstant,
                     HPGrowthConstantLabel = m.HPGrowthConstant,
                     MPMultiplier = m.MPMultiplier,
                     MPGrowthConstant = m.MPGrowthConstant,
-                    MPGrowthConstantLabel = m.MPGrowthConstant, 
+                    MPGrowthConstantLabel = m.MPGrowthConstant,
                     SpeedMulitplier = m.SpeedMulitplier,
                     SpeedGrowthConstant = m.SpeedGrowthConstant,
                     SpeedGrowthConstantLabel = m.SpeedGrowthConstant,
                     PhysicalAttackMultiplier = m.PhysicalAttackMultiplier,
                     PhysicalAttackGrowthConstant = m.PhysicalAttackGrowthConstant,
-                    PhysicalAttackGrowthConstantLabel = m.PhysicalAttackGrowthConstant, 
+                    PhysicalAttackGrowthConstantLabel = m.PhysicalAttackGrowthConstant,
                     MagicalAttackMultiplier = m.MagicalAttackMultiplier,
                     MagicalAttackGrowthConstant = m.MagicalAttackGrowthConstant,
                     MagicalAttackGrowthConstantLabel = m.MagicalAttackGrowthConstant,
-                    BaseMoveLength = m.BaseMoveLength, 
+                    BaseMoveLength = m.BaseMoveLength,
                     BaseJumpHeight = m.BaseJumpHeight,
-                    BaseCombatEvasion = m.BaseCombatEvasion        
+                    BaseCombatEvasion = m.BaseCombatEvasion
                 }).ToList();
 
                 rangeViewModel = new JobOverviewRangeViewModel
@@ -116,32 +121,58 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
                 foreach (JobOverviewViewModel viewModel in viewModels)
                 {
-                    viewModel.HPGrowthConstant = (int)((rangeViewModel.HPGrowthConstantMax + rangeViewModel.HPGrowthConstantMin - viewModel.HPGrowthConstant) * 
+                    viewModel.HPGrowthConstant = (int)((rangeViewModel.HPGrowthConstantMax + rangeViewModel.HPGrowthConstantMin - viewModel.HPGrowthConstant) *
                         rangeViewModel.HPGrowthConstantMultiplier);
-                    viewModel.MPGrowthConstant = (int)((rangeViewModel.MPGrowthConstantMax + rangeViewModel.MPGrowthConstantMin - viewModel.MPGrowthConstant) * 
+                    viewModel.MPGrowthConstant = (int)((rangeViewModel.MPGrowthConstantMax + rangeViewModel.MPGrowthConstantMin - viewModel.MPGrowthConstant) *
                         rangeViewModel.MPGrowthConstantMultiplier);
-                    viewModel.SpeedGrowthConstant = (int)((rangeViewModel.SpeedGrowthConstantMax + rangeViewModel.SpeedGrowthConstantMin - viewModel.SpeedGrowthConstant) * 
+                    viewModel.SpeedGrowthConstant = (int)((rangeViewModel.SpeedGrowthConstantMax + rangeViewModel.SpeedGrowthConstantMin - viewModel.SpeedGrowthConstant) *
                         rangeViewModel.SpeedGrowthConstantMultiplier);
-                    viewModel.PhysicalAttackGrowthConstant = (int)((rangeViewModel.PhysicalAttackGrowthConstantMax + rangeViewModel.PhysicalAttackGrowthConstantMin - 
+                    viewModel.PhysicalAttackGrowthConstant = (int)((rangeViewModel.PhysicalAttackGrowthConstantMax + rangeViewModel.PhysicalAttackGrowthConstantMin -
                         viewModel.PhysicalAttackGrowthConstant) * rangeViewModel.PhysicalAttackGrowthConstantMultiplier);
-                    viewModel.MagicalAttackGrowthConstant = (int)((rangeViewModel.MagicalAttackGrowthConstantMax + rangeViewModel.MagicalAttackGrowthConstantMin - 
+                    viewModel.MagicalAttackGrowthConstant = (int)((rangeViewModel.MagicalAttackGrowthConstantMax + rangeViewModel.MagicalAttackGrowthConstantMin -
                         viewModel.MagicalAttackGrowthConstant) * rangeViewModel.MagicalAttackGrowthConstantMultiplier);
-
                 }
             }
 
             return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
 
-        //public ActionResult PopulateNewUnitData(int jobID)
-        //{
-            //UnitDetailsViewModel unit = new UnitDetailsViewModel
-            //{
+        public ActionResult PopulateNewUnitData(int jobID, int gender)
+        {
+            UnitDetailsViewModel unit;
+            Random r = new Random();
 
-            //}
+            using (FFTContext context = new FFTContext())
+            {
+                unit = new UnitDetailsViewModel
+                {
+                    Unit = new UnitOverviewViewModel
+                    {
+                        MaxHP = context.Jobs.Single(m => m.JobID == jobID).HPMultiplier,
+                        MaxMP = context.Jobs.Single(m => m.JobID == jobID).HPMultiplier,
+                        UnitName = context.UnitNames.Where(m => m.Gender == gender).OrderBy(m => Guid.NewGuid()).First().Name
+                    }
+                };
 
-            //return Json.Json.
-        //}
+                unit.Unit.JobID = jobID;
+                unit.Unit.JobName = Enum.GetName(typeof(Jobs), jobID);
+                unit.Unit.Gender = gender;
+                unit.Unit.GenderName = Enum.GetName(typeof(Gender), gender);
+                unit.Unit.Level = 1;
+                unit.Unit.Experience = r.Next(0, 99);
+                unit.Unit.Brave = r.Next(40, 70);
+                unit.Unit.Faith = r.Next(40, 70);
+                unit.RawHP = gender == 0 ? r.Next(491520, 524287) : gender == 1 ? r.Next(458752, 491519) : r.Next(573440, 622591);
+                unit.RawMP = gender == 0 ? r.Next(229376, 245759) : gender == 1 ? r.Next(245760, 262143) : r.Next(98304, 147455);
+                unit.RawPhysicalAttack = gender == 0 ? 81920 : gender == 1 ? 65536 : r.Next(81920, 98303);
+                unit.RawMagicalAttack = gender == 0 ? 65536 : gender == 1 ? 81920 : r.Next(81920, 98303);
+                unit.RawSpeedGrowth = gender == 0 ? 98304 : gender == 1 ? 98304 : 81920;
+                unit.Unit.MaxHP = (unit.Unit.MaxHP * unit.RawHP) / 1638400;
+                unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawHP) / 1638400;
+            }
+
+            return Json(new { unit });
+        }
 
         public ActionResult Details()
         {

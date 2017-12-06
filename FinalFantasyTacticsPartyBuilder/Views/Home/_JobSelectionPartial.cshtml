@@ -12,11 +12,16 @@
          data-wheelnav-init>
         @foreach (JobOverviewViewModel job in Model)
         {
-            <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'id': @job.JobID, 'name': '@job.DisplayName', 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant,
+            <div onmouseup="JobOverview.updateChartData(JobOverview.getModifierChart(), {'jobID': @job.JobID, 'name': '@job.DisplayName', 'hpm': @job.HPMultiplier, 'hpc': @job.HPGrowthConstant,
                      'mpm': @job.MPMultiplier, 'mpc': @job.MPGrowthConstant, 'spm': @job.SpeedMulitplier, 'spc': @job.SpeedGrowthConstant, 'pam': @job.PhysicalAttackMultiplier,
                      'pac': @job.PhysicalAttackGrowthConstant, 'mam': @job.MagicalAttackMultiplier, 'mac': @job.MagicalAttackGrowthConstant, 'move': @job.BaseMoveLength,
                      'jump': @job.BaseJumpHeight, 'evasion': @job.BaseCombatEvasion});" data-wheelnav-navitemimg="/Content/Images/Jobs/@(job.FileName)_@(job.Gender)_Standing.png"></div>
         }
     </div>
 </div>
-
+<script>
+    JobOverview.setInitialJobData(@{ JobOverviewViewModel firstJob = Model[0]; } { 'jobID': @firstJob.JobID, 'name': '@firstJob.DisplayName', 'gender' : 0, 'hpm': @firstJob.HPMultiplier, 
+        'hpc': @firstJob.HPGrowthConstant, 'mpm': @firstJob.MPMultiplier, 'mpc': @firstJob.MPGrowthConstant, 'spm': @firstJob.SpeedMulitplier, 'spc': @firstJob.SpeedGrowthConstant, 
+        'pam': @firstJob.PhysicalAttackMultiplier, 'pac': @firstJob.PhysicalAttackGrowthConstant, 'mam': @firstJob.MagicalAttackMultiplier, 
+        'mac': @firstJob.MagicalAttackGrowthConstant, 'move': @firstJob.BaseMoveLength, 'jump': @firstJob.BaseJumpHeight, 'evasion': @firstJob.BaseCombatEvasion});
+</script>

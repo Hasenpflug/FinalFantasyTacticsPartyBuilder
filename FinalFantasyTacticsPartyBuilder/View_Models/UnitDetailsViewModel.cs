@@ -7,15 +7,15 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 {
     public class UnitDetailsViewModel
     {
-        public int HPGrowthConstant { get; set; }
+        public int RawHP { get; set; }
 
-        public int MPGrowthConstant { get; set; }
+        public int RawMP { get; set; }
 
-        public int SpeedGrowthConstant { get; set; }
+        public int RawSpeedGrowth { get; set; }
 
-        public int PhysicalAttackGrowthConstant { get; set; }
+        public int RawPhysicalAttack { get; set; }
 
-        public int MagicalAttackGrowthConstant { get; set; }
+        public int RawMagicalAttack { get; set; }
 
         public int SecondaryAbilityJobID { get; set; }
 

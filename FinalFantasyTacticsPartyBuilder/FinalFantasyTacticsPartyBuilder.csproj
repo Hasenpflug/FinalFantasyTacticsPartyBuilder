@@ -186,6 +186,7 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemCategory.cs" />
     <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\UnitName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View_Models\JobOverviewRangeViewModel.cs" />
@@ -613,6 +614,9 @@
     <Content Include="Content\Images\selection-square.png" />
     <Content Include="Content\Images\star.png" />
     <Content Include="Content\Images\support_ability.png" />
+    <Content Include="FFTFemaleNames.txt" />
+    <Content Include="FFTMaleNames.txt" />
+    <Content Include="FFTMonsterNames.txt" />
     <Content Include="fonts\webfont.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Altima.svg" />

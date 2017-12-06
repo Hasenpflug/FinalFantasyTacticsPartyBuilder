@@ -4,6 +4,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FFTContext>
@@ -14,7 +15,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
         }
 
         protected override void Seed(FFTContext context)
-        {
+        { 
+
             #region Item Categories
             context.ItemCategories.AddOrUpdate(m => m.ItemCategoryName,
                 new ItemCategory
@@ -5293,7 +5295,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region White Mage
 
-            context.Abilities.AddOrUpdate(m => m.PspName,
+            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName},
             new Ability
             {
                 JobID = (int)Jobs.WhiteMage,
@@ -8899,7 +8901,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Dancer 
 
-            context.Abilities.AddOrUpdate(m => m.PspName,
+            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName },
             new Ability
             {
                 JobID = (int)Jobs.Dancer,
@@ -9038,7 +9040,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Bard
 
-            context.Abilities.AddOrUpdate(m => m.PspName,
+            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName },
             new Ability
             {
                 JobID = (int)Jobs.Bard,
@@ -9177,7 +9179,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Dark Knight
 
-            context.Abilities.AddOrUpdate(m => m.PspName,
+            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName },
             new Ability
             {
                 JobID = (int)Jobs.DarkKnight,
@@ -9284,6 +9286,40 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             });
 
             #endregion
+
+            #endregion
+
+            #region Names
+
+            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTMaleNames.txt"))
+            {
+                context.UnitNames.AddOrUpdate(m => m.Name,
+                new UnitName
+                {
+                    Name = maleName,
+                    Gender = (int)Gender.Male
+                });
+            }
+
+            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTFemaleNames.txt"))
+            {
+                context.UnitNames.AddOrUpdate(m => m.Name,
+                new UnitName
+                {
+                    Name = maleName,
+                    Gender = (int)Gender.Female
+                });
+            }
+
+            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTMonsterNames.txt"))
+            {
+                context.UnitNames.AddOrUpdate(m => m.Name,
+                new UnitName
+                {
+                    Name = maleName,
+                    Gender = (int)Gender.Monster
+                });
+            }
 
             #endregion
         }

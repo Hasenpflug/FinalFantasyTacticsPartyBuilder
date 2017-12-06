@@ -32,9 +32,6 @@
         {
             if (typeof (Storage) !== 'undefined')
             {
-                var unitData = { units: [] }
-
-                localStorage.setItem("unitData", JSON.stringify(unitData));
                 renderUnitPanels();
             }
         });
@@ -113,15 +110,15 @@
         {
             var localUnitData = JSON.parse(localStorage.getItem('unitData'));
             var newUnitData = new Unit();
-            unitData.jobID = selectedJobData.jobID;
-            $.post('/Home/GetJobOverviewPartial', newUnitData, function (data)
+            newUnitData.jobID = selectedJobData.jobID;
+            newUnitData.gender = selectedJobData.gender;
+            $.post('/Home/PopulateNewUnitData', newUnitData, function (data)
             {                
                 $('#party-overview-container').contents().remove();
-                $('#party-overview-container').append(data);                
-                renderJobSelectionPanel('Male');                
+                localUnitData.units.push(data);
+                localStorage.setItem('unitData', JSON.stringify(localUnitData));
+                renderUnitPanels();
             });
-
-            unitData.units.push({unitName: selectedJobData.})
         }
 
         function dismissUnit()
@@ -157,6 +154,13 @@
             piemenu.maxPercent = 0.50;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
+
+            piemenu.navItems[0].attr
+        }
+
+        function setInitialJobData(jobData)
+        {
+            selectedJobData = jobData;
         }
 
         function updateJobWheel(event)
@@ -170,13 +174,13 @@
             renderJobSelectionPanel(gender);
             if (gender === 'Male')
             {
-                document.getElementById('gender-male-button').setAttribute('selected', true)
-                document.getElementById('gender-female-button').setAttribute('selected', false)
+                document.getElementById('gender-male-button').setAttribute('selected', true);
+                document.getElementById('gender-female-button').setAttribute('selected', false);
             }
             else
             {
                 document.getElementById('gender-male-button').setAttribute('selected', false);
-                document.getElementById('gender-female-button').setAttribute('selected', true)
+                document.getElementById('gender-female-button').setAttribute('selected', true);
             }
         }
 
@@ -361,6 +365,7 @@
         return {
             getModifierChart: getModifierChart,
             initializeJobWheel: initializeJobWheel,
+            setInitialJobData: setInitialJobData,
             initializeJobModifierChart: initializeJobModifierChart,
             initializeJobGrowthChart: initializeJobGrowthChart,
             initializeJobMoveChart: initializeJobMoveChart,
