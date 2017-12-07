@@ -17,23 +17,34 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return View();
         }
 
-        public ActionResult GetUnitPanelPartial(List<UnitOverviewViewModel> units)
+        public ActionResult GetUnitPanelPartial(List<UnitPanelViewModel> units)
         {
             if (units != null)
             {
-                foreach (UnitOverviewViewModel unit in units)
+                int[] hpMultipliers = new int[units.Count];
+                int[] mpMultipliers = new int[units.Count];
+
+                using (FFTContext context = new FFTContext())
                 {
-                    unit.AttributeDigits = new UnitOverviewHpMpViewModel
+                    foreach (UnitPanelViewModel item in units)
                     {
-                        HpDigits = unit.MaxHP.ToString().ToCharArray(),
-                        MpDigits = unit.MaxMP.ToString().ToCharArray()
-                    };
+                        item.HpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).HPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
+                        item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
+                    }
+                    //hpMultipliers = context.Jobs.Where(m => units.Select(c => m.JobID).Contains(m.JobID)).Select(m => m.HPMultiplier).ToArray();
+                    //mpMultipliers = context.Jobs.Where(m => units.All(c => c.JobID == m.JobID)).Select(m => m.MPMultiplier).ToArray();
                 }
+
+                //for (int i = 0; i < units.Count; i++)
+                //{
+                //    units[i].HpDigits = hpMultipliers[i].ToString().ToCharArray();
+                //    units[i].MpDigits = mpMultipliers[i].ToString().ToCharArray();
+                //}
 
                 return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
             }
 
-            return null;
+            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml");
         }
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
@@ -76,6 +87,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     JobID = m.JobID,
                     FileName = (m.PspName.Contains("(") ? m.PspName.Remove(m.PspName.IndexOf("(")) : m.PspName).Replace(" ", ""),
                     DisplayName = m.PspName,
+                    GenderID = gender == "Male" ? 0 : 1,
                     Gender = gender,
                     HPMultiplier = m.HPMultiplier,
                     HPGrowthConstant = m.HPGrowthConstant,
@@ -171,7 +183,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawHP) / 1638400;
             }
 
-            return Json(new { unit });
+            return Json(unit);
         }
 
         public ActionResult Details()

@@ -188,12 +188,14 @@
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UnitName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AttributeCalculator.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View_Models\JobOverviewRangeViewModel.cs" />
     <Compile Include="View_Models\JobOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitDetailsViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
+    <Compile Include="View_Models\UnitPanelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -635,6 +637,7 @@
     <Content Include="FFT Party Builder with Database.docx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\JobOverview.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

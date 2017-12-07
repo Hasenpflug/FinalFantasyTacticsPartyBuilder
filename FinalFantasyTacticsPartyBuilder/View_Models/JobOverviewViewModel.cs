@@ -13,6 +13,8 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public string DisplayName { get; set; }
 
+        public int GenderID { get; set; }
+
         public string Gender { get; set; }
 
         public int HPMultiplier { get; set; }

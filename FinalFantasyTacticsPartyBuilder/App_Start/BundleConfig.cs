@@ -43,6 +43,10 @@ namespace FinalFantasyTacticsPartyBuilder
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
                       "~/Scripts/Chart.bundle.min.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jobOverview").Include(
+                      "~/Scripts/JobOverview.js"
+                ));
         }
     }
 }
