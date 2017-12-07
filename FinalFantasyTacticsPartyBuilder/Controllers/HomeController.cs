@@ -30,7 +30,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     };
                 }
 
-                return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", null);
+                return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
             }
 
             return null;

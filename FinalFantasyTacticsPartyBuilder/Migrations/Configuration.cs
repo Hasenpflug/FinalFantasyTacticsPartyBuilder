@@ -6,6 +6,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
+    using System.Web;
+    using System.Web.Hosting;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FFTContext>
     {
@@ -9291,7 +9293,9 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Names
 
-            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTMaleNames.txt"))
+            string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9301,7 +9305,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9311,7 +9315,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines("FinalFantasyTacticsPartyBuilder/FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
