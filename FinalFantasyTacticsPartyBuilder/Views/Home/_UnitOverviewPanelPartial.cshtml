@@ -7,7 +7,7 @@
         for (int i = 0; i < Model.Count; i++)
         {
             <div class="unit-container" data-unit-position="@i">
-                <a href="#" class="unit-selector">
+                <a href="javascript:void(0);" class="unit-selector">
                     <img src="~/Content/Images/selection-square.png" class="selection-square" />
                     <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
                     <img class="job-image" src="~/Content/Images/Jobs/@(Model[i].JobName)_@(Model[i].Gender)_Standing.png" />
@@ -46,7 +46,7 @@
 
     <div class="unit-container new-unit-selector">
         <img class="job-blue-orb" src="~/Content/Images/blue_orb.png" />
-        <a href="#">
+        <a href="javascript:void(0);">
             <div id="empty-unit-outline">
                 <div id="new-unit-cross-container">
                     <div id="new-unit-cross-vertical"></div>

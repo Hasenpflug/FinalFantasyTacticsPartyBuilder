@@ -28,6 +28,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 {
                     foreach (UnitPanelViewModel item in units)
                     {
+                        item.JobName = item.JobName.Contains("Onion") ? "OnionKnight" : item.JobName;
                         item.HpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).HPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
                         item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
                     }
@@ -50,8 +51,9 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
         {
             unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
-            unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
-            unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName, unit.GenderName);
+            unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName, unit.GenderName);
+            unit.JobName = string.Concat(unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
+            unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);            
 
             unit.AttributeDigits = new UnitOverviewHpMpViewModel
             {

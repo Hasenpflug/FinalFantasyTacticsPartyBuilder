@@ -1,7 +1,7 @@
 ﻿var JobOverview = function ()
 {
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
-        selectedJobData;
+        selectedJobData, selectedUnitPosition;
 
     $(document).ready(function ()
     {
@@ -33,33 +33,48 @@
 
     function renderUnitStatusPanel(event)
     {
-        var unitPosition = event.currentTarget.attributes['data-unit-position'].nodeValue;
-        var unitData = JSON.parse(localStorage.getItem('unitData'));
-
-        for (var i = 0; i < unitData.units.length; i++)
+        if (selectedUnitPosition === event.currentTarget.attributes['data-unit-position'].nodeValue)
         {
-            if (unitData.units[i].position === unitPosition)
-            {
-                unitData = unitData.units[i];
-                break;
-            }
+            $('.unit-details-container').toggle();
+            $('.menu-container').toggle();
         }
-
-        $('.unit-details-container').remove();
-
-        $.post('/Home/GetUnitOverviewPartial', unitData, function (data)
+        else
         {
-            $('#party-overview-container').append(data);
-        });
+            selectedUnitPosition = event.currentTarget.attributes['data-unit-position'].nodeValue;
+            var unitData = JSON.parse(localStorage.getItem('unitData'));
 
-        //renderMenuPanel(event, unitPosition);
+            unitData = unitData.units[selectedUnitPosition];
+
+            $.post('/Home/GetUnitOverviewPartial', unitData, function (data)
+            {
+                $('.unit-details-container').remove();
+                $('#party-overview-container').append(data);
+                if (event.pageY > window.innerHeight / 1.5)
+                {
+                    $('.unit-details-container').css({
+                        top: '10%'
+                    });
+                }
+
+                renderMenuPanel(event, selectedUnitPosition);
+            });            
+        }
     }
 
     function renderMenuPanel(event, unitPosition)
     {
         $.post('/Home/GetUnitMenuPartial', unitPosition, function (data)
         {
+            $('.menu-container').remove();
             $('#party-builder-container').append(data);
+            var convertedUnitPosition = parseInt(unitPosition) + 1;
+            var columnIndex = (convertedUnitPosition % 4 === 0 && convertedUnitPosition !== 0 ? 0.40 : ((parseInt(unitPosition) % 4) / 4)) * 100 + 20;
+            var rowIndex = Math.trunc(parseInt(unitPosition) / 4) * 30 + 10;
+
+            $('.menu-container').css({
+                left: columnIndex + '%',
+                top: rowIndex + '%'
+            });
         });
     }
 
@@ -148,8 +163,6 @@
         piemenu.maxPercent = 0.50;
         piemenu.animateeffect = 'linear';
         piemenu.createWheel();
-
-        piemenu.navItems[0].attr
     }
 
     function setInitialJobData(jobData)
