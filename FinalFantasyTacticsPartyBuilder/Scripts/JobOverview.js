@@ -67,9 +67,10 @@
         {
             $('.menu-container').remove();
             $('#party-builder-container').append(data);
+            var windowScrollOffset = ($('.body-content')[0].scrollTop / window.innerHeight) * 100;
             var convertedUnitPosition = parseInt(unitPosition) + 1;
             var columnIndex = (convertedUnitPosition % 4 === 0 && convertedUnitPosition !== 0 ? 0.40 : ((parseInt(unitPosition) % 4) / 4)) * 100 + 20;
-            var rowIndex = Math.trunc(parseInt(unitPosition) / 4) * 30 + 10;
+            var rowIndex = Math.trunc(parseInt(unitPosition) / 4) * 30 + 10 - windowScrollOffset;
 
             $('.menu-container').css({
                 left: columnIndex + '%',
