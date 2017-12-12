@@ -9293,9 +9293,10 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Names
 
-            string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+            //string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+            string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(workPath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9305,7 +9306,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(workPath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9315,7 +9316,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(workPath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9324,6 +9325,100 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     Gender = (int)Gender.Monster
                 });
             }
+
+            #endregion
+
+            #region Dismissal Quotes
+
+            #region Male
+            context.Quotes.AddOrUpdate(m => m.QuoteID,
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "Then I shall go. I pray you do not come to regret your decision."
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "You no longer need my services? Surely you do not mean that!"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "Won't you rethink this? We've come this far together."
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "Are you sure? I had hoped I could continue lending my strength to your cause."
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "This is certainly sudden. Do you truly believe you can manage without me?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "So, you've no more use for me? You'd leave me behind now that I'm of no worth to you?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "Are you certain about this? I'd thought us faster friends."
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Male,
+                Text = "Would that it came not to this! Are you sure it's for the best?"
+            });
+
+            #endregion
+
+            #region Female
+            context.Quotes.AddOrUpdate(m => m.QuoteID,
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "I see. Given the choice, I'd prefer to stay, but I understand if that is impossible."
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "Surely you jest! If I leave now, what has all of this been for?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "I thought I'd finally found my place. Are you sure you will not have me?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "I beg you, do not say such things! I'll prove my worth to you, I swear it!"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "That...was not a jape? You wish for me to leave in earnest?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "If that is your wish, there's naught I can do. Are you sure about this?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "Pardon me for saying this, but are you not being a bit selfish? Will you not reconsider?"
+            },
+            new Quote
+            {
+                Gender = (int)Gender.Female,
+                Text = "I do not wish to say farewell. Can I not remain with you a little longer?"
+            });
+
+            #endregion
 
             #endregion
         }

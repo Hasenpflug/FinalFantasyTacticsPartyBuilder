@@ -462,6 +462,68 @@ img {
     width: 35%;
 }
 
+#unit-dismiss-container {
+    position:absolute;
+    left:5%;
+    width:90%;
+    z-index:20;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.25);
+}
+
+#dismiss-portrait-container {
+    position:relative;
+    margin:auto;
+    width:40%;
+    height:20%;
+    margin-bottom:1%;
+}
+
+#dismiss-name {
+    margin:1% 5%;
+    color:darkred;
+}
+
+#dismiss-quote {
+    display:block;
+    margin:1% 5%;
+    width:80%;
+}
+
+#dismiss-portrait {
+    position:absolute;
+    right:5%;
+    top:5%;
+    float:right;
+    height:90%;
+}
+
+#dismiss-confirmation-container {    
+    width:10%;
+    height:15%;
+    margin:auto;
+}
+
+#dismiss-confirmation-container span {
+    position:relative;
+    display:block;
+    width:60%;
+    margin:auto;
+    margin-bottom:10%;
+    margin-top:5%;
+}
+
+#dismiss-confirmation-container span:hover {
+    cursor:pointer;
+}
+
+#dismiss-confirmation-container span:hover:before {
+    content: url(Images/menu_cursor.png);
+    position: absolute;
+    left: -40px;
+    bottom: 5px;
+}
+
 #job-overview-container {
     width: 100%;
     height: 100%;

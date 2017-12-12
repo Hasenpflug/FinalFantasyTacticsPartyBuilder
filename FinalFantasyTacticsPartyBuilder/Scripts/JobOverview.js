@@ -15,6 +15,8 @@
     $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
     $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
     $('body').on('click', '#job-confirm-button', hireUnit);
+    $('body').on('click', '#menu-unit-remove', renderDismissUnitPartial);
+    $('body').on('click', '#dismiss-cancel', function () { $('#unit-dismiss-container').remove(); });
 
     function renderUnitPanels()
     {
@@ -67,7 +69,7 @@
         {
             $('.menu-container').remove();
             $('#party-builder-container').append(data);
-            var windowScrollOffset = ($('.body-content')[0].scrollTop / window.innerHeight) * 100;
+            var windowScrollOffset = (document.getElementsByClassName('body-content')[0].scrollTop / window.innerHeight) * 100;
             var convertedUnitPosition = parseInt(unitPosition) + 1;
             var columnIndex = (convertedUnitPosition % 4 === 0 && convertedUnitPosition !== 0 ? 0.40 : ((parseInt(unitPosition) % 4) / 4)) * 100 + 20;
             var rowIndex = Math.trunc(parseInt(unitPosition) / 4) * 30 + 10 - windowScrollOffset;
@@ -118,9 +120,21 @@
         });
     }
 
+    function renderDismissUnitPartial()
+    {
+        var localUnitData = JSON.parse(localStorage.getItem('unitData'));
+        localUnitData = localUnitData.units[selectedUnitPosition];
+
+        $.post('/Home/GetUnitDismissPartial', { Position: selectedUnitPosition, UnitName: localUnitData.UnitName } function (data)
+        {
+            $('#party-builder-container #unit-dismiss-container').remove();
+            $('#party-builder-container').append(data);
+        });
+    }
+
     function dismissUnit()
     {
-
+        
     }
 
     function buildPanelData(unitData)
@@ -348,31 +362,32 @@
 
     function Unit()
     {
-        this.name = '',
-            this.maxhp = 0,
-            this.maxmp = 0,
-            this.gender = 0,
-            this.position = 0,
-            this.jobID = 1,
-            this.jobName = '',
+        this.UnitName = '',
+            this.MaxHP = 0,
+            this.MaxMP = 0,
+            this.Gender = 0,
+            this.GenderName = '',
+            this.Position = 0,
+            this.JobID = 1,
+            this.JobName = '',
             this.hpc = 0,
             this.mpc = 0,
             this.spc = 0,
             this.pac = 0,
             this.mac = 0,
             this.secondaryJobID = 1,
-            this.reactionID = 1
-        this.supportID = 1,
-        this.movementID = 1,
-        this.weaponID = 1,
-        this.shieldID = 1,
-        this.headID = 1,
-        this.bodyID = 1,
-        this.accessoryID = 1,
-        this.level = 1,
-        this.experience = 0,
-        this.brave = 0,
-        this.faith = 0
+            this.ReactionID = 1
+        this.SupportID = 1,
+        this.MovementID = 1,
+        this.WeaponID = 1,
+        this.ShieldID = 1,
+        this.HeadID = 1,
+        this.BodyID = 1,
+        this.AccessoryID = 1,
+        this.Level = 1,
+        this.Experience = 0,
+        this.Brave = 0,
+        this.Faith = 0
     }
 
     return {

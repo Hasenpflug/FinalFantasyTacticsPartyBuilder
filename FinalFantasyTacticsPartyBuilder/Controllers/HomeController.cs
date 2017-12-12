@@ -72,6 +72,11 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitOverviewMenuPartial.cshtml", unitPositionID);
         }
 
+        public ActionResult GetUnitDismissPartial(UnitDismissViewModel unit)
+        {
+            return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
+        }
+
         public ActionResult GetJobOverviewPartial()
         {
             return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");

@@ -185,6 +185,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemCategory.cs" />
+    <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UnitName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="View_Models\JobOverviewRangeViewModel.cs" />
     <Compile Include="View_Models\JobOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitDetailsViewModel.cs" />
+    <Compile Include="View_Models\UnitDismissViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitPanelViewModel.cs" />
@@ -698,6 +700,7 @@
     <Content Include="Views\Home\_UnitOverviewMenuPartial.cshtml" />
     <Content Include="Views\Home\_JobOverviewPartial.cshtml" />
     <Content Include="Views\Home\_JobSelectionPartial.cshtml" />
+    <Content Include="Views\Home\_UnitDismissPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
