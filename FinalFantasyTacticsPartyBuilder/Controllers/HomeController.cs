@@ -30,7 +30,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     {
                         item.JobName = item.JobName.Contains("Onion") ? "OnionKnight" : item.JobName;
                         item.HpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).HPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
-                        item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
+                        item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawMP) / 1638400).ToString().ToCharArray();
                     }
                     //hpMultipliers = context.Jobs.Where(m => units.Select(c => m.JobID).Contains(m.JobID)).Select(m => m.HPMultiplier).ToArray();
                     //mpMultipliers = context.Jobs.Where(m => units.All(c => c.JobID == m.JobID)).Select(m => m.MPMultiplier).ToArray();
@@ -74,6 +74,13 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
         public ActionResult GetUnitDismissPartial(UnitDismissViewModel unit)
         {
+            using (FFTContext context = new FFTContext())
+            {
+                unit.Quote = context.Quotes.OrderBy(m => Guid.NewGuid()).FirstOrDefault(m => m.Gender == unit.Gender).Text;
+            }
+
+            unit.JobName = unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName;
+
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
         }
 
@@ -168,7 +175,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     Unit = new UnitOverviewViewModel
                     {
                         MaxHP = context.Jobs.Single(m => m.JobID == jobID).HPMultiplier,
-                        MaxMP = context.Jobs.Single(m => m.JobID == jobID).HPMultiplier,
+                        MaxMP = context.Jobs.Single(m => m.JobID == jobID).MPMultiplier,
                         UnitName = context.UnitNames.Where(m => m.Gender == gender).OrderBy(m => Guid.NewGuid()).First().Name
                     }
                 };
@@ -187,7 +194,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.RawMagicalAttack = gender == 0 ? 65536 : gender == 1 ? 81920 : r.Next(81920, 98303);
                 unit.RawSpeedGrowth = gender == 0 ? 98304 : gender == 1 ? 98304 : 81920;
                 unit.Unit.MaxHP = (unit.Unit.MaxHP * unit.RawHP) / 1638400;
-                unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawHP) / 1638400;
+                unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawMP) / 1638400;
             }
 
             return Json(unit);

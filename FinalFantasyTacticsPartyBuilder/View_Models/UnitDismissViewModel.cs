@@ -14,7 +14,7 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public string JobName { get; set; }
 
-        public Gender Gender { get; set; }
+        public int Gender { get; set; }
 
         public string GenderName { get; set; }
 

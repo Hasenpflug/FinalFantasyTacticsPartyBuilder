@@ -36,17 +36,13 @@ namespace FinalFantasyTacticsPartyBuilder
             bundles.Add(new ScriptBundle("~/bundles/wheelnav").Include(
                       "~/Scripts/raphael.icons.min.js",
                       "~/Scripts/raphael.min.js",
-                      "~/Scripts/wheelnav.js",
-                      "~/Scripts/wheelnav.min.js",
-                      "~/Scripts/wheelnav.min.js.map"));
+                      "~/Scripts/wheelnav.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
-                      "~/Scripts/Chart.bundle.min.js"
-                ));
+                      "~/Scripts/Chart.bundle.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jobOverview").Include(
-                      "~/Scripts/JobOverview.js"
-                ));
+                      "~/Scripts/JobOverview.js"));
         }
     }
 }

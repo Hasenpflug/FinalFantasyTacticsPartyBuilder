@@ -1,13 +1,18 @@
-﻿var JobOverview = function () {
+﻿var JobOverview = function ()
+{
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
         selectedJobData, selectedUnitPosition;
 
-    $(document).ready(function () {
-        if (typeof (Storage) !== 'undefined') {
-            var unitDataRaw = localStorage.getItem('unitData');
-            if (unitDataRaw === null) {
+    $(document).ready(function ()
+    {
+        if (typeof (Storage) !== 'undefined')
+        {
+            var unitDataRaw = getUnitData();
+            if (unitDataRaw === null)
+            {
                 localStorage.setItem('unitData', '{"units": []}')
             }
+
             renderUnitPanels();
         }
     });
@@ -18,29 +23,37 @@
     $('body').on('click', '#job-confirm-button', hireUnit);
     $('body').on('click', '#menu-unit-remove', renderDismissUnitPartial);
     $('body').on('click', '#dismiss-cancel', function () { $('#unit-dismiss-container').remove(); });
+    $('body').on('click', '#dismiss-unit', dismissUnit);
 
-    function renderUnitPanels() {
+    function renderUnitPanels()
+    {
         var unitData = buildPanelData(getUnitData());
-        $.post('/Home/GetUnitPanelPartial', unitData, function (data) {
+        $.post('/Home/GetUnitPanelPartial', unitData, function (data)
+        {
             $('#party-overview-container').prepend(data);
         });
     }
 
-    function renderUnitStatusPanel(event) {
-        if (selectedUnitPosition === event.currentTarget.attributes['data-unit-position'].nodeValue) {
+    function renderUnitStatusPanel(event)
+    {
+        if (selectedUnitPosition === event.currentTarget.attributes['data-unit-position'].nodeValue)
+        {
             $('.unit-details-container').toggle();
             $('.menu-container').toggle();
         }
-        else {
+        else
+        {
             selectedUnitPosition = event.currentTarget.attributes['data-unit-position'].nodeValue;
             var unitData = getUnitData();
 
             unitData = unitData.units[selectedUnitPosition];
 
-            $.post('/Home/GetUnitOverviewPartial', unitData, function (data) {
+            $.post('/Home/GetUnitOverviewPartial', unitData, function (data)
+            {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
-                if (event.pageY > window.innerHeight / 1.5) {
+                if (event.pageY > window.innerHeight / 1.5)
+                {
                     $('.unit-details-container').css({
                         top: '10%'
                     });
@@ -51,8 +64,10 @@
         }
     }
 
-    function renderMenuPanel(event, unitPosition) {
-        $.post('/Home/GetUnitMenuPartial', unitPosition, function (data) {
+    function renderMenuPanel(event, unitPosition)
+    {
+        $.post('/Home/GetUnitMenuPartial', unitPosition, function (data)
+        {
             $('.menu-container').remove();
             $('#party-builder-container').append(data);
             var windowScrollOffset = (document.getElementsByClassName('body-content')[0].scrollTop / window.innerHeight) * 100;
@@ -67,16 +82,20 @@
         });
     }
 
-    function renderJobOverviewPanel() {
-        $.post('/Home/GetJobOverviewPartial', function (data) {
+    function renderJobOverviewPanel()
+    {
+        $.post('/Home/GetJobOverviewPartial', function (data)
+        {
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
             renderJobSelectionPanel('Male');
         });
     }
 
-    function renderJobSelectionPanel(gender) {
-        $.post('/Home/GetJobSelectionPartial', { gender: gender }, function (data) {
+    function renderJobSelectionPanel(gender)
+    {
+        $.post('/Home/GetJobSelectionPartial', { gender: gender }, function (data)
+        {
             $('#job-selection-container').remove();
             $('#job-overview-container').prepend(data);
             initializeJobWheel();
@@ -87,12 +106,14 @@
         });
     }
 
-    function hireUnit() {
+    function hireUnit()
+    {
         var localUnitData = getUnitData();
         var newUnitData = new UnitDetails();
         newUnitData.Unit.JobID = selectedJobData.jobID;
         newUnitData.Unit.Gender = selectedJobData.gender;
-        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender }, function (data) {
+        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender }, function (data)
+        {
             $('#party-overview-container').contents().remove();
             localUnitData.units.push(data);
             localStorage.setItem('unitData', JSON.stringify(localUnitData));
@@ -100,29 +121,46 @@
         });
     }
 
-    function renderDismissUnitPartial() {
-        var localUnitData = JSON.parse(localStorage.getItem('unitData'));
+    function renderDismissUnitPartial()
+    {
+        var localUnitData = getUnitData();
         localUnitData = localUnitData.units[selectedUnitPosition];
+        var viewModelData = {
+            Position: parseInt(selectedUnitPosition),
+            UnitName: localUnitData.Unit.UnitName,
+            Gender: parseInt(localUnitData.Unit.Gender),
+            GenderName: localUnitData.Unit.GenderName,
+            JobName: localUnitData.Unit.JobName
+        };
 
-        $.post('/Home/GetUnitDismissPartial', { Position: selectedUnitPosition, UnitName: localUnitData.UnitName }, function (data) {
-            $('#party-builder-container #unit-dismiss-container').remove();
+        $.post('/Home/GetUnitDismissPartial', viewModelData, function (data)
+        {
+            $('#unit-dismiss-container').remove();
             $('#party-builder-container').append(data);
         });
     }
 
-    function getUnitData() {
-        var unitData = JSON.parse(localStorage.getItem('unitData'));
-        return $.extend(new UnitDetails(), unitData);
+    function getUnitData()
+    {
+        return JSON.parse(localStorage.getItem('unitData'));
     }
 
-    function dismissUnit() {
-
+    function dismissUnit()
+    {
+        var unitData = getUnitData();
+        unitData.units.splice(selectedUnitPosition, 1);
+        localStorage.setItem('unitData', JSON.stringify(unitData));
+        $('#party-overview-container').contents().remove();
+        selectedUnitPosition = '-1';
+        renderUnitPanels();
     }
 
-    function buildPanelData(unitData) {
+    function buildPanelData(unitData)
+    {
         var unitDataLength = unitData.units.length;
         var unitPanelData = { units: [] };
-        for (var i = 0; i < unitDataLength; i++) {
+        for (var i = 0; i < unitDataLength; i++)
+        {
             unitPanelData.units.push({
                 JobID: unitData.units[i].Unit.JobID, JobName: unitData.units[i].Unit.JobName, RawHP: unitData.units[i].RawHP, RawMP: unitData.units[i].RawMP,
                 Position: unitData.units[i].Unit.Position, Gender: unitData.units[i].Unit.GenderName
@@ -131,7 +169,8 @@
         return unitPanelData;
     }
 
-    function updateChartData(chart, jobData) {
+    function updateChartData(chart, jobData)
+    {
         selectedJobData = jobData;
         document.getElementById('job-name').innerHTML = selectedJobData.name;
         modifierChart.data.datasets[0].data = [parseInt(selectedJobData.hpm), parseInt(selectedJobData.mpm), parseInt(selectedJobData.spm), parseInt(selectedJobData.pam),
@@ -146,7 +185,8 @@
         baseEvasionChart.update();
     }
 
-    function initializeJobWheel() {
+    function initializeJobWheel()
+    {
         piemenu = new wheelnav('piemenu');
         piemenu.centerX = window.innerWidth / 2 - 50;
         piemenu.centerY = window.innerHeight / 3;
@@ -159,28 +199,34 @@
         piemenu.createWheel();
     }
 
-    function setInitialJobData(jobData) {
+    function setInitialJobData(jobData)
+    {
         selectedJobData = jobData;
     }
 
-    function updateJobWheel(event) {
-        if (piemenu !== 'undefined') {
+    function updateJobWheel(event)
+    {
+        if (piemenu !== 'undefined')
+        {
             piemenu.removeWheel();
         }
 
         var gender = event.currentTarget.attributes['data-gender'].nodeValue;
         renderJobSelectionPanel(gender);
-        if (gender === 'Male') {
+        if (gender === 'Male')
+        {
             document.getElementById('gender-male-button').setAttribute('selected', true);
             document.getElementById('gender-female-button').setAttribute('selected', false);
         }
-        else {
+        else
+        {
             document.getElementById('gender-male-button').setAttribute('selected', false);
             document.getElementById('gender-female-button').setAttribute('selected', true);
         }
     }
 
-    function initializeJobModifierChart() {
+    function initializeJobModifierChart()
+    {
         modifierChartCanvas = document.getElementById('job-modifier-chart');
         modifierChartCanvas.wid
         modifierChart = new Chart(modifierChartCanvas, {
@@ -219,7 +265,8 @@
         modifierChart.resize();
     }
 
-    function initializeJobGrowthChart(data) {
+    function initializeJobGrowthChart(data)
+    {
         growthChartCanvas = document.getElementById('job-growth-chart');
         growthChart = new Chart(growthChartCanvas, {
             type: 'radar',
@@ -257,7 +304,8 @@
         growthChart.resize();
     }
 
-    function initializeJobMoveChart(data) {
+    function initializeJobMoveChart(data)
+    {
         baseMoveJumpChartCanvas = document.getElementById('job-move-chart');
         baseMoveJumpChart = new Chart(baseMoveJumpChartCanvas, {
             type: 'bar',
@@ -291,7 +339,8 @@
         baseMoveJumpChart.resize();
     }
 
-    function initializeJobEvasionChart() {
+    function initializeJobEvasionChart()
+    {
         baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
         baseEvasionChart = new Chart(baseEvasionChartCanvas, {
             type: 'bar',
@@ -325,42 +374,43 @@
         baseEvasionChart.resize();
     }
 
-    function getModifierChart() {
+    function getModifierChart()
+    {
         return modifierChart;
     }
 
-    function UnitDetails() {
+    function UnitDetails()
+    {
         this.RawHP = 0,
-            this.RawMP = 0,
-            this.RawSpeedGrowth = 0,
-            this.RawPhysicalAttack = 0,
-            this.RawMagicalAttack = 0,
-            this.SecondaryAbilityJobID = 1,
-            this.ReactionAbilityID = 1,
-            this.SupportAbilityID = 1,
-            this.MovementAbilityID = 1,
-            this.WeaponID = 1,
-            this.Unit = {
-                UnitID: 0,
-                UnitName: '',
-                Position: 0,
-                GenderName: '',
-                Gender: 0,
-                GenderName: "Male",
-                JobID: 1,
-                JobName: 'Squire',
-                JobPortraitPath: '',
-                MaxHP: 0,
-                MaxMP: 0,
-                Level: 1,
-                Experience: 0,
-                Brave: 0,
-                Faith: 0
-            },
-            this.ShieldID = 1,
-            this.HeadID = 1,
-            this.BodyID = 1,
-            this.AccessoryID = 1
+        this.RawMP = 0,
+        this.RawSpeedGrowth = 0,
+        this.RawPhysicalAttack = 0,
+        this.RawMagicalAttack = 0,
+        this.SecondaryAbilityJobID = 1,
+        this.ReactionAbilityID = 1,
+        this.SupportAbilityID = 1,
+        this.MovementAbilityID = 1,
+        this.WeaponID = 1,
+        this.Unit = {
+            UnitID: 0,
+            UnitName: '',
+            Position: 0,
+            Gender: 0,
+            GenderName: "Male",
+            JobID: 1,
+            JobName: 'Squire',
+            JobPortraitPath: '',
+            MaxHP: 0,
+            MaxMP: 0,
+            Level: 1,
+            Experience: 0,
+            Brave: 0,
+            Faith: 0
+        },
+        this.ShieldID = 1,
+        this.HeadID = 1,
+        this.BodyID = 1,
+        this.AccessoryID = 1
     }
 
     return {

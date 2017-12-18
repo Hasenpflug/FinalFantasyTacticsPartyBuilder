@@ -475,7 +475,6 @@ img {
     position:relative;
     margin:auto;
     width:40%;
-    height:20%;
     margin-bottom:1%;
 }
 
@@ -492,7 +491,7 @@ img {
 
 #dismiss-portrait {
     position:absolute;
-    right:5%;
+    right:1%;
     top:5%;
     float:right;
     height:90%;
