@@ -1,0 +1,81 @@
+﻿<div id="ability-lookup-container">
+    <div class="fft-column job-ability-name job-ability-header">
+        <img class="menu-header-icon fft-cell" src="~/Content/Images/job.png" />
+    </div>
+    <div class="fft-column job-ability-level job-ability-header">
+        <img class="menu-header-icon fft-cell" src="~/Content/Images/level.png" />
+    </div>
+    <div class="fft-column job-ability-jp job-ability-header">
+        <img class="menu-header-icon fft-cell" src="~/Content/Images/jp.png" />
+    </div>
+    <div class="menu-header menu">
+        <div class="menu-header-bar"></div>
+    </div>
+    <div id="ability-job-selection" class="menu">
+        <div class="fft-column job-ability-name">
+            <div class="fft-cell">
+                <span>Squire</span>
+            </div>
+            <div class="fft-cell">
+                <span>Chemist</span>
+            </div>
+            <div class="fft-cell">
+                <span>Knight</span>
+            </div>
+            <div class="fft-cell">
+                <span>Archer</span>
+            </div>
+            <div class="fft-cell">
+                <span>Black Mage</span>
+            </div>
+            <div class="fft-cell">
+                <span>White Mage</span>
+            </div>
+            <div class="fft-cell">
+                <span>Monk</span>
+            </div>
+            <div class="fft-cell">
+                <span>Thief</span>
+            </div>
+            <div class="fft-cell">
+                <span>Mystic</span>
+            </div>
+            <div class="fft-cell">
+                <span>Time Mage</span>
+            </div>
+            <div class="fft-cell">
+                <span>Geomancer</span>
+            </div>
+            <div class="fft-cell">
+                <span>Dragoon</span>
+            </div>
+            <div class="fft-cell">
+                <span>Orator</span>
+            </div>
+            <div class="fft-cell">
+                <span>Summoner</span>
+            </div>
+            <div class="fft-cell">
+                <span>Ninja</span>
+            </div>
+        </div>
+        <div class="fft-column job-ability-level">
+            @for (int i = 0; i < 15; i++)
+            {
+                <div class="fft-cell">
+                    <span>8</span>
+                </div>
+            }
+        </div>
+        <div class="fft-column job-ability-jp">
+            @for (int i = 0; i < 15; i++)
+            {
+                <div class="fft-cell">
+                    <img src="~/Content/Images/star.png" />
+                    <span>Master!</span>
+                </div>
+            }
+        </div>
+    </div>
+    @*<div class="menu-footer-bar"></div>*@
+</div>

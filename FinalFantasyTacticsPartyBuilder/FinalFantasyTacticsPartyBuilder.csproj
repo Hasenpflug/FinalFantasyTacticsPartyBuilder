@@ -701,6 +701,10 @@
     <Content Include="Views\Home\_JobOverviewPartial.cshtml" />
     <Content Include="Views\Home\_JobSelectionPartial.cshtml" />
     <Content Include="Views\Home\_UnitDismissPartial.cshtml" />
+    <Content Include="Views\Home\_UnitAbilityLookupPartial.cshtml" />
+    <Content Include="Views\Home\_UnitItemLookupPartial.cshtml" />
+    <Content Include="Views\Home\_UnitItemDetailsPartial.cshtml" />
+    <Content Include="Views\Home\_UnitAbilityDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
