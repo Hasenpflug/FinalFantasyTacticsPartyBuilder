@@ -9293,10 +9293,10 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Names
 
-            //string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
-            string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+            string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+            //string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTMaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9306,7 +9306,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9316,7 +9316,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
