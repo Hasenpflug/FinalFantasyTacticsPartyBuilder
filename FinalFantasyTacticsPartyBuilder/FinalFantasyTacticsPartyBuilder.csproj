@@ -198,6 +198,7 @@
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitPanelViewModel.cs" />
+    <Compile Include="View_Models\UnitStatDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -669,7 +670,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -691,10 +691,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Scripts\wheelnav.min.js.map" />
-    <Content Include="Views\Home\Status.cshtml" />
-    <Content Include="Views\Home\Item.cshtml" />
     <Content Include="Views\Home\_UnitOverviewStatusPartial.cshtml" />
     <Content Include="Views\Home\_UnitOverviewPanelPartial.cshtml" />
     <Content Include="Views\Home\_UnitOverviewMenuPartial.cshtml" />
@@ -705,6 +702,7 @@
     <Content Include="Views\Home\_UnitItemLookupPartial.cshtml" />
     <Content Include="Views\Home\_UnitItemDetailsPartial.cshtml" />
     <Content Include="Views\Home\_UnitAbilityDetailsPartial.cshtml" />
+    <Content Include="Views\Home\_UnitStatDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

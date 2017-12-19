@@ -24,6 +24,7 @@
     $('body').on('click', '#menu-unit-remove', renderDismissUnitPartial);
     $('body').on('click', '#dismiss-cancel', function () { $('#unit-dismiss-container').remove(); });
     $('body').on('click', '#dismiss-unit', dismissUnit);
+    $('body').on('click', '#menu-unit-item, #menu-unit-ability ', renderUnitStatsDetailsPartial);
 
     function renderUnitPanels()
     {
@@ -103,6 +104,18 @@
             initializeJobGrowthChart();
             initializeJobMoveChart();
             initializeJobEvasionChart();
+        });
+    }
+
+    function renderUnitStatsDetailsPartial()
+    {
+        var unitData = getUnitData();
+        unitData = unitData.units[selectedUnitPosition];
+
+        $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data)
+        {
+            $('#party-overview-container').contents().remove();
+            $('#party-overview-container').append(data);
         });
     }
 

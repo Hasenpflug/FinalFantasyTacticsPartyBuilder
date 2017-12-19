@@ -1,61 +1,64 @@
-﻿@{
-    ViewBag.Title = "Status";
-}
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model UnitOverviewViewModel
 
 <div id="unit-details-container">
     <div id="unit-details-header" class="unit-details-container">
         <div id="unit-portrait-menu" class="menu">
-            <img class="unit-portrait" src="~/Content/Images/Jobs/Squire_Male_Portrait.png" />
+            <img class="unit-portrait" src="@Model.JobPortraitPath" />
         </div>
         <div id="unit-details-status-container">
             <div id="unit-status-level-container">
                 <img class="small-image" src="~/Content/Images/level.png" />
-                <img src="~/Content/Images/number_1.png" />
-                <img src="~/Content/Images/number_2.png" />
+                <img src="~/Content/Images/number_@(Model.AttributeDigits.LevelDigits[0]).png" />
+                <img src="~/Content/Images/number_@(Model.AttributeDigits.LevelDigits[1]).png" />
             </div>
             <div id="unit-status-experience-container">
                 <img class="small-image" src="~/Content/Images/experience.png" />
-                <img src="~/Content/Images/number_0.png" />
-                <img src="~/Content/Images/number_0.png" />
+                <img src="~/Content/Images/number_@(Model.AttributeDigits.ExperienceDigits[0]).png" />
+                <img src="~/Content/Images/number_@(Model.AttributeDigits.ExperienceDigits[1]).png" />
             </div>
             <div id="unit-status-hp-container">
                 <img class="hp small-image" src="~/Content/Images/hp.png" />
                 <div class="value-bar"></div>
-                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
-                <img class="value upper-hp" src="~/Content/Images/number_1.png" />
-                <img class="value upper-hp" src="~/Content/Images/number_9.png" />
+                @for (int i = 0; i < Model.AttributeDigits.HpDigits.Length; i++)
+                {
+                    <img class="value upper-hp" src="~/Content/Images/number_@(Model.AttributeDigits.HpDigits[i]).png" />
+                }
                 <img class="divider" src="~/Content/Images/divider.png" />
-                <img class="value lower-hp" src="~/Content/Images/number_1.png" />
-                <img class="value lower-hp" src="~/Content/Images/number_9.png" />
-                <img class="value lower-hp" src="~/Content/Images/number_1.png" />
+                @for (int i = 0; i < Model.AttributeDigits.HpDigits.Length; i++)
+                {
+                    <img class="value lower-hp" src="~/Content/Images/number_@(Model.AttributeDigits.HpDigits[i]).png" />
+                }
             </div>
             <div id="unit-status-mp-container">
                 <img class="mp small-image" src="~/Content/Images/mp.png" />
                 <div class="value-bar"></div>
-                <img class="value upper-mp" src="~/Content/Images/number_7.png" />
-                <img class="value upper-mp" src="~/Content/Images/number_6.png" />
-                <img class="value upper-mp" src="~/Content/Images/number_5.png" />
+                @for (int i = 0; i < Model.AttributeDigits.MpDigits.Length; i++)
+                {
+                    <img class="value upper-mp" src="~/Content/Images/number_@(Model.AttributeDigits.MpDigits[i]).png" />
+                }
                 <img class="divider" src="~/Content/Images/divider.png" />
-                <img class="value lower-mp" src="~/Content/Images/number_4.png" />
-                <img class="value lower-mp" src="~/Content/Images/number_3.png" />
-                <img class="value lower-mp" src="~/Content/Images/number_2.png" />
+                @for (int i = 0; i < Model.AttributeDigits.MpDigits.Length; i++)
+                {
+                    <img class="value lower-mp" src="~/Content/Images/number_@(Model.AttributeDigits.MpDigits[i]).png" />
+                }
             </div>
         </div>
         <div class="unit-details-name-container menu">
             <img id="unit-details-name-orb" src="~/Content/Images/blue_orb.png" />
             <div id="unit-details-name-rank-container">
-                <img src="~/Content/Images/number_dark_0.png" />
-                <img src="~/Content/Images/number_dark_1.png" />
+                <img src="~/Content/Images/number_dark_@(Model.AttributeDigits.PositionDigits[0]).png" />
+                <img src="~/Content/Images/number_dark_@(Model.AttributeDigits.PositionDigits[0]).png" />
             </div>
-            <strong id="unit-details-name-name">Braedon</strong>
-            <strong id="unit-details-name-job">Squire</strong>
+            <strong id="unit-details-name-name">@Model.UnitName</strong>
+            <strong id="unit-details-name-job">@Model.JobName</strong>
             <div id="unit-details-name-brave-container">
                 <span id="brave-header">Brave</span>
-                <span>74</span>
+                <span>@Model.Brave</span>
             </div>
             <div id="unit-details-name-faith-container">
                 <span id="faith-header">Faith</span>
-                <span>74</span>
+                <span>@Model.Faith</span>
             </div>
         </div>
     </div>
@@ -152,7 +155,7 @@
                 <div class="fft-cell unit-stat-divider"><span>/</span></div>
                 <div class="fft-cell unit-stat-divider"><span>/</span></div>
             </div>
-            <div class="fft-column">
+            <div class="fft-column fft-section-margin">
                 <div class="fft-cell"><span>A-EV</span></div>
                 <div class="fft-column">
                     <div class="fft-cell"><span>00</span></div>
@@ -163,10 +166,31 @@
                     <div class="fft-cell percentage-value"><span>%</span></div>
                 </div>
             </div>
+            <div class="fft-column fft-column-margin">
+                <div class="fft-cell"><span>Raw HP/MP</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>496438</span></div>
+                    <div class="fft-cell"><span>98000</span></div>
+                </div>
+            </div>
+            <div class="fft-column fft-column-margin">
+                <div class="fft-cell"><span>Raw PA/MA</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>81920</span></div>
+                    <div class="fft-cell"><span>65536</span></div>
+                </div>
+            </div>
+            <div class="fft-column fft-column-margin">
+                <div class="fft-cell"><span>Raw SPD</span></div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>98304</span></div>
+                    <div class="fft-cell"><span class="text-hide">N/A</span></div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="unit-ability-equipment-container">
-        <div id="unit-equipment" class="menu">            
+        <div id="unit-equipment" class="menu">
             <div id="unit-equipment-slot-icons" class="fft-column">
                 <div class="fft-cell">
                     <img src="~/Content/Images/hand_right.png" />
@@ -216,7 +240,7 @@
                 </div>
             </div>
         </div>
-        <div id="unit-abilities" class="menu">            
+        <div id="unit-abilities" class="menu">
             <div id="unit-ability-icons" class="fft-column">
                 <img id="ability-icon" src="~/Content/Images/ability.png" />
                 <div class="fft-cell">
@@ -251,8 +275,8 @@
                 </div>
             </div>
         </div>
-    </div>    
-    
+    </div>
+
 </div>
 <script>
     $(document).ready(function ()

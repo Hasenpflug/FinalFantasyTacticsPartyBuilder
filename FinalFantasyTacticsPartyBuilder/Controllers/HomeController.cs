@@ -32,15 +32,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         item.HpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).HPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
                         item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawMP) / 1638400).ToString().ToCharArray();
                     }
-                    //hpMultipliers = context.Jobs.Where(m => units.Select(c => m.JobID).Contains(m.JobID)).Select(m => m.HPMultiplier).ToArray();
-                    //mpMultipliers = context.Jobs.Where(m => units.All(c => c.JobID == m.JobID)).Select(m => m.MPMultiplier).ToArray();
                 }
-
-                //for (int i = 0; i < units.Count; i++)
-                //{
-                //    units[i].HpDigits = hpMultipliers[i].ToString().ToCharArray();
-                //    units[i].MpDigits = mpMultipliers[i].ToString().ToCharArray();
-                //}
 
                 return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
             }
@@ -82,6 +74,25 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             unit.JobName = unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName;
 
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
+        }
+
+        public ActionResult GetUnitStatsDetailPartial(UnitOverviewViewModel unit)
+        {
+            unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
+            unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName, unit.GenderName);
+            unit.JobName = string.Concat(unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
+            unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
+
+            unit.AttributeDigits = new UnitOverviewHpMpViewModel
+            {
+                HpDigits = unit.MaxHP.ToString().ToCharArray(),
+                MpDigits = unit.MaxMP.ToString().ToCharArray(),
+                ExperienceDigits = unit.Experience < 10 ? ("0" + unit.Experience.ToString()).ToCharArray() : unit.Experience.ToString().ToCharArray(),
+                LevelDigits = unit.Level < 10 ? ("0" + unit.Level.ToString()).ToCharArray() : unit.Level.ToString().ToCharArray(),
+                PositionDigits = unit.Position < 10 ? ("0" + unit.Position.ToString()).ToCharArray() : unit.Position.ToString().ToCharArray()
+            };
+
+            return PartialView("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit);
         }
 
         public ActionResult GetJobOverviewPartial()
@@ -200,31 +211,9 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return Json(unit);
         }
 
-        public ActionResult Details()
-        {
-            return View();
-        }
-
-        public ActionResult Item()
-        {
-            return View();
-        }
-
-        public ActionResult Status()
-        {
-            return View();
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
