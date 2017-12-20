@@ -1,64 +1,64 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models
-@model UnitOverviewViewModel
+@model UnitDetailsViewModel
 
 <div id="unit-details-container">
     <div id="unit-details-header" class="unit-details-container">
         <div id="unit-portrait-menu" class="menu">
-            <img class="unit-portrait" src="@Model.JobPortraitPath" />
+            <img class="unit-portrait" src="@Model.Unit.JobPortraitPath" />
         </div>
         <div id="unit-details-status-container">
             <div id="unit-status-level-container">
                 <img class="small-image" src="~/Content/Images/level.png" />
-                <img src="~/Content/Images/number_@(Model.AttributeDigits.LevelDigits[0]).png" />
-                <img src="~/Content/Images/number_@(Model.AttributeDigits.LevelDigits[1]).png" />
+                <img src="~/Content/Images/number_@(Model.Unit.AttributeDigits.LevelDigits[0]).png" />
+                <img src="~/Content/Images/number_@(Model.Unit.AttributeDigits.LevelDigits[1]).png" />
             </div>
             <div id="unit-status-experience-container">
                 <img class="small-image" src="~/Content/Images/experience.png" />
-                <img src="~/Content/Images/number_@(Model.AttributeDigits.ExperienceDigits[0]).png" />
-                <img src="~/Content/Images/number_@(Model.AttributeDigits.ExperienceDigits[1]).png" />
+                <img src="~/Content/Images/number_@(Model.Unit.AttributeDigits.ExperienceDigits[0]).png" />
+                <img src="~/Content/Images/number_@(Model.Unit.AttributeDigits.ExperienceDigits[1]).png" />
             </div>
             <div id="unit-status-hp-container">
                 <img class="hp small-image" src="~/Content/Images/hp.png" />
                 <div class="value-bar"></div>
-                @for (int i = 0; i < Model.AttributeDigits.HpDigits.Length; i++)
+                @for (int i = 0; i < Model.Unit.AttributeDigits.HpDigits.Length; i++)
                 {
-                    <img class="value upper-hp" src="~/Content/Images/number_@(Model.AttributeDigits.HpDigits[i]).png" />
+                    <img class="value upper-hp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.HpDigits[i]).png" />
                 }
                 <img class="divider" src="~/Content/Images/divider.png" />
-                @for (int i = 0; i < Model.AttributeDigits.HpDigits.Length; i++)
+                @for (int i = 0; i < Model.Unit.AttributeDigits.HpDigits.Length; i++)
                 {
-                    <img class="value lower-hp" src="~/Content/Images/number_@(Model.AttributeDigits.HpDigits[i]).png" />
+                    <img class="value lower-hp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.HpDigits[i]).png" />
                 }
             </div>
             <div id="unit-status-mp-container">
                 <img class="mp small-image" src="~/Content/Images/mp.png" />
                 <div class="value-bar"></div>
-                @for (int i = 0; i < Model.AttributeDigits.MpDigits.Length; i++)
+                @for (int i = 0; i < Model.Unit.AttributeDigits.MpDigits.Length; i++)
                 {
-                    <img class="value upper-mp" src="~/Content/Images/number_@(Model.AttributeDigits.MpDigits[i]).png" />
+                    <img class="value upper-mp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.MpDigits[i]).png" />
                 }
                 <img class="divider" src="~/Content/Images/divider.png" />
-                @for (int i = 0; i < Model.AttributeDigits.MpDigits.Length; i++)
+                @for (int i = 0; i < Model.Unit.AttributeDigits.MpDigits.Length; i++)
                 {
-                    <img class="value lower-mp" src="~/Content/Images/number_@(Model.AttributeDigits.MpDigits[i]).png" />
+                    <img class="value lower-mp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.MpDigits[i]).png" />
                 }
             </div>
         </div>
         <div class="unit-details-name-container menu">
             <img id="unit-details-name-orb" src="~/Content/Images/blue_orb.png" />
             <div id="unit-details-name-rank-container">
-                <img src="~/Content/Images/number_dark_@(Model.AttributeDigits.PositionDigits[0]).png" />
-                <img src="~/Content/Images/number_dark_@(Model.AttributeDigits.PositionDigits[0]).png" />
+                <img src="~/Content/Images/number_dark_@(Model.Unit.AttributeDigits.PositionDigits[0]).png" />
+                <img src="~/Content/Images/number_dark_@(Model.Unit.AttributeDigits.PositionDigits[0]).png" />
             </div>
-            <strong id="unit-details-name-name">@Model.UnitName</strong>
-            <strong id="unit-details-name-job">@Model.JobName</strong>
+            <strong id="unit-details-name-name">@Model.Unit.UnitName</strong>
+            <strong id="unit-details-name-job">@Model.Unit.JobName</strong>
             <div id="unit-details-name-brave-container">
                 <span id="brave-header">Brave</span>
-                <span>@Model.Brave</span>
+                <span>@Model.Unit.Brave</span>
             </div>
             <div id="unit-details-name-faith-container">
                 <span id="faith-header">Faith</span>
-                <span>@Model.Faith</span>
+                <span>@Model.Unit.Faith</span>
             </div>
         </div>
     </div>
@@ -75,9 +75,9 @@
                 <div class="fft-cell stat-seperator"><span>...</span></div>
             </div>
             <div class="fft-column">
-                <div class="fft-cell" id="move-stat-value"><span>5</span></div>
-                <div class="fft-cell" id="jump-stat-value"><span>3</span></div>
-                <div class="fft-cell" id="speed-stat-value"><span>06</span></div>
+                <div class="fft-cell" id="move-stat-value"><span>@Model.Move</span></div>
+                <div class="fft-cell" id="jump-stat-value"><span>@Model.Jump</span></div>
+                <div class="fft-cell" id="speed-stat-value"><span>@Model.Speed</span></div>
             </div>
             <div id="move-weapon-margin" class="fft-column"></div>
             <div class="fft-column">
@@ -91,16 +91,16 @@
                     <div class="fft-cell stat-seperator"><span>...</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell" id="weapon-stats-right-damage" data-item-power="4"><span>004</span></div>
-                    <div class="fft-cell" id="weapon-stats-left-damage"><span>000</span></div>
+                    <div class="fft-cell" id="weapon-stats-right-damage" data-item-power="@Model.WeaponRight.WeaponPower"><span>@Model.WeaponRight.WeaponPower</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-damage" data-item-power="@Model.WeaponLeft.WeaponPower"><span>@Model.WeaponLeft.WeaponPower</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell unit-stat-divider"><span>/</span></div>
                     <div class="fft-cell unit-stat-divider"><span>/</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell" id="weapon-stats-right-hit" data-item-hit-percentage="5"><span>05</span></div>
-                    <div class="fft-cell" id="weapon-stats-left-hit"><span>00</span></div>
+                    <div class="fft-cell" id="weapon-stats-right-hit" data-item-hit-percentage="@Model.WeaponRight.WeaponHit"><span>@Model.WeaponRight.WeaponHit</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-hit" data-item-hit-percentage="@Model.WeaponLeft.WeaponHit"><span>@Model.WeaponLeft.WeaponHit</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell  percentage-value"><span>%</span></div>
@@ -115,8 +115,8 @@
             </div>
             <div class="fft-column">
                 <div class="fft-cell"><span>AT</span></div>
-                <div class="fft-cell"><span>05</span></div>
-                <div class="fft-cell"><span>05</span></div>
+                <div class="fft-cell"><span>@Model.PhysicalAttackPower</span></div>
+                <div class="fft-cell"><span>@Model.MagicalAttackPower</span></div>
             </div>
             <div class="fft-column">
                 <div class="fft-cell"><span></span></div>
@@ -126,8 +126,8 @@
             <div class="fft-column">
                 <div class="fft-cell"><span>C-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>10</span></div>
-                    <div class="fft-cell"><span>05</span></div>
+                    <div class="fft-cell"><span>@Model.PhysicalCharacterEvade</span></div>
+                    <div class="fft-cell"><span>@Model.MagicalCharacterEvade</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell percentage-value"><span>%</span></div>
@@ -142,8 +142,8 @@
             <div class="fft-column">
                 <div class="fft-cell"><span>S-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>00</span></div>
-                    <div class="fft-cell"><span>00</span></div>
+                    <div class="fft-cell"><span>@Model.PhysicalShieldEvade</span></div>
+                    <div class="fft-cell"><span>@Model.MagicalShieldEvade</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell percentage-value"><span>%</span></div>
@@ -158,8 +158,8 @@
             <div class="fft-column fft-section-margin">
                 <div class="fft-cell"><span>A-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>00</span></div>
-                    <div class="fft-cell"><span>00</span></div>
+                    <div class="fft-cell"><span>@Model.PhysicalAccessoryEvade</span></div>
+                    <div class="fft-cell"><span>@Model.MagicalAccessoryEvade</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell percentage-value"><span>%</span></div>
@@ -169,21 +169,21 @@
             <div class="fft-column fft-column-margin">
                 <div class="fft-cell"><span>Raw HP/MP</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>496438</span></div>
-                    <div class="fft-cell"><span>98000</span></div>
+                    <div class="fft-cell"><span>@Model.RawHP</span></div>
+                    <div class="fft-cell"><span>@Model.RawMP</span></div>
                 </div>
             </div>
             <div class="fft-column fft-column-margin">
                 <div class="fft-cell"><span>Raw PA/MA</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>81920</span></div>
-                    <div class="fft-cell"><span>65536</span></div>
+                    <div class="fft-cell"><span>@Model.RawPhysicalAttack</span></div>
+                    <div class="fft-cell"><span>@Model.RawMagicalAttack</span></div>
                 </div>
             </div>
             <div class="fft-column fft-column-margin">
                 <div class="fft-cell"><span>Raw SPD</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>98304</span></div>
+                    <div class="fft-cell"><span>@Model.RawSpeed</span></div>
                     <div class="fft-cell"><span class="text-hide">N/A</span></div>
                 </div>
             </div>
@@ -211,32 +211,66 @@
             <div id="unit-equipment-item-icons" class="fft-column">
                 <img id="equip-icon" src="~/Content/Images/equip.png" />
                 <div class="fft-cell">
-                    <img src="~/Content/Images/Item Icons/Weapons/FFT_Broadsword.gif" />
-                </div>
-                <div class="fft-cell"></div>
-                <div class="fft-cell">
-                    <img src="~/Content/Images/Item Icons/Armour/FFT_Leather_Cap.gif" />
-                </div>
-                <div class="fft-cell">
-                    <img src="~/Content/Images/Item Icons/Armour/FFT_Clothing.gif" />
+                    @if (Model.WeaponRight != null)
+                    {
+                        <img src="@Model.WeaponRight.ImagePath" />
+                    }
                 </div>
                 <div class="fft-cell">
-                    <img src="~/Content/Images/Item Icons/Accessories/FFT_Battle_Boots.gif" />
+                    @if (Model.WeaponRight != null)
+                    {
+                        <img src="@Model.WeaponLeft.ImagePath" />
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Head != null)
+                    {
+                        <img src="@Model.Head.ImagePath" />
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Body != null)
+                    {
+                        <img src="@Model.Body.ImagePath" />
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Accessory != null)
+                    {
+                        <img src="@Model.Accessory.ImagePath" />
+                    }
                 </div>
             </div>
             <div id="unit-equipment-item-names" class="fft-column">
                 <div class="fft-cell">
-                    <strong>Broad Sword</strong>
-                </div>
-                <div class="fft-cell"></div>
-                <div class="fft-cell">
-                    <strong>Leather Hat</strong>
-                </div>
-                <div class="fft-cell">
-                    <strong>Clothes</strong>
+                    @if (Model.WeaponRight != null)
+                    {
+                        <strong>@Model.WeaponRight.Name</strong>
+                    }
                 </div>
                 <div class="fft-cell">
-                    <strong>Battle Boots</strong>
+                    @if (Model.WeaponLeft != null)
+                    {
+                        <strong>@Model.WeaponLeft.Name</strong>
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Head != null)
+                    {
+                        <strong>@Model.Head.Name</strong>
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Body != null)
+                    {
+                        <strong>@Model.Body.Name</strong>
+                    }
+                </div>
+                <div class="fft-cell">
+                    @if (Model.Accessory != null)
+                    {
+                        <strong>@Model.Accessory.Name</strong>
+                    }
                 </div>
             </div>
         </div>

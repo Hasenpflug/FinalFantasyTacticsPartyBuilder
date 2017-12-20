@@ -76,21 +76,108 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
         }
 
-        public ActionResult GetUnitStatsDetailPartial(UnitOverviewViewModel unit)
+        public ActionResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit)
         {
-            unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
-            unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName, unit.GenderName);
-            unit.JobName = string.Concat(unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
-            unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
+            unit.Unit.JobName = Enum.GetName(typeof(Jobs), unit.Unit.JobID);
+            unit.Unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.Unit.JobName.Contains("Onion") ? "OnionKnight" : unit.Unit.JobName, unit.Unit.GenderName);
+            unit.Unit.JobName = string.Concat(unit.Unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
+            unit.Unit.GenderName = Enum.GetName(typeof(Gender), unit.Unit.Gender);
 
-            unit.AttributeDigits = new UnitOverviewHpMpViewModel
+            unit.Unit.AttributeDigits = new UnitOverviewHpMpViewModel
             {
-                HpDigits = unit.MaxHP.ToString().ToCharArray(),
-                MpDigits = unit.MaxMP.ToString().ToCharArray(),
-                ExperienceDigits = unit.Experience < 10 ? ("0" + unit.Experience.ToString()).ToCharArray() : unit.Experience.ToString().ToCharArray(),
-                LevelDigits = unit.Level < 10 ? ("0" + unit.Level.ToString()).ToCharArray() : unit.Level.ToString().ToCharArray(),
-                PositionDigits = unit.Position < 10 ? ("0" + unit.Position.ToString()).ToCharArray() : unit.Position.ToString().ToCharArray()
+                HpDigits = unit.Unit.MaxHP.ToString().ToCharArray(),
+                MpDigits = unit.Unit.MaxMP.ToString().ToCharArray(),
+                ExperienceDigits = unit.Unit.Experience < 10 ? ("0" + unit.Unit.Experience.ToString()).ToCharArray() : unit.Unit.Experience.ToString().ToCharArray(),
+                LevelDigits = unit.Unit.Level < 10 ? ("0" + unit.Unit.Level.ToString()).ToCharArray() : unit.Unit.Level.ToString().ToCharArray(),
+                PositionDigits = unit.Unit.Position < 10 ? ("0" + unit.Unit.Position.ToString()).ToCharArray() : unit.Unit.Position.ToString().ToCharArray()
             };
+
+            using (FFTContext context = new FFTContext())
+            {
+                if (unit.WeaponID != default(int))
+                {
+                    Item armItem = context.Items.Single(m => m.ItemID == unit.WeaponID);
+                    unit.WeaponRight = new ItemOverviewViewModel
+                    {
+                        WeaponPower = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? armItem.AttackPower.Value.ToString("D3") : "000",
+                        WeaponHit = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? armItem.HitPercentage.Value.ToString("D3") : "000",
+                        ShieldPhysicalEvade = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? armItem.PhysicalEvade.Value.ToString("D2") : "00",
+                        ShieldMagicalEvade = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? armItem.MagicalEvade.Value.ToString("D2") : "00",
+                        PhysicalAttackPower = armItem.PhysicalAttackBoost.HasValue ? armItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        MagicalAttackPower = armItem.PhysicalAttackBoost.HasValue ? armItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        ImagePath = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"~/Content/Images/Item Icons/Weapons/" + 
+                        armItem.IconFileName : @"~/Content/Images/Item Icons/Armour/" + armItem.IconFileName,
+                        Name = armItem.PspName,
+                    };
+                }
+
+                if (unit.ShieldID != default(int))
+                {
+                    Item armItem = context.Items.Single(m => m.ItemID == unit.ShieldID);
+                    unit.WeaponLeft = new ItemOverviewViewModel
+                    {
+                        WeaponPower = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? armItem.AttackPower.Value.ToString("D3") : "000",
+                        WeaponHit = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? armItem.HitPercentage.Value.ToString("D3") : "000",
+                        ShieldPhysicalEvade = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? armItem.PhysicalEvade.Value.ToString("D3") : "00",
+                        ShieldMagicalEvade = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? armItem.MagicalEvade.Value.ToString("D3") : "00",
+                        PhysicalAttackPower = armItem.PhysicalAttackBoost.HasValue ? armItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        MagicalAttackPower = armItem.PhysicalAttackBoost.HasValue ? armItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        ImagePath = armItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"~/Content/Images/Item Icons/Weapons/" +
+                        armItem.IconFileName : @"~/Content/Images/Item Icons/Armour/" + armItem.IconFileName,
+                        Name = armItem.PspName,
+                    };
+                }
+
+                if (unit.HeadID != default(int))
+                {
+                    Item headItem = context.Items.Single(m => m.ItemID == unit.HeadID);
+                    unit.Head = new ItemOverviewViewModel
+                    {
+                        HPBonus = headItem.HPBonus.HasValue ? headItem.HPBonus.Value : 0,
+                        MPBonus = headItem.MPBonus.HasValue ? headItem.MPBonus.Value : 0,
+                        PhysicalAttackPower = headItem.PhysicalAttackBoost.HasValue ? headItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        MagicalAttackPower = headItem.PhysicalAttackBoost.HasValue ? headItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        SpeedBonus = headItem.SpeedBoost.HasValue ? headItem.SpeedBoost.Value : 0,
+                        ImagePath = @"~/Content/Images/Item Icons/Armour/" + headItem.IconFileName,
+                        Name = headItem.PspName,
+                    };
+                }
+
+                if (unit.HeadID != default(int))
+                {
+                    Item bodyItem = context.Items.Single(m => m.ItemID == unit.BodyID);
+                    unit.Body = new ItemOverviewViewModel
+                    {
+                        HPBonus = bodyItem.HPBonus.HasValue ? bodyItem.HPBonus.Value : 0,
+                        MPBonus = bodyItem.MPBonus.HasValue ? bodyItem.MPBonus.Value : 0,
+                        PhysicalAttackPower = bodyItem.PhysicalAttackBoost.HasValue ? bodyItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        MagicalAttackPower = bodyItem.PhysicalAttackBoost.HasValue ? bodyItem.PhysicalAttackBoost.Value.ToString("D2") : "00",
+                        SpeedBonus = bodyItem.SpeedBoost.HasValue ? bodyItem.SpeedBoost.Value : 0,
+                        ImagePath = @"~/Content/Images/Item Icons/Armour/" + context.Items.Single(m => m.ItemID == unit.BodyID).IconFileName,
+                        Name = context.Items.Single(m => m.ItemID == unit.BodyID).PspName,
+                    };
+                }
+
+                if (unit.AccessoryID != default(int))
+                {
+                    Item accessoryItem = context.Items.Single(m => m.ItemID == unit.AccessoryID);
+                    unit.Accessory = new ItemOverviewViewModel
+                    {
+                        MoveBonus = accessoryItem.MoveBoost.HasValue ? accessoryItem.MoveBoost.Value : 0,
+                        JumpBonus = accessoryItem.JumpBoost.HasValue ? accessoryItem.JumpBoost.Value : 0,
+                        SpeedBonus = accessoryItem.SpeedBoost.HasValue ? accessoryItem.SpeedBoost.Value : 0,
+                        AccessoryPhysicalEvade = accessoryItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? accessoryItem.PhysicalEvade.HasValue ? 
+                        accessoryItem.PhysicalEvade.Value.ToString("D3") : "00" : "00",
+                        AccessoryMagicalEvade = accessoryItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? accessoryItem.MagicalEvade.HasValue ?
+                        accessoryItem.MagicalEvade.Value.ToString("D3") : "00" : "00",
+                        ImagePath = @"~/Content/Images/Item Icons/Armour/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
+                        Name = context.Items.Single(m => m.ItemID == unit.AccessoryID).PspName,
+                    };
+                }
+
+                unit.Move = (context.Jobs.Single(m => m.JobID == unit.Unit.JobID).BaseMoveLength + (unit.Accessory != null ? unit.Accessory.MoveBonus : 0)).ToString();
+                unit.Jump = (context.Jobs.Single(m => m.JobID == unit.Unit.JobID).BaseJumpHeight + (unit.Accessory != null ? unit.Accessory.JumpBonus : 0)).ToString();
+            }
 
             return PartialView("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit);
         }
@@ -203,9 +290,19 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.RawMP = gender == 0 ? r.Next(229376, 245759) : gender == 1 ? r.Next(245760, 262143) : r.Next(98304, 147455);
                 unit.RawPhysicalAttack = gender == 0 ? 81920 : gender == 1 ? 65536 : r.Next(81920, 98303);
                 unit.RawMagicalAttack = gender == 0 ? 65536 : gender == 1 ? 81920 : r.Next(81920, 98303);
-                unit.RawSpeedGrowth = gender == 0 ? 98304 : gender == 1 ? 98304 : 81920;
+                unit.RawSpeed = gender == 0 ? 98304 : gender == 1 ? 98304 : 81920;
                 unit.Unit.MaxHP = (unit.Unit.MaxHP * unit.RawHP) / 1638400;
                 unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawMP) / 1638400;
+
+                unit.WeaponID = context.Items.OrderBy(c => c.AttackPower).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID && 
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon).ItemCategoryID).ItemID;
+                unit.ShieldID = context.JobItems.FirstOrDefault(c => c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield && c.JobID == unit.Unit.JobID).ItemCategoryID != default(int) ?
+                    context.Items.OrderBy(c => c.PhysicalEvade).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                    m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield).ItemCategoryID).ItemID : 0;
+                unit.HeadID = context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet).ItemCategoryID).ItemID;
+                unit.BodyID = context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor).ItemCategoryID).ItemID;
             }
 
             return Json(unit);

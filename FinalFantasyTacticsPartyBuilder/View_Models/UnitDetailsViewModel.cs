@@ -11,7 +11,7 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public int RawMP { get; set; }
 
-        public int RawSpeedGrowth { get; set; }
+        public int RawSpeed { get; set; }
 
         public int RawPhysicalAttack { get; set; }
 
@@ -35,19 +35,23 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public int AccessoryID { get; set; }
 
-        public int Move { get; set; }
+        public string Move { get; set; }
 
-        public int Jump { get; set; }
+        public string Jump { get; set; }
 
-        public int Speed { get; set; }
+        public string Speed { get; set; }
+        
+        public ItemOverviewViewModel WeaponRight { get; set; }
 
-        public int WeaponPowerRight { get; set; }
-
-        public int WeaponHitRight { get; set; }
-
-        public int WeaponPowerLeft { get; set; }
-
-        public int WeaponHitLeft { get; set; }
+        public ItemOverviewViewModel WeaponLeft { get; set; }
+        
+        public ItemOverviewViewModel Shield { get; set; }
+        
+        public ItemOverviewViewModel Head { get; set; }
+        
+        public ItemOverviewViewModel Body { get; set; }
+        
+        public ItemOverviewViewModel Accessory { get; set; }       
 
         public int PhysicalAttackPower { get; set; }
 

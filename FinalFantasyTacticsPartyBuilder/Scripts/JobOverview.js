@@ -112,7 +112,7 @@
         var unitData = getUnitData();
         unitData = unitData.units[selectedUnitPosition];
 
-        $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data)
+        $.post('/Home/GetUnitStatsDetailPartial', { unit: unitData }, function (data)
         {
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
