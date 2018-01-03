@@ -13,8 +13,8 @@
                     <img class="job-image" src="~/Content/Images/Jobs/@(Model[i].JobName)_@(Model[i].Gender)_Standing.png" />
                     <div class="job-status-container">
                         <div class="job-status-hp-container">
-                            <div class="hp-bar"></div>
-                            <img class="hp" src="~/Content/Images/hp.png" />
+                            <div class="hp-bar"></div>                         
+                            <img src="~/Content/Images/hp.png" />
                             @for (int j = 0; j < Model[i].HpDigits.Length; j++)
                             {
                                 <img class="value upper-hp" src="~/Content/Images/number_@(Model[i].HpDigits[j]).png" />
@@ -24,6 +24,7 @@
                             {
                                 <img class="value lower-hp" src="~/Content/Images/number_@(Model[i].HpDigits[j]).png" />
                             }
+                            
                         </div>
                         <div class="job-status-mp-container">
                             <div class="mp-bar"></div>
