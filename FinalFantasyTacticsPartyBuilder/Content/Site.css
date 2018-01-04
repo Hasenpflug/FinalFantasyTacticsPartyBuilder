@@ -1210,9 +1210,9 @@ img {
     width: 100%;
 }
 
-@media screen and (max-width: 600px) and (min-width: 300px) {
+@media screen and (max-width: 600px) {
     .menu {
-        font: 10vw 'Altima';
+        font: 20vw 'Altima';
     }
 
     .unit-container {
@@ -1237,11 +1237,92 @@ img {
 
 .menu-container {
     position:absolute;
-    left:0;
+    left:5%;
     top:10%;
-    width: 55%;
+    width: 80%;
     height: auto;
     z-index: 10;
 }
 
+.unit-details-container {
+    bottom:5%;
+}
+
+#unit-portrait-menu {
+    width:40%;
+}
+
+#unit-details-status-container {
+    display:none;
+}
+
+.unit-details-name-container {
+    font-size:10vw;
+    width:50%;
+    padding:5%;
+    margin:0;
+}
+
+#unit-details-name-orb {
+    vertical-align:text-top;
+    width:10%;
+}
+
+#unit-details-name-rank-container {
+    width:90%;
+    left:30%;
+}
+
+#unit-details-name-name {
+    left:45%;
+}
+
+#unit-details-name-job {
+    left:20%;
+    top:30%;
+}
+
+#unit-details-name-brave-container {
+    top:55%;
+    left:20%;
+    width:auto;
+}
+
+#unit-details-name-faith-container {
+    left:20%;
+    top:75%;
+    width:auto;
+}
+
+#dismiss-portrait-container {
+    margin:0;
+    width:100%;
+    padding:5%;
+    overflow:auto;
+}
+
+#dismiss-name {
+    margin:0;
+}
+
+#dismiss-portrait {
+    position:static;
+    width:30%;
+}
+
+#dismiss-quote {
+    margin:0;
+    width:auto;
+    position:static;
+    font-size:15vw;
+}
+
+#dismiss-confirmation-container {
+    margin-top:5%;
+    width:60%;
+}
+
+.new-unit-selector {
+    height:50%;
+}
 }

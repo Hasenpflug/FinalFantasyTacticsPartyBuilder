@@ -259,7 +259,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
 
-        public ActionResult PopulateNewUnitData(int jobID, int gender)
+        public ActionResult PopulateNewUnitData(int jobID, int gender, int position)
         {
             UnitDetailsViewModel unit;
             Random r = new Random();
@@ -280,6 +280,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.Unit.JobName = Enum.GetName(typeof(Jobs), jobID);
                 unit.Unit.Gender = gender;
                 unit.Unit.GenderName = Enum.GetName(typeof(Gender), gender);
+                unit.Unit.Position = position;
                 unit.Unit.Level = 1;
                 unit.Unit.Experience = r.Next(0, 99);
                 unit.Unit.Brave = r.Next(40, 70);
@@ -292,15 +293,18 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.Unit.MaxHP = (unit.Unit.MaxHP * unit.RawHP) / 1638400;
                 unit.Unit.MaxMP = (unit.Unit.MaxMP * unit.RawMP) / 1638400;
 
-                unit.WeaponID = context.Items.OrderBy(c => c.AttackPower).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
-                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon).ItemCategoryID).ItemID;
+                unit.WeaponID = context.JobItems.FirstOrDefault(c => c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield && c.JobID == unit.Unit.JobID) != null ? 
+                    context.Items.OrderBy(c => c.AttackPower).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon).ItemCategoryID).ItemID : 0;
                 unit.ShieldID = context.JobItems.FirstOrDefault(c => c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield && c.JobID == unit.Unit.JobID) != null ?
                     context.Items.OrderBy(c => c.PhysicalEvade).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
                     m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield).ItemCategoryID).ItemID : 0;
-                unit.HeadID = context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
-                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet).ItemCategoryID).ItemID;
-                unit.BodyID = context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
-                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor).ItemCategoryID).ItemID;
+                unit.HeadID = context.JobItems.FirstOrDefault(c => c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield && c.JobID == unit.Unit.JobID) != null ?
+                    context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet).ItemCategoryID).ItemID : 0;
+                unit.BodyID = context.JobItems.FirstOrDefault(c => c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield && c.JobID == unit.Unit.JobID) != null ? 
+                    context.Items.OrderBy(c => c.HPBonus).FirstOrDefault(c => c.ItemCategoryID == context.JobItems.FirstOrDefault(m => m.JobID == unit.Unit.JobID &&
+                m.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor).ItemCategoryID).ItemID : 0;
             }
 
             return Json(unit);
