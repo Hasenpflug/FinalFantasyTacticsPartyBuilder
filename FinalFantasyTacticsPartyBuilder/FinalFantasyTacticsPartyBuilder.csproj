@@ -623,10 +623,10 @@
     <Content Include="FFTFemaleNames.txt" />
     <Content Include="FFTMaleNames.txt" />
     <Content Include="FFTMonsterNames.txt" />
-    <Content Include="fonts\webfont.css" />
+    <Content Include="Content\Fonts\webfont.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\Altima.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Fonts\Altima.svg" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -634,11 +634,12 @@
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.eot" />
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.ttf" />
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.woff" />
-    <Content Include="fonts\Altima.eot" />
-    <Content Include="fonts\Altima.otf" />
-    <Content Include="fonts\Altima.ttf" />
-    <Content Include="fonts\Altima.woff" />
+    <Content Include="Content\Fonts\Altima.eot" />
+    <Content Include="Content\Fonts\Altima.otf" />
+    <Content Include="Content\Fonts\Altima.ttf" />
+    <Content Include="Content\Fonts\Altima.woff" />
     <Content Include="FFT Party Builder with Database.docx" />
+    <None Include="Properties\PublishProfiles\FinalFantasyTacticsPartyBuilder2018 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.bundle.min.js" />
     <Content Include="Scripts\JobOverview.js" />
@@ -706,9 +707,9 @@
     <Content Include="Views\Home\_UnitStatDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
