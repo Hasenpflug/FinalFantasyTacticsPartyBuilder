@@ -2,20 +2,20 @@
 
 @font-face {
 	font-family:'Altima';
-		src:url('Altima.eot');
-		src:url('Altima.eot?#iefix') format('embedded-opentype'),
-				url('Altima.woff') format('woff'),
-				url('Altima.ttf') format('truetype'),
-				url('Altima.svg#Altima') format('svg');
+		src:url('Fonts/Altima.eot');
+		src:url('Fonts/Altima.eot?#iefix') format('embedded-opentype'),
+				url('Fonts/Altima.woff') format('woff'),
+				url('Fonts/Altima.ttf') format('truetype'),
+				url('Fonts/Altima.svg#Altima') format('svg');
 	font-weight:normal;
 	font-style:normal;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	@font-face {
-		font-family:'Altima';
-		src: url('Altima.svg') format('svg');
-		font-weight:normal;
-		font-style:normal;
-	}
+    @font-face {
+        font-family: 'Altima';
+        src: url('Fonts/Altima.svg') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
 }

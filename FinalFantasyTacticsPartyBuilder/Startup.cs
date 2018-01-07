@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Data.Entity.Migrations;
 
 [assembly: OwinStartupAttribute(typeof(FinalFantasyTacticsPartyBuilder.Startup))]
 namespace FinalFantasyTacticsPartyBuilder

@@ -13,11 +13,11 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(FFTContext context)
-        { 
+        {
 
             #region Item Categories
             context.ItemCategories.AddOrUpdate(m => m.ItemCategoryName,
@@ -3864,7 +3864,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 new JobItem
                 {
                     JobID = (int)Jobs.Squire,
-                    ItemCategoryID = (int)ItemCategoriesList.Axe,                    
+                    ItemCategoryID = (int)ItemCategoriesList.Axe,
                 },
                 new JobItem
                 {
@@ -3918,7 +3918,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,                
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Chemist,
@@ -3928,7 +3928,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Chemist,
                     ItemCategoryID = (int)ItemCategoriesList.Knife,
-                },                
+                },
                 new JobItem
                 {
                     JobID = (int)Jobs.Chemist,
@@ -4267,7 +4267,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Thief,
                     ItemCategoryID = (int)ItemCategoriesList.Knife,
-                }, 
+                },
                 new JobItem
                 {
                     JobID = (int)Jobs.Thief,
@@ -5297,7 +5297,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region White Mage
 
-            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName},
+            context.Abilities.AddOrUpdate(m => new { m.JobID, m.PspName },
             new Ability
             {
                 JobID = (int)Jobs.WhiteMage,
@@ -7702,7 +7702,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             {
                 JobID = (int)Jobs.Geomancer,
                 PspName = "Ignore Terrain",
-                PsxName = "Any Ground",                
+                PsxName = "Any Ground",
                 AbilityType = (int)AbilityType.Movement,
                 JpNeededToLearnPsp = 220,
                 Description = "Move unimpeded through watery terrain."
@@ -9296,35 +9296,35 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
             //string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
-            {
-                context.UnitNames.AddOrUpdate(m => m.Name,
-                new UnitName
-                {
-                    Name = maleName,
-                    Gender = (int)Gender.Male
-                });
-            }
+            //foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
+            //{
+            //    context.UnitNames.AddOrUpdate(m => m.Name,
+            //    new UnitName
+            //    {
+            //        Name = maleName,
+            //        Gender = (int)Gender.Male
+            //    });
+            //}
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
-            {
-                context.UnitNames.AddOrUpdate(m => m.Name,
-                new UnitName
-                {
-                    Name = maleName,
-                    Gender = (int)Gender.Female
-                });
-            }
+            //foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
+            //{
+            //    context.UnitNames.AddOrUpdate(m => m.Name,
+            //    new UnitName
+            //    {
+            //        Name = maleName,
+            //        Gender = (int)Gender.Female
+            //    });
+            //}
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
-            {
-                context.UnitNames.AddOrUpdate(m => m.Name,
-                new UnitName
-                {
-                    Name = maleName,
-                    Gender = (int)Gender.Monster
-                });
-            }
+            //foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
+            //{
+            //    context.UnitNames.AddOrUpdate(m => m.Name,
+            //    new UnitName
+            //    {
+            //        Name = maleName,
+            //        Gender = (int)Gender.Monster
+            //    });
+            //}
 
             #endregion
 
