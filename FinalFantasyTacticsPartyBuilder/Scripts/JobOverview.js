@@ -1,10 +1,12 @@
 ﻿var JobOverview = function ()
 {
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
-        selectedJobData, selectedUnitPosition;
+        selectedJobData, selectedUnitPosition, isMobile;
 
     $(document).ready(function ()
     {
+        isMobile = window.innerWidth < 600;
+
         if (typeof (Storage) !== 'undefined')
         {
             var unitDataRaw = getUnitData();
@@ -54,7 +56,7 @@
             {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
-                if (window.innerWidth > 600)
+                if (isMobile)
                 {
                     if (event.pageY > window.innerHeight / 1.5)
                     {
@@ -76,7 +78,7 @@
             $('.menu-container').remove();
             $('#party-builder-container').append(data);
 
-            if (window.innerWidth > 600)
+            if (!isMobile)
             {
                 var windowScrollOffset = (document.getElementsByClassName('body-content')[0].scrollTop / window.innerHeight) * 100;
                 var convertedUnitPosition = parseInt(unitPosition) + 1;
@@ -209,16 +211,31 @@
 
     function initializeJobWheel()
     {
-        piemenu = new wheelnav('piemenu');
-        piemenu.centerX = window.innerWidth / 2;
-        piemenu.centerY = window.innerHeight / 3;
-        piemenu.selectedPercent = 1.1;
-        piemenu.hoverPercent = 1;
-        piemenu.clockwise = false;
-        piemenu.animatetime = 200;
-        piemenu.maxPercent = 0.50;
-        piemenu.animateeffect = 'linear';
-        piemenu.createWheel();
+        if (window.innerWidth > 600)
+        {
+            piemenu = new wheelnav('piemenu');
+            piemenu.centerX = window.innerWidth / 2;
+            piemenu.centerY = window.innerHeight / 3;
+            piemenu.selectedPercent = 1.1;
+            piemenu.hoverPercent = 1;
+            piemenu.clockwise = false;
+            piemenu.animatetime = 200;
+            piemenu.maxPercent = 0.50;
+            piemenu.animateeffect = 'linear';
+            piemenu.createWheel();
+        }
+        else
+        {
+            piemenu = new wheelnav('piemenu');
+            piemenu.centerY = 75;
+            piemenu.selectedPercent = 1.1;
+            piemenu.hoverPercent = 1;
+            piemenu.clockwise = false;
+            piemenu.animatetime = 200;
+            piemenu.maxPercent = 2;
+            piemenu.animateeffect = 'linear';
+            piemenu.createWheel();
+        }
     }
 
     function setInitialJobData(jobData)
@@ -250,7 +267,6 @@
     function initializeJobModifierChart()
     {
         modifierChartCanvas = document.getElementById('job-modifier-chart');
-        modifierChartCanvas.wid
         modifierChart = new Chart(modifierChartCanvas, {
             type: 'radar',
             data: {
@@ -263,7 +279,7 @@
                     pointBackgroundColor: 'white',
                     pointBorderColor: 'yellow',
                     defaultFontFamily: 'Altima',
-                    defaultFontSize: '60'
+                    defaultFontSize: '30'
                 }]
             },
             options: {
@@ -276,7 +292,7 @@
                         display: false
                     },
                     pointLabels: {
-                        fontSize: 60,
+                        fontSize: window.innerWidth > 600 ? 60 : 30,
                         fontFamily: 'Altima'
                     }
                 },
@@ -315,7 +331,7 @@
                         display: false
                     },
                     pointLabels: {
-                        fontSize: 60,
+                        fontSize: window.innerWidth > 600 ? 60 : 30,
                         fontFamily: 'Altima'
                     }
                 },
@@ -350,7 +366,7 @@
                     }],
                     xAxes: [{
                         ticks: {
-                            fontSize: 40,
+                            fontSize: window.innerWidth > 600 ? 40 : 30,
                             fontFamily: 'Altima'
                         }
                     }]
@@ -386,7 +402,7 @@
                     }],
                     xAxes: [{
                         ticks: {
-                            fontSize: 40,
+                            fontSize: window.innerWidth > 600 ? 40 : 30,
                             fontFamily: 'Altima'
                         }
                     }]

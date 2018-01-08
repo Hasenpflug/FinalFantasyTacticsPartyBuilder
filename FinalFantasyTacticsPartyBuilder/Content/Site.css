@@ -555,13 +555,6 @@ img {
     margin: auto;
 }
 
-@media (max-width: 400px) {
-    #piemenu {
-        height: 300px;
-        width: 300px;
-    }
-}
-
 [class|=wheelnav-piemenu-slice-basic] {
     /*fill: #497F4C;*/
     stroke: none;
@@ -794,6 +787,7 @@ img {
 #unit-equipment-slot-icons, #unit-equipment-item-icons, #unit-ability-icons {
     height: 100%;
     width: 10%;
+    vertical-align:top;
 }
 
 #unit-equipment-item-icons, #unit-ability-icons {
@@ -1324,5 +1318,52 @@ img {
 
 .new-unit-selector {
     height:50%;
+}
+
+#job-modifier-chart-container {
+    width:45%;
+    height:25%;
+}
+
+#job-move-chart-container {
+    width:40%;
+    left:55%;
+}
+
+#job-growth-chart-container {
+    width:45%;
+    height:25%;
+    top:72.5%;
+}
+
+#job-evasion-chart-container {
+    width:40%;
+    left:55%;
+    top:72.5%;
+}
+
+#job-details-container, #job-gender-container, #job-confirm-container {
+    position:absolute;
+    font-size:9vw;
+    width:40%;
+}
+
+#job-details-container {
+    position:absolute;
+    top:36%;
+    left:30%;
+    margin:0;
+}
+
+#job-gender-container, #job-confirm-container {
+    top:65%;
+}
+
+#job-gender-container {
+    left:5%;
+}
+
+#job-confirm-container {
+    left:55%;
 }
 }
