@@ -92,7 +92,7 @@
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell" id="weapon-stats-right-damage" data-item-power="@(Model.WeaponRight != null ? Model.WeaponRight.WeaponPower : "000")"><span>@(Model.WeaponRight != null ? Model.WeaponRight.WeaponPower : "00")</span></div>
-                    <div class="fft-cell" id="weapon-stats-left-damage" data-item-power="@(Model.WeaponRight != null ? Model.WeaponLeft.WeaponPower : "000")"><span>@(Model.WeaponRight != null ? Model.WeaponLeft.WeaponPower : "00")</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-damage" data-item-power="@(Model.WeaponLeft != null ? Model.WeaponLeft.WeaponPower : "000")"><span>@(Model.WeaponLeft != null ? Model.WeaponLeft.WeaponPower : "00")</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell unit-stat-divider"><span>/</span></div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell" id="weapon-stats-right-hit" data-item-hit-percentage="@(Model.WeaponRight != null ? Model.WeaponRight.WeaponHit : "00")"><span>@(Model.WeaponRight != null ? Model.WeaponRight.WeaponHit : "00")</span></div>
-                    <div class="fft-cell" id="weapon-stats-left-hit" data-item-hit-percentage="@(Model.WeaponRight != null ? Model.WeaponLeft.WeaponHit : "00")"><span>@(Model.WeaponRight != null ? Model.WeaponLeft.WeaponHit : "00")</span></div>
+                    <div class="fft-cell" id="weapon-stats-left-hit" data-item-hit-percentage="@(Model.WeaponLeft != null ? Model.WeaponLeft.WeaponHit : "00")"><span>@(Model.WeaponLeft != null ? Model.WeaponLeft.WeaponHit : "00")</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell  percentage-value"><span>%</span></div>
@@ -217,7 +217,7 @@
                     }
                 </div>
                 <div class="fft-cell">
-                    @if (Model.WeaponRight != null)
+                    @if (Model.WeaponLeft != null)
                     {
                         <img src="@Model.WeaponLeft.ImagePath" />
                     }

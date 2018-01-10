@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -28,5 +29,12 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string ItemCategoryName { get; set; }
 
         public string EquipmentCategoryName { get; set; }
+    }
+
+    public class ItemCategoryDTO
+    {
+        public int ItemCategoryID { get; set; }
+
+        public int EquipmentCategoryID { get; set; }
     }
 }
