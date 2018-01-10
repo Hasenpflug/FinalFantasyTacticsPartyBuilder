@@ -623,9 +623,9 @@
     <Content Include="FFTFemaleNames.txt" />
     <Content Include="FFTMaleNames.txt" />
     <Content Include="FFTMonsterNames.txt" />
-    <Content Include="Content\Fonts\webfont.css" />
+    <Content Include="Content\webfont.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Content\Fonts\Altima.svg" />
+    <Content Include="Content\Altima.svg" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -634,10 +634,10 @@
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.eot" />
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.ttf" />
     <Content Include="Content\Fonts\Final_Fantasy_Tactics.woff" />
-    <Content Include="Content\Fonts\Altima.eot" />
-    <Content Include="Content\Fonts\Altima.otf" />
-    <Content Include="Content\Fonts\Altima.ttf" />
-    <Content Include="Content\Fonts\Altima.woff" />
+    <Content Include="Content\Altima.eot" />
+    <Content Include="Content\Altima.otf" />
+    <Content Include="Content\Altima.ttf" />
+    <Content Include="Content\Altima.woff" />
     <Content Include="FFT Party Builder with Database.docx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.bundle.min.js" />
