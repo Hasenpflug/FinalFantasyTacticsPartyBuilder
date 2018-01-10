@@ -276,6 +276,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     AcquiredViaTreasureHunt = "Fovoham Windflats",
                     Description = "A battle axe with a long handle. Designed for two-handed use, it can easily chop off an enemy's limbs.",
                     Cost = 1500,
+                    IsStartingItem = true,
                     IconFileName = "BattleAxe-fft-psx.gif"
                 },
                 new Item
@@ -407,6 +408,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Clockwork City of Goug (rare)",
                 Description = "A book made for battle.",
                 Cost = 3000,
+                IsStartingItem = true,
                 IconFileName = "FFT_Battle_Folio.gif"
             },
             new Item
@@ -464,6 +466,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Brigands' Den (rare)",
                 Description = "The most common type of bow. It has a long range and is quite durable.",
                 Cost = 800,
+                IsStartingItem = true,
                 IconFileName = "FFT_Longbow.gif"
             },
             new Item
@@ -594,6 +597,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Royal City of Lesalia (Chapter 3)",
                 Description = "This cloth is thick and brilliantly colored, making it perfect for use in carpets.",
                 Cost = 7000,
+                IsStartingItem = true,
                 IconFileName = "FFT_Damask_Cloth.gif"
             },
             new Item
@@ -786,6 +790,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "First battle Mining Town of Gollund (rare)",
                 Cost = 1200,
                 Description = "A Item comprised of a large iron head attached to a long wooden handle.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Iron_Flail.gif"
             },
             new Item
@@ -853,6 +858,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Clockwork City of Goug (Chapter 2)",
                 Cost = 5000,
                 Description = "A firearm brought to Ivalice from the northern country of Romanda.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Romandan_Pistol.gif"
             },
             new Item
@@ -966,6 +972,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 Cost = 5000,
                 HitStatusEffect = "Confuse",
                 Description = "The strains of this harp can affect one's very soul. Causes confusion in the listener.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Lamia's_Harp.gif"
             },
             new Item
@@ -1011,6 +1018,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Meeting with Cardinal Delacroix at Lionel Castle (Chapter 2)",
                 Cost = 1600,
                 Description = "A katana with a brilliant white blade.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Ashura.gif"
             },
             new Item
@@ -1140,6 +1148,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
                 Cost = 100,
                 Description = "Used for self-defense. Although its blade is longer than that of a normal knife, its attack power is rather low.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Dagger.gif"
             },
             new Item
@@ -1355,6 +1364,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle (Chapter 3)",
                 Cost = 3000,
                 Description = "A sword specially tailored to the needs of ninjas. Its blade is shorter than that of the average sword.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Ninja_Blade.gif"
             },
             new Item
@@ -1487,6 +1497,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Castled City of Zaland (rare)",
                 Cost = 1000,
                 Description = "A pole carved from the wood of a cypress.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Cypress_Pole.gif"
             },
             new Item
@@ -1591,6 +1602,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
                 Cost = 200,
                 Description = "A rod fashioned from evergreen wood.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Rod.gif"
             },
             new Item
@@ -1730,6 +1742,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Balias Swale (rare)",
                 Cost = 1000,
                 Description = "A light and inexpensive spear. Allows the wielder to attack enemies within a range of two tiles.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Javelin_1.gif"
             },
             new Item
@@ -1860,6 +1873,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
                 Cost = 120,
                 Description = "A staff made from sturdy oak.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Oak_Staff.gif"
             },
             new Item
@@ -2010,6 +2024,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Mandalia Plains (rare)",
                 Cost = 200,
                 Description = "This broad-bladed sword is suited for large slashing strokes. It is inexpensive, but not particularly powerful.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Broadsword.gif"
             },
             new Item
@@ -2292,6 +2307,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Merchant City of Dorter",
                 Cost = 200,
                 Description = "Armor made from layers of tanned leather.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Leather_Armor.gif",
             },
             new Item
@@ -2474,6 +2490,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Merchant City of Dorter",
                 Cost = 150,
                 Description = "Made for use in battle, this is sturdier than normal clothing.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Clothing.gif",
             },
             new Item
@@ -2731,6 +2748,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Magick City of Gariland (Chapter 1)",
                 Cost = 150,
                 Description = "A hat crafted from tanned leather.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Leather_Cap.gif",
             },
             new Item
@@ -2914,6 +2932,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Dycedarg meeting at Eagrose Castle (Chapter 1)",
                 Cost = 200,
                 Description = "This leather helm has been treated with a special resin, making it sturdy yet flexible.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Leather_Helm.gif",
             },
             new Item
@@ -3085,6 +3104,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaTreasureHunt = "Windmill Hut",
                 Cost = 1200,
                 Description = "A simple robe made from a single sheet of linen cloth.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Hempen_Robe.gif",
             },
             new Item
@@ -3203,6 +3223,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 AcquiredViaLocation = "Dycedarg meeting at Eagrose Castle (Chapter 1)",
                 Cost = 400,
                 Description = "The most inexpensive shield available. As expected, its defensive abilities are lacking.",
+                IsStartingItem = true,
                 IconFileName = "FFT_Escutcheon_1.gif",
             },
             new Item

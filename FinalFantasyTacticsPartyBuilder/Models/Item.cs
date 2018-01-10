@@ -77,6 +77,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string AcquiredViaInitialEquip { get; set; }
 
+        public bool IsStartingItem { get; set; }
+
         public string IconFileName { get; set; }
 
         public int Cost { get; set; }
