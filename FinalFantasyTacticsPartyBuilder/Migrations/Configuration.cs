@@ -2,6 +2,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 {
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.IO;
@@ -2708,6 +2709,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 Note = "Females only",
                 Description = "A hairband that prevents an array of status effects.",
                 IconFileName = "FFT_Cachusha.gif",
+                IsStartingItem = true
             },
             new Item
             {
@@ -5270,6 +5272,16 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
+            List<JobItem> jobItemsBasic = new List<JobItem>();
+            foreach (int itemCategory in Enum.GetValues(typeof(ItemCategoriesList)))
+            {
+                jobItemsBasic.Add(new JobItem { ItemCategoryID = itemCategory, JobID = (int)Jobs.OnionKnightBasic });
+            }
+
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+                jobItemsBasic.ToArray()
+            );
+
             #endregion
 
             #region Onion Knight Mastered
@@ -5308,6 +5320,16 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     JobRequiredID = (int)Jobs.Chemist,
                     JobLevelRequiredPsp = 6
                 }
+            );
+
+            List<JobItem> jobItemMastered = new List<JobItem>();
+            foreach (int itemCategory in Enum.GetValues(typeof(ItemCategoriesList)))
+            {
+                jobItemMastered.Add(new JobItem { ItemCategoryID = itemCategory, JobID = (int)Jobs.OnionKnightMastered });
+            }
+
+            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+                jobItemMastered.ToArray()
             );
 
             #endregion

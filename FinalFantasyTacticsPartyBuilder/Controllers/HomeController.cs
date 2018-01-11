@@ -322,8 +322,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 if (jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet))
                 {
                     int randomHeadID = jobItems.FirstOrDefault(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet).ItemCategoryID;
-                    headItem = jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet) ? context.Items.FirstOrDefault(m => m.ItemCategoryID ==
-                    randomHeadID && m.IsStartingItem) : null;
+                    headItem = jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet) ? context.Items.Where( c => c.ItemCategoryID == randomHeadID)
+                        .FirstOrDefault(m => m.IsStartingItem) : null;
                     unit.HeadID = headItem != null ? headItem.ItemID : 0;
                 }
 
