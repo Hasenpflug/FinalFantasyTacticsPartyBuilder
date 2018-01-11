@@ -186,10 +186,11 @@
         for (var i = 0; i < unitDataLength; i++)
         {
             unitPanelData.units.push({
-                JobID: unitData.units[i].Unit.JobID, JobName: unitData.units[i].Unit.JobName, RawHP: unitData.units[i].RawHP, RawMP: unitData.units[i].RawMP,
+                JobID: unitData.units[i].Unit.JobID, JobName: unitData.units[i].Unit.JobName, MaxHP: unitData.units[i].Unit.MaxHP, MaxMP: unitData.units[i].Unit.MaxMP,
                 Position: unitData.units[i].Unit.Position, Gender: unitData.units[i].Unit.GenderName
             });
         }
+
         return unitPanelData;
     }
 
@@ -227,12 +228,12 @@
         else
         {
             piemenu = new wheelnav('piemenu');
-            piemenu.centerY = 75;
+            piemenu.centerY = window.innerHeight / 12;
             piemenu.selectedPercent = 1.1;
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
             piemenu.animatetime = 200;
-            piemenu.maxPercent = 2;
+            piemenu.maxPercent = 2.5;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }

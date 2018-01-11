@@ -29,6 +29,12 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public string ItemCategoryName { get; set; }
 
         public string EquipmentCategoryName { get; set; }
+
+        public bool CanDualWield { get; set; }
+
+        public bool CanDoubleHand { get; set; }
+
+        public bool IsTwoHandOnly { get; set; }
     }
 
     public class ItemCategoryDTO

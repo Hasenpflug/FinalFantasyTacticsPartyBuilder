@@ -178,6 +178,14 @@
     <Compile Include="Migrations\201801101521265_IsStartingitem.Designer.cs">
       <DependentUpon>201801101521265_IsStartingitem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801111606186_CanWield.cs" />
+    <Compile Include="Migrations\201801111606186_CanWield.Designer.cs">
+      <DependentUpon>201801111606186_CanWield.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801112002357_AbilityNames.cs" />
+    <Compile Include="Migrations\201801112002357_AbilityNames.Designer.cs">
+      <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ability.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -724,6 +732,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801101521265_IsStartingitem.resx">
       <DependentUpon>201801101521265_IsStartingitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801111606186_CanWield.resx">
+      <DependentUpon>201801111606186_CanWield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801112002357_AbilityNames.resx">
+      <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,9 +11,9 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public string JobName { get; set; }
 
-        public int RawHP { get; set; }
+        public int MaxHP { get; set; }
 
-        public int RawMP { get; set; }
+        public int MaxMP { get; set; }
 
         public int Position { get; set; }
 

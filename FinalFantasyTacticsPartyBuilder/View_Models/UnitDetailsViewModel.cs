@@ -17,13 +17,25 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public int RawMagicalAttack { get; set; }
 
+        public int PrimaryAbilityJobID { get; set; }
+
+        public string PrimaryAbilityName { get; set; }
+
         public int SecondaryAbilityJobID { get; set; }
+
+        public string SecondaryAbilityName { get; set; }
 
         public int ReactionAbilityID { get; set; }
 
+        public string ReactionAbilityName { get; set; }
+
         public int SupportAbilityID { get; set; }
 
+        public string SupportAbilityName { get; set; }
+
         public int MovementAbilityID { get; set; }
+
+        public string MovementAbilityName { get; set; }
 
         public int WeaponID { get; set; }
 
@@ -53,21 +65,21 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
         
         public ItemOverviewViewModel Accessory { get; set; }       
 
-        public int PhysicalAttackPower { get; set; }
+        public string PhysicalAttackPower { get; set; }
 
-        public int MagicalAttackPower { get; set; }
+        public string MagicalAttackPower { get; set; }
 
-        public int PhysicalCharacterEvade { get; set; }
+        public string PhysicalCharacterEvade { get; set; }
 
-        public int PhysicalShieldEvade { get; set; }
+        public string PhysicalShieldEvade { get; set; }
 
-        public int PhysicalAccessoryEvade { get; set; }
+        public string PhysicalAccessoryEvade { get; set; }
 
-        public int MagicalCharacterEvade { get; set; }
+        public string MagicalCharacterEvade { get; set; }
 
-        public int MagicalShieldEvade { get; set; }
+        public string MagicalShieldEvade { get; set; }
 
-        public int MagicalAccessoryEvade { get; set; }
+        public string MagicalAccessoryEvade { get; set; }
 
         public UnitOverviewViewModel Unit { get; set; }
     }

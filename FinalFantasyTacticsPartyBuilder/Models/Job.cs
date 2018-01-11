@@ -18,6 +18,10 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public string PsxName { get; set; }
 
+        public string AbilitySetPsxName { get; set; }
+
+        public string AbilitySetPspName { get; set; }
+
         public bool IsMaleOnly { get; set; }
 
         public bool IsFemaleOnly { get; set; }

@@ -22,16 +22,13 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         {
             if (units != null)
             {
-                int[] hpMultipliers = new int[units.Count];
-                int[] mpMultipliers = new int[units.Count];
-
                 using (FFTContext context = new FFTContext())
                 {
                     foreach (UnitPanelViewModel item in units)
                     {
                         item.JobName = item.JobName.Contains("Onion") ? "OnionKnight" : item.JobName;
-                        item.HpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).HPMultiplier * item.RawHP) / 1638400).ToString().ToCharArray();
-                        item.MpDigits = ((context.Jobs.Single(m => m.JobID == item.JobID).MPMultiplier * item.RawMP) / 1638400).ToString().ToCharArray();
+                        item.HpDigits = item.MaxHP.ToString().ToCharArray();
+                        item.MpDigits = item.MaxMP.ToString().ToCharArray();
                     }
                 }
 
@@ -105,7 +102,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     };
                 }
 
-                if (unit.ShieldID != default(int))
+                if (unit.ShieldID != default(int) && !weaponItem1.ItemCategory.IsTwoHandOnly)
                 {
                     weaponItem2 = context.Items.FirstOrDefault(m => m.ItemID == unit.ShieldID);
                     unit.WeaponLeft = new ItemOverviewViewModel
@@ -169,7 +166,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     };
                 }
 
-                Job unitJob = context.Jobs.Single(m => m.JobID == unit.Unit.JobID);                
+                Job unitJob = context.Jobs.Single(m => m.JobID == unit.Unit.JobID);
+                unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unit);
             }
 
             unit.Unit.AttributeDigits = new UnitOverviewHpMpViewModel
@@ -337,6 +335,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
                 unit = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unit, unitJob);
                 unit = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, null, unit, unitJob);
+                unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
+                //unit.ab
             }
 
             return Json(unit);

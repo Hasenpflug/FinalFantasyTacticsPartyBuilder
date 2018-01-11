@@ -27,7 +27,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.Axe,
                     ItemCategoryName = "Axe",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    IsTwoHandOnly = true
                 },
                 new ItemCategory
                 {
@@ -48,7 +49,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.Bow,
                     ItemCategoryName = "Bow",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    IsTwoHandOnly = true
                 },
                 new ItemCategory
                 {
@@ -69,14 +71,17 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.FellSword,
                     ItemCategoryName = "Fell Sword",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    IsTwoHandOnly = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Flail,
                     ItemCategoryName = "Flail",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true,
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
@@ -97,63 +102,78 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.Katana,
                     ItemCategoryName = "Katana",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDualWield = true,
+                    CanDoubleHand = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Knife,
                     ItemCategoryName = "Knife",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.KnightSword,
                     ItemCategoryName = "Knight Sword",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDualWield = true,
+                    CanDoubleHand = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.NinjaBlade,
                     ItemCategoryName = "Ninja Blade",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true,
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Pole,
                     ItemCategoryName = "Pole",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Rod,
                     ItemCategoryName = "Rod",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true,
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Polearm,
                     ItemCategoryName = "Polearm",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Staff,
                     ItemCategoryName = "Staff",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDualWield = true,
+                    CanDoubleHand = true
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Sword,
                     ItemCategoryName = "Sword",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDoubleHand = true,
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
@@ -167,7 +187,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.Unarmed,
                     ItemCategoryName = "Unarmed",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    CanDualWield = true
                 },
                 new ItemCategory
                 {
@@ -3868,6 +3889,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Squire,
                     PspName = "Squire",
+                    AbilitySetPspName = "Fundaments",
+                    AbilitySetPsxName = "Basic Skill",
                     HPMultiplier = 100,
                     HPGrowthConstant = 11,
                     MPMultiplier = 75,
@@ -3925,6 +3948,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Chemist,
                     PspName = "Chemist",
+                    AbilitySetPspName = "Items",
+                    AbilitySetPsxName = "Item",
                     HPMultiplier = 80,
                     HPGrowthConstant = 12,
                     MPMultiplier = 75,
@@ -3973,6 +3998,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Knight,
                     PspName = "Knight",
+                    AbilitySetPspName = "Arts of War",
+                    AbilitySetPsxName = "Battle Skill",
                     HPMultiplier = 120,
                     HPGrowthConstant = 10,
                     MPMultiplier = 80,
@@ -4040,6 +4067,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Archer,
                     PspName = "Archer",
+                    AbilitySetPspName = "Aim",
+                    AbilitySetPsxName = "Charge",
                     HPMultiplier = 100,
                     HPGrowthConstant = 11,
                     MPMultiplier = 65,
@@ -4102,6 +4131,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.WhiteMage,
                     PspName = "White Mage",
+                    AbilitySetPspName = "White Magicks",
+                    AbilitySetPsxName = "White Magic",
                     HPMultiplier = 80,
                     HPGrowthConstant = 10,
                     MPMultiplier = 120,
@@ -4159,6 +4190,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.BlackMage,
                     PspName = "Black Mage",
+                    AbilitySetPspName = "Black Magicks",
+                    AbilitySetPsxName = "Black Magic",
                     HPMultiplier = 75,
                     HPGrowthConstant = 12,
                     MPMultiplier = 120,
@@ -4216,6 +4249,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Monk,
                     PspName = "Monk",
+                    AbilitySetPspName = "Martial Arts",
+                    AbilitySetPsxName = "Punch Art",
                     HPMultiplier = 135,
                     HPGrowthConstant = 9,
                     MPMultiplier = 80,
@@ -4259,6 +4294,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Thief,
                     PspName = "Thief",
+                    AbilitySetPspName = "Steal",
                     HPMultiplier = 90,
                     HPGrowthConstant = 11,
                     MPMultiplier = 50,
@@ -4312,6 +4348,9 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Mystic,
                     PspName = "Mystic",
+                    PsxName = "Oracle",
+                    AbilitySetPspName = "Mystic Arts",
+                    AbilitySetPsxName = "Yin Yang Magic",
                     HPMultiplier = 75,
                     HPGrowthConstant = 12,
                     MPMultiplier = 110,
@@ -4385,6 +4424,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.TimeMage,
                     PspName = "Time Mage",
+                    AbilitySetPspName = "Time Magicks",
+                    AbilitySetPsxName = "Time Magic",
                     HPMultiplier = 75,
                     HPGrowthConstant = 12,
                     MPMultiplier = 120,
@@ -4443,6 +4484,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Geomancer,
                     PspName = "Geomancer",
+                    AbilitySetPspName = "Geomancy",
+                    AbilitySetPsxName = "Elemental",
                     HPMultiplier = 110,
                     HPGrowthConstant = 10,
                     MPMultiplier = 95,
@@ -4511,6 +4554,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Dragoon,
                     PspName = "Dragoon",
+                    PsxName = "Lancer",
+                    AbilitySetPspName = "Jump",
                     HPMultiplier = 120,
                     HPGrowthConstant = 10,
                     MPMultiplier = 50,
@@ -4574,6 +4619,9 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Orator,
                     PspName = "Orator",
+                    PsxName = "Mediator",
+                    AbilitySetPspName = "Speechcraft",
+                    AbilitySetPsxName = "Talk Skill",
                     HPMultiplier = 80,
                     HPGrowthConstant = 11,
                     MPMultiplier = 70,
@@ -4637,6 +4685,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Summoner,
                     PspName = "Summoner",
+                    AbilitySetPspName = "Summon",
+                    AbilitySetPsxName = "Summon Magic",
                     HPMultiplier = 70,
                     HPGrowthConstant = 13,
                     MPMultiplier = 125,
@@ -4694,6 +4744,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Samurai,
                     PspName = "Samurai",
+                    AbilitySetPspName = "Iaido",
+                    AbilitySetPsxName = "Draw Out",
                     HPMultiplier = 75,
                     HPGrowthConstant = 12,
                     MPMultiplier = 75,
@@ -4766,6 +4818,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Ninja,
                     PspName = "Ninja",
+                    AbilitySetPspName = "Throw",
                     HPMultiplier = 70,
                     HPGrowthConstant = 12,
                     MPMultiplier = 50,
@@ -4843,6 +4896,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Arithmetician,
                     PspName = "Arithmetician",
+                    AbilitySetPspName = "Arithmeticks",
+                    AbilitySetPsxName = "Math Skill",
                     HPMultiplier = 65,
                     HPGrowthConstant = 14,
                     MPMultiplier = 80,
@@ -4927,6 +4982,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Dancer,
                     PspName = "Dancer",
+                    AbilitySetPspName = "Dance",
                     IsFemaleOnly = true,
                     HPMultiplier = 60,
                     HPGrowthConstant = 20,
@@ -4993,6 +5049,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Bard,
                     PspName = "Bard",
+                    AbilitySetPspName = "Bardsong",
+                    AbilitySetPsxName = "Sing",
                     IsMaleOnly = true,
                     HPMultiplier = 55,
                     HPGrowthConstant = 20,
@@ -5054,6 +5112,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.Mime,
                     PspName = "Mime",
+                    AbilitySetPspName = "Mimic",
                     HPMultiplier = 140,
                     HPGrowthConstant = 6,
                     MPMultiplier = 50,
@@ -5124,6 +5183,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 {
                     JobID = (int)Jobs.DarkKnight,
                     PspName = "Dark Knight",
+                    AbilitySetPspName = "Darkness",
                     HPMultiplier = 80,
                     HPGrowthConstant = 12,
                     MPMultiplier = 90,

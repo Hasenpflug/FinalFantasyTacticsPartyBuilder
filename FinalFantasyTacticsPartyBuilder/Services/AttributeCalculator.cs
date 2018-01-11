@@ -25,14 +25,25 @@ namespace FinalFantasyTacticsPartyBuilder.Services
             unit.Move = (job.BaseMoveLength + (unit.Accessory != null ? unit.Accessory.MoveBonus : 0)).ToString();
             unit.Jump = (job.BaseJumpHeight + (unit.Accessory != null ? unit.Accessory.JumpBonus : 0)).ToString();
             unit.Speed = ((job.SpeedMulitplier * unit.RawSpeed) / UNIT_STAT_NORMALIZER).ToString();
-            unit.PhysicalAttackPower = ((job.PhysicalAttackMultiplier * unit.RawPhysicalAttack) / UNIT_STAT_NORMALIZER) + (weaponItem1 != null ? weaponItem1.PhysicalAttackBoost.HasValue ? 
+            unit.PhysicalAttackPower = (((job.PhysicalAttackMultiplier * unit.RawPhysicalAttack) / UNIT_STAT_NORMALIZER) + (weaponItem1 != null ? weaponItem1.PhysicalAttackBoost.HasValue ? 
                 weaponItem1.PhysicalAttackBoost.Value : 0 : 0) + (weaponItem2 != null ? weaponItem2.PhysicalAttackBoost.HasValue ? weaponItem2.PhysicalAttackBoost.Value : 0 : 0) +
                 (headItem != null ? headItem.PhysicalAttackBoost.HasValue ? headItem.PhysicalAttackBoost.Value : 0 : 0) + (bodyItem != null ? bodyItem.PhysicalAttackBoost.HasValue ?
-                bodyItem.PhysicalAttackBoost.Value : 0 : 0) + (accessoryItem != null ? accessoryItem.PhysicalAttackBoost.HasValue ? accessoryItem.PhysicalAttackBoost.Value : 0 : 0);
-            unit.MagicalAttackPower = ((job.MagicalAttackMultiplier * unit.RawMagicalAttack) / UNIT_STAT_NORMALIZER) + (weaponItem1 != null ? weaponItem1.MagicAttackBoost.HasValue ?
+                bodyItem.PhysicalAttackBoost.Value : 0 : 0) + (accessoryItem != null ? accessoryItem.PhysicalAttackBoost.HasValue ? accessoryItem.PhysicalAttackBoost.Value : 0 : 0)).ToString("00");
+            unit.MagicalAttackPower = (((job.MagicalAttackMultiplier * unit.RawMagicalAttack) / UNIT_STAT_NORMALIZER) + (weaponItem1 != null ? weaponItem1.MagicAttackBoost.HasValue ?
                 weaponItem1.MagicAttackBoost.Value : 0 : 0) + (weaponItem2 != null ? weaponItem2.MagicAttackBoost.HasValue ? weaponItem2.MagicAttackBoost.Value : 0 : 0) +
                 (headItem != null ? headItem.MagicAttackBoost.HasValue ? headItem.MagicAttackBoost.Value : 0 : 0) + (bodyItem != null ? bodyItem.MagicAttackBoost.HasValue ? bodyItem.MagicAttackBoost.Value : 0 : 0) +
-                (accessoryItem != null ? accessoryItem.MagicAttackBoost.HasValue ? accessoryItem.MagicAttackBoost.Value : 0 : 0);
+                (accessoryItem != null ? accessoryItem.MagicAttackBoost.HasValue ? accessoryItem.MagicAttackBoost.Value : 0 : 0)).ToString("00");
+            return unit;
+        }
+
+        public static UnitDetailsViewModel CalculateEvasionStats(Item shieldItem, Item accessoryItem, Job unitJob, UnitDetailsViewModel unit)
+        {
+            unit.PhysicalCharacterEvade = unitJob.BaseCombatEvasion.ToString("00");
+            unit.MagicalCharacterEvade = unitJob.BaseCombatEvasion.ToString("00");
+            unit.PhysicalShieldEvade = (shieldItem != null ? shieldItem.PhysicalEvade ?? 0 : 0).ToString("00");
+            unit.MagicalShieldEvade = (shieldItem != null ? shieldItem.MagicalEvade ?? 0 : 0).ToString("00");
+            unit.PhysicalAccessoryEvade = (accessoryItem != null ? accessoryItem.PhysicalEvade ?? 0 : 0).ToString("00");
+            unit.MagicalAccessoryEvade = (accessoryItem != null ? accessoryItem.MagicalEvade ?? 0 : 0).ToString("00");
             return unit;
         }
     }
