@@ -1,10 +1,12 @@
 ﻿var JobOverview = function ()
 {
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
-        selectedJobData, selectedUnitPosition, isMobile;
+        selectedJobData, selectedUnitPosition, isMobile, navigator;
 
     $(document).ready(function ()
     {
+        navigator = $('#navigator-previous');
+        navigator.toggle();
         isMobile = window.innerWidth < 600;
 
         if (typeof (Storage) !== 'undefined')
@@ -17,23 +19,26 @@
 
             renderUnitPanels();
         }
-    });
 
-    $('body').on('click', '.new-unit-selector', renderJobOverviewPanel);
-    $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
-    $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
-    $('body').on('click', '#job-confirm-button', hireUnit);
-    $('body').on('click', '#menu-unit-remove', renderDismissUnitPartial);
-    $('body').on('click', '#dismiss-cancel', function () { $('#unit-dismiss-container').remove(); });
-    $('body').on('click', '#dismiss-unit', dismissUnit);
-    $('body').on('click', '#menu-unit-item, #menu-unit-ability ', renderUnitStatsDetailsPartial);
-    $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
+        navigator.click(renderUnitPanels);
+        $('body').on('click', '.new-unit-selector', renderJobOverviewPanel);
+        $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
+        $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
+        $('body').on('click', '#job-confirm-button', hireUnit);
+        $('body').on('click', '#menu-unit-remove', renderDismissUnitPartial);
+        $('body').on('click', '#dismiss-cancel', function () { $('#unit-dismiss-container').remove(); });
+        $('body').on('click', '#dismiss-unit', dismissUnit);
+        $('body').on('click', '#menu-unit-item, #menu-unit-ability ', renderUnitStatsDetailsPartial);
+        $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
+    });    
 
     function renderUnitPanels()
     {
         var unitData = buildPanelData(getUnitData());
         $.post('/Home/GetUnitPanelPartial', unitData, function (data)
         {
+            navigator.toggle();
+            $('#party-overview-container').contents().remove();
             $('#party-overview-container').prepend(data);
         });
     }
@@ -97,6 +102,7 @@
     {
         $.post('/Home/GetJobOverviewPartial', function (data)
         {
+            navigator.toggle();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
             renderJobSelectionPanel('Male');
@@ -124,6 +130,7 @@
 
         $.post('/Home/GetUnitStatsDetailPartial', { unit: unitData }, function (data)
         {
+            navigator.toggle();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
         });
@@ -215,8 +222,8 @@
         if (window.innerWidth > 600)
         {
             piemenu = new wheelnav('piemenu');
-            piemenu.centerX = window.innerWidth / 2;
-            piemenu.centerY = window.innerHeight / 3;
+            piemenu.centerX = window.innerWidth / 2 - window.innerWidth / 20;
+            piemenu.centerY = window.innerHeight / 2 - window.innerHeight / 20;
             piemenu.selectedPercent = 1.1;
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;

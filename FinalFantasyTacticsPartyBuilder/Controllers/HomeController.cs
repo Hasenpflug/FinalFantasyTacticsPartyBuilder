@@ -168,6 +168,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
                 Job unitJob = context.Jobs.Single(m => m.JobID == unit.Unit.JobID);
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unit);
+                unit.PrimaryAbilityJobID = unitJob.JobID;
+                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
             }
 
             unit.Unit.AttributeDigits = new UnitOverviewHpMpViewModel
@@ -180,6 +182,20 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             };
 
             return PartialView("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit);
+        }
+
+        public ActionResult GetUnitItemLookupPartial(int jobID, int equipmentCategoryID)
+        {
+            List<UnitItemLookupViewModel> items = new List<UnitItemLookupViewModel>();
+
+            //using (FFTContext context = new FFTContext())
+            //{
+            //    Job unitJob = context.Jobs.Single(m => m.JobID == jobID);
+
+            //    items.AddRange(context.ItemCategories.Where(m => m.EquipmentCategoryID == equipmentCategoryID && m.id))
+            //}
+
+                return PartialView("~/Views/Home/_UnitItemLookupPartial.cshtml");
         }
 
         public ActionResult GetJobOverviewPartial()
@@ -336,17 +352,18 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unit, unitJob);
                 unit = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, null, unit, unitJob);
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
-                //unit.ab
+                unit.PrimaryAbilityJobID = unit.Unit.JobID;
+                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
             }
 
             return Json(unit);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }
