@@ -30,6 +30,7 @@
         $('body').on('click', '#dismiss-unit', dismissUnit);
         $('body').on('click', '#menu-unit-item, #menu-unit-ability ', renderUnitStatsDetailsPartial);
         $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
+        $('body').on('click', '.equipment-selector', renderItemLookupPartial);
     });    
 
     function renderUnitPanels()
@@ -127,6 +128,7 @@
     {
         var unitData = getUnitData();
         unitData = unitData.units[selectedUnitPosition];
+        selectedJobData = unitData;
 
         $.post('/Home/GetUnitStatsDetailPartial', { unit: unitData }, function (data)
         {
@@ -136,19 +138,14 @@
         });
     }
 
-    function hireUnit()
+    function renderItemLookupPartial(event)
     {
-        var localUnitData = getUnitData();
-        var newUnitData = new UnitDetails();
-        newUnitData.Unit.JobID = selectedJobData.jobID;
-        newUnitData.Unit.Gender = selectedJobData.gender;
-        newUnitData.Unit.Position = localUnitData.units.length;
-        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender, position: newUnitData.Unit.Position }, function (data)
+        var equipmentCategoryID = event.currentTarget.attributes['data-equipment-category'].nodeValue;
+
+        $.post('/Home/GetUnitItemLookupPartial', { jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID }, function (data)
         {
-            $('#party-overview-container').contents().remove();
-            localUnitData.units.push(data);
-            localStorage.setItem('unitData', JSON.stringify(localUnitData));
-            renderUnitPanels();
+            $('#item-lookup-container').remove();
+            $('#unit-abilities').append(data);
         });
     }
 
@@ -174,6 +171,22 @@
     function getUnitData()
     {
         return JSON.parse(localStorage.getItem('unitData'));
+    }
+
+    function hireUnit()
+    {
+        var localUnitData = getUnitData();
+        var newUnitData = new UnitDetails();
+        newUnitData.Unit.JobID = selectedJobData.jobID;
+        newUnitData.Unit.Gender = selectedJobData.gender;
+        newUnitData.Unit.Position = localUnitData.units.length;
+        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender, position: newUnitData.Unit.Position }, function (data)
+        {
+            $('#party-overview-container').contents().remove();
+            localUnitData.units.push(data);
+            localStorage.setItem('unitData', JSON.stringify(localUnitData));
+            renderUnitPanels();
+        });
     }
 
     function dismissUnit()

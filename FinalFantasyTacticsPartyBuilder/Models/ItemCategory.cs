@@ -35,6 +35,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public bool CanDoubleHand { get; set; }
 
         public bool IsTwoHandOnly { get; set; }
+
+        public string StartingItemImagePath { get; set; }
     }
 
     public class ItemCategoryDTO

@@ -1,8 +1,13 @@
-﻿<div id="item-lookup-container">
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model List<UnitItemLookupViewModel>
+
+<div id="item-lookup-container">
     <div id="item-type-selection" class="menu">
-        <div class="item-category">
-            <img src="~/Content/Images/Item Icons/Weapons/BattleAxe-fft-psx.gif" />
-        </div>
-        
+        @foreach (UnitItemLookupViewModel item in Model)
+        {
+            <div class="item-category" data-item-category="@item.ItemCategoryID">
+                <img src="@item.StartingItemImagePath" />
+            </div>
+        }
     </div>
 </div>

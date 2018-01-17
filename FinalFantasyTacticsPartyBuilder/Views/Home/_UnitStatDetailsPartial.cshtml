@@ -1,4 +1,5 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@using FinalFantasyTacticsPartyBuilder.Models;
 @model UnitDetailsViewModel
 
 <div id="unit-details-container">
@@ -242,31 +243,31 @@
                 </div>
             </div>
             <div id="unit-equipment-item-names" class="fft-column">
-                <div class="fft-cell">
+                <div class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Weapon)">
                     @if (Model.WeaponRight != null)
                     {
                         <strong>@Model.WeaponRight.Name</strong>
                     }
                 </div>
-                <div class="fft-cell">
+                <div class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Shield)">
                     @if (Model.WeaponLeft != null)
                     {
                         <strong>@Model.WeaponLeft.Name</strong>
                     }
                 </div>
-                <div class="fft-cell">
+                <div class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Helmet)">
                     @if (Model.Head != null)
                     {
                         <strong>@Model.Head.Name</strong>
                     }
                 </div>
-                <div class="fft-cell">
+                <div class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Armor)">
                     @if (Model.Body != null)
                     {
                         <strong>@Model.Body.Name</strong>
                     }
                 </div>
-                <div class="fft-cell">
+                <div class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Accessory)">
                     @if (Model.Accessory != null)
                     {
                         <strong>@Model.Accessory.Name</strong>

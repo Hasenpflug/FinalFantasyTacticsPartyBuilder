@@ -28,21 +28,24 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Axe",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    IsTwoHandOnly = true
+                    IsTwoHandOnly = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/BattleAxe-fft-psx.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Bag,
                     ItemCategoryName = "Bag",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Croakadile_Bag.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Book,
                     ItemCategoryName = "Book",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Battle_Folio.gif"
                 },
                 new ItemCategory
                 {
@@ -50,21 +53,24 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Bow",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    IsTwoHandOnly = true
+                    IsTwoHandOnly = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Longbow.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Cloth,
                     ItemCategoryName = "Cloth",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Damask_Cloth.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Crossbow,
                     ItemCategoryName = "Crossbow",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Crossbow.gif"
                 },
                 new ItemCategory
                 {
@@ -72,7 +78,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Fell Sword",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    IsTwoHandOnly = true
+                    IsTwoHandOnly = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Deathbringer.png"
                 },
                 new ItemCategory
                 {
@@ -81,21 +88,24 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDoubleHand = true,
-                    CanDualWield = true
+                    CanDualWield = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Iron_Flail.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Gun,
                     ItemCategoryName = "Gun",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Romandan_Pistol.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Instrument,
                     ItemCategoryName = "Instrument",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
-                    EquipmentCategoryName = "Weapon"
+                    EquipmentCategoryName = "Weapon",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Lamia's_Harp.gif"
                 },
                 new ItemCategory
                 {
@@ -104,7 +114,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDualWield = true,
-                    CanDoubleHand = true
+                    CanDoubleHand = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Ashura.gif"
                 },
                 new ItemCategory
                 {
@@ -112,7 +123,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Knife",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    CanDualWield = true
+                    CanDualWield = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Dagger.gif"
                 },
                 new ItemCategory
                 {
@@ -121,7 +133,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDualWield = true,
-                    CanDoubleHand = true
+                    CanDoubleHand = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Defender.gif"
                 },
                 new ItemCategory
                 {
@@ -130,7 +143,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDoubleHand = true,
-                    CanDualWield = true
+                    CanDualWield = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Ninja_Blade.gif"
                 },
                 new ItemCategory
                 {
@@ -138,7 +152,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Pole",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    CanDoubleHand = true
+                    CanDoubleHand = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Iron_Fan.gif"
                 },
                 new ItemCategory
                 {
@@ -147,7 +162,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDoubleHand = true,
-                    CanDualWield = true
+                    CanDualWield = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Rod.gif"
                 },
                 new ItemCategory
                 {
@@ -155,7 +171,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryName = "Polearm",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
-                    CanDoubleHand = true
+                    CanDoubleHand = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Javelin_1.gif"
                 },
                 new ItemCategory
                 {
@@ -164,7 +181,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDualWield = true,
-                    CanDoubleHand = true
+                    CanDoubleHand = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Oak_Staff.gif"
                 },
                 new ItemCategory
                 {
@@ -173,7 +191,8 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Weapon,
                     EquipmentCategoryName = "Weapon",
                     CanDoubleHand = true,
-                    CanDualWield = true
+                    CanDualWield = true,
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Weapons/FFT_Broadsword.gif"
                 },
                 new ItemCategory
                 {
@@ -195,91 +214,104 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     ItemCategoryID = (int)ItemCategoriesList.HeavyArmour,
                     ItemCategoryName = "Heavy Armour",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
-                    EquipmentCategoryName = "Armor"
+                    EquipmentCategoryName = "Armor",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Leather_Armor.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Clothes,
                     ItemCategoryName = "Clothes",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
-                    EquipmentCategoryName = "Armor"
+                    EquipmentCategoryName = "Armor",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Clothing.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.HairAdornment,
                     ItemCategoryName = "Hair Adornment",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
-                    EquipmentCategoryName = "Helmet"
+                    EquipmentCategoryName = "Helmet",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Cachusha.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Hat,
                     ItemCategoryName = "Hat",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
-                    EquipmentCategoryName = "Helmet"
+                    EquipmentCategoryName = "Helmet",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Leather_Cap.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Helmet,
                     ItemCategoryName = "Helmet",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Helmet,
-                    EquipmentCategoryName = "Helmet"
+                    EquipmentCategoryName = "Helmet",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Leather_Helm.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Robe,
                     ItemCategoryName = "Robe",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Armor,
-                    EquipmentCategoryName = "Armor"
+                    EquipmentCategoryName = "Armor",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Hempen_Robe.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Shield,
                     ItemCategoryName = "Shield",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Shield,
-                    EquipmentCategoryName = "Shield"
+                    EquipmentCategoryName = "Shield",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Armour/FFT_Escutcheon_1.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Shoe,
                     ItemCategoryName = "Shoe",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Battle_Boots.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Armguard,
                     ItemCategoryName = "Armguard",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Power_Gauntlet.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Ring,
                     ItemCategoryName = "Ring",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Protect_Ring.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Cloak,
                     ItemCategoryName = "Cloak",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Shoulder_Cape.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.Perfume,
                     ItemCategoryName = "Perfume",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Sortilege.gif"
                 },
                 new ItemCategory
                 {
                     ItemCategoryID = (int)ItemCategoriesList.LipRouge,
                     ItemCategoryName = "LipRouge",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
-                    EquipmentCategoryName = "Accessory"
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FF_tactics_tynar_rouge.png"
                 });
             #endregion
 
@@ -3906,7 +3938,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                     BaseCombatEvasion = 5,
                 });
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Squire,
@@ -3966,7 +3998,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Chemist,
@@ -4016,7 +4048,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Knight,
@@ -4025,7 +4057,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Knight,
@@ -4085,7 +4117,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Archer,
@@ -4094,7 +4126,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Archer,
@@ -4149,7 +4181,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.WhiteMage,
@@ -4158,7 +4190,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.WhiteMage,
@@ -4208,7 +4240,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.BlackMage,
@@ -4217,7 +4249,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.BlackMage,
@@ -4267,7 +4299,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Monk,
@@ -4277,7 +4309,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Monk,
@@ -4311,7 +4343,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Thief,
@@ -4321,7 +4353,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Thief,
@@ -4367,7 +4399,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Mystic,
@@ -4377,7 +4409,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Mystic,
@@ -4442,7 +4474,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.TimeMage,
@@ -4452,7 +4484,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.TimeMage,
@@ -4502,7 +4534,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Geomancer,
@@ -4512,7 +4544,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Geomancer,
@@ -4572,7 +4604,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Dragoon,
@@ -4582,7 +4614,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Dragoon,
@@ -4638,7 +4670,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Orator,
@@ -4648,7 +4680,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Orator,
@@ -4703,7 +4735,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Summoner,
@@ -4712,7 +4744,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Summoner,
@@ -4762,7 +4794,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Samurai,
@@ -4786,7 +4818,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Samurai,
@@ -4835,7 +4867,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobPrerequisites.AddOrUpdate(m => m.JobPrerequisitesID,
+            context.JobPrerequisites.AddOrUpdate(m => m.JobRequiredID,
                 new JobPrerequisites
                 {
                     JobID = (int)Jobs.Ninja,
@@ -4859,7 +4891,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 }
             );
 
-            context.JobItems.AddOrUpdate(m => m.JobItemCategoryID,
+            context.JobItems.AddOrUpdate(m => m.ItemCategoryID,
                 new JobItem
                 {
                     JobID = (int)Jobs.Ninja,

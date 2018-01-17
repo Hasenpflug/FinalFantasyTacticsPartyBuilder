@@ -779,6 +779,7 @@ img {
 }
 
 #unit-abilities {
+    position:relative;
     width: 48%;
     height: 100%;
     float: right;
@@ -850,7 +851,8 @@ img {
 
 #item-lookup-container {
     position: absolute;
-    width: 45%;
+    top:0;
+    width: 100%;
     height: 50%;
     max-height: 450px;
     display: normal;

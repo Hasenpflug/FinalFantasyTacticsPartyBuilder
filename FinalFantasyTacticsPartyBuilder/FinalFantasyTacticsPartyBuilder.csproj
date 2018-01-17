@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201801112002357_AbilityNames.Designer.cs">
       <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801171631394_ImagePagth.cs" />
+    <Compile Include="Migrations\201801171631394_ImagePagth.Designer.cs">
+      <DependentUpon>201801171631394_ImagePagth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ability.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -740,6 +744,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801112002357_AbilityNames.resx">
       <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171631394_ImagePagth.resx">
+      <DependentUpon>201801171631394_ImagePagth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

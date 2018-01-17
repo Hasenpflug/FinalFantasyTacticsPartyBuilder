@@ -161,7 +161,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         accessoryItem.PhysicalEvade.Value.ToString("D3") : "00" : "00",
                         AccessoryMagicalEvade = accessoryItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? accessoryItem.MagicalEvade.HasValue ?
                         accessoryItem.MagicalEvade.Value.ToString("D3") : "00" : "00",
-                        ImagePath = @"~/Content/Images/Item_Icons/Armour/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
+                        ImagePath = @"~/Content/Images/Item_Icons/Accessories/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
                         Name = context.Items.Single(m => m.ItemID == unit.AccessoryID).PspName,
                     };
                 }
@@ -188,14 +188,51 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         {
             List<UnitItemLookupViewModel> items = new List<UnitItemLookupViewModel>();
 
-            //using (FFTContext context = new FFTContext())
-            //{
-            //    Job unitJob = context.Jobs.Single(m => m.JobID == jobID);
+            using (FFTContext context = new FFTContext())
+            {
+                Job unitJob = context.Jobs.Single(m => m.JobID == jobID);
 
-            //    items.AddRange(context.ItemCategories.Where(m => m.EquipmentCategoryID == equipmentCategoryID && m.id))
-            //}
+                items.AddRange(unitJob.JobItems.Where(m => m.ItemCategory.EquipmentCategoryID == equipmentCategoryID).Select(m => new UnitItemLookupViewModel
+                {
+                    ItemCategoryID = m.ItemCategoryID,
+                    ItemCategoryName = m.ItemCategory.ItemCategoryName,
+                    StartingItemImagePath = m.ItemCategory.StartingItemImagePath
+                }));
+            }
 
-                return PartialView("~/Views/Home/_UnitItemLookupPartial.cshtml");
+            return PartialView("~/Views/Home/_UnitItemLookupPartial.cshtml", items);
+        }
+
+        public ActionResult GetUnitItemSelectionPartial(int itemCategoryID)
+        {
+            List<ItemOverviewViewModel> items = new List<ItemOverviewViewModel>();
+
+            using (FFTContext context = new FFTContext())
+            {
+                items.AddRange(context.Items.Where(m => m.ItemCategoryID == itemCategoryID).Select(c => new ItemOverviewViewModel
+                {
+                    ItemCategoryID = itemCategoryID,
+                    AccessoryMagicalEvade = (c.ItemCategoryID == (int)ItemCategoriesList.Cloak ? c.MagicalEvade ?? 0 : 0).ToString(),
+                    AccessoryPhysicalEvade = (c.ItemCategoryID == (int)ItemCategoriesList.Cloak ? c.PhysicalEvade ?? 0 : 0).ToString(),
+                    HPBonus = (c.HPBonus ?? 0),
+                    MPBonus = (c.MPBonus ?? 0),
+                    MoveBonus = (c.MoveBoost ?? 0),
+                    JumpBonus = (c.JumpBoost ?? 0),
+                    SpeedBonus = (c.SpeedBoost ?? 0),
+                    ShieldPhysicalEvade = (c.ItemCategoryID == (int)ItemCategoriesList.Shield ? c.PhysicalEvade ?? 0 : 0).ToString(),
+                    ShieldMagicalEvade = (c.ItemCategoryID == (int)ItemCategoriesList.Shield ? c.MagicalEvade ?? 0 : 0).ToString(),
+                    PhysicalAttackPower = (c.PhysicalAttackBoost ?? 0).ToString(),
+                    MagicalAttackPower = (c.MagicAttackBoost ?? 0).ToString(),
+                    Name = c.PspName,
+                    WeaponPower = (c.AttackPower ?? 0).ToString(),
+                    WeaponHit = (c.HitPercentage ?? 0).ToString(),
+                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"~/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID == 
+                        (int)EquipmentCategoriesList.Armor ? @"~/Content/Images/Item_Icons/Armour/" : c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? 
+                        @"~/Content/Images/Item_Icons/Armour/" : c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? @"~/Content/Images/Item_Icons/Accessories/" : "") + c.IconFileName
+                }));
+            }
+
+            return PartialView("~/Views/Home/_UnitItemSelectionPartial.cshtml", items);
         }
 
         public ActionResult GetJobOverviewPartial()
