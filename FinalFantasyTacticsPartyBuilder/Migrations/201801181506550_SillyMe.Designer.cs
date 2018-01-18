@@ -7,13 +7,13 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ImagePagth : IMigrationMetadata
+    public sealed partial class SillyMe : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ImagePagth));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SillyMe));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801171631394_ImagePagth"; }
+            get { return "201801181506550_SillyMe"; }
         }
         
         string IMigrationMetadata.Source

@@ -174,21 +174,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801101521265_IsStartingitem.cs" />
-    <Compile Include="Migrations\201801101521265_IsStartingitem.Designer.cs">
-      <DependentUpon>201801101521265_IsStartingitem.cs</DependentUpon>
+    <Compile Include="Migrations\201801181506550_SillyMe.cs" />
+    <Compile Include="Migrations\201801181506550_SillyMe.Designer.cs">
+      <DependentUpon>201801181506550_SillyMe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801111606186_CanWield.cs" />
-    <Compile Include="Migrations\201801111606186_CanWield.Designer.cs">
-      <DependentUpon>201801111606186_CanWield.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801112002357_AbilityNames.cs" />
-    <Compile Include="Migrations\201801112002357_AbilityNames.Designer.cs">
-      <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801171631394_ImagePagth.cs" />
-    <Compile Include="Migrations\201801171631394_ImagePagth.Designer.cs">
-      <DependentUpon>201801171631394_ImagePagth.cs</DependentUpon>
+    <Compile Include="Migrations\201801181532202_FemalesOnly.cs" />
+    <Compile Include="Migrations\201801181532202_FemalesOnly.Designer.cs">
+      <DependentUpon>201801181532202_FemalesOnly.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ability.cs" />
@@ -736,17 +728,11 @@
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801101521265_IsStartingitem.resx">
-      <DependentUpon>201801101521265_IsStartingitem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801181506550_SillyMe.resx">
+      <DependentUpon>201801181506550_SillyMe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801111606186_CanWield.resx">
-      <DependentUpon>201801111606186_CanWield.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801112002357_AbilityNames.resx">
-      <DependentUpon>201801112002357_AbilityNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801171631394_ImagePagth.resx">
-      <DependentUpon>201801171631394_ImagePagth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801181532202_FemalesOnly.resx">
+      <DependentUpon>201801181532202_FemalesOnly.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

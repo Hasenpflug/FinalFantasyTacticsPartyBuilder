@@ -36,6 +36,8 @@ namespace FinalFantasyTacticsPartyBuilder.Models
 
         public bool IsTwoHandOnly { get; set; }
 
+        public bool IsFemaleOnly { get; set; }
+
         public string StartingItemImagePath { get; set; }
     }
 

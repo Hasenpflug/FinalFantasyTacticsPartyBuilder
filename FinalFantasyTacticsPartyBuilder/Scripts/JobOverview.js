@@ -31,6 +31,7 @@
         $('body').on('click', '#menu-unit-item, #menu-unit-ability ', renderUnitStatsDetailsPartial);
         $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
         $('body').on('click', '.equipment-selector', renderItemLookupPartial);
+        $('body').on('click', '.item-category', renderItemSelectionPartial);
     });    
 
     function renderUnitPanels()
@@ -106,6 +107,7 @@
             navigator.toggle();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
+            selectedUnitPosition = '-1';
             renderJobSelectionPanel('Male');
         });
     }
@@ -142,9 +144,21 @@
     {
         var equipmentCategoryID = event.currentTarget.attributes['data-equipment-category'].nodeValue;
 
-        $.post('/Home/GetUnitItemLookupPartial', { jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID }, function (data)
+        $.post('/Home/GetUnitItemLookupPartial', { jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID,
+            isFemale: selectedJobData.Unit.Gender === 1 ? true : false }, function (data)
         {
             $('#item-lookup-container').remove();
+            $('#unit-abilities').append(data);
+        });
+    }
+
+    function renderItemSelectionPartial(event)
+    {
+        var itemCategory = event.currentTarget.attributes['data-item-category'].nodeValue;
+
+        $.post('/Home/GetItemSelectionPartial', { itemCategoryID: itemCategory }, function (data)
+        {
+            $('#item-selection').remove();
             $('#unit-abilities').append(data);
         });
     }

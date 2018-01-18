@@ -7,13 +7,13 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CanWield : IMigrationMetadata
+    public sealed partial class FemalesOnly : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CanWield));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FemalesOnly));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801111606186_CanWield"; }
+            get { return "201801181532202_FemalesOnly"; }
         }
         
         string IMigrationMetadata.Source
