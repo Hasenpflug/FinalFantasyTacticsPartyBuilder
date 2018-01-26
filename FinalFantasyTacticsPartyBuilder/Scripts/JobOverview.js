@@ -148,7 +148,7 @@
             isFemale: selectedJobData.Unit.Gender === 1 ? true : false }, function (data)
         {
             $('#item-lookup-container').remove();
-            $('#unit-abilities').append(data);
+            $('#unit-ability-equipment-container').append(data);
         });
     }
 

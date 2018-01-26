@@ -866,7 +866,7 @@ img {
 
 #item-selection {
     position:absolute;
-    top:22.5%;
+    top:20.5%;
     width: 100%;
     height: 90%;
     vertical-align: top;
@@ -883,13 +883,13 @@ img {
 }
 
 .item-category {
-    margin: 0.5%;
+    width:5%;
+    margin: 1%;
     display: inline-block;
-    width: 30px;
-    height: 40px;
 }
 
     .item-category img {
+        width:100%;
         vertical-align: bottom;
     }
 
