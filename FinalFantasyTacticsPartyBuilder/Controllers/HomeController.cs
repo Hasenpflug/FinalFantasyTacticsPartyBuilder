@@ -239,9 +239,9 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     Name = c.PspName,
                     WeaponPower = (c.AttackPower ?? 0).ToString(),
                     WeaponHit = (c.HitPercentage ?? 0).ToString(),
-                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID == 
-                        (int)EquipmentCategoriesList.Armor ? @"/Content/Images/Item_Icons/Armour/" : c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? 
-                        @"/Content/Images/Item_Icons/Armour/" : c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Accessories/" : "") + c.IconFileName
+                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID >= 
+                        (int)EquipmentCategoriesList.Weapon && c.ItemCategory.EquipmentCategoryID <= (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" : 
+                        c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Accessories/" : "") + c.IconFileName
                 }));
             }
 

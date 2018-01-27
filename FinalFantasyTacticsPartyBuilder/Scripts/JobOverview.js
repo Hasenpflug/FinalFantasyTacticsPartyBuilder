@@ -6,7 +6,7 @@
     $(document).ready(function ()
     {
         navigator = $('#navigator-previous');
-        navigator.toggle();
+        navigator.hide();
         isMobile = window.innerWidth < 600;
 
         if (typeof (Storage) !== 'undefined')
@@ -39,7 +39,7 @@
         var unitData = buildPanelData(getUnitData());
         $.post('/Home/GetUnitPanelPartial', unitData, function (data)
         {
-            navigator.toggle();
+            navigator.hide();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').prepend(data);
         });
@@ -104,7 +104,7 @@
     {
         $.post('/Home/GetJobOverviewPartial', function (data)
         {
-            navigator.toggle();
+            navigator.show();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
             selectedUnitPosition = '-1';
@@ -134,9 +134,10 @@
 
         $.post('/Home/GetUnitStatsDetailPartial', { unit: unitData }, function (data)
         {
-            navigator.toggle();
+            navigator.show();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
+            selectedUnitPosition = '-1';
         });
     }
 
@@ -148,7 +149,8 @@
             isFemale: selectedJobData.Unit.Gender === 1 ? true : false }, function (data)
         {
             $('#item-lookup-container').remove();
-            $('#unit-ability-equipment-container').append(data);
+            $('#item-selection').remove();
+            $('#unit-abilities').append(data);
         });
     }
 
@@ -159,7 +161,7 @@
         $.post('/Home/GetItemSelectionPartial', { itemCategoryID: itemCategory }, function (data)
         {
             $('#item-selection').remove();
-            $('#unit-abilities').append(data);
+            $('#item-lookup-container').append(data);
         });
     }
 
