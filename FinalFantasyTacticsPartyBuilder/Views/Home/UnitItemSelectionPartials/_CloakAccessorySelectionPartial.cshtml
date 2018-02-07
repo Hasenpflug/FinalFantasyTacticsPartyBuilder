@@ -10,20 +10,14 @@
                 <img src="@item.ImagePath" />
             </div>
 
-            <div class="fft-cell @(item.EquipmentCategoryName + "-names")" data-item-power="1" data-item-hit-percentage="1">
+            <div class="fft-cell item-names" data-item-physical-evade="@item.AccessoryPhysicalEvade" data-item-magical-evade="@item.AccessoryMagicalEvade">
                 <strong>@item.Name</strong>
             </div>
             <div class="fft-cell item-icon">
                 <img src="~/Content/Images/physical-icon.png" />
             </div>
             <div class="fft-cell">
-                <span>05</span>
-            </div>
-            <div class="fft-cell">
-                <span>/</span>
-            </div>
-            <div class="fft-cell">
-                <span>15</span>
+                <span>@item.AccessoryPhysicalEvade</span>
             </div>
             <div class="fft-cell">
                 <span>%</span>
@@ -32,7 +26,10 @@
                 <img src="~/Content/Images/magical-icon.png" />
             </div>
             <div class="fft-cell">
-                <span>01</span>
+                <span>@item.AccessoryMagicalEvade</span>
+            </div>
+            <div class="fft-cell">
+                <span>%</span>
             </div>
             <div class="fft-cell item-icon item-details-button">
                 <img src="~/Content/Images/help.png" />
@@ -40,4 +37,5 @@
         </div>
     }
 </div>
+
 

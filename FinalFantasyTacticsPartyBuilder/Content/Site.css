@@ -856,6 +856,7 @@ img {
     max-height: 450px;
     display: normal;
     z-index: 1;
+    /*overflow:auto;*/
 }
 
 #item-type-selection {
@@ -866,10 +867,11 @@ img {
 
 #item-selection {
     width: 100%;
-    height: 90%;
+    height: 80%;
     vertical-align: top;
     overflow: auto;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #ability-lookup-container {
@@ -881,13 +883,12 @@ img {
 }
 
 .item-category {
-    width:5%;
     margin: 1%;
     display: inline-block;
 }
 
     .item-category img {
-        width:100%;
+        height:100%;
         vertical-align: bottom;
     }
 
@@ -897,20 +898,26 @@ img {
     }
 
 #item-selection-icon-background {
-    position: fixed;
-    height: 40%;
+    position: absolute;
+    height: 80%;
     width: 65px;
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-#item-selection .fft-row .fft-cell:nth-child(2) {
-    width: 25%;
+.item-names {
+    width: 35%;
     margin-left: 3%;
 }
 
-    #item-selection .fft-row .fft-cell:nth-child(2):hover {
+    .item-names:hover {
         cursor: pointer;
     }
+        .item-names:hover:before {
+            position: absolute;
+            top: -10%;
+            left: 6%;
+            content: url(Images/menu_cursor.png);
+        }
 
 #item-selection .fft-row .fft-cell:last-child {
     width: 10%;
@@ -923,13 +930,6 @@ img {
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.15);
     }
-
-#item-selection .fft-row .fft-cell:nth-child(2):hover:before {
-    position: absolute;
-    top: -10%;
-    left: 6%;
-    content: url(Images/menu_cursor.png);
-}
 
 .weapon-icons {
     width: 50px;

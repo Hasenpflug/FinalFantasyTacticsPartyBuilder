@@ -1,0 +1,37 @@
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model List<ItemOverviewViewModel>
+
+<div id="item-selection" class="menu">
+    <div id="item-selection-icon-background"></div>
+    @foreach (ItemOverviewViewModel item in Model)
+    {
+        <div class="fft-row">
+            <div class="fft-cell @(item.EquipmentCategoryName + "-icons") item-icon">
+                <img src="@item.ImagePath" />
+            </div>
+
+            <div class="fft-cell item-names" data-item-power="@item.WeaponPower" data-item-hit-percentage="@item.WeaponHit">
+                <strong>@item.Name</strong>
+            </div>
+            <div class="fft-cell item-icon">
+                <img src="~/Content/Images/physical-icon.png" />
+            </div>
+            <div class="fft-cell">
+                <span>@item.WeaponPower</span>
+            </div>
+            <div class="fft-cell">
+                <span>/</span>
+            </div>
+            <div class="fft-cell">
+                <span>@item.WeaponHit</span>
+            </div>
+            <div class="fft-cell">
+                <span>%</span>
+            </div>
+            <div class="fft-cell item-icon item-details-button">
+                <img src="~/Content/Images/help.png" />
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,43 @@
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model List<ItemOverviewViewModel>
+
+<div id="item-selection" class="menu">
+    <div id="item-selection-icon-background"></div>
+    @foreach (ItemOverviewViewModel item in Model)
+    {
+        <div class="fft-row">
+            <div class="fft-cell @(item.EquipmentCategoryName + "-icons") item-icon">
+                <img src="@item.ImagePath" />
+            </div>
+
+            <div class="fft-cell item-names" data-item-move-bonus="@item.MoveBonus" data-item-jump-bonus="@item.JumpBonus">
+                <strong>@item.Name</strong>
+            </div>
+            <div class="fft-cell">
+                <span>Move</span>
+            </div>
+            <div class="fft-cell">
+                <span></span>
+            </div>
+            <div class="fft-cell">
+                <span>@item.MoveBonus</span>
+            </div>
+            <div class="fft-cell">
+                <span></span>
+            </div>
+            <div class="fft-cell">
+                <span>Jump</span>
+            </div>
+            <div class="fft-cell">
+                <span></span>
+            </div>
+            <div class="fft-cell">
+                <span>@item.JumpBonus</span>
+            </div>
+            <div class="fft-cell item-icon item-details-button">
+                <img src="~/Content/Images/help.png" />
+            </div>
+        </div>
+    }
+</div>
+

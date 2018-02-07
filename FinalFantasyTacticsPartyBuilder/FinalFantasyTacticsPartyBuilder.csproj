@@ -348,6 +348,7 @@
     <Content Include="Content\Images\Item_Icons\Armour\FFT_Thief%27s_Cap.gif" />
     <Content Include="Content\Images\Item_Icons\Armour\FFT_Venetian_Shield.gif" />
     <Content Include="Content\Images\Item_Icons\Armour\FFT_White_Robe.gif" />
+    <Content Include="Content\Images\Item_Icons\Armour\FFT_Wizard%27s_Hat.gif" />
     <Content Include="Content\Images\Item_Icons\Armour\FFT_Wizard%27s_Robe.gif" />
     <Content Include="Content\Images\Item_Icons\Armour\FFT_Wizard_Clothing.gif" />
     <Content Include="Content\Images\Item_Icons\Armour\FF_tactics_acacia_hat.png" />
@@ -713,7 +714,13 @@
     <Content Include="Views\Home\_UnitItemDetailsPartial.cshtml" />
     <Content Include="Views\Home\_UnitAbilityDetailsPartial.cshtml" />
     <Content Include="Views\Home\_UnitStatDetailsPartial.cshtml" />
-    <Content Include="Views\Home\_UnitItemSelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_WeaponSelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_ShieldSelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_HelmetBodySelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_DefaultAccessorySelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_ArmguardAccessorySelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_CloakAccessorySelectionPartial.cshtml" />
+    <Content Include="Views\Home\UnitItemSelectionPartials\_ShoeAccessorySelectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />

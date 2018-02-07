@@ -2858,7 +2858,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 Cost = 1800,
                 MagicAttackBoost = 1,
                 Description = "A hat adorned with a magick symbol.",
-                IconFileName = "FFT_Headgear.gif",
+                IconFileName = "FFT_Wizard's_Hat.gif",
             },
             new Item
             {
@@ -9432,10 +9432,11 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Names
 
+            string serverPath = @"D:\home\site\wwwroot\";
             string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
-            //string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
+            string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9445,7 +9446,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9455,7 +9456,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName

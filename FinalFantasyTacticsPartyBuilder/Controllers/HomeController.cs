@@ -223,6 +223,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             {
                 items.AddRange(context.Items.Where(m => m.ItemCategoryID == itemCategoryID).Select(c => new ItemOverviewViewModel
                 {
+                    EquipmentCategoryID = c.ItemCategory.EquipmentCategoryID,
                     EquipmentCategoryName = c.ItemCategory.EquipmentCategoryName.ToLower(),
                     ItemCategoryID = itemCategoryID,
                     AccessoryMagicalEvade = (c.ItemCategoryID == (int)ItemCategoriesList.Cloak ? c.MagicalEvade ?? 0 : 0).ToString(),
@@ -239,13 +240,39 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     Name = c.PspName,
                     WeaponPower = (c.AttackPower ?? 0).ToString(),
                     WeaponHit = (c.HitPercentage ?? 0).ToString(),
-                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID >= 
-                        (int)EquipmentCategoriesList.Weapon && c.ItemCategory.EquipmentCategoryID <= (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" : 
-                        c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Accessories/" : "") + c.IconFileName
+                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID >
+                        (int)EquipmentCategoriesList.Weapon && c.ItemCategory.EquipmentCategoryID < (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" :
+                        @"/Content/Images/Item_Icons/Accessories/") + c.IconFileName
                 }));
             }
 
-            return PartialView("~/Views/Home/_UnitItemSelectionPartial.cshtml", items);
+            if (items.Count > 0)
+            {
+                switch (items[0].EquipmentCategoryID)
+                {
+                    case (int)EquipmentCategoriesList.Weapon:
+                        return PartialView("~/Views/Home/UnitItemSelectionPartials/_WeaponSelectionPartial.cshtml", items);
+                    case (int)EquipmentCategoriesList.Shield:
+                        return PartialView("~/Views/Home/UnitItemSelectionPartials/_ShieldSelectionPartial.cshtml", items);
+                    case (int)EquipmentCategoriesList.Accessory:
+                        switch(items[0].ItemCategoryID)
+                        {
+                            case (int)ItemCategoriesList.Shoe:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_ShoeAccessorySelectionPartial.cshtml", items);
+                            case (int)ItemCategoriesList.Cloak:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_CloakAccessorySelectionPartial.cshtml", items);
+                            case (int)ItemCategoriesList.Armguard:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_ArmguardAccessorySelectionPartial.cshtml", items);
+                            default:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_DefaultAccessorySelectionPartial.cshtml", items);
+
+                        }
+                    default:
+                        return PartialView("~/Views/Home/UnitItemSelectionPartials/_HelmetBodySelectionPartial.cshtml", items);
+                }
+            }
+
+            return null;
         }
 
         public ActionResult GetJobOverviewPartial()
