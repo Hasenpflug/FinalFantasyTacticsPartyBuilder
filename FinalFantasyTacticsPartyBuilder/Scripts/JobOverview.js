@@ -32,6 +32,8 @@
         $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
         $('body').on('click', '.equipment-selector', renderItemLookupPartial);
         $('body').on('click', '.item-category', renderItemSelectionPartial);
+        $('body').on('mouseover', '.item-names', previewEquipmentChanges);
+        $('body').on('mouseleave', '.item-names', resetItemStats);
     });    
 
     function renderUnitPanels()
@@ -163,6 +165,121 @@
             $('#item-selection').remove();
             $('#item-lookup-container').append(data);
         });
+    }
+
+    function previewEquipmentChanges(event)
+    {
+        var itemCategoryName = event.currentTarget.attributes['data-item-category-name'].nodeValue;
+
+        switch (itemCategoryName)
+        {
+            case "weapon":
+                var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
+                var rightHitElement = document.querySelector('#weapon-stats-right-hit');
+                var rightHit = parseInt(rightHitElement.attributes['data-item-hit-percentage'].nodeValue);
+                var rightDamage = parseInt(rightDamageElement.attributes['data-item-power'].nodeValue);
+                var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
+                var itemHit = parseInt(event.currentTarget.attributes['data-item-hit-percentage'].nodeValue);
+
+                if (itemDamage > rightDamage) {
+                    rightDamageElement.firstChild.textContent = '+' + (itemDamage - rightDamage);
+                    rightDamageElement.firstChild.style.color = 'blue';
+
+                }
+                else if (itemDamage < rightDamage) {
+                    rightDamageElement.firstChild.textContent = '-' + (rightDamage - itemDamage);
+                    rightDamageElement.firstChild.style.color = 'red';
+                }
+
+                if (itemHit > rightHit) {
+                    rightHitElement.firstChild.textContent = '+' + (itemHit - rightHit);
+                    rightHitElement.firstChild.style.color = 'blue';
+                }
+                else if (itemHit < rightHit) {
+                    rightHitElement.firstChild.textContent = '-' + (rightHit - itemHit);
+                    rightHitElement.firstChild.style.color = 'red';
+                }
+                break;
+            case "shield":
+                var leftPhysicalEvadeElement = document.querySelector('#shield-stats-physical-evade');
+                var leftMagicalEvadeElement = document.querySelector('#shield-stats-magical-evade');
+                var physicalEvade = parseInt(leftPhysicalEvadeElement.attributes['data-item-physical-evade'].nodeValue);
+                var magicalEvade = parseInt(leftMagicalEvadeElement.attributes['data-item-magical-evade'].nodeValue);
+                var itemPhysicalEvade = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
+                var itemMagicalEvade = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
+
+                if (itemPhysicalEvade > physicalEvade) {
+                    leftPhysicalEvadeElement.firstChild.textContent = '+' + (itemPhysicalEvade - physicalEvade);
+                    leftPhysicalEvadeElement.firstChild.style.color = 'blue';
+                }
+                else if (itemPhysicalEvade < physicalEvade) {
+                    leftPhysicalEvadeElement.firstChild.textContent = '-' + (physicalEvade - itemPhysicalEvade);
+                    leftPhysicalEvadeElement.firstChild.style.color = 'red';
+                }
+
+                if (itemMagicalEvade > magicalEvade) {
+                    leftMagicalEvadeElement.firstChild.textContent = '+' + (itemMagicalEvade - magicalEvade);
+                    leftMagicalEvadeElement.firstChild.style.color = 'blue';
+                }
+                else if (itemMagicalEvade < magicalEvade) {
+                    leftMagicalEvadeElement.firstChild.textContent = '-' + (magicalEvade - itemMagicalEvade);
+                    leftMagicalEvadeElement.firstChild.style.color = 'red';
+                }
+                break;
+            case "helmet":
+                var hpBonusElement = document.querySelector('#armour-stats-hp-bonus');
+                var mpBonusElement = document.querySelector('#armour-stats-mp-bonus');
+                var hpBonus = parseInt(hpBonusElement.attributes['data-item-helmet-hp-bonus'].nodeValue);
+                var mpBonus = parseInt(mpBonusElement.attributes['data-item-helmet-mp-bonus'].nodeValue);
+                var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
+                var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
+
+                if (itemHpBonus > hpBonus) {
+                    hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
+                    hpBonusElement.style.color = 'lightblue';
+                    hpBonusElement.style.visibility = 'visible';
+                }
+                else if (itemHpBonus < hpBonus) {
+                    hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
+                    hpBonusElement.style.color = 'red';
+                    hpBonusElement.style.visibility = 'visible';
+                }
+
+                if (itemMpBonus > mpBonus) {
+                    mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
+                    mpBonusElement.style.color = 'lightblue';
+                    mpBonusElement.style.visibility = 'visible';
+                }
+                else if (itemMpBonus < mpBonus) {
+                    mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
+                    mpBonusElement.style.color = 'red';
+                    mpBonusElement.style.visibility = 'visible';
+                }
+                break;
+        }
+    }
+
+    function resetItemStats(event)
+    {
+        var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
+        var rightHitElement = document.querySelector('#weapon-stats-right-hit');
+        var leftPhysicalEvadeElement = document.querySelector('#shield-stats-physical-evade');
+        var leftMagicalEvadeElement = document.querySelector('#shield-stats-magical-evade');
+        var hpBonusElement = document.querySelector('#armour-stats-hp-bonus');
+        var mpBonusElement = document.querySelector('#armour-stats-mp-bonus');
+
+        rightDamageElement.firstChild.textContent = rightDamageElement.attributes['data-item-power'].nodeValue;
+        rightDamageElement.firstChild.style.color = '#333333';
+        rightHitElement.firstChild.textContent = rightHitElement.attributes['data-item-hit-percentage'].nodeValue;
+        rightHitElement.firstChild.style.color = '#333333';
+
+        leftPhysicalEvadeElement.firstChild.textContent = leftPhysicalEvadeElement.attributes['data-item-physical-evade'].nodeValue;
+        leftPhysicalEvadeElement.firstChild.style.color = '#333333';
+        leftMagicalEvadeElement.firstChild.textContent = leftMagicalEvadeElement.attributes['data-item-magical-evade'].nodeValue;
+        leftMagicalEvadeElement.firstChild.style.color = '#333333';
+
+        hpBonusElement.style.visibility = 'hidden';
+        mpBonusElement.style.visibility = 'hidden';
     }
 
     function renderDismissUnitPartial()

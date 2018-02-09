@@ -30,6 +30,7 @@
                 {
                     <img class="value lower-hp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.HpDigits[i]).png" />
                 }
+                <span id="armour-stats-hp-bonus" data-item-helmet-hp-bonus="@(Model.Head != null ? Model.Head.HPBonus : 0)">000</span>
             </div>
             <div id="unit-status-mp-container">
                 <img class="mp small-image" src="~/Content/Images/mp.png" />
@@ -43,6 +44,7 @@
                 {
                     <img class="value lower-mp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.MpDigits[i]).png" />
                 }
+                <span id="armour-stats-mp-bonus" data-item-helmet-mp-bonus="@(Model.Head != null ? Model.Head.MPBonus : 0)">000</span>
             </div>
         </div>
         <div class="unit-details-name-container menu">
@@ -143,8 +145,8 @@
             <div class="fft-column">
                 <div class="fft-cell"><span>S-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>@Model.PhysicalShieldEvade</span></div>
-                    <div class="fft-cell"><span>@Model.MagicalShieldEvade</span></div>
+                    <div id="shield-stats-physical-evade" class="fft-cell" data-item-physical-evade="@Model.PhysicalShieldEvade"><span>@Model.PhysicalShieldEvade</span></div>
+                    <div id="shield-stats-magical-evade" class="fft-cell" data-item-magical-evade="@Model.MagicalShieldEvade"><span>@Model.MagicalShieldEvade</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell percentage-value"><span>%</span></div>
@@ -311,101 +313,4 @@
             </div>
         </div>
     </div>
-
 </div>
-<script>
-    $(document).ready(function ()
-    {
-        function calculateItemStatDifference(event)
-        {
-            var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
-            var rightHitElement = document.querySelector('#weapon-stats-right-hit');
-            var rightHit = parseInt(rightHitElement.attributes['data-item-hit-percentage'].nodeValue);
-            var rightDamage = parseInt(rightDamageElement.attributes['data-item-power'].nodeValue);
-            var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
-            var itemHit = parseInt(event.currentTarget.attributes['data-item-hit-percentage'].nodeValue);
-
-            if (itemDamage > rightDamage)
-            {
-                rightDamageElement.firstChild.textContent = '+ ' + (itemDamage - rightDamage);
-                rightDamageElement.firstChild.style.color = 'blue';
-
-            }
-            else if (itemDamage < rightDamage)
-            {
-                rightDamageElement.firstChild.textContent = '- ' + (rightDamage - itemDamage);
-                rightDamageElement.firstChild.style.color = 'red';
-            }
-
-            if (itemHit > rightHit)
-            {
-                rightHitElement.firstChild.textContent = '+ ' + (itemHit - rightHit);
-                rightHitElement.firstChild.style.color = 'blue';
-            }
-            else if (itemHit < rightHit)
-            {
-                rightHitElement.firstChild.textContent = '- ' + (rightHit - itemHit);
-                rightHitElement.firstChild.style.color = 'red';
-            }
-        }
-
-        function resetItemStat(event)
-        {
-            var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
-            var rightHitElement = document.querySelector('#weapon-stats-right-hit');
-
-            rightDamageElement.firstChild.textContent = '004';
-            rightDamageElement.firstChild.style.color = '#333333';
-            rightHitElement.firstChild.textContent = '05';
-            rightHitElement.firstChild.style.color = '#333333';
-        }
-
-        function toggleItemContainer()
-        {
-            var itemLookupContainer = document.getElementById('item-lookup-container');
-
-            if (itemLookupContainer.style.display === 'none')
-            {
-                itemLookupContainer.style.display = 'block';
-            }
-            else
-            {
-                itemLookupContainer.style.display = 'none';
-            }
-        }
-
-        function toggleItemDetailsContainer()
-        {
-            var itemDetailsContainer = document.getElementById('item-details-container');
-
-            if (itemDetailsContainer.style.display === 'none')
-            {
-                itemDetailsContainer.style.display = 'block';
-            }
-            else
-            {
-                itemDetailsContainer.style.display = 'none'
-            }
-        }
-
-        function toggleAbilityContainer()
-        {
-            var abilityContainer = document.getElementById('ability-lookup-container');
-
-            if (abilityContainer.style.display === 'none')
-            {
-                abilityContainer.style.display = 'block';
-            }
-            else
-            {
-                abilityContainer.style.display = 'none';
-            }
-        }
-
-        $('#unit-equipment-item-names .fft-cell').click(toggleItemContainer);
-        $('#unit-ability-names .fft-cell').click(toggleAbilityContainer);
-        $('.weapon-names').hover(calculateItemStatDifference);
-        $('.weapon-names').mouseleave(resetItemStat);
-        $('#item-details-close, .item-details-button').click(toggleItemDetailsContainer);
-    });
-</script>

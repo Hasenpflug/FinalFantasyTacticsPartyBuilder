@@ -9,8 +9,8 @@
     height: 100%;
     background-image: url(Images/party_builder_background.png);
     overflow: scroll;
-    padding-left:3%;
-    padding-right:3%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -334,10 +334,17 @@ img {
     top: 20%;
 }
 
+#armour-stats-hp-bonus, #armour-stats-mp-bonus {
+    visibility: hidden;    
+    position:absolute;
+    right:10%;
+    font: 3.5vw 'Altima';
+}
+
 #unit-status-mp-container {
     position: relative;
     height: 20%;
-    top: 30%;
+    top: 30%;    
 }
 
 #unit-status-hp-container .value-bar {
