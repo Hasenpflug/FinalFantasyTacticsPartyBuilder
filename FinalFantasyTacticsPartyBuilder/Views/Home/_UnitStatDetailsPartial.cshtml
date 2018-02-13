@@ -30,7 +30,7 @@
                 {
                     <img class="value lower-hp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.HpDigits[i]).png" />
                 }
-                <span id="armour-stats-hp-bonus" data-item-helmet-hp-bonus="@(Model.Head != null ? Model.Head.HPBonus : 0)">000</span>
+                <span id="armour-stats-hp-bonus" data-item-helmet-hp-bonus="@(Model.Head != null ? Model.Head.HPBonus : 0)" data-item-body-hp-bonus="@(Model.Body != null ? Model.Body.HPBonus : 0)">000</span>
             </div>
             <div id="unit-status-mp-container">
                 <img class="mp small-image" src="~/Content/Images/mp.png" />
@@ -44,7 +44,7 @@
                 {
                     <img class="value lower-mp" src="~/Content/Images/number_@(Model.Unit.AttributeDigits.MpDigits[i]).png" />
                 }
-                <span id="armour-stats-mp-bonus" data-item-helmet-mp-bonus="@(Model.Head != null ? Model.Head.MPBonus : 0)">000</span>
+                <span id="armour-stats-mp-bonus" data-item-helmet-mp-bonus="@(Model.Head != null ? Model.Head.MPBonus : 0)" data-item-body-mp-bonus="@(Model.Body != null ? Model.Body.MPBonus : 0)">000</span>
             </div>
         </div>
         <div class="unit-details-name-container menu">

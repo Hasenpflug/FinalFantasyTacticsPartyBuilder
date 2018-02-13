@@ -256,6 +256,36 @@
                     mpBonusElement.style.visibility = 'visible';
                 }
                 break;
+            case "armor":
+                var hpBonusElement = document.querySelector('#armour-stats-hp-bonus');
+                var mpBonusElement = document.querySelector('#armour-stats-mp-bonus');
+                var hpBonus = parseInt(hpBonusElement.attributes['data-item-body-hp-bonus'].nodeValue);
+                var mpBonus = parseInt(mpBonusElement.attributes['data-item-body-mp-bonus'].nodeValue);
+                var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
+                var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
+
+                if (itemHpBonus > hpBonus) {
+                    hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
+                    hpBonusElement.style.color = 'lightblue';
+                    hpBonusElement.style.visibility = 'visible';
+                }
+                else if (itemHpBonus < hpBonus) {
+                    hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
+                    hpBonusElement.style.color = 'red';
+                    hpBonusElement.style.visibility = 'visible';
+                }
+
+                if (itemMpBonus > mpBonus) {
+                    mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
+                    mpBonusElement.style.color = 'lightblue';
+                    mpBonusElement.style.visibility = 'visible';
+                }
+                else if (itemMpBonus < mpBonus) {
+                    mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
+                    mpBonusElement.style.color = 'red';
+                    mpBonusElement.style.visibility = 'visible';
+                }
+                break;
         }
     }
 
