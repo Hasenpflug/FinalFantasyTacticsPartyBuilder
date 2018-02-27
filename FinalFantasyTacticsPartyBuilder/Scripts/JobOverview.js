@@ -34,7 +34,7 @@
         $('body').on('click', '.item-category', renderItemSelectionPartial);
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
-    });    
+    });
 
     function renderUnitPanels()
     {
@@ -147,8 +147,10 @@
     {
         var equipmentCategoryID = event.currentTarget.attributes['data-equipment-category'].nodeValue;
 
-        $.post('/Home/GetUnitItemLookupPartial', { jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID,
-            isFemale: selectedJobData.Unit.Gender === 1 ? true : false }, function (data)
+        $.post('/Home/GetUnitItemLookupPartial', {
+            jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID,
+            isFemale: selectedJobData.Unit.Gender === 1 ? true : false
+        }, function (data)
         {
             $('#item-lookup-container').remove();
             $('#item-selection').remove();
@@ -182,24 +184,30 @@
                 var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
                 var itemHit = parseInt(event.currentTarget.attributes['data-item-hit-percentage'].nodeValue);
 
-                if (itemDamage > rightDamage) {
+                if (itemDamage > rightDamage)
+                {
                     rightDamageElement.firstChild.textContent = '+' + (itemDamage - rightDamage);
                     rightDamageElement.firstChild.style.color = 'blue';
 
                 }
-                else if (itemDamage < rightDamage) {
+                else if (itemDamage < rightDamage)
+                {
                     rightDamageElement.firstChild.textContent = '-' + (rightDamage - itemDamage);
                     rightDamageElement.firstChild.style.color = 'red';
                 }
 
-                if (itemHit > rightHit) {
+                if (itemHit > rightHit)
+                {
                     rightHitElement.firstChild.textContent = '+' + (itemHit - rightHit);
                     rightHitElement.firstChild.style.color = 'blue';
                 }
-                else if (itemHit < rightHit) {
+                else if (itemHit < rightHit)
+                {
                     rightHitElement.firstChild.textContent = '-' + (rightHit - itemHit);
                     rightHitElement.firstChild.style.color = 'red';
                 }
+
+                previewSpeedDamageChanges(event.currentTarget, rightEquippedElement);
                 break;
             case "shield":
                 var leftPhysicalEvadeElement = document.querySelector('#shield-stats-physical-evade');
@@ -210,144 +218,254 @@
                 var itemPhysicalEvade = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
                 var itemMagicalEvade = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
 
-                if (itemPhysicalEvade > physicalEvade) {
+                if (itemPhysicalEvade > physicalEvade)
+                {
                     leftPhysicalEvadeElement.firstChild.textContent = '+' + (itemPhysicalEvade - physicalEvade);
                     leftPhysicalEvadeElement.firstChild.style.color = 'blue';
                 }
-                else if (itemPhysicalEvade < physicalEvade) {
+                else if (itemPhysicalEvade < physicalEvade)
+                {
                     leftPhysicalEvadeElement.firstChild.textContent = '-' + (physicalEvade - itemPhysicalEvade);
                     leftPhysicalEvadeElement.firstChild.style.color = 'red';
                 }
 
-                if (itemMagicalEvade > magicalEvade) {
+                if (itemMagicalEvade > magicalEvade)
+                {
                     leftMagicalEvadeElement.firstChild.textContent = '+' + (itemMagicalEvade - magicalEvade);
                     leftMagicalEvadeElement.firstChild.style.color = 'blue';
                 }
-                else if (itemMagicalEvade < magicalEvade) {
+                else if (itemMagicalEvade < magicalEvade)
+                {
                     leftMagicalEvadeElement.firstChild.textContent = '-' + (magicalEvade - itemMagicalEvade);
                     leftMagicalEvadeElement.firstChild.style.color = 'red';
                 }
+
+                previewSpeedDamageChanges(event.currentTarget, leftEquippedElement);
                 break;
             case "helmet":
                 var hpBonusElement = document.querySelector('#armour-stats-hp-bonus');
                 var mpBonusElement = document.querySelector('#armour-stats-mp-bonus');
-                var hpBonus = parseInt(document.querySelector('#head-equipped').attributes['data-item-helmet-hp-bonus'].nodeValue);
-                var mpBonus = parseInt(document.querySelector('#head-equipped').attributes['data-item-helmet-mp-bonus'].nodeValue);
+                var headEquippedElement = document.querySelector('#head-equipped').firstElementChild;
+                var hpBonus = headEquippedElement != null ? parseInt(headEquippedElement.attributes['data-item-helmet-hp-bonus'].nodeValue) : 0;
+                var mpBonus = headEquippedElement != null ? parseInt(headEquippedElement.attributes['data-item-helmet-mp-bonus'].nodeValue) : 0;
                 var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
                 var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
 
-                if (itemHpBonus > hpBonus) {
+                if (itemHpBonus > hpBonus)
+                {
                     hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
                     hpBonusElement.style.color = 'lightblue';
                     hpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemHpBonus < hpBonus) {
+                else if (itemHpBonus < hpBonus)
+                {
                     hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
                     hpBonusElement.style.color = 'red';
                     hpBonusElement.style.visibility = 'visible';
                 }
 
-                if (itemMpBonus > mpBonus) {
+                if (itemMpBonus > mpBonus)
+                {
                     mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
                     mpBonusElement.style.color = 'lightblue';
                     mpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemMpBonus < mpBonus) {
+                else if (itemMpBonus < mpBonus)
+                {
                     mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
                     mpBonusElement.style.color = 'red';
                     mpBonusElement.style.visibility = 'visible';
                 }
+
+                previewSpeedDamageChanges(event.currentTarget, headEquippedElement);
                 break;
             case "armor":
                 var hpBonusElement = document.querySelector('#armour-stats-hp-bonus');
                 var mpBonusElement = document.querySelector('#armour-stats-mp-bonus');
-                var hpBonus = parseInt(document.querySelector('#body-equipped').attributes['data-item-body-hp-bonus'].nodeValue);
-                var mpBonus = parseInt(document.querySelector('#body-equipped').attributes['data-item-body-mp-bonus'].nodeValue);
+                var armorEquippedElement = document.querySelector('#body-equipped').firstElementChild;
+                var hpBonus = armorEquippedElement != null ? parseInt(armorEquippedElement.attributes['data-item-body-hp-bonus'].nodeValue) : 0;
+                var mpBonus = armorEquippedElement != null ? parseInt(armorEquippedElement.attributes['data-item-body-mp-bonus'].nodeValue) : 0;
                 var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
                 var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
 
-                if (itemHpBonus > hpBonus) {
+                if (itemHpBonus > hpBonus)
+                {
                     hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
                     hpBonusElement.style.color = 'lightblue';
                     hpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemHpBonus < hpBonus) {
+                else if (itemHpBonus < hpBonus)
+                {
                     hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
                     hpBonusElement.style.color = 'red';
                     hpBonusElement.style.visibility = 'visible';
                 }
 
-                if (itemMpBonus > mpBonus) {
+                if (itemMpBonus > mpBonus)
+                {
                     mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
                     mpBonusElement.style.color = 'lightblue';
                     mpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemMpBonus < mpBonus) {
+                else if (itemMpBonus < mpBonus)
+                {
                     mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
                     mpBonusElement.style.color = 'red';
                     mpBonusElement.style.visibility = 'visible';
                 }
+
+                previewSpeedDamageChanges(event.currentTarget, armorEquippedElement);
                 break;
             case "shoe":
                 var moveElement = document.querySelector('#move-stat-value');
                 var jumpElement = document.querySelector('#jump-stat-value');
-                var moveBonus = parseInt(document.querySelector('#accessory-equipped').attributes['data-item-move-bonus'].nodeValue);
-                var jumpBonus = parseInt(document.querySelector('#accessory-equipped').attributes['data-item-jump-bonus'].nodeValue);
+                var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
+                var moveBonus = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-move-bonus'].nodeValue) : 0;
+                var jumpBonus = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-jump-bonus'].nodeValue) : 0;
                 var itemMoveBonus = parseInt(event.currentTarget.attributes['data-item-move-bonus'].nodeValue);
                 var itemJumpBonus = parseInt(event.currentTarget.attributes['data-item-jump-bonus'].nodeValue);
 
-                if (itemMoveBonus > moveBonus) {
+                if (itemMoveBonus > moveBonus)
+                {
                     moveElement.firstChild.textContent = '+' + (itemMoveBonus - moveBonus);
-                    moveElement.firstChild.style.color = 'lightblue';
+                    moveElement.firstChild.style.color = 'blue';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemMoveBonus < moveBonus) {
+                else if (itemMoveBonus < moveBonus)
+                {
                     moveElement.firstChild.textContent = '-' + (moveBonus - itemMoveBonus);
                     moveElement.firstChild.style.color = 'red';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
 
-                if (itemJumpBonus > jumpBonus) {
+                if (itemJumpBonus > jumpBonus)
+                {
                     jumpElement.firstChild.textContent = '+' + (itemJumpBonus - jumpBonus);
-                    jumpElement.firstChild.style.color = 'lightblue';
+                    jumpElement.firstChild.style.color = 'blue';
                     jumpElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemJumpBonus < jumpBonus) {
+                else if (itemJumpBonus < jumpBonus)
+                {
                     jumpElement.firstChild.textContent = '-' + (jumpBonus - itemJumpBonus);
                     jumpElement.firstChild.style.color = 'red';
                     jumpElement.firstChild.style.visibility = 'visible';
                 }
+
+                previewSpeedDamageChanges(event.currentTarget, accessoryEquippedElement);
                 break;
             case "armguard":
-                var physicalAttackElement = document.querySelector('#physical-attack-power');
-                var magicalAttackElement = document.querySelector('#magical-attack-power');
-                var physicalAttackBonus = parseInt(document.querySelector('#accessory-equipped').attributes['data-item-armguard-physical-bonus'].nodeValue);
-                var magicalAttackBonus = parseInt(document.querySelector('#accessory-equipped').attributes['data-item-armguard-magical-bonus'].nodeValue);
-                var itemPhysicalAttackBonus = parseInt(event.currentTarget.attributes['data-item-armguard-physical-bonus'].nodeValue);
-                var itemMagicalAttackBonus = parseInt(event.currentTarget.attributes['data-item-armguard-magical-bonus'].nodeValue);
-
-                if (itemPhysicalAttackBonus > physicalAttackBonus) {
-                    physicalAttackElement.firstChild.textContent = '+' + (itemPhysicalAttackBonus - physicalAttackBonus);
-                    physicalAttackElement.firstChild.style.color = 'lightblue';
-                    physicalAttackElement.firstChild.style.visibility = 'visible';
-                }
-                else if (itemPhysicalAttackBonus < physicalAttackBonus) {
-                    physicalAttackElement.firstChild.textContent = '-' + (physicalAttackBonus - itemPhysicalAttackBonus);
-                    physicalAttackElement.firstChild.style.color = 'red';
-                    physicalAttackElement.firstChild.style.visibility = 'visible';
-                }
-
-                if (itemMagicalAttackBonus > magicalAttackBonus) {
-                    magicalAttackElement.firstChild.textContent = '+' + (itemMagicalAttackBonus - magicalAttackBonus);
-                    magicalAttackElement.firstChild.style.color = 'lightblue';
-                    magicalAttackElement.firstChild.style.visibility = 'visible';
-                }
-                else if (itemMagicalAttackBonus < magicalAttackBonus) {
-                    magicalAttackElement.firstChild.textContent = '-' + (magicalAttackBonus - itemMagicalAttackBonus);
-                    magicalAttackElement.firstChild.style.color = 'red';
-                    magicalAttackElement.firstChild.style.visibility = 'visible';
-                }
+                var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
+                var currentItem = event.currentTarget;                
+                previewSpeedDamageChanges(currentItem, accessoryEquippedElement);
                 break;
+            case "ring":
+                var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
+                var currentItem = event.currentTarget;
+                previewSpeedDamageChanges(currentItem, accessoryEquippedElement);
+                break;
+            case "cloak":
+                var physicalEvadeElement = document.querySelector('#accessory-physical-evade');
+                var magicalEvadeElement = document.querySelector('#accessory-magical-evade');
+                var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
+                var equippedPhysicalEvade = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-physical-evade'].nodeValue) : 0;
+                var equippedMagicalEvade = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-magical-evade'].nodeValue) : 0;
+                var itemPhysicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
+                var itemMagicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
+
+                if (itemPhysicalEvadeBonus > equippedPhysicalEvade)
+                {
+                    physicalEvadeElement.firstChild.textContent = '+' + (itemPhysicalEvadeBonus - equippedPhysicalEvade);
+                    physicalEvadeElement.firstChild.style.color = 'blue';
+                    physicalEvadeElement.firstChild.style.visibility = 'visible';
+                }
+                else if (itemPhysicalEvadeBonus < equippedPhysicalEvade)
+                {
+                    physicalEvadeElement.firstChild.textContent = '-' + (equippedPhysicalEvade - itemPhysicalEvadeBonus);
+                    physicalEvadeElement.firstChild.style.color = 'red';
+                    physicalEvadeElement.firstChild.style.visibility = 'visible';
+                }
+
+                if (itemMagicalEvadeBonus > equippedMagicalEvade)
+                {
+                    magicalEvadeElement.firstChild.textContent = '+' + (itemMagicalEvadeBonus - equippedMagicalEvade);
+                    magicalEvadeElement.firstChild.style.color = 'blue';
+                    magicalEvadeElement.firstChild.style.visibility = 'visible';
+                }
+                else if (itemMagicalEvadeBonus < equippedMagicalEvade)
+                {
+                    magicalEvadeElement.firstChild.textContent = '-' + (equippedMagicalEvade - itemMagicalEvadeBonus);
+                    magicalEvadeElement.firstChild.style.color = 'red';
+                    magicalEvadeElement.firstChild.style.visibility = 'visible';
+                }
+
+                previewSpeedDamageChanges(event.currentTarget, accessoryEquippedElement);
+                break;
+        }
+
+        function previewSpeedDamageChanges(itemElement, equippedElement)
+        {
+            var physicalAttackBonus = 0, magicalAttackBonus = 0, speedBonus = 0, itemPhysicalAttackBonus = 0, itemMagicalAttackBonus = 0, itemSpeedBonus = 0;
+            var physicalAttackElement = document.querySelector('#physical-attack-power');
+            var magicalAttackElement = document.querySelector('#magical-attack-power');
+            var speedElement = document.querySelector('#speed-stat-value');
+            if (equippedElement != null)
+            {
+                physicalAttackBonus = equippedElement.attributes['data-item-physical-bonus'] != null ?
+                    parseInt(equippedElement.attributes['data-item-physical-bonus'].nodeValue) : 0;
+                magicalAttackBonus = equippedElement.attributes['data-item-magical-bonus'] != null ?
+                    parseInt(equippedElement.attributes['data-item-magical-bonus'].nodeValue) : 0;
+                speedBonus = equippedElement.attributes['data-item-speed-bonus'] != null ?
+                    parseInt(equippedElement.attributes['data-item-speed-bonus'].nodeValue) : 0;
+            }
+
+            if (itemElement != null)
+            {            
+                itemPhysicalAttackBonus = itemElement.attributes['data-item-physical-bonus'] != null ?
+                    parseInt(itemElement.attributes['data-item-physical-bonus'].nodeValue) : 0;
+                itemMagicalAttackBonus = itemElement.attributes['data-item-magical-bonus'] != null ?
+                    parseInt(itemElement.attributes['data-item-magical-bonus'].nodeValue) : 0;
+                itemSpeedBonus = itemElement.attributes['data-item-speed-bonus'] != null ?
+                    parseInt(itemElement.attributes['data-item-speed-bonus'].nodeValue) : 0;
+            }
+
+            if (itemPhysicalAttackBonus > physicalAttackBonus)
+            {
+                physicalAttackElement.firstChild.textContent = '+' + (itemPhysicalAttackBonus - physicalAttackBonus);
+                physicalAttackElement.firstChild.style.color = 'blue';
+                physicalAttackElement.firstChild.style.visibility = 'visible';
+            }
+            else if (itemPhysicalAttackBonus < physicalAttackBonus)
+            {
+                physicalAttackElement.firstChild.textContent = '-' + (physicalAttackBonus - itemPhysicalAttackBonus);
+                physicalAttackElement.firstChild.style.color = 'red';
+                physicalAttackElement.firstChild.style.visibility = 'visible';
+            }
+
+            if (itemMagicalAttackBonus > magicalAttackBonus)
+            {
+                magicalAttackElement.firstChild.textContent = '+' + (itemMagicalAttackBonus - magicalAttackBonus);
+                magicalAttackElement.firstChild.style.color = 'blue';
+                magicalAttackElement.firstChild.style.visibility = 'visible';
+            }
+            else if (itemMagicalAttackBonus < magicalAttackBonus)
+            {
+                magicalAttackElement.firstChild.textContent = '-' + (magicalAttackBonus - itemMagicalAttackBonus);
+                magicalAttackElement.firstChild.style.color = 'red';
+                magicalAttackElement.firstChild.style.visibility = 'visible';
+            }
+
+            if (itemSpeedBonus > speedBonus)
+            {
+                speedElement.firstElementChild.textContent = '+' + (itemSpeedBonus - speedBonus);
+                speedElement.firstElementChild.style.color = 'blue';
+                speedElement.firstElementChild.style.visibility = 'visible';
+            }
+            else if (itemSpeedBonus < speedBonus)
+            {
+                speedElement.firstChild.textContent = '-' + (speedBonus - itemSpeedBonus);
+                speedElement.firstChild.style.color = 'red';
+                speedElement.firstChild.style.visibility = 'visible';
+            }
         }
     }
 
@@ -363,6 +481,10 @@
         var jumpElement = document.querySelector('#jump-stat-value');
         var physicalAttackElement = document.querySelector('#physical-attack-power');
         var magicalAttackElement = document.querySelector('#magical-attack-power');
+        var speedElement = document.querySelector('#speed-stat-value');
+        var accessoryPhysicalEvadeElement = document.querySelector('#accessory-physical-evade');
+        var accessoryMagicalEvadeElement = document.querySelector('#accessory-magical-evade');
+
 
         rightDamageElement.firstChild.textContent = rightDamageElement.attributes['data-item-power'].nodeValue;
         rightDamageElement.firstChild.style.color = '#333333';
@@ -386,6 +508,13 @@
         physicalAttackElement.firstChild.style.color = '#333333';
         magicalAttackElement.firstChild.textContent = magicalAttackElement.attributes['data-item-power'].nodeValue;
         magicalAttackElement.firstChild.style.color = '#333333';
+        speedElement.firstChild.textContent = speedElement.attributes['data-item-default-speed'].nodeValue;
+        speedElement.firstChild.style.color = '#333333';
+
+        accessoryPhysicalEvadeElement.firstElementChild.textContent = accessoryPhysicalEvadeElement.attributes['data-item-physical-evade'].nodeValue;
+        accessoryPhysicalEvadeElement.firstElementChild.style.color = '#333333';
+        accessoryMagicalEvadeElement.firstElementChild.textContent = accessoryMagicalEvadeElement.attributes['data-item-magical-evade'].nodeValue;
+        accessoryMagicalEvadeElement.firstElementChild.style.color = '#333333';
     }
 
     function renderDismissUnitPartial()
@@ -682,35 +811,35 @@
     function UnitDetails()
     {
         this.RawHP = 0,
-        this.RawMP = 0,
-        this.RawSpeedGrowth = 0,
-        this.RawPhysicalAttack = 0,
-        this.RawMagicalAttack = 0,
-        this.SecondaryAbilityJobID = 1,
-        this.ReactionAbilityID = 1,
-        this.SupportAbilityID = 1,
-        this.MovementAbilityID = 1,
-        this.WeaponID = 1,
-        this.Unit = {
-            UnitID: 0,
-            UnitName: '',
-            Position: 0,
-            Gender: 0,
-            GenderName: "Male",
-            JobID: 1,
-            JobName: 'Squire',
-            JobPortraitPath: '',
-            MaxHP: 0,
-            MaxMP: 0,
-            Level: 1,
-            Experience: 0,
-            Brave: 0,
-            Faith: 0
-        },
-        this.ShieldID = 1,
-        this.HeadID = 1,
-        this.BodyID = 1,
-        this.AccessoryID = 1
+            this.RawMP = 0,
+            this.RawSpeedGrowth = 0,
+            this.RawPhysicalAttack = 0,
+            this.RawMagicalAttack = 0,
+            this.SecondaryAbilityJobID = 1,
+            this.ReactionAbilityID = 1,
+            this.SupportAbilityID = 1,
+            this.MovementAbilityID = 1,
+            this.WeaponID = 1,
+            this.Unit = {
+                UnitID: 0,
+                UnitName: '',
+                Position: 0,
+                Gender: 0,
+                GenderName: "Male",
+                JobID: 1,
+                JobName: 'Squire',
+                JobPortraitPath: '',
+                MaxHP: 0,
+                MaxMP: 0,
+                Level: 1,
+                Experience: 0,
+                Brave: 0,
+                Faith: 0
+            },
+            this.ShieldID = 1,
+            this.HeadID = 1,
+            this.BodyID = 1,
+            this.AccessoryID = 1
     }
 
     return {

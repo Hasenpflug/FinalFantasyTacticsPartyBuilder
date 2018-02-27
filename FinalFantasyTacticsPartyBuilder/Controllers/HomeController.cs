@@ -263,6 +263,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_CloakAccessorySelectionPartial.cshtml", items);
                             case (int)ItemCategoriesList.Armguard:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_ArmguardAccessorySelectionPartial.cshtml", items);
+                            case (int)ItemCategoriesList.Ring:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_RingAccessorySelectionPartial.cshtml", items);
                             default:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_DefaultAccessorySelectionPartial.cshtml", items);
 

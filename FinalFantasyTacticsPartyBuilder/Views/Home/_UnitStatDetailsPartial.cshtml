@@ -80,7 +80,7 @@
             <div class="fft-column">
                 <div class="fft-cell" id="move-stat-value" data-item-default-move="@Model.Move"><span>@Model.Move</span></div>
                 <div class="fft-cell" id="jump-stat-value" data-item-default-jump="@Model.Jump"><span>@Model.Jump</span></div>
-                <div class="fft-cell" id="speed-stat-value"><span>@Model.Speed</span></div>
+                <div class="fft-cell" id="speed-stat-value" data-item-default-speed="@Model.Speed"><span>@Model.Speed</span></div>
             </div>
             <div id="move-weapon-margin" class="fft-column"></div>
             <div class="fft-column">
@@ -161,15 +161,15 @@
             <div class="fft-column fft-section-margin">
                 <div class="fft-cell"><span>A-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell" data-item-physical-evade="@Model.PhysicalAccessoryEvade"><span>@Model.PhysicalAccessoryEvade</span></div>
-                    <div class="fft-cell" data-item-magical-evade="@Model.MagicalAccessoryEvade"><span>@Model.MagicalAccessoryEvade</span></div>
+                    <div class="fft-cell" id="accessory-physical-evade" data-item-physical-evade="@Model.PhysicalAccessoryEvade"><span>@Model.PhysicalAccessoryEvade</span></div>
+                    <div class="fft-cell" id="accessory-magical-evade" data-item-magical-evade="@Model.MagicalAccessoryEvade"><span>@Model.MagicalAccessoryEvade</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell percentage-value"><span>%</span></div>
                     <div class="fft-cell percentage-value"><span>%</span></div>
                 </div>
             </div>
-            <div class="fft-column fft-column-margin">
+            @*<div class="fft-column fft-column-margin">
                 <div class="fft-cell"><span>Raw HP/MP</span></div>
                 <div class="fft-column">
                     <div class="fft-cell"><span>@Model.RawHP</span></div>
@@ -189,7 +189,7 @@
                     <div class="fft-cell"><span>@Model.RawSpeed</span></div>
                     <div class="fft-cell"><span class="text-hide">N/A</span></div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
     <div id="unit-ability-equipment-container">
@@ -248,26 +248,30 @@
                 <div id="weapon-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Weapon)">
                     @if (Model.WeaponRight != null)
                     {
-                        <strong data-item-power="@Model.WeaponRight.WeaponPower" data-item-hit-percentage="@Model.WeaponRight.WeaponHit">@Model.WeaponRight.Name</strong>
+                        <strong data-item-physical-bonus="@Model.WeaponRight.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponRight.MagicalAttackPower" 
+                            data-item-speed-bonus="@Model.WeaponRight.SpeedBonus" data-item-power="@Model.WeaponRight.WeaponPower" data-item-hit-percentage="@Model.WeaponRight.WeaponHit">@Model.WeaponRight.Name</strong>
                     }
                 </div>
                 <div id="shield-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Shield)">
                     @if (Model.WeaponLeft != null)
                     {
-                        <strong data-item-power="@Model.WeaponLeft.WeaponPower" data-item-hit-percentage="@Model.WeaponLeft.WeaponHit"
-                                data-item-physical-evade="@Model.PhysicalShieldEvade" data-item-magical-evade="@Model.MagicalShieldEvade">@Model.WeaponLeft.Name</strong>
+                        <strong data-item-physical-bonus="@Model.WeaponLeft.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponLeft.MagicalAttackPower" 
+                            data-item-speed-bonus="@Model.WeaponLeft.SpeedBonus" data-item-power="@Model.WeaponLeft.WeaponPower" data-item-hit-percentage="@Model.WeaponLeft.WeaponHit"
+                            data-item-physical-evade="@Model.PhysicalShieldEvade" data-item-magical-evade="@Model.MagicalShieldEvade">@Model.WeaponLeft.Name</strong>
                     }
                 </div>
                 <div id="head-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Helmet)">
                     @if (Model.Head != null)
                     {
-                        <strong data-item-helmet-hp-bonus="@Model.Head.HPBonus" data-item-helmet-mp-bonus="@Model.Head.MPBonus">@Model.Head.Name</strong>
+                        <strong data-item-physical-bonus="@Model.Head.PhysicalAttackPower" data-item-magical-bonus="@Model.Head.MagicalAttackPower" 
+                            data-item-speed-bonus="@Model.Head.SpeedBonus" data-item-helmet-hp-bonus="@Model.Head.HPBonus" data-item-helmet-mp-bonus="@Model.Head.MPBonus">@Model.Head.Name</strong>
                     }
                 </div>
                 <div id="body-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Armor)">
                     @if (Model.Body != null)
                     {
-                        <strong data-item-body-hp-bonus="@Model.Body.HPBonus" data-item-body-mp-bonus="@Model.Body.MPBonus">@Model.Body.Name</strong>
+                        <strong data-item-physical-bonus="@Model.Body.PhysicalAttackPower" data-item-magical-bonus="@Model.Body.MagicalAttackPower" 
+                            data-item-speed-bonus="@Model.Body.SpeedBonus" data-item-body-hp-bonus="@Model.Body.HPBonus" data-item-body-mp-bonus="@Model.Body.MPBonus">@Model.Body.Name</strong>
                     }
                 </div>
                 <div id="accessory-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Accessory)">
@@ -276,16 +280,20 @@
                         switch (Model.Accessory.ItemCategoryID)
                         {
                             case (int)ItemCategoriesList.Shoe:
-                                <strong data-item-move-bonus="@Model.Accessory.MoveBonus" data-item-jump-bonus="@Model.Accessory.JumpBonus">@Model.Accessory.Name</strong>
+                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
+                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-move-bonus="@Model.Accessory.MoveBonus" data-item-jump-bonus="@Model.Accessory.JumpBonus">@Model.Accessory.Name</strong>
                                 break;
                             case (int)ItemCategoriesList.Armguard:
-                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower">@Model.Accessory.Name</strong>
+                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
+                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
                                 break;
                             case (int)ItemCategoriesList.Cloak:
-                                <strong data-item-physical-evade="@Model.Accessory.AccessoryPhysicalEvade" data-item-magical-evade="@Model.Accessory.AccessoryMagicalEvade">@Model.Accessory.Name</strong>
+                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
+                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-physical-evade="@Model.Accessory.AccessoryPhysicalEvade" data-item-magical-evade="@Model.Accessory.AccessoryMagicalEvade">@Model.Accessory.Name</strong>
                                 break;
                             default:
-                                <strong>@Model.Accessory.Name</strong>
+                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
+                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
                                 break;
                         }
                     }

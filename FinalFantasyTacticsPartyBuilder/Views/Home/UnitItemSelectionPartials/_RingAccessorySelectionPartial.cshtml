@@ -10,21 +10,21 @@
                 <img src="@item.ImagePath" />
             </div>
 
-            <div class="fft-cell item-names" data-item-physical-bonus="@item.PhysicalAttackPower" data-item-magical-bonus="@item.MagicalAttackPower" 
-                 data-item-speed-bonus="@item.SpeedBonus" data-item-category-name="@item.EquipmentCategoryName" data-item-hp="@item.HPBonus" data-item-mp="@item.MPBonus">
+            <div class="fft-cell item-names" data-item-speed-bonus="@item.SpeedBonus" data-item-category-name="armguard"
+                 data-item-physical-bonus="@item.PhysicalAttackPower" data-item-magical-bonus="@item.MagicalAttackPower">
                 <strong>@item.Name</strong>
             </div>
             <div class="fft-cell item-icon">
-                <img src="~/Content/Images/hp.png" />
+                <img src="~/Content/Images/physical-icon.png" />
             </div>
             <div class="fft-cell">
-                <span>@item.HPBonus</span>
+                <span>@item.PhysicalAttackPower</span>
             </div>
             <div class="fft-cell item-icon">
-                <img src="~/Content/Images/mp.png" />
+                <img src="~/Content/Images/magical-icon.png" />
             </div>
             <div class="fft-cell">
-                <span>@item.MPBonus</span>
+                <span>@item.MagicalAttackPower</span>
             </div>
             <div class="fft-cell item-icon item-details-button">
                 <img src="~/Content/Images/help.png" />
@@ -32,3 +32,5 @@
         </div>
     }
 </div>
+
+
