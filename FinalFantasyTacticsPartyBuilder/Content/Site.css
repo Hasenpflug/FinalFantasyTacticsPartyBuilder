@@ -732,20 +732,12 @@ img {
     margin: 5% 1% 0;
 }
 
-.fft-column .fft-cell {
-    text-align: right;
-}
-
 .fft-row .fft-cell {
     display: inline-block;
 }
 
-.fft-column-margin {
-    margin-right: 1%;
-}
-
 .fft-section-margin {
-    margin-right: 2%;
+    margin-right: 1%;
 }
 
 #base-stats {
@@ -771,6 +763,15 @@ img {
 
 #equipment-icons img {
     width: 40px;
+}
+
+#element-resistances-header {
+    text-align: center;
+}
+
+.element-icon {
+    height: 32px;
+    margin-right: 10px;
 }
 
 #unit-ability-equipment-container {

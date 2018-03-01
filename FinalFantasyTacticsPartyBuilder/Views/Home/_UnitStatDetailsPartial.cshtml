@@ -77,13 +77,12 @@
                 <div class="fft-cell stat-seperator"><span>...</span></div>
                 <div class="fft-cell stat-seperator"><span>...</span></div>
             </div>
-            <div class="fft-column">
+            <div class="fft-column fft-section-margin">
                 <div class="fft-cell" id="move-stat-value" data-item-default-move="@Model.Move"><span>@Model.Move</span></div>
                 <div class="fft-cell" id="jump-stat-value" data-item-default-jump="@Model.Jump"><span>@Model.Jump</span></div>
                 <div class="fft-cell" id="speed-stat-value" data-item-default-speed="@Model.Speed"><span>@Model.Speed</span></div>
             </div>
-            <div id="move-weapon-margin" class="fft-column"></div>
-            <div class="fft-column">
+            <div class="fft-column fft-section-margin">
                 <div class="fft-cell" id="weapon-stats-header"><span>Weap. Power</span></div>
                 <div class="fft-column">
                     <div class="fft-cell" id="weapon-stats-right-header"><span>R</span></div>
@@ -110,8 +109,6 @@
                     <div class="fft-cell percentage-value"><span>%</span></div>
                 </div>
             </div>
-
-            <div id="weapon-evasion-margin" class="fft-column"></div>
             <div id="equipment-icons" class="fft-column">
                 <div class="fft-cell" id="physical-icon"><img src="~/Content/Images/physical-icon.png" /></div>
                 <div class="fft-cell" id="magical-icon"><img src="~/Content/Images/magical-icon.png" /></div>
@@ -169,27 +166,36 @@
                     <div class="fft-cell percentage-value"><span>%</span></div>
                 </div>
             </div>
-            @*<div class="fft-column fft-column-margin">
-                <div class="fft-cell"><span>Raw HP/MP</span></div>
+            <div class="fft-column fft-section-margin">
+                <div id="element-resistances-header" class="fft-cell"><span>Damage Resistances</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>@Model.RawHP</span></div>
-                    <div class="fft-cell"><span>@Model.RawMP</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/flame.svg" /><span>-100%</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/gem.svg" /><span>100%</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/flash.svg" /><span>100%</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/drop.svg" /><span>200%</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/wind.svg" /><span>100%</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/landslide.svg" /><span>0%</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/holy-star.svg" /><span>100%</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/dark-night.svg" /><span>50%</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/physical-icon.png" /><span>100%</span></div>
+                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/magical-icon.png" /><span>100%</span></div>
                 </div>
             </div>
             <div class="fft-column fft-column-margin">
-                <div class="fft-cell"><span>Raw PA/MA</span></div>
+                <div class="fft-cell"><span>Immunities</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>@Model.RawPhysicalAttack</span></div>
-                    <div class="fft-cell"><span>@Model.RawMagicalAttack</span></div>
+                    <div class="fft-cell">dfdfdf</div>
+                    <div class="fft-cell">dfdfdf</div>
                 </div>
             </div>
-            <div class="fft-column fft-column-margin">
-                <div class="fft-cell"><span>Raw SPD</span></div>
-                <div class="fft-column">
-                    <div class="fft-cell"><span>@Model.RawSpeed</span></div>
-                    <div class="fft-cell"><span class="text-hide">N/A</span></div>
-                </div>
-            </div>*@
         </div>
     </div>
     <div id="unit-ability-equipment-container">

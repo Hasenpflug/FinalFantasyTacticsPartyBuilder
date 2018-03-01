@@ -225,6 +225,14 @@
     <Content Include="Content\Images\ct.png" />
     <Content Include="Content\Images\dash.png" />
     <Content Include="Content\Images\divider.png" />
+    <Content Include="Content\Images\Elemental_Status_Icons\dark-night.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\drop.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\flame.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\flash.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\gem.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\holy-star.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\landslide.svg" />
+    <Content Include="Content\Images\Elemental_Status_Icons\wind.svg" />
     <Content Include="Content\Images\equip.png" />
     <Content Include="Content\Images\experience.png" />
     <Content Include="Content\Images\faith_dark.png" />
