@@ -16,7 +16,7 @@ namespace FinalFantasyTacticsPartyBuilder.Models
     {
         Axe = 1, Bag, Book, Bow, Cloth, Crossbow, FellSword, Flail, Gun, Instrument, Katana, Knife, KnightSword,
         NinjaBlade, Pole, Rod, Polearm, Staff, Sword, ThrowingItem, Unarmed, HeavyArmour, Clothes, HairAdornment,
-        Hat, Helmet, Robe, Shield, Shoe, Armguard, Ring, Cloak, Perfume, LipRouge
+        Hat, Helmet, Robe, Shield, Shoe, Armguard, Ring, Cloak, Perfume, LipRouge, Armlet
     }
 
     public class ItemCategory

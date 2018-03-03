@@ -285,6 +285,14 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 },
                 new ItemCategory
                 {
+                    ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                    ItemCategoryName = "Armlet",
+                    EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
+                    EquipmentCategoryName = "Accessory",
+                    StartingItemImagePath = "/Content/Images/Item_Icons/Accessories/FFT_Jade_Armlet.gif"
+                },
+                new ItemCategory
+                {
                     ItemCategoryID = (int)ItemCategoriesList.Ring,
                     ItemCategoryName = "Ring",
                     EquipmentCategoryID = (int)EquipmentCategoriesList.Accessory,
@@ -3666,6 +3674,81 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 IconFileName = "FF_tactics_onion_glove.png",
             });
 
+            #endregion
+
+            #region Armlets
+            context.Items.AddOrUpdate(m => m.PspName,
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Diamond Bracelet",
+                PsxName = "Diamond Armlet",
+                PhysicalAttackBoost = 1,
+                MagicAttackBoost = 1,
+                AcquiredViaLocation = "Balias Swale",
+                ImmuneStatusEffect = "Slow",
+                Cost = 5000,
+                Description = "A bracelet embedded with shining magickal jewels.",
+                IconFileName = "FFT_Diamond_Bracelet.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Guardian Bracelet",
+                PsxName = "Defense Armlet",
+                AcquiredViaLocation = "Cardinal Delacroix meeting at Lionel Castle",
+                AcquiredViaTreasureHunt = "Lionel Castle",
+                ImmuneStatusEffect = "Immobilize, Disable",
+                Cost = 7000,
+                Description = "A bracelet embedded with deep crimson jewels.",
+                IconFileName = "FFT_Guardian_Bracelet.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Nu Khai Armband",
+                PsxName = "N-Kai Armlet",
+                AcquiredViaLocation = "Defeat Cúchulainn at Lionel Castle",
+                AcquiredViaTreasureHunt = "Monastery Vaults (First Level)",
+                ImmuneStatusEffect = "Confuse, Charm",
+                ElementHalved = "Dark",
+                Cost = 10000,
+                Description = "An armband worn during a ceremony to worship gods of darkness.",
+                IconFileName = "FFT_Nu_Khai_Armband.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Jade Armlet",
+                AcquiredViaLocation = "Royal City of Lesalia",
+                ImmuneStatusEffect = "Stone, Stop",
+                Cost = 10000,
+                Description = "A bracelet embedded with well-polished green jewels.",
+                IconFileName = "FFT_Jade_Armlet.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Japa Mala",
+                PsxName = "108 Gems",
+                AcquiredViaLocation = "Orbonne Monastery",
+                ImmuneStatusEffect = "Undead, Vampire, Toad, Poison",
+                ElementBoosted = "Fire, Ice, Lightning, Water, Wind, Earth, Holy, Dark",
+                Cost = 15000,
+                Description = "A string of prayer beads made from 108 fruits of the sacred fig tree.",
+                IconFileName = "FFT_Japa_Mala.gif",
+            },
+            new Item
+            {
+                ItemCategoryID = (int)ItemCategoriesList.Armlet,
+                PspName = "Empyreal Armband",
+                AcquiredViaMode = "Melee",
+                ImmuneStatusEffect = "Slow, Stop, Immobilize",
+                SpeedBoost = 1,
+                Cost = 10,
+                Description = "An armband that contains the power of the stars.",
+                IconFileName = "FF_tactics_empyreal_armband.png",
+            });
             #endregion
 
             #region Rings
@@ -9436,7 +9519,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
             string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
             string workPath = @"C:\Sandbox\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9446,7 +9529,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(serverPath + "FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9456,7 +9539,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(homePath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
