@@ -169,50 +169,130 @@
             <div class="fft-column fft-section-margin">
                 <div id="element-resistances-header" class="fft-cell"><span>Damage Resistances</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/flame.svg" /><span>-100%</span></div>
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/gem.svg" /><span>100%</span></div>
-                </div>
-                <div class="fft-column">
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/flash.svg" /><span>100%</span></div>
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/drop.svg" /><span>200%</span></div>
-                </div>
-                <div class="fft-column">
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/wind.svg" /><span>100%</span></div>
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/landslide.svg" /><span>0%</span></div>
-                </div>
-                <div class="fft-column">
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/holy-star.svg" /><span>100%</span></div>
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/dark-night.svg" /><span>50%</span></div>
-                </div>
-                <div class="fft-column">
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/physical-icon.png" /><span>100%</span></div>
-                    <div class="fft-cell"><img class="element-icon" src="~/Content/Images/magical-icon.png" /><span>100%</span></div>
+                    <div class="fft-cell">
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Fire - Absorb damage</span>
+                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/flame.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Ice - Take 33% more damage</span>
+                            <img class="element-icon element-icon-weak" src="~/Content/Images/Elemental_Status_Icons/gem.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Lightning - Half damage</span>
+                            <img class="element-icon element-icon-halved" src="~/Content/Images/Elemental_Status_Icons/flash.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Water - Absorb damage</span>
+                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/drop.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Physical - Normal damage</span>
+                            <img class="element-icon" src="~/Content/Images/physical-icon.png" />
+                        </div>
+                    </div>
+                    <div class="fft-cell">
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Wind - Normal damage</span>
+                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/wind.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Earth - Absorb damage</span>
+                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/landslide.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Holy - Normal damage</span>
+                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/holy-star.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Dark - Normal damage</span>
+                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/dark-night.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Magical - Halve damage</span>
+                            <img class="element-icon element-icon-halved" src="~/Content/Images/magical-icon.png" />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="fft-column fft-column-margin">
-                <div class="fft-cell"><span>Immunities</span></div>
+                <div id="status-immunities-header" class="fft-cell"><span>Immunities</span></div>
                 <div class="fft-column">
                     <div class="fft-cell">
-                        <img src="~/Content/Images/Status_Ailment_Icons/berserk.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/sleep.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/silence.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/poison.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/doom.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/traitor.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/KO.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/stone.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/slow.svg" width="24" />
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Berserk</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/berserk.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Sleep</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/sleep.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Silence</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/silence.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Poison</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/poison.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Doom</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/doom.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Traitor</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/traitor.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">KO</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/KO.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Stone</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/stone.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Slow</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/slow.svg" />
+                        </div>
                     </div>
                     <div class="fft-cell">
-                        <img src="~/Content/Images/Status_Ailment_Icons/frog.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/slow.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/stop.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/immobile.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/disabled.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/blind.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/vampire.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/zombie.svg" width="24" />
-                        <img src="~/Content/Images/Status_Ailment_Icons/charm.svg" width="24" />
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Toad</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/frog.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Slow</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/slow.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Stop</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/stop.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Don't Move</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/immobile.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Don't Act</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/disabled.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Blind</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/blind.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Vampire</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/vampire.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Undead</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/zombie.svg" />
+                        </div>
+                        <div class="fft-tooltip">
+                            <span class="fft-tooltip-container">Charm</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/charm.svg" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -274,31 +354,31 @@
                 <div id="weapon-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Weapon)">
                     @if (Model.WeaponRight != null)
                     {
-                        <strong data-item-physical-bonus="@Model.WeaponRight.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponRight.MagicalAttackPower" 
-                            data-item-speed-bonus="@Model.WeaponRight.SpeedBonus" data-item-power="@Model.WeaponRight.WeaponPower" data-item-hit-percentage="@Model.WeaponRight.WeaponHit">@Model.WeaponRight.Name</strong>
-                    }
+                        <strong data-item-physical-bonus="@Model.WeaponRight.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponRight.MagicalAttackPower"
+                                data-item-speed-bonus="@Model.WeaponRight.SpeedBonus" data-item-power="@Model.WeaponRight.WeaponPower" data-item-hit-percentage="@Model.WeaponRight.WeaponHit">@Model.WeaponRight.Name</strong>
+                            }
                 </div>
                 <div id="shield-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Shield)">
                     @if (Model.WeaponLeft != null)
                     {
-                        <strong data-item-physical-bonus="@Model.WeaponLeft.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponLeft.MagicalAttackPower" 
-                            data-item-speed-bonus="@Model.WeaponLeft.SpeedBonus" data-item-power="@Model.WeaponLeft.WeaponPower" data-item-hit-percentage="@Model.WeaponLeft.WeaponHit"
-                            data-item-physical-evade="@Model.PhysicalShieldEvade" data-item-magical-evade="@Model.MagicalShieldEvade">@Model.WeaponLeft.Name</strong>
-                    }
+                        <strong data-item-physical-bonus="@Model.WeaponLeft.PhysicalAttackPower" data-item-magical-bonus="@Model.WeaponLeft.MagicalAttackPower"
+                                data-item-speed-bonus="@Model.WeaponLeft.SpeedBonus" data-item-power="@Model.WeaponLeft.WeaponPower" data-item-hit-percentage="@Model.WeaponLeft.WeaponHit"
+                                data-item-physical-evade="@Model.PhysicalShieldEvade" data-item-magical-evade="@Model.MagicalShieldEvade">@Model.WeaponLeft.Name</strong>
+                            }
                 </div>
                 <div id="head-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Helmet)">
                     @if (Model.Head != null)
                     {
-                        <strong data-item-physical-bonus="@Model.Head.PhysicalAttackPower" data-item-magical-bonus="@Model.Head.MagicalAttackPower" 
-                            data-item-speed-bonus="@Model.Head.SpeedBonus" data-item-helmet-hp-bonus="@Model.Head.HPBonus" data-item-helmet-mp-bonus="@Model.Head.MPBonus">@Model.Head.Name</strong>
-                    }
+                        <strong data-item-physical-bonus="@Model.Head.PhysicalAttackPower" data-item-magical-bonus="@Model.Head.MagicalAttackPower"
+                                data-item-speed-bonus="@Model.Head.SpeedBonus" data-item-helmet-hp-bonus="@Model.Head.HPBonus" data-item-helmet-mp-bonus="@Model.Head.MPBonus">@Model.Head.Name</strong>
+                            }
                 </div>
                 <div id="body-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Armor)">
                     @if (Model.Body != null)
                     {
-                        <strong data-item-physical-bonus="@Model.Body.PhysicalAttackPower" data-item-magical-bonus="@Model.Body.MagicalAttackPower" 
-                            data-item-speed-bonus="@Model.Body.SpeedBonus" data-item-body-hp-bonus="@Model.Body.HPBonus" data-item-body-mp-bonus="@Model.Body.MPBonus">@Model.Body.Name</strong>
-                    }
+                        <strong data-item-physical-bonus="@Model.Body.PhysicalAttackPower" data-item-magical-bonus="@Model.Body.MagicalAttackPower"
+                                data-item-speed-bonus="@Model.Body.SpeedBonus" data-item-body-hp-bonus="@Model.Body.HPBonus" data-item-body-mp-bonus="@Model.Body.MPBonus">@Model.Body.Name</strong>
+                            }
                 </div>
                 <div id="accessory-equipped" class="fft-cell equipment-selector" data-equipment-category="@((int)EquipmentCategoriesList.Accessory)">
                     @if (Model.Accessory != null)
@@ -306,23 +386,23 @@
                         switch (Model.Accessory.ItemCategoryID)
                         {
                             case (int)ItemCategoriesList.Shoe:
-                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
-                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-move-bonus="@Model.Accessory.MoveBonus" data-item-jump-bonus="@Model.Accessory.JumpBonus">@Model.Accessory.Name</strong>
-                                break;
-                            case (int)ItemCategoriesList.Armguard:
-                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
-                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
-                                break;
-                            case (int)ItemCategoriesList.Cloak:
-                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
-                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-physical-evade="@Model.Accessory.AccessoryPhysicalEvade" data-item-magical-evade="@Model.Accessory.AccessoryMagicalEvade">@Model.Accessory.Name</strong>
-                                break;
-                            default:
-                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower" 
-                                    data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
-                                break;
-                        }
-                    }
+                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower"
+                                        data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-move-bonus="@Model.Accessory.MoveBonus" data-item-jump-bonus="@Model.Accessory.JumpBonus">@Model.Accessory.Name</strong>
+                                        break;
+                                    case (int)ItemCategoriesList.Armguard:
+                                        <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower"
+                                                data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
+                                                break;
+                                            case (int)ItemCategoriesList.Cloak:
+                                                <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower"
+                                                        data-item-speed-bonus="@Model.Accessory.SpeedBonus" data-item-physical-evade="@Model.Accessory.AccessoryPhysicalEvade" data-item-magical-evade="@Model.Accessory.AccessoryMagicalEvade">@Model.Accessory.Name</strong>
+                                                        break;
+                                                    default:
+                                                        <strong data-item-physical-bonus="@Model.Accessory.PhysicalAttackPower" data-item-magical-bonus="@Model.Accessory.MagicalAttackPower"
+                                                                data-item-speed-bonus="@Model.Accessory.SpeedBonus">@Model.Accessory.Name</strong>
+                                                                break;
+                                                        }
+                                                    }
                 </div>
             </div>
         </div>

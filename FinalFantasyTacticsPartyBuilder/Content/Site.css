@@ -115,6 +115,30 @@ img {
     visibility: visible;
 }
 
+.fft-tooltip {
+    position:relative;
+    display:inline-block;
+}
+
+.fft-tooltip .fft-tooltip-container {
+    white-space:nowrap;
+    font-size: 40px;
+    visibility:hidden;
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+    border-radius:10px;
+    position:absolute;
+    bottom:100%;
+    left:-50%;
+    z-index:1;
+}
+
+.fft-tooltip:hover .fft-tooltip-container {
+    visibility:visible;
+}
+
 .menu-container {
     position: absolute;
     top: 40%;
@@ -737,7 +761,7 @@ img {
 }
 
 .fft-section-margin {
-    margin-right: 1%;
+    margin-right: 2%;
 }
 
 #base-stats {
@@ -765,13 +789,33 @@ img {
     width: 40px;
 }
 
-#element-resistances-header {
+#element-resistances-header, #status-immunities-header {
     text-align: center;
 }
 
 .element-icon {
     height: 32px;
     margin-right: 10px;
+}
+
+.element-icon-weak {
+    background: radial-gradient(red 70%, transparent 30%);
+}
+
+.element-icon-halved {
+    background: radial-gradient(blue 70%, transparent 30%);
+}
+
+.element-icon-negated {
+    background: radial-gradient(grey 70%, transparent 30%);
+}
+
+.element-icon-absborbed {
+    background: radial-gradient(green 70%, transparent 30%);
+}
+
+.status-icon {
+    height: 32px;
 }
 
 #unit-ability-equipment-container {
