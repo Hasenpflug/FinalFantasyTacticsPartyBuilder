@@ -77,6 +77,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit)
         {
             Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
+            List<Item> items = new List<Item>();
 
             unit.Unit.JobName = Enum.GetName(typeof(Jobs), unit.Unit.JobID);
             unit.Unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.Unit.JobName.Contains("Onion") ? "OnionKnight" : unit.Unit.JobName, unit.Unit.GenderName);
@@ -100,6 +101,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         weaponItem1.IconFileName : @"/Content/Images/Item_Icons/Armour/" + weaponItem1.IconFileName,
                         Name = weaponItem1.PspName,
                     };
+
+                    items.Add(weaponItem1);
                 }
 
                 if (unit.ShieldID != default(int) && !weaponItem1.ItemCategory.IsTwoHandOnly)
@@ -117,6 +120,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         weaponItem2.IconFileName : @"/Content/Images/Item_Icons/Armour/" + weaponItem2.IconFileName : "",
                         Name = weaponItem2 != null ? weaponItem2.PspName : "",
                     };
+
+                    items.Add(weaponItem2);
                 }
 
                 if (unit.HeadID != default(int))
@@ -132,6 +137,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         ImagePath = @"/Content/Images/Item_Icons/Armour/" + headItem.IconFileName,
                         Name = headItem.PspName,
                     };
+
+                    items.Add(headItem);
                 }
 
                 if (unit.BodyID != default(int))
@@ -147,6 +154,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         ImagePath = @"/Content/Images/Item_Icons/Armour/" + context.Items.Single(m => m.ItemID == unit.BodyID).IconFileName,
                         Name = context.Items.Single(m => m.ItemID == unit.BodyID).PspName,
                     };
+
+                    items.Add(bodyItem);
                 }
 
                 if (unit.AccessoryID != default(int))
@@ -164,6 +173,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         ImagePath = @"~/Content/Images/Item_Icons/Accessories/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
                         Name = context.Items.Single(m => m.ItemID == unit.AccessoryID).PspName,
                     };
+
+                    items.Add(accessoryItem);
                 }
 
                 Job unitJob = context.Jobs.Single(m => m.JobID == unit.Unit.JobID);
@@ -180,6 +191,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 LevelDigits = unit.Unit.Level < 10 ? ("0" + unit.Unit.Level.ToString()).ToCharArray() : unit.Unit.Level.ToString().ToCharArray(),
                 PositionDigits = unit.Unit.Position < 10 ? ("0" + unit.Unit.Position.ToString()).ToCharArray() : unit.Unit.Position.ToString().ToCharArray()
             };
+
+            unit = AttributeCalculator.CalculateReistancesAndImmunities(items, unit);
 
             return PartialView("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit);
         }
@@ -264,6 +277,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                             case (int)ItemCategoriesList.Armguard:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_ArmguardAccessorySelectionPartial.cshtml", items);
                             case (int)ItemCategoriesList.Ring:
+                                return PartialView("~/Views/Home/UnitItemSelectionPartials/_RingAccessorySelectionPartial.cshtml", items);
+                            case (int)ItemCategoriesList.Armlet:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_RingAccessorySelectionPartial.cshtml", items);
                             default:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_DefaultAccessorySelectionPartial.cshtml", items);
@@ -415,7 +430,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 if (jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet))
                 {
                     int randomHeadID = jobItems.FirstOrDefault(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet).ItemCategoryID;
-                    headItem = jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet) ? context.Items.Where( c => c.ItemCategoryID == randomHeadID)
+                    headItem = jobItems.Any(m => m.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet) ? context.Items.Where(c => c.ItemCategoryID == randomHeadID)
                         .FirstOrDefault(m => m.IsStartingItem) : null;
                     unit.HeadID = headItem != null ? headItem.ItemID : 0;
                 }
@@ -431,18 +446,13 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unit, unitJob);
                 unit = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, null, unit, unitJob);
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
+                unit = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unit);
                 unit.PrimaryAbilityJobID = unit.Unit.JobID;
                 unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
+                unit.Resistances = new UnitResistAndImmunityViewModel();
             }
 
             return Json(unit);
         }
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
     }
 }

@@ -65,6 +65,8 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
         
         public ItemOverviewViewModel Accessory { get; set; }       
 
+        public UnitResistAndImmunityViewModel Resistances { get; set; }
+
         public string PhysicalAttackPower { get; set; }
 
         public string MagicalAttackPower { get; set; }

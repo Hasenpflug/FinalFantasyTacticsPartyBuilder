@@ -1,4 +1,4 @@
-﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models;
 @using FinalFantasyTacticsPartyBuilder.Models;
 @model UnitDetailsViewModel
 
@@ -171,46 +171,46 @@
                 <div class="fft-column">
                     <div class="fft-cell">
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Fire - Absorb damage</span>
-                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/flame.svg" />
+                            <span class="fft-tooltip-container top">Fire - @Model.Resistances.FireResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.FireResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/flame.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Ice - Take 33% more damage</span>
-                            <img class="element-icon element-icon-weak" src="~/Content/Images/Elemental_Status_Icons/gem.svg" />
+                            <span class="fft-tooltip-container top">Ice - @Model.Resistances.IceResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.IceResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/gem.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Lightning - Half damage</span>
-                            <img class="element-icon element-icon-halved" src="~/Content/Images/Elemental_Status_Icons/flash.svg" />
+                            <span class="fft-tooltip-container top">Lightning - @Model.Resistances.LightningResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.LightningResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/flash.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Water - Absorb damage</span>
-                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/drop.svg" />
+                            <span class="fft-tooltip-container top">Water - @Model.Resistances.WaterResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.WaterResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/drop.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Physical - Normal damage</span>
-                            <img class="element-icon" src="~/Content/Images/physical-icon.png" />
+                            <span class="fft-tooltip-container top">Physical - @Model.Resistances.PhysicalResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.PhysicalResist.ToLower())" src="~/Content/Images/physical-icon.png" />
                         </div>
                     </div>
                     <div class="fft-cell">
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Wind - Normal damage</span>
-                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/wind.svg" />
+                            <span class="fft-tooltip-container bottom">Wind - @Model.Resistances.WindResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.WindResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/wind.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Earth - Absorb damage</span>
-                            <img class="element-icon element-icon-absborbed" src="~/Content/Images/Elemental_Status_Icons/landslide.svg" />
+                            <span class="fft-tooltip-container bottom">Earth - @Model.Resistances.EarthResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.EarthResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/landslide.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Holy - Normal damage</span>
-                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/holy-star.svg" />
+                            <span class="fft-tooltip-container bottom">Holy - @Model.Resistances.HolyResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.HolyResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/holy-star.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Dark - Normal damage</span>
-                            <img class="element-icon" src="~/Content/Images/Elemental_Status_Icons/dark-night.svg" />
+                            <span class="fft-tooltip-container bottom">Dark - @Model.Resistances.DarkResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.DarkResist.ToLower())" src="~/Content/Images/Elemental_Status_Icons/dark-night.svg" />
                         </div>
                         <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Magical - Halve damage</span>
-                            <img class="element-icon element-icon-halved" src="~/Content/Images/magical-icon.png" />
+                            <span class="fft-tooltip-container bottom">Magical - @Model.Resistances.MagicalResist damage</span>
+                            <img class="element-icon element-icon-@(Model.Resistances.MagicalResist.ToLower())" src="~/Content/Images/magical-icon.png" />
                         </div>
                     </div>
                 </div>
@@ -219,78 +219,78 @@
                 <div id="status-immunities-header" class="fft-cell"><span>Immunities</span></div>
                 <div class="fft-column">
                     <div class="fft-cell">
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Berserk</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsBerserkImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Berserk</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/berserk.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Sleep</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsSleepImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Sleep</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/sleep.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Silence</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsSilenceImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Silence</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/silence.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Poison</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsPoisonImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Poison</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/poison.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Doom</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsDoomImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Doom</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/doom.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Traitor</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsTraitorImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Traitor</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/traitor.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">KO</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsKOImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">KO</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/KO.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Stone</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsStoneImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Stone</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/stone.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Slow</span>
-                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/slow.svg" />
+                        <div class="fft-tooltip @(!Model.Resistances.IsConfusedImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container top">Confused</span>
+                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/confused.svg" />
                         </div>
                     </div>
                     <div class="fft-cell">
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Toad</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsToadImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Toad</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/frog.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Slow</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsSlowImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Slow</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/slow.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Stop</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsStopImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Stop</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/stop.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Don't Move</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsDontMoveImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Don't Move</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/immobile.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Don't Act</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsDontActImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Don't Act</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/disabled.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Blind</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsBlindImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Blind</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/blind.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Vampire</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsVampireImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Vampire</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/vampire.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Undead</span>
-                            <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/zombie.svg" />
+                        <div class="fft-tooltip @(!Model.Resistances.IsUndeadImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Undead</span>
+                            <img class="status-icon" opacity="0.2" src="~/Content/Images/Status_Ailment_Icons/zombie.svg" />
                         </div>
-                        <div class="fft-tooltip">
-                            <span class="fft-tooltip-container">Charm</span>
+                        <div class="fft-tooltip @(!Model.Resistances.IsCharmImmune ? "invisible" : "")">
+                            <span class="fft-tooltip-container bottom">Charm</span>
                             <img class="status-icon" src="~/Content/Images/Status_Ailment_Icons/charm.svg" />
                         </div>
                     </div>

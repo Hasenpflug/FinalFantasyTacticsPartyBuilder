@@ -208,6 +208,7 @@
     <Compile Include="View_Models\UnitOverviewHpMpViewModel.cs" />
     <Compile Include="View_Models\UnitOverviewViewModel.cs" />
     <Compile Include="View_Models\UnitPanelViewModel.cs" />
+    <Compile Include="View_Models\UnitResistAndImmunityViewModel.cs" />
     <Compile Include="View_Models\UnitStatDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

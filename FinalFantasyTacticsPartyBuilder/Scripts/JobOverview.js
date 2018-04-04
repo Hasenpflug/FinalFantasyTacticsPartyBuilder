@@ -400,6 +400,11 @@
 
                 previewSpeedDamageChanges(event.currentTarget, accessoryEquippedElement);
                 break;
+            case "bracelet":
+                var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
+                var currentItem = event.currentTarget;
+                previewSpeedDamageChanges(currentItem, accessoryEquippedElement);
+                break;
         }
 
         function previewSpeedDamageChanges(itemElement, equippedElement)

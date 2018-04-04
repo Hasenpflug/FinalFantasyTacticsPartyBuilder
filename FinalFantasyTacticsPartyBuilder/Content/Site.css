@@ -130,10 +130,16 @@ img {
     padding:5px;
     border-radius:10px;
     position:absolute;
-    bottom:100%;
     left:-50%;
     z-index:1;
 }
+    .fft-tooltip .fft-tooltip-container.bottom {
+        top:100%;
+    }
+
+    .fft-tooltip .fft-tooltip-container.top {
+        bottom: 100%;
+    }
 
 .fft-tooltip:hover .fft-tooltip-container {
     visibility:visible;
@@ -810,7 +816,7 @@ img {
     background: radial-gradient(grey 70%, transparent 30%);
 }
 
-.element-icon-absborbed {
+.element-icon-absorbed {
     background: radial-gradient(green 70%, transparent 30%);
 }
 
