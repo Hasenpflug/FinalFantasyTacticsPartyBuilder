@@ -1010,9 +1010,8 @@ img {
 }
 
 #item-details-container {
-    display: none;
     position: absolute;
-    top: 25%;
+    top: 5%;
     left: 10%;
     width: 80%;
     max-width: 1600px;

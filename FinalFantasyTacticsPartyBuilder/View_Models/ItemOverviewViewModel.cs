@@ -7,6 +7,8 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 {
     public class ItemOverviewViewModel
     {
+        public int ItemID { get; set; }
+
         public int EquipmentCategoryID { get; set; }
 
         public string EquipmentCategoryName { get; set; }

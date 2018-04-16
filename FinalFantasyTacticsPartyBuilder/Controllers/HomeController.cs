@@ -236,6 +236,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             {
                 items.AddRange(context.Items.Where(m => m.ItemCategoryID == itemCategoryID).Select(c => new ItemOverviewViewModel
                 {
+                    ItemID = c.ItemID,
                     EquipmentCategoryID = c.ItemCategory.EquipmentCategoryID,
                     EquipmentCategoryName = c.ItemCategory.EquipmentCategoryName.ToLower(),
                     ItemCategoryID = itemCategoryID,
@@ -290,6 +291,11 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             }
 
             return null;
+        }
+
+        public ActionResult GetItemDetailsPartial(int itemID)
+        {
+            return PartialView("~/Views/Home/_UnitItemDetailsPartial.cshtml");
         }
 
         public ActionResult GetJobOverviewPartial()
@@ -443,13 +449,14 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     unit.BodyID = bodyItem != null ? bodyItem.ItemID : 0;
                 }
 
+                unit.Resistances = new UnitResistAndImmunityViewModel();
                 unit = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unit, unitJob);
                 unit = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, null, unit, unitJob);
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
                 unit = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unit);
                 unit.PrimaryAbilityJobID = unit.Unit.JobID;
                 unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
-                unit.Resistances = new UnitResistAndImmunityViewModel();
+                
             }
 
             return Json(unit);

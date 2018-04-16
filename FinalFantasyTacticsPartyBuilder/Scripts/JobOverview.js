@@ -21,6 +21,8 @@
         }
 
         navigator.click(renderUnitPanels);
+        $('body').on('click', '.item-details-button', renderItemDetailsPartial);
+        $('body').on('click', '#item-details-close', function () { $('#item-details-container').remove(); })
         $('body').on('click', '.new-unit-selector', renderJobOverviewPanel);
         $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
         $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
@@ -155,6 +157,16 @@
             $('#item-lookup-container').remove();
             $('#item-selection').remove();
             $('#unit-abilities').append(data);
+        });
+    }
+
+    function renderItemDetailsPartial(event)
+    {
+        var itemID = event.currentTarget.attributes['data-item-id'].nodeValue;
+
+        $.post('/Home/GetItemDetailsPartial', { itemID }, function (data)
+        {
+            $('#party-overview-container').append(data);
         });
     }
 
