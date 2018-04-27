@@ -254,9 +254,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     Name = c.PspName,
                     WeaponPower = (c.AttackPower ?? 0).ToString(),
                     WeaponHit = (c.HitPercentage ?? 0).ToString(),
-                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID >
-                        (int)EquipmentCategoriesList.Weapon && c.ItemCategory.EquipmentCategoryID < (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" :
-                        @"/Content/Images/Item_Icons/Accessories/") + c.IconFileName
+                    ImagePath = (c.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : c.ItemCategory.EquipmentCategoryID > (int)EquipmentCategoriesList.Weapon &&
+                        c.ItemCategory.EquipmentCategoryID < (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" : @"/Content/Images/Item_Icons/Accessories/") + c.IconFileName
                 }));
             }
 
@@ -295,7 +294,50 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
         public ActionResult GetItemDetailsPartial(int itemID)
         {
-            return PartialView("~/Views/Home/_UnitItemDetailsPartial.cshtml");
+            using (FFTContext context = new FFTContext())
+            {
+                Item item = context.Items.Single(m => m.ItemID == itemID);
+                ItemDetailsViewModel itemDetails = new ItemDetailsViewModel
+                {
+                    ItemID = item.ItemID,
+                    AcquiredViaCatch = item.AcquiredViaCatch,
+                    AcquiredViaInitialEquip = item.AcquiredViaInitialEquip,
+                    AcquiredViaLocation = item.AcquiredViaLocation,
+                    AcquiredViaMode = item.AcquiredViaMode,
+                    AcquiredViaPoach = item.AcquiredViaPoach,
+                    AcquiredViaSteal = item.AcquiredViaSteal,
+                    AcquiredViaTreasureHunt = item.AcquiredViaTreasureHunt,
+                    AttackPower = item.AttackPower,
+                    Cost = item.Cost,
+                    Description = item.Description,
+                    Element = item.Element,
+                    ElementAbsorbed = item.ElementAbsorbed,
+                    ElementBoosted = item.ElementBoosted,
+                    ElementHalved = item.ElementHalved,
+                    ElementNegated = item.ElementNegated,
+                    ElementWeakness = item.ElementWeakness,
+                    EquipStatusEffect = item.EquipStatusEffect,
+                    HitPercentage = item.HitPercentage,
+                    HitStatusEffect = item.HitStatusEffect,
+                    HPBonus = item.HPBonus,
+                    ImagePath = (item.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" : item.ItemCategory.EquipmentCategoryID > (int)EquipmentCategoriesList.Weapon &&
+                        item.ItemCategory.EquipmentCategoryID < (int)EquipmentCategoriesList.Accessory ? @"/Content/Images/Item_Icons/Armour/" : @"/Content/Images/Item_Icons/Accessories/") + item.IconFileName,
+                    ImmuneStatusEffect = item.ImmuneStatusEffect,
+                    JumpBoost = item.JumpBoost,
+                    MagicalEvade = item.MagicalEvade,
+                    MagicAttackBoost = item.MagicAttackBoost,
+                    MoveBoost = item.MoveBoost,
+                    MPBonus = item.MPBonus,
+                    Name = item.PspName,
+                    PhysicalAttackBoost = item.PhysicalAttackBoost,
+                    PhysicalEvade = item.PhysicalEvade,
+                    RemoveStatusEffect = item.RemoveStatusEffect,
+                    SpeedBoost = item.SpeedBoost,
+                    SpellEffect = item.SpellEffect
+                };
+
+                return PartialView("~/Views/Home/_UnitItemDetailsPartial.cshtml", itemDetails);
+            }
         }
 
         public ActionResult GetJobOverviewPartial()
@@ -455,8 +497,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
                 unit = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unit);
                 unit.PrimaryAbilityJobID = unit.Unit.JobID;
-                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
-                
+                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;                
             }
 
             return Json(unit);

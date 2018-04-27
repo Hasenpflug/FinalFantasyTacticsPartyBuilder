@@ -1,9 +1,12 @@
-﻿<div id="item-details-container" class="menu">
+﻿@using FinalFantasyTacticsPartyBuilder.View_Models
+@model ItemDetailsViewModel
+
+<div id="item-details-container" class="menu">
     <strong id="item-details-close">X</strong>
     <div id="item-details-attributes-container">
         <div id="item-details-basic-container" class="fft-column">
-            <img class="fft-cell" src="~/Content/Images/Item_Icons/Weapons/FFT_Broadsword.gif" />
-            <span class="fft-cell"><strong>Broadsword</strong></span>
+            <img class="fft-cell" src="@Model.ImagePath" />
+            <span class="fft-cell"><strong>@Model.Name</strong></span>
             <span class="fft-cell">Sword</span>
             <div class="fft-cell">
                 <span>Range:</span>

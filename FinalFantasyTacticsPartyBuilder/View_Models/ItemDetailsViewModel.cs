@@ -71,7 +71,7 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 
         public string AcquiredViaInitialEquip { get; set; }
 
-        public string IconFileName { get; set; }
+        public string ImagePath { get; set; }
 
         public int Cost { get; set; }
 
