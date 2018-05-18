@@ -6,231 +6,348 @@
     <div id="item-details-attributes-container">
         <div id="item-details-basic-container" class="fft-column">
             <img class="fft-cell" src="@Model.ImagePath" />
-            <span class="fft-cell"><strong>@Model.Name</strong></span>
-            <span class="fft-cell">Sword</span>
-            <div class="fft-cell">
+            <strong class="fft-cell">@Model.Name</strong>
+            <span class="fft-cell">@Model.ItemCategoryName</span>
+            @*<div class="fft-cell">
                 <span>Range:</span>
                 <span>1</span>
                 <span> 1H / 2H</span>
-            </div>
-            <span class="fft-cell">Dualwield</span>
-            <span class="fft-cell">Doublehand</span>
+            </div>*@
+            <span class="fft-cell">@(Model.CanDualWield ? "Dual Wield" : "")</span>
+            <span class="fft-cell">@(Model.CanDualWield ? "Doublehand" : "")</span>
         </div>
-        <div id="item-details-weapon-power-container" class="fft-column">
-            <div class="fft-column">
+        @if (Model.AttackPower != "0" || Model.HitPercentage != "0")
+        {
+            <div id="item-details-weapon-power-container" class="fft-column">
                 <div class="fft-cell"><span>Item. Power</span></div>
+                <div class="fft-column item-icon">
+                    <img src="~/Content/Images/physical-icon.png" />
+                </div>
                 <div class="fft-column">
-                    <div class="fft-cell" data-item-power="4"><span>004</span></div>
+                    <div class="fft-cell"><span>@Model.AttackPower</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell unit-stat-divider"><span>/</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell" data-item-hit-percentage="5"><span>05</span></div>
+                    <div class="fft-cell"><span>@Model.HitPercentage</span></div>
                 </div>
                 <div class="fft-column">
                     <div class="fft-cell  percentage-value"><span>%</span></div>
                 </div>
             </div>
-        </div>
-        <div id="item-details-power-boost-container" class="fft-column">
-            <div class="fft-cell"><span>Item Boosts</span></div>
-            <div class="fft-column item-icon">
-                <img src="~/Content/Images/physical-icon.png" />
-            </div>
-            <div class="fft-column">
-                <span>05</span>
-            </div>
-            <div class="fft-column item-icon">
-                <img src="~/Content/Images/magical-icon.png" />
-            </div>
-            <div class="fft-column">
-                <span>01</span>
-            </div>
-        </div>
-        <div id="item-details-move-jump-speed-container" class="fft-column">
-            <div class="fft-cell"><span>Item Attributes</span></div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>Move</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>5</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>Jump</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell stat-seperator"><span>...</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>3</span></div>
-            </div>
-        </div>
-        <div id="item-details-evasion-container" class="fft-column">
-            <div class="fft-column">
-                <div class="fft-cell"></div>
-                <div class="fft-cell">
+        }
+
+        @if (Model.PhysicalAttackBoost != "0" || Model.MagicAttackBoost != "0")
+        {
+            <div id="item-details-power-boost-container" class="fft-column">
+                <div class="fft-cell"><span>Item Boosts</span></div>
+                <div class="fft-column item-icon">
                     <img src="~/Content/Images/physical-icon.png" />
                 </div>
-                <div class="fft-cell">
+                <div class="fft-column">
+                    <span>@Model.PhysicalAttackBoost</span>
+                </div>
+                <div class="fft-column item-icon">
                     <img src="~/Content/Images/magical-icon.png" />
                 </div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>S-EV</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>00</span></div>
-                    <div class="fft-cell"><span>00</span></div>
-                </div>
-                <div class="fft-column">
-                    <div class="fft-cell percentage-value"><span>%</span></div>
-                    <div class="fft-cell percentage-value"><span>%</span></div>
+                    <span>@Model.MagicAttackBoost</span>
                 </div>
             </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span></span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-                <div class="fft-cell unit-stat-divider"><span>/</span></div>
-            </div>
-            <div class="fft-column">
-                <div class="fft-cell"><span>A-EV</span></div>
+        }
+
+        @if (Model.MoveBoost != "0" || Model.JumpBoost != "0" || Model.SpeedBoost != "0")
+        {
+            <div id="item-details-move-jump-speed-container" class="fft-column">
+                <div class="fft-cell"><span>Item Attributes</span></div>
                 <div class="fft-column">
-                    <div class="fft-cell"><span>00</span></div>
-                    <div class="fft-cell"><span>00</span></div>
+                    <div class="fft-cell"><span>Move</span></div>
                 </div>
                 <div class="fft-column">
-                    <div class="fft-cell percentage-value"><span>%</span></div>
-                    <div class="fft-cell percentage-value"><span>%</span></div>
+                    <div class="fft-cell stat-seperator"><span>...</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>@Model.MoveBoost</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>Jump</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell stat-seperator"><span>...</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>@Model.JumpBoost</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>Speed</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell stat-seperator"><span>...</span></div>
+                </div>
+                <div class="fft-column">
+                    <div class="fft-cell"><span>@Model.SpeedBoost</span></div>
                 </div>
             </div>
-        </div>
+        }
+
+        @if (Model.PhysicalEvade != "0" || Model.MagicalEvade != "0")
+        {
+            <div id="item-details-evasion-container" class="fft-column">
+                <div class="fft-column">
+                    <div class="fft-cell"></div>
+                    <div class="fft-cell">
+                        <img src="~/Content/Images/physical-icon.png" />
+                    </div>
+                    <div class="fft-cell">
+                        <img src="~/Content/Images/magical-icon.png" />
+                    </div>
+                </div>
+                @if (Model.ItemCategoryName == "Shield")
+                {
+                    <div class="fft-column">
+                        <div class="fft-cell"><span>S-EV</span></div>
+                        <div class="fft-column">
+                            <div class="fft-cell"><span>@Model.PhysicalEvade</span></div>
+                            <div class="fft-cell"><span>@Model.MagicalEvade</span></div>
+                        </div>
+                        <div class="fft-column">
+                            <div class="fft-cell percentage-value"><span>%</span></div>
+                            <div class="fft-cell percentage-value"><span>%</span></div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="fft-column">
+                        <div class="fft-cell"><span>A-EV</span></div>
+                        <div class="fft-column">
+                            <div class="fft-cell"><span>@Model.PhysicalEvade</span></div>
+                            <div class="fft-cell"><span>@Model.MagicalEvade</span></div>
+                        </div>
+                        <div class="fft-column">
+                            <div class="fft-cell percentage-value"><span>%</span></div>
+                            <div class="fft-cell percentage-value"><span>%</span></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
     <div id="item-details-element-effect-container">
-        <div class="fft-row">
-            <span>Element: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
-        <div class="fft-row">
-            <span>Absorbed: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-            <span> - </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
-        <div class="fft-row">
-            <span>Boosted: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
-        <div class="fft-row">
-            <span>Halved: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
-        <div class="fft-row">
-            <span>Negated: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
-        <div class="fft-row">
-            <span>Weakness: </span>
-            <span>Dark</span>
-            <span> - </span>
-            <span>Holy</span>
-            <span> - </span>
-            <span>Fire</span>
-        </div>
+        @if (Model.Element.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Element: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.Element)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ElementAbsorbed.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Absorbed: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.ElementAbsorbed)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ElementBoosted.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Boosted: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.ElementBoosted)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ElementHalved.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Halved: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.ElementHalved)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ElementNegated.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Negated: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.ElementNegated)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ElementWeakness.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Weakness: </span>
+                @foreach (KeyValuePair<string, string> elementItem in Model.ElementWeakness)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@elementItem.Key</span>
+                        <img class="status-icon" src="@elementItem.Value" />
+                    </div>
+                }
+            </div>
+        }
     </div>
     <div id="item-details-status-effect-container">
-        <div class="fft-row">
-            <span>Spell: </span>
-            <span>Blizzaga</span>
-        </div>
-        <div class="fft-row">
-            <span>Status: </span>
-            <span>Charm</span>
-        </div>
-        <div class="fft-row">
-            <span>Remove: </span>
-            <span>Doom</span>
-        </div>
-        <div class="fft-row">
-            <span>Immune: </span>
-            <span>Poison</span>
-            <span>-</span>
-            <span>Blind</span>
-            <span>-</span>
-            <span>Charm</span>
-            <span>-</span>
-            <span>Doom</span>
-            <span>-</span>
-            <span>Stone</span>
-            <span>-</span>
-            <span>Immobile</span>
-            <span>-</span>
-            <span>Disable</span>
-        </div>
-        <div class="fft-row">
-            <span>Equip: </span>
-            <span>Haste</span>
-            <span>-</span>
-            <span>Regen</span>
-        </div>
+        @if (Model.SpellEffect.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Spell: </span>
+                @foreach (KeyValuePair<string, string> effectItem in Model.SpellEffect)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@effectItem.Key</span>
+                        <img class="status-icon" src="@effectItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.HitStatusEffect.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Status: </span>
+                @foreach (KeyValuePair<string, string> effectItem in Model.HitStatusEffect)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@effectItem.Key</span>
+                        <img class="status-icon" src="@effectItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.RemoveStatusEffect.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Remove: </span>
+                @foreach (KeyValuePair<string, string> effectItem in Model.RemoveStatusEffect)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@effectItem.Key</span>
+                        <img class="status-icon" src="@effectItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.ImmuneStatusEffect.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Immune: </span>
+                @foreach (KeyValuePair<string, string> effectItem in Model.ImmuneStatusEffect)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@effectItem.Key</span>
+                        <img class="status-icon" src="@effectItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
+        @if (Model.EquipStatusEffect.Count != 0)
+        {
+            <div class="fft-row">
+                <span class="row-header">Equip: </span>
+                @foreach (KeyValuePair<string, string> effectItem in Model.EquipStatusEffect)
+                {
+                    <div class="fft-tooltip">
+                        <span class="fft-tooltip-container top">@effectItem.Key</span>
+                        <img class="status-icon" src="@effectItem.Value" />
+                    </div>
+                }
+            </div>
+        }
+
     </div>
     <div id="item-details-acquire-methods">
-        <div class="fft-column">
-            <div class="fft-cell"><span>Bought After</span></div>
-            <div class="fft-cell"><span>Royal City of Lesalia (Chapter 3)</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Poach Monster</span></div>
-            <div class="fft-cell"><span>Squidraken</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Treasure Location</span></div>
-            <div class="fft-cell"><span>Grogh Heights (rare)</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Caught From</span></div>
-            <div class="fft-cell"><span>Level 96+ Ninja</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Multiplayer Mode</span></div>
-            <div class="fft-cell"><span>Melee/Rendezvous</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Initial Equip</span></div>
-            <div class="fft-cell"><span>Luso</span></div>
-        </div>
-        <div class="fft-column">
-            <div class="fft-cell"><span>Stolen From</span></div>
-            <div class="fft-cell"><span>Gafgarion</span></div>
-        </div>
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaLocation))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Bought After</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaLocation</span></div>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaPoach))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Poach Monster</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaPoach</span></div>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaTreasureHunt))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Treasure Location</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaTreasureHunt</span></div>
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaCatch))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Caught From</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaCatch</span></div>
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaMode))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Multiplayer Mode</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaMode</span></div>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaInitialEquip))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Initial Equip</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaInitialEquip</span></div>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.AcquiredViaSteal))
+        {
+            <div class="fft-column">
+                <div class="fft-cell row-header"><span>Stolen From</span></div>
+                <div class="fft-cell"><span>@Model.AcquiredViaSteal</span></div>
+            </div>
+        }
+
     </div>
     <span id="item-details-description">
-        <em>This broad-bladed sword is suited for large slashing strokes. It is inexpensive, but not particularly powerful.</em>
+        <em>@Model.Description</em>
     </span>
 </div>

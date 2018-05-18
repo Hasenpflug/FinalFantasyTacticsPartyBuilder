@@ -9,7 +9,61 @@ namespace FinalFantasyTacticsPartyBuilder.Services
 {
     public static class AttributeCalculator
     {
-        public const int UNIT_STAT_NORMALIZER = 1638400;
+        public const int UNIT_STAT_NORMALIZER = 1638400;        
+
+        public static Dictionary<string, string> GetElementSVGLocations(string elementList)
+        {
+            if (String.IsNullOrEmpty(elementList))
+            {
+                return new Dictionary<string, string>();
+            }
+
+            Dictionary<string, string> elementSVGLocations = new Dictionary<string, string>
+            {
+                {"Fire", @"Content/Images/Elemental_Status_Icons/flame.svg" },
+                {"Ice", @"Content/Images/Elemental_Status_Icons/gem.svg" },
+                {"Water", @"Content/Images/Elemental_Status_Icons/drop.svg" },
+                {"Lightning", @"Content/Images/Elemental_Status_Icons/flash.svg" },
+                {"Wind", @"Content/Images/Elemental_Status_Icons/wind.svg" },
+                {"Earth", @"Content/Images/Elemental_Status_Icons/landslide.svg" },
+                {"Dark", @"Content/Images/Elemental_Status_Icons/dark-night.svg" },
+                {"Holy", @"Content/Images/Elemental_Status_Icons/holy-star.svg" },
+            };
+
+            return elementSVGLocations.Where(m => elementList.Contains(m.Key)).ToDictionary(k => k.Key, v => v.Value);
+        }
+
+        public static Dictionary<string, string> GetEffectSVGLocations(string effectList)
+        {
+            if (String.IsNullOrEmpty(effectList))
+            {
+                return new Dictionary<string, string>();
+            }
+
+            Dictionary<string, string> effectSVGLocations = new Dictionary<string, string>
+            {
+                {"Berserk", @"Content/Images/Status_Ailment_Icons/berserk.svg" },
+                {"Blind", @"Content/Images/Status_Ailment_Icons/blind.svg" },
+                {"Charm", @"Content/Images/Status_Ailment_Icons/charm.svg" },
+                {"Confuse", @"Content/Images/Status_Ailment_Icons/confused.svg" },
+                {"Disable", @"Content/Images/Status_Ailment_Icons/disabled.svg" },
+                {"Doom", @"Content/Images/Status_Ailment_Icons/doom.svg" },
+                {"Frog", @"Content/Images/Status_Ailment_Icons/frog.svg" },
+                {"Immobilize", @"Content/Images/Status_Ailment_Icons/immobile.svg" },
+                {"KO", @"Content/Images/Status_Ailment_Icons/KO.svg" },
+                {"Poison", @"Content/Images/Status_Ailment_Icons/poison.svg" },
+                {"Silence", @"Content/Images/Status_Ailment_Icons/silence.svg" },
+                {"Sleep", @"Content/Images/Status_Ailment_Icons/sleep.svg" },
+                {"Slow", @"Content/Images/Status_Ailment_Icons/slow.svg" },
+                {"Stone", @"Content/Images/Status_Ailment_Icons/stone.svg" },
+                {"Stop", @"Content/Images/Status_Ailment_Icons/stop.svg" },
+                {"Traitor", @"Content/Images/Status_Ailment_Icons/traitor.svg" },
+                {"Vampire", @"Content/Images/Status_Ailment_Icons/vampire.svg" },
+                {"Undead", @"Content/Images/Status_Ailment_Icons/zombie.svg" },
+            };
+
+            return effectSVGLocations.Where(m => effectList.Contains(m.Key)).ToDictionary(k => k.Key, v => v.Value);
+        }
 
         public static UnitDetailsViewModel CalculateHPAndMP(Item headItem, Item bodyItem, UnitDetailsViewModel unit, Job job)
         {
