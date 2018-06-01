@@ -1038,7 +1038,6 @@ img {
 
 #item-details-attributes-container {
     margin-bottom: 1%;
-    height: 30%;
 }
 
 #item-details-basic-container {
@@ -1059,7 +1058,7 @@ img {
     }
 
 #item-details-weapon-power-container, #item-details-power-boost-container, #item-details-move-jump-speed-container {
-    margin: 5% 5% 5% 0;
+    /*margin: 5% 5% 5% 0;*/
 }
 
     #item-details-power-boost-container .fft-cell:first-child, #item-details-move-jump-speed-container .fft-cell:first-child, #item-details-evasion-container .fft-cell:first-child {

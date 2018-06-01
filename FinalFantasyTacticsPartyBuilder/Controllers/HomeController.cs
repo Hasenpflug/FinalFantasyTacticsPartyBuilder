@@ -74,7 +74,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
         }
 
-        public ActionResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit)
+        public ActionResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit, int? itemID = null)
         {
             Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
             List<Item> items = new List<Item>();
@@ -82,10 +82,35 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             unit.Unit.JobName = Enum.GetName(typeof(Jobs), unit.Unit.JobID);
             unit.Unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.Unit.JobName.Contains("Onion") ? "OnionKnight" : unit.Unit.JobName, unit.Unit.GenderName);
             unit.Unit.JobName = string.Concat(unit.Unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
-            unit.Unit.GenderName = Enum.GetName(typeof(Gender), unit.Unit.Gender);            
+            unit.Unit.GenderName = Enum.GetName(typeof(Gender), unit.Unit.Gender);
 
             using (FFTContext context = new FFTContext())
             {
+                if (itemID != null)
+                {
+                    int categoryListLength = Enum.GetNames(typeof(EquipmentCategoriesList)).Length;
+                    Item selectedItem = context.Items.Single(m => m.ItemID == itemID);
+
+                    switch ((EquipmentCategoriesList)selectedItem.ItemCategory.EquipmentCategoryID)
+                    {
+                        case EquipmentCategoriesList.Weapon:                            
+                                unit.WeaponID = selectedItem.ItemID;
+                            break;
+                        case EquipmentCategoriesList.Shield:
+                                unit.ShieldID = selectedItem.ItemID;
+                            break;
+                        case EquipmentCategoriesList.Helmet:
+                                unit.HeadID = selectedItem.ItemID;
+                            break;
+                        case EquipmentCategoriesList.Armor:
+                                unit.BodyID = selectedItem.ItemID;
+                            break;
+                        case EquipmentCategoriesList.Accessory:
+                                unit.AccessoryID = selectedItem.ItemID;
+                            break;
+                    }
+                }
+
                 if (unit.WeaponID != default(int))
                 {
                     weaponItem1 = context.Items.Single(m => m.ItemID == unit.WeaponID);
@@ -268,7 +293,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     case (int)EquipmentCategoriesList.Shield:
                         return PartialView("~/Views/Home/UnitItemSelectionPartials/_ShieldSelectionPartial.cshtml", items);
                     case (int)EquipmentCategoriesList.Accessory:
-                        switch(items[0].ItemCategoryID)
+                        switch (items[0].ItemCategoryID)
                         {
                             case (int)ItemCategoriesList.Shoe:
                                 return PartialView("~/Views/Home/UnitItemSelectionPartials/_ShoeAccessorySelectionPartial.cshtml", items);
@@ -420,6 +445,63 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
 
+        public ActionResult EquipNewItem(UnitDetailsViewModel unitDetails, int itemID)
+        {
+            Item selectedItem;
+
+            using (FFTContext context = new FFTContext())
+            {
+                int categoryListLength = Enum.GetNames(typeof(EquipmentCategoriesList)).Length;
+                Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
+                Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
+                selectedItem = context.Items.Single(m => m.ItemID == itemID);
+
+                for (int i = 0; i < categoryListLength; i++)
+                {
+                    switch ((EquipmentCategoriesList)(i))
+                    {
+                        case EquipmentCategoriesList.Weapon:
+                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon)
+                                weaponItem1 = selectedItem;
+                            else if (unitDetails.WeaponID != 0)
+                                weaponItem1 = context.Items.Single(m => m.ItemID == unitDetails.WeaponID);
+                            break;
+                        case EquipmentCategoriesList.Shield:
+                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield)
+                                weaponItem2 = selectedItem;
+                            else if (unitDetails.ShieldID != 0)
+                                weaponItem2 = context.Items.Single(m => m.ItemID == unitDetails.ShieldID);
+                            break;
+                        case EquipmentCategoriesList.Helmet:
+                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet)
+                                headItem = selectedItem;
+                            else if (unitDetails.HeadID != 0)
+                                headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
+                            break;
+                        case EquipmentCategoriesList.Armor:
+                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor)
+                                bodyItem = selectedItem;
+                            else if (unitDetails.BodyID != 0)
+                                bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
+                            break;
+                        case EquipmentCategoriesList.Accessory:
+                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory)
+                                accessoryItem = selectedItem;
+                            else if (unitDetails.AccessoryID != 0)
+                                accessoryItem = context.Items.Single(m => m.ItemID == unitDetails.AccessoryID);
+                            break;
+                    }
+                }
+
+                unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
+                unitDetails = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, accessoryItem, unitDetails, unitJob);
+                unitDetails = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unitDetails);
+                unitDetails = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unitDetails);
+            }
+
+            return View("~/Views/Home/_UnitStatDetailsPartial.cshtml", unitDetails);
+        }
+
         public ActionResult PopulateNewUnitData(int jobID, int gender, int position)
         {
             UnitDetailsViewModel unit;
@@ -498,7 +580,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, null, unitJob, unit);
                 unit = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unit);
                 unit.PrimaryAbilityJobID = unit.Unit.JobID;
-                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;                
+                unit.PrimaryAbilityName = unitJob.AbilitySetPspName;
             }
 
             return Json(unit);

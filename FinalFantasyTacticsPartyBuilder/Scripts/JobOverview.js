@@ -34,6 +34,7 @@
         $('body').on('click', '#menu-unit-cancel', function () { $('.unit-details-container').toggle(); $('.menu-container').toggle(); });
         $('body').on('click', '.equipment-selector', renderItemLookupPartial);
         $('body').on('click', '.item-category', renderItemSelectionPartial);
+        $('body').on('click', '.item-names', setEquippedItem);
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
     });
@@ -130,20 +131,61 @@
         });
     }
 
-    function renderUnitStatsDetailsPartial()
+    function setEquippedItem(event)
     {
-        var unitData = getUnitData();
-        unitData = unitData.units[selectedUnitPosition];
-        selectedJobData = unitData;
+        var unit = getUnitData().units[selectedUnitPosition];
+        var itemID = event.currentTarget.attributes['data-item-id'].nodeValue;
+        var itemCategoryName = event.currentTarget.attributes['data-item-category-name'].nodeValue;
 
-        $.post('/Home/GetUnitStatsDetailPartial', { unit: unitData }, function (data)
+        switch (itemCategoryName)
+        {
+            case "weapon":
+                unit.WeaponID = itemID;
+                modifyUnitData(unit, selectedUnitPosition);
+                break;
+            case "shield":
+                unit.ShieldID = itemID;
+                modifyUnitData(unit, selectedUnitPosition);
+                break;
+            case "helmet":
+                unit.HeadID = itemID;
+                modifyUnitData(unit, selectedUnitPosition);
+                break;
+            case "armor":
+                unit.BodyID = itemID;
+                modifyUnitData(unit, selectedUnitPosition);
+                break;
+            case "shoe":
+            case "armguard":
+            case "ring":
+            case "cloak":
+            case "bracelet":
+                unit.AccessoryID = itemID;
+                modifyUnitData(unit, selectedUnitPosition);
+                break;
+        }
+
+        renderUnitStatsDetailsPartial();
+    }
+
+    function renderUnitStatsDetailsPartial(event)
+    {
+        //var isEquippingItem = event.data === undefined ? false : event.data.isEquippingItem === true ? true : false;
+        var unitData = getUnitData();
+        selectedJobData = unitData.units[selectedUnitPosition];
+        unitData = { unit: selectedJobData };        
+        //if (isEquippingItem === true)
+        //{
+        //    unitData['itemID'] = event.currentTarget.attributes['data-item-id'].nodeValue;
+        //}
+
+        $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data)
         {
             navigator.show();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
-            selectedUnitPosition = '-1';
         });
-    }
+    }    
 
     function renderItemLookupPartial(event)
     {
@@ -486,7 +528,7 @@
         }
     }
 
-    function resetItemStats(event)
+    function resetItemStats()
     {
         var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
         var rightHitElement = document.querySelector('#weapon-stats-right-hit');
@@ -556,6 +598,13 @@
     function getUnitData()
     {
         return JSON.parse(localStorage.getItem('unitData'));
+    }
+
+    function modifyUnitData(unit, position)
+    {
+        var unitData = getUnitData();
+        unitData.units[position] = unit;
+        localStorage.setItem('unitData', JSON.stringify(unitData));
     }
 
     function hireUnit()
