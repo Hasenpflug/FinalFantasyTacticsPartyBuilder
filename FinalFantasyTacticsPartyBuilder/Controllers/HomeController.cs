@@ -93,7 +93,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
                     switch ((EquipmentCategoriesList)selectedItem.ItemCategory.EquipmentCategoryID)
                     {
-                        case EquipmentCategoriesList.Weapon:                            
+                        case EquipmentCategoriesList.Weapon:                          
                                 unit.WeaponID = selectedItem.ItemID;
                             break;
                         case EquipmentCategoriesList.Shield:
@@ -135,10 +135,14 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     weaponItem2 = context.Items.FirstOrDefault(m => m.ItemID == unit.ShieldID);
                     unit.WeaponLeft = new ItemOverviewViewModel
                     {
-                        WeaponPower = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? weaponItem2.AttackPower.Value.ToString("D3") : "000" : "000",
-                        WeaponHit = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? weaponItem2.HitPercentage.Value.ToString("D3") : "000" : "000",
-                        ShieldPhysicalEvade = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? weaponItem2.PhysicalEvade.Value.ToString("D3") : "00" : "00",
-                        ShieldMagicalEvade = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ? weaponItem2.MagicalEvade.Value.ToString("D3") : "00" : "00",
+                        WeaponPower = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? 
+                            weaponItem2.AttackPower.HasValue ? weaponItem2.AttackPower.Value.ToString("D3") : "000" : "000" : "000",
+                        WeaponHit = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? 
+                            weaponItem2.HitPercentage.HasValue ? weaponItem2.HitPercentage.Value.ToString("D3") : "000" : "000" : "000",
+                        ShieldPhysicalEvade = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ?
+                            weaponItem2.PhysicalEvade.HasValue ? weaponItem2.PhysicalEvade.Value.ToString("D3") : "00" : "00" : "00",
+                        ShieldMagicalEvade = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ?
+                            weaponItem2.MagicalEvade.HasValue ? weaponItem2.MagicalEvade.Value.ToString("D3") : "00" : "00" : "00",
                         PhysicalAttackPower = weaponItem2 != null ? weaponItem2.PhysicalAttackBoost.HasValue ? weaponItem2.PhysicalAttackBoost.Value.ToString("D2") : "00" : "00",
                         MagicalAttackPower = weaponItem2 != null ? weaponItem2.PhysicalAttackBoost.HasValue ? weaponItem2.PhysicalAttackBoost.Value.ToString("D2") : "00" : "00",
                         ImagePath = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? @"/Content/Images/Item_Icons/Weapons/" +
@@ -188,14 +192,17 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     accessoryItem = context.Items.Single(m => m.ItemID == unit.AccessoryID);
                     unit.Accessory = new ItemOverviewViewModel
                     {
+                        ItemCategoryID = accessoryItem.ItemCategoryID,
                         MoveBonus = accessoryItem.MoveBoost.HasValue ? accessoryItem.MoveBoost.Value : 0,
                         JumpBonus = accessoryItem.JumpBoost.HasValue ? accessoryItem.JumpBoost.Value : 0,
                         SpeedBonus = accessoryItem.SpeedBoost.HasValue ? accessoryItem.SpeedBoost.Value : 0,
+                        PhysicalAttackPower = accessoryItem.PhysicalAttackBoost.HasValue ? accessoryItem.PhysicalAttackBoost.Value.ToString() : "00",
+                        MagicalAttackPower = accessoryItem.MagicAttackBoost.HasValue ? accessoryItem.MagicAttackBoost.Value.ToString() : "00",
                         AccessoryPhysicalEvade = accessoryItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? accessoryItem.PhysicalEvade.HasValue ?
-                        accessoryItem.PhysicalEvade.Value.ToString("D3") : "00" : "00",
+                            accessoryItem.PhysicalEvade.Value.ToString("D3") : "00" : "00",
                         AccessoryMagicalEvade = accessoryItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory ? accessoryItem.MagicalEvade.HasValue ?
-                        accessoryItem.MagicalEvade.Value.ToString("D3") : "00" : "00",
-                        ImagePath = @"~/Content/Images/Item_Icons/Accessories/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
+                            accessoryItem.MagicalEvade.Value.ToString("D3") : "00" : "00",
+                        ImagePath = @"/Content/Images/Item_Icons/Accessories/" + context.Items.Single(m => m.ItemID == unit.AccessoryID).IconFileName,
                         Name = context.Items.Single(m => m.ItemID == unit.AccessoryID).PspName,
                     };
 
@@ -203,6 +210,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 }
 
                 Job unitJob = context.Jobs.Single(m => m.JobID == unit.Unit.JobID);
+                unit = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unit, unitJob);
+                unit = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, accessoryItem, unit, unitJob);
                 unit = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unit);
                 unit.PrimaryAbilityJobID = unitJob.JobID;
                 unit.PrimaryAbilityName = unitJob.AbilitySetPspName;

@@ -170,15 +170,10 @@
 
     function renderUnitStatsDetailsPartial(event)
     {
-        //var isEquippingItem = event.data === undefined ? false : event.data.isEquippingItem === true ? true : false;
         var unitData = getUnitData();
         selectedJobData = unitData.units[selectedUnitPosition];
         unitData = { unit: selectedJobData };        
-        //if (isEquippingItem === true)
-        //{
-        //    unitData['itemID'] = event.currentTarget.attributes['data-item-id'].nodeValue;
-        //}
-
+        
         $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data)
         {
             navigator.show();
@@ -374,33 +369,35 @@
                 var moveElement = document.querySelector('#move-stat-value');
                 var jumpElement = document.querySelector('#jump-stat-value');
                 var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
-                var moveBonus = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-move-bonus'].nodeValue) : 0;
-                var jumpBonus = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-jump-bonus'].nodeValue) : 0;
-                var itemMoveBonus = parseInt(event.currentTarget.attributes['data-item-move-bonus'].nodeValue);
+                var equippedMoveBonus = accessoryEquippedElement != null ? accessoryEquippedElement.attributes['data-item-move-bonus'] != null ?
+                    parseInt(accessoryEquippedElement.attributes['data-item-move-bonus'].nodeValue) : 0 : 0;
+                var equippedJumpBonus = accessoryEquippedElement != null ? accessoryEquippedElement.attributes['data-item-jump-bonus'] != null ?
+                    parseInt(accessoryEquippedElement.attributes['data-item-jump-bonus'].nodeValue) : 0 : 0;
+                var itemMoveBonus = parseInt(event.currentTarget.attributes['data-item-move-bonus'].nodeValue); 
                 var itemJumpBonus = parseInt(event.currentTarget.attributes['data-item-jump-bonus'].nodeValue);
 
-                if (itemMoveBonus > moveBonus)
+                if (itemMoveBonus > equippedMoveBonus)
                 {
-                    moveElement.firstChild.textContent = '+' + (itemMoveBonus - moveBonus);
+                    moveElement.firstChild.textContent = '+' + (itemMoveBonus - equippedMoveBonus);
                     moveElement.firstChild.style.color = 'blue';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemMoveBonus < moveBonus)
+                else if (itemMoveBonus < equippedMoveBonus)
                 {
-                    moveElement.firstChild.textContent = '-' + (moveBonus - itemMoveBonus);
+                    moveElement.firstChild.textContent = '-' + (equippedMoveBonus - itemMoveBonus);
                     moveElement.firstChild.style.color = 'red';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
 
-                if (itemJumpBonus > jumpBonus)
+                if (itemJumpBonus > equippedJumpBonus)
                 {
-                    jumpElement.firstChild.textContent = '+' + (itemJumpBonus - jumpBonus);
+                    jumpElement.firstChild.textContent = '+' + (itemJumpBonus - equippedJumpBonus);
                     jumpElement.firstChild.style.color = 'blue';
                     jumpElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemJumpBonus < jumpBonus)
+                else if (itemJumpBonus < equippedJumpBonus)
                 {
-                    jumpElement.firstChild.textContent = '-' + (jumpBonus - itemJumpBonus);
+                    jumpElement.firstChild.textContent = '-' + (equippedJumpBonus - itemJumpBonus);
                     jumpElement.firstChild.style.color = 'red';
                     jumpElement.firstChild.style.visibility = 'visible';
                 }
@@ -421,8 +418,10 @@
                 var physicalEvadeElement = document.querySelector('#accessory-physical-evade');
                 var magicalEvadeElement = document.querySelector('#accessory-magical-evade');
                 var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
-                var equippedPhysicalEvade = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-physical-evade'].nodeValue) : 0;
-                var equippedMagicalEvade = accessoryEquippedElement != null ? parseInt(accessoryEquippedElement.attributes['data-item-magical-evade'].nodeValue) : 0;
+                var equippedPhysicalEvade = accessoryEquippedElement != null ? accessoryEquippedElement.attributes['data-item-physical-evade'] != null ?
+                    parseInt(accessoryEquippedElement.attributes['data-item-physical-evade'].nodeValue) : 0 : 0;
+                var equippedMagicalEvade = accessoryEquippedElement != null ? accessoryEquippedElement.attributes['data-item-magical-evade'] != null ?
+                    parseInt(accessoryEquippedElement.attributes['data-item-magical-evade'].nodeValue) : 0 : 0;
                 var itemPhysicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
                 var itemMagicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
 

@@ -804,15 +804,15 @@ img {
     margin-right: 10px;
 }
 
-.element-icon-weak {
+.element-icon-double {
     background: radial-gradient(red 70%, transparent 30%);
 }
 
-.element-icon-halved {
+.element-icon-half {
     background: radial-gradient(blue 70%, transparent 30%);
 }
 
-.element-icon-negated {
+.element-icon-negate {
     background: radial-gradient(grey 70%, transparent 30%);
 }
 

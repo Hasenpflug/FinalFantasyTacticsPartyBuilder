@@ -9,7 +9,18 @@ namespace FinalFantasyTacticsPartyBuilder.Services
 {
     public static class AttributeCalculator
     {
-        public const int UNIT_STAT_NORMALIZER = 1638400;        
+        public const int UNIT_STAT_NORMALIZER = 1638400;
+        public static Dictionary<string, string> elementSVGLocations = new Dictionary<string, string>
+        {
+            {"Fire", @"Content/Images/Elemental_Status_Icons/flame.svg" },
+            {"Ice", @"Content/Images/Elemental_Status_Icons/gem.svg" },
+            {"Water", @"Content/Images/Elemental_Status_Icons/drop.svg" },
+            {"Lightning", @"Content/Images/Elemental_Status_Icons/flash.svg" },
+            {"Wind", @"Content/Images/Elemental_Status_Icons/wind.svg" },
+            {"Earth", @"Content/Images/Elemental_Status_Icons/landslide.svg" },
+            {"Dark", @"Content/Images/Elemental_Status_Icons/dark-night.svg" },
+            {"Holy", @"Content/Images/Elemental_Status_Icons/holy-star.svg" },
+        };
 
         public static Dictionary<string, string> GetElementSVGLocations(string elementList)
         {
@@ -17,18 +28,6 @@ namespace FinalFantasyTacticsPartyBuilder.Services
             {
                 return new Dictionary<string, string>();
             }
-
-            Dictionary<string, string> elementSVGLocations = new Dictionary<string, string>
-            {
-                {"Fire", @"Content/Images/Elemental_Status_Icons/flame.svg" },
-                {"Ice", @"Content/Images/Elemental_Status_Icons/gem.svg" },
-                {"Water", @"Content/Images/Elemental_Status_Icons/drop.svg" },
-                {"Lightning", @"Content/Images/Elemental_Status_Icons/flash.svg" },
-                {"Wind", @"Content/Images/Elemental_Status_Icons/wind.svg" },
-                {"Earth", @"Content/Images/Elemental_Status_Icons/landslide.svg" },
-                {"Dark", @"Content/Images/Elemental_Status_Icons/dark-night.svg" },
-                {"Holy", @"Content/Images/Elemental_Status_Icons/holy-star.svg" },
-            };
 
             return elementSVGLocations.Where(m => elementList.Contains(m.Key)).ToDictionary(k => k.Key, v => v.Value);
         }
@@ -100,54 +99,65 @@ namespace FinalFantasyTacticsPartyBuilder.Services
 
         public static UnitDetailsViewModel CalculateReistancesAndImmunities(List<Item> characterItems, UnitDetailsViewModel unit)
         {
+            Dictionary<string, int> resistLevels = elementSVGLocations.ToDictionary(m => m.Key, m => 0);
+
             foreach (Item item in characterItems)
             {
-                unit.Resistances.FireResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Fire") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Fire") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Fire") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Fire") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Fire"] += (int)(item?.ElementAbsorbed?.Contains("Fire") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Fire") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Fire") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Fire") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.IceResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Ice") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Ice") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Ice") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Ice") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Ice"] += (int)(item?.ElementAbsorbed?.Contains("Ice") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Ice") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Ice") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Ice") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.LightningResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Lightning") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Lightning") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Lightning") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Lightning") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Lightning"] += (int)(item?.ElementAbsorbed?.Contains("Lightning") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Lightning") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Lightning") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Lightning") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.WaterResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Water") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Water") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Water") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Water") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Water"] += (int)(item?.ElementAbsorbed?.Contains("Water") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Water") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Water") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Water") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.WindResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Wind") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Wind") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Wind") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Wind") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Wind"] += (int)(item?.ElementAbsorbed?.Contains("Wind") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Wind") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Wind") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Wind") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.EarthResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Earth") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Earth") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Earth") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Earth") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Earth"] += (int)(item?.ElementAbsorbed?.Contains("Earth") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Earth") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Earth") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Earth") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.HolyResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Holy") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Holy") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Holy") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Holy") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Holy"] += (int)(item?.ElementAbsorbed?.Contains("Holy") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Holy") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Holy") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Holy") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
-                unit.Resistances.DarkResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[item?.ElementAbsorbed?.Contains("Dark") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Dark") == true ? ResistLevel.Negated :
-                    item?.ElementHalved?.Contains("Dark") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Dark") == true ? ResistLevel.Weak : ResistLevel.Normal];
+                resistLevels["Dark"] += (int)(item?.ElementAbsorbed?.Contains("Dark") == true ? ResistLevel.Absorbed : item?.ElementNegated?.Contains("Dark") == true ? ResistLevel.Negated :
+                    item?.ElementHalved?.Contains("Dark") == true ? ResistLevel.Halved : item?.ElementWeakness?.Contains("Dark") == true ? ResistLevel.Weak : ResistLevel.Normal);
 
                 unit.Resistances.PhysicalResist = "Normal";
                 unit.Resistances.MagicalResist = "Normal";
 
-                unit.Resistances.IsBerserkImmune = item?.ImmuneStatusEffect?.Contains("Berserk") == true ? true : false;
-                unit.Resistances.IsBlindImmune = item?.ImmuneStatusEffect?.Contains("Blind") == true ? true : false;
-                unit.Resistances.IsCharmImmune = item?.ImmuneStatusEffect?.Contains("Charm") == true ? true : false;
-                unit.Resistances.IsConfusedImmune = item?.ImmuneStatusEffect?.Contains("Confused") == true ? true : false;
-                unit.Resistances.IsDontActImmune = item?.ImmuneStatusEffect?.Contains("Disable") == true ? true : false;
-                unit.Resistances.IsDontMoveImmune = item?.ImmuneStatusEffect?.Contains("Immobilize") == true ? true : false;
-                unit.Resistances.IsDoomImmune = item?.ImmuneStatusEffect?.Contains("Doom") == true ? true : false;
-                unit.Resistances.IsKOImmune = item?.ImmuneStatusEffect?.Contains("KO") == true ? true : false;
-                unit.Resistances.IsPoisonImmune = item?.ImmuneStatusEffect?.Contains("Poison") == true ? true : false;
-                unit.Resistances.IsSilenceImmune = item?.ImmuneStatusEffect?.Contains("Silence") == true ? true : false;
-                unit.Resistances.IsSleepImmune = item?.ImmuneStatusEffect?.Contains("Sleep") == true ? true : false;
-                unit.Resistances.IsSlowImmune = item?.ImmuneStatusEffect?.Contains("Slow") == true ? true : false;
-                unit.Resistances.IsStoneImmune = item?.ImmuneStatusEffect?.Contains("Stone") == true ? true : false;
-                unit.Resistances.IsStopImmune = item?.ImmuneStatusEffect?.Contains("Stop") == true ? true : false;
-                unit.Resistances.IsToadImmune = item?.ImmuneStatusEffect?.Contains("Toad") == true ? true : false;
-                unit.Resistances.IsTraitorImmune = item?.ImmuneStatusEffect?.Contains("Traitor") == true ? true : false;
-                unit.Resistances.IsUndeadImmune = item?.ImmuneStatusEffect?.Contains("Undead") == true ? true : false;
-                unit.Resistances.IsVampireImmune = item?.ImmuneStatusEffect?.Contains("Vampire") == true ? true : false;
+                unit.Resistances.IsBerserkImmune = !unit.Resistances.IsBerserkImmune ? item?.ImmuneStatusEffect?.Contains("Berserk") == true ? true : false : true;
+                unit.Resistances.IsBlindImmune = !unit.Resistances.IsBlindImmune ? item?.ImmuneStatusEffect?.Contains("Blind") == true ? true : false : true;
+                unit.Resistances.IsCharmImmune = !unit.Resistances.IsCharmImmune ? item?.ImmuneStatusEffect?.Contains("Charm") == true ? true : false : true;
+                unit.Resistances.IsConfusedImmune = !unit.Resistances.IsConfusedImmune ? item?.ImmuneStatusEffect?.Contains("Confused") == true ? true : false : true;
+                unit.Resistances.IsDontActImmune = !unit.Resistances.IsDontActImmune ? item?.ImmuneStatusEffect?.Contains("Disable") == true ? true : false : true;
+                unit.Resistances.IsDontMoveImmune = !unit.Resistances.IsDontMoveImmune ? item?.ImmuneStatusEffect?.Contains("Immobilize") == true ? true : false : true;
+                unit.Resistances.IsDoomImmune = !unit.Resistances.IsDoomImmune ? item?.ImmuneStatusEffect?.Contains("Doom") == true ? true : false : true;
+                unit.Resistances.IsKOImmune = !unit.Resistances.IsKOImmune ? item?.ImmuneStatusEffect?.Contains("KO") == true ? true : false : true;
+                unit.Resistances.IsPoisonImmune = !unit.Resistances.IsPoisonImmune ? item?.ImmuneStatusEffect?.Contains("Poison") == true ? true : false : true;
+                unit.Resistances.IsSilenceImmune = !unit.Resistances.IsSilenceImmune ? item?.ImmuneStatusEffect?.Contains("Silence") == true ? true : false : true;
+                unit.Resistances.IsSleepImmune = !unit.Resistances.IsSleepImmune ? item?.ImmuneStatusEffect?.Contains("Sleep") == true ? true : false : true;
+                unit.Resistances.IsSlowImmune = !unit.Resistances.IsSlowImmune ? item?.ImmuneStatusEffect?.Contains("Slow") == true ? true : false : true;
+                unit.Resistances.IsStoneImmune = !unit.Resistances.IsStoneImmune ? item?.ImmuneStatusEffect?.Contains("Stone") == true ? true : false : true;
+                unit.Resistances.IsStopImmune = !unit.Resistances.IsStopImmune ? item?.ImmuneStatusEffect?.Contains("Stop") == true ? true : false : true;
+                unit.Resistances.IsToadImmune = !unit.Resistances.IsToadImmune ? item?.ImmuneStatusEffect?.Contains("Toad") == true ? true : false : true;
+                unit.Resistances.IsTraitorImmune = !unit.Resistances.IsTraitorImmune ? item?.ImmuneStatusEffect?.Contains("Traitor") == true ? true : false : true;
+                unit.Resistances.IsUndeadImmune = !unit.Resistances.IsUndeadImmune ? item?.ImmuneStatusEffect?.Contains("Undead") == true ? true : false : true;
+                unit.Resistances.IsVampireImmune = !unit.Resistances.IsVampireImmune ? item?.ImmuneStatusEffect?.Contains("Vampire") == true ? true : false : true;
             }
+
+            unit.Resistances.FireResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Fire"]];
+            unit.Resistances.IceResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Ice"]];
+            unit.Resistances.LightningResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Lightning"]];
+            unit.Resistances.WaterResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Water"]];
+            unit.Resistances.WindResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Wind"]];
+            unit.Resistances.EarthResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Earth"]];
+            unit.Resistances.HolyResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Holy"]];
+            unit.Resistances.DarkResist = UnitResistAndImmunityViewModel.resistLevelDescriptions[(ResistLevel)resistLevels["Dark"]];
 
             return unit;
         }
