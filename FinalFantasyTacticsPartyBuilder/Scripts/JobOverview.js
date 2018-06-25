@@ -47,6 +47,7 @@
             navigator.hide();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').prepend(data);
+            selectedUnitPosition = -1;
         });
     }
 
@@ -178,7 +179,8 @@
         {
             navigator.show();
             $('#party-overview-container').contents().remove();
-            $('#party-overview-container').append(data);
+            $('#party-overview-container').append(data.View);
+            modifyUnitData(data.Data, selectedUnitPosition);
         });
     }    
 

@@ -3,6 +3,7 @@ using FinalFantasyTacticsPartyBuilder.Services;
 using FinalFantasyTacticsPartyBuilder.View_Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -22,20 +23,15 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         {
             if (units != null)
             {
-                using (FFTContext context = new FFTContext())
+                foreach (UnitPanelViewModel unit in units)
                 {
-                    foreach (UnitPanelViewModel item in units)
-                    {
-                        item.JobName = item.JobName.Contains("Onion") ? "OnionKnight" : item.JobName;
-                        item.HpDigits = item.MaxHP.ToString().ToCharArray();
-                        item.MpDigits = item.MaxMP.ToString().ToCharArray();
-                    }
+                    unit.JobName = unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName;
+                    unit.HpDigits = unit.MaxHP.ToString().ToCharArray();
+                    unit.MpDigits = unit.MaxMP.ToString().ToCharArray();
                 }
-
-                return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
             }
 
-            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml");
+            return PartialView("~/Views/Home/_UnitOverviewPanelPartial.cshtml", units);
         }
 
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
@@ -74,7 +70,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
         }
 
-        public ActionResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit, int? itemID = null)
+        public JsonResult GetUnitStatsDetailPartial(UnitDetailsViewModel unit, int? itemID = null)
         {
             Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
             List<Item> items = new List<Item>();
@@ -93,20 +89,20 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
                     switch ((EquipmentCategoriesList)selectedItem.ItemCategory.EquipmentCategoryID)
                     {
-                        case EquipmentCategoriesList.Weapon:                          
-                                unit.WeaponID = selectedItem.ItemID;
+                        case EquipmentCategoriesList.Weapon:
+                            unit.WeaponID = selectedItem.ItemID;
                             break;
                         case EquipmentCategoriesList.Shield:
-                                unit.ShieldID = selectedItem.ItemID;
+                            unit.ShieldID = selectedItem.ItemID;
                             break;
                         case EquipmentCategoriesList.Helmet:
-                                unit.HeadID = selectedItem.ItemID;
+                            unit.HeadID = selectedItem.ItemID;
                             break;
                         case EquipmentCategoriesList.Armor:
-                                unit.BodyID = selectedItem.ItemID;
+                            unit.BodyID = selectedItem.ItemID;
                             break;
                         case EquipmentCategoriesList.Accessory:
-                                unit.AccessoryID = selectedItem.ItemID;
+                            unit.AccessoryID = selectedItem.ItemID;
                             break;
                     }
                 }
@@ -135,9 +131,9 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     weaponItem2 = context.Items.FirstOrDefault(m => m.ItemID == unit.ShieldID);
                     unit.WeaponLeft = new ItemOverviewViewModel
                     {
-                        WeaponPower = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? 
+                        WeaponPower = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ?
                             weaponItem2.AttackPower.HasValue ? weaponItem2.AttackPower.Value.ToString("D3") : "000" : "000" : "000",
-                        WeaponHit = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ? 
+                        WeaponHit = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon ?
                             weaponItem2.HitPercentage.HasValue ? weaponItem2.HitPercentage.Value.ToString("D3") : "000" : "000" : "000",
                         ShieldPhysicalEvade = weaponItem2 != null ? weaponItem2.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield ?
                             weaponItem2.PhysicalEvade.HasValue ? weaponItem2.PhysicalEvade.Value.ToString("D3") : "00" : "00" : "00",
@@ -228,7 +224,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
             unit = AttributeCalculator.CalculateReistancesAndImmunities(items, unit);
 
-            return PartialView("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit);
+            return Json(new { View = RenderPartialViewToString("~/Views/Home/_UnitStatDetailsPartial.cshtml", unit), Data = unit });
         }
 
         public ActionResult GetUnitItemLookupPartial(int jobID, int equipmentCategoryID, bool isFemale)
@@ -454,61 +450,91 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
 
-        public ActionResult EquipNewItem(UnitDetailsViewModel unitDetails, int itemID)
+        //public JsonResult GetBasicUnitStats(UnitDetailsViewModel unitDetails)
+        //{
+        //    using (FFTContext context = new FFTContext())
+        //    {
+        //        Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
+        //        Item headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
+        //        Item bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
+        //        unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
+        //    }
+
+        //    return Json(unitDetails);
+        //}
+
+        //public JsonResult EquipNewItem(UnitDetailsViewModel unitDetails, int itemID)
+        //{
+        //    Item selectedItem;
+
+        //    using (FFTContext context = new FFTContext())
+        //    {
+        //        int categoryListLength = Enum.GetNames(typeof(EquipmentCategoriesList)).Length;
+        //        Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
+        //        Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
+        //        selectedItem = context.Items.Single(m => m.ItemID == itemID);
+
+        //        for (int i = 0; i < categoryListLength; i++)
+        //        {
+        //            switch ((EquipmentCategoriesList)(i))
+        //            {
+        //                case EquipmentCategoriesList.Weapon:
+        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon)
+        //                        weaponItem1 = selectedItem;
+        //                    else if (unitDetails.WeaponID != 0)
+        //                        weaponItem1 = context.Items.Single(m => m.ItemID == unitDetails.WeaponID);
+        //                    break;
+        //                case EquipmentCategoriesList.Shield:
+        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield)
+        //                        weaponItem2 = selectedItem;
+        //                    else if (unitDetails.ShieldID != 0)
+        //                        weaponItem2 = context.Items.Single(m => m.ItemID == unitDetails.ShieldID);
+        //                    break;
+        //                case EquipmentCategoriesList.Helmet:
+        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet)
+        //                        headItem = selectedItem;
+        //                    else if (unitDetails.HeadID != 0)
+        //                        headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
+        //                    break;
+        //                case EquipmentCategoriesList.Armor:
+        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor)
+        //                        bodyItem = selectedItem;
+        //                    else if (unitDetails.BodyID != 0)
+        //                        bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
+        //                    break;
+        //                case EquipmentCategoriesList.Accessory:
+        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory)
+        //                        accessoryItem = selectedItem;
+        //                    else if (unitDetails.AccessoryID != 0)
+        //                        accessoryItem = context.Items.Single(m => m.ItemID == unitDetails.AccessoryID);
+        //                    break;
+        //            }
+        //        }
+
+        //        unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
+        //        unitDetails = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, accessoryItem, unitDetails, unitJob);
+        //        unitDetails = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unitDetails);
+        //        unitDetails = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unitDetails);
+        //    }
+
+        //    return Json(new { View = RenderPartialViewToString("~/Views/Home/_UnitStatDetailsPartial.cshtml", unitDetails), UnitDetails = unitDetails });
+        //}
+
+        public string RenderPartialViewToString(string viewName, object model)
         {
-            Item selectedItem;
+            if (string.IsNullOrEmpty(viewName))
+                viewName = ControllerContext.RouteData.GetRequiredString("action");
 
-            using (FFTContext context = new FFTContext())
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
             {
-                int categoryListLength = Enum.GetNames(typeof(EquipmentCategoriesList)).Length;
-                Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
-                Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
-                selectedItem = context.Items.Single(m => m.ItemID == itemID);
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
 
-                for (int i = 0; i < categoryListLength; i++)
-                {
-                    switch ((EquipmentCategoriesList)(i))
-                    {
-                        case EquipmentCategoriesList.Weapon:
-                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon)
-                                weaponItem1 = selectedItem;
-                            else if (unitDetails.WeaponID != 0)
-                                weaponItem1 = context.Items.Single(m => m.ItemID == unitDetails.WeaponID);
-                            break;
-                        case EquipmentCategoriesList.Shield:
-                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield)
-                                weaponItem2 = selectedItem;
-                            else if (unitDetails.ShieldID != 0)
-                                weaponItem2 = context.Items.Single(m => m.ItemID == unitDetails.ShieldID);
-                            break;
-                        case EquipmentCategoriesList.Helmet:
-                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet)
-                                headItem = selectedItem;
-                            else if (unitDetails.HeadID != 0)
-                                headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
-                            break;
-                        case EquipmentCategoriesList.Armor:
-                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor)
-                                bodyItem = selectedItem;
-                            else if (unitDetails.BodyID != 0)
-                                bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
-                            break;
-                        case EquipmentCategoriesList.Accessory:
-                            if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory)
-                                accessoryItem = selectedItem;
-                            else if (unitDetails.AccessoryID != 0)
-                                accessoryItem = context.Items.Single(m => m.ItemID == unitDetails.AccessoryID);
-                            break;
-                    }
-                }
-
-                unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
-                unitDetails = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, accessoryItem, unitDetails, unitJob);
-                unitDetails = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unitDetails);
-                unitDetails = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unitDetails);
+                return sw.GetStringBuilder().ToString();
             }
-
-            return View("~/Views/Home/_UnitStatDetailsPartial.cshtml", unitDetails);
         }
 
         public ActionResult PopulateNewUnitData(int jobID, int gender, int position)
