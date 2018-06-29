@@ -1058,7 +1058,7 @@ img {
     }
 
 #item-details-weapon-power-container, #item-details-power-boost-container, #item-details-move-jump-speed-container {
-    /*margin: 5% 5% 5% 0;*/
+    margin: 5% 5% 5% 0;
 }
 
     #item-details-power-boost-container .fft-cell:first-child, #item-details-move-jump-speed-container .fft-cell:first-child, #item-details-evasion-container .fft-cell:first-child {
@@ -1460,4 +1460,25 @@ img {
     #job-confirm-container {
         left: 55%;
     }
+
+    #unit-details-overall-stats {
+        font:10vw 'Altima' 
+    }
+
+    #unit-details-overall-stats {
+        padding:1%;
+    }
+
+    #physical-icon, #magical-icon {
+        display: none;
+    }
+
+    .unit-stat-container {
+        /*display:inline-block;*/
+        margin:auto;
+        width:auto;
+        display:inline;
+
+    }
+
 }
