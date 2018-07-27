@@ -20,7 +20,8 @@
     </div>
 </div>
 <script>
-    JobOverview.setInitialJobData(@{ JobOverviewViewModel firstJob = Model[0]; } { 'jobID': @firstJob.JobID, 'name': '@firstJob.DisplayName', 'gender': @firstJob.GenderID, 'hpm': @firstJob.HPMultiplier, 
+    @{ JobOverviewViewModel firstJob = Model[0]; }
+    JobOverview.setInitialJobData( { 'jobID': @firstJob.JobID, 'name': '@firstJob.DisplayName', 'gender': @firstJob.GenderID, 'hpm': @firstJob.HPMultiplier, 
         'hpc': @firstJob.HPGrowthConstant, 'mpm': @firstJob.MPMultiplier, 'mpc': @firstJob.MPGrowthConstant, 'spm': @firstJob.SpeedMulitplier, 'spc': @firstJob.SpeedGrowthConstant, 
         'pam': @firstJob.PhysicalAttackMultiplier, 'pac': @firstJob.PhysicalAttackGrowthConstant, 'mam': @firstJob.MagicalAttackMultiplier, 
         'mac': @firstJob.MagicalAttackGrowthConstant, 'move': @firstJob.BaseMoveLength, 'jump': @firstJob.BaseJumpHeight, 'evasion': @firstJob.BaseCombatEvasion});

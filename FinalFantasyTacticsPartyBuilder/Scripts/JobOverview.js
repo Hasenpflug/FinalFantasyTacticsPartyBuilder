@@ -697,14 +697,15 @@
     function setInitialJobData(jobData)
     {
         selectedJobData = jobData;
+        document.getElementById('job-name').innerHTML = selectedJobData.name;
     }
 
     function updateJobWheel(event)
     {
-        if (piemenu !== 'undefined')
-        {
-            piemenu.removeWheel();
-        }
+        //if (piemenu !== 'undefined')
+        //{
+        //    piemenu.removeWheel();
+        //}
 
         var gender = event.currentTarget.attributes['data-gender'].nodeValue;
         renderJobSelectionPanel(gender);

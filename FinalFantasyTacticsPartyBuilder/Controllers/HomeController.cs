@@ -25,6 +25,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             {
                 foreach (UnitPanelViewModel unit in units)
                 {
+                    unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
                     unit.JobName = unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName;
                     unit.HpDigits = unit.MaxHP.ToString().ToCharArray();
                     unit.MpDigits = unit.MaxMP.ToString().ToCharArray();
@@ -449,76 +450,6 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
             return PartialView("~/Views/Home/_JobSelectionPartial.cshtml", viewModels);
         }
-
-        //public JsonResult GetBasicUnitStats(UnitDetailsViewModel unitDetails)
-        //{
-        //    using (FFTContext context = new FFTContext())
-        //    {
-        //        Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
-        //        Item headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
-        //        Item bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
-        //        unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
-        //    }
-
-        //    return Json(unitDetails);
-        //}
-
-        //public JsonResult EquipNewItem(UnitDetailsViewModel unitDetails, int itemID)
-        //{
-        //    Item selectedItem;
-
-        //    using (FFTContext context = new FFTContext())
-        //    {
-        //        int categoryListLength = Enum.GetNames(typeof(EquipmentCategoriesList)).Length;
-        //        Job unitJob = context.Jobs.Single(m => m.JobID == unitDetails.Unit.JobID);
-        //        Item weaponItem1 = null, weaponItem2 = null, headItem = null, bodyItem = null, accessoryItem = null;
-        //        selectedItem = context.Items.Single(m => m.ItemID == itemID);
-
-        //        for (int i = 0; i < categoryListLength; i++)
-        //        {
-        //            switch ((EquipmentCategoriesList)(i))
-        //            {
-        //                case EquipmentCategoriesList.Weapon:
-        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Weapon)
-        //                        weaponItem1 = selectedItem;
-        //                    else if (unitDetails.WeaponID != 0)
-        //                        weaponItem1 = context.Items.Single(m => m.ItemID == unitDetails.WeaponID);
-        //                    break;
-        //                case EquipmentCategoriesList.Shield:
-        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Shield)
-        //                        weaponItem2 = selectedItem;
-        //                    else if (unitDetails.ShieldID != 0)
-        //                        weaponItem2 = context.Items.Single(m => m.ItemID == unitDetails.ShieldID);
-        //                    break;
-        //                case EquipmentCategoriesList.Helmet:
-        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Helmet)
-        //                        headItem = selectedItem;
-        //                    else if (unitDetails.HeadID != 0)
-        //                        headItem = context.Items.Single(m => m.ItemID == unitDetails.HeadID);
-        //                    break;
-        //                case EquipmentCategoriesList.Armor:
-        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Armor)
-        //                        bodyItem = selectedItem;
-        //                    else if (unitDetails.BodyID != 0)
-        //                        bodyItem = context.Items.Single(m => m.ItemID == unitDetails.BodyID);
-        //                    break;
-        //                case EquipmentCategoriesList.Accessory:
-        //                    if (selectedItem.ItemCategory.EquipmentCategoryID == (int)EquipmentCategoriesList.Accessory)
-        //                        accessoryItem = selectedItem;
-        //                    else if (unitDetails.AccessoryID != 0)
-        //                        accessoryItem = context.Items.Single(m => m.ItemID == unitDetails.AccessoryID);
-        //                    break;
-        //            }
-        //        }
-
-        //        unitDetails = AttributeCalculator.CalculateHPAndMP(headItem, bodyItem, unitDetails, unitJob);
-        //        unitDetails = AttributeCalculator.CalculateBasicStats(weaponItem1, weaponItem2, headItem, bodyItem, accessoryItem, unitDetails, unitJob);
-        //        unitDetails = AttributeCalculator.CalculateEvasionStats(weaponItem2, accessoryItem, unitJob, unitDetails);
-        //        unitDetails = AttributeCalculator.CalculateReistancesAndImmunities(new List<Item> { weaponItem1, weaponItem2, headItem, bodyItem }, unitDetails);
-        //    }
-
-        //    return Json(new { View = RenderPartialViewToString("~/Views/Home/_UnitStatDetailsPartial.cshtml", unitDetails), UnitDetails = unitDetails });
-        //}
 
         public string RenderPartialViewToString(string viewName, object model)
         {

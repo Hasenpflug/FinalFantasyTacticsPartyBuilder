@@ -368,7 +368,7 @@ img {
 #armour-stats-hp-bonus, #armour-stats-mp-bonus {
     visibility: hidden;
     position: absolute;
-    right: 10%;
+    right: 5%;
     font: 3.5vw 'Altima';
 }
 
@@ -767,7 +767,7 @@ img {
     }
 
 .fft-section-margin {
-    margin-right: 2%;
+    margin-right: 2vw;
 }
 
 #base-stats {
@@ -825,8 +825,9 @@ img {
 }
 
 #unit-ability-equipment-container {
+    margin-top:1%;
     width: 100%;
-    height: 50%;
+    height: 45%;
 }
 
 #unit-equipment {
@@ -1295,6 +1296,10 @@ img {
         stroke: rgba(0, 0, 0, 1) !important;
     }
 
+.unit-stat-container {
+    display:inline;
+}
+
 @media screen and (max-width: 600px) {
     .menu {
         font: 20vw 'Altima';
@@ -1462,10 +1467,7 @@ img {
     }
 
     #unit-details-overall-stats {
-        font:10vw 'Altima' 
-    }
-
-    #unit-details-overall-stats {
+        font: 10vw 'Altima';
         padding:1%;
     }
 
@@ -1473,12 +1475,44 @@ img {
         display: none;
     }
 
-    .unit-stat-container {
-        /*display:inline-block;*/
-        margin:auto;
-        width:auto;
-        display:inline;
-
+    #damage-resist-container {
+        display:block;
+        margin: 0% 10%;
+        padding: 0 3vw;
     }
 
+    #status-immunities-container {
+        display: block;
+        margin:auto;
+    }
+
+    .element-icon, img.status-icon {
+        width: 7vw
+    }
+
+    #unit-details-name-job {
+        top:22.5%
+    }
+
+    #unit-equipment, #unit-abilities {
+        width: 100%;
+        margin-bottom: 1%;
+    }
+
+    .equipment-selector {
+        margin: 0;
+        font-size: 12vw;
+    }
+
+    #unit-equipment-item-icons {
+        width:10%;
+    }
+
+    #unit-equipment-item-icons .fft-cell{
+        margin: 40% 0;
+    }
+
+    .item-category img {
+        margin:auto;
+    }
 }
