@@ -97,9 +97,10 @@ namespace FinalFantasyTacticsPartyBuilder.Services
             return unit;
         }
 
-        public static UnitDetailsViewModel CalculateReistancesAndImmunities(List<Item> characterItems, UnitDetailsViewModel unit)
+        public static UnitDetailsViewModel CalculateResistancesAndImmunities(List<Item> characterItems, UnitDetailsViewModel unit)
         {
             Dictionary<string, int> resistLevels = elementSVGLocations.ToDictionary(m => m.Key, m => 0);
+            unit.Resistances = new UnitResistAndImmunityViewModel();
 
             foreach (Item item in characterItems)
             {
