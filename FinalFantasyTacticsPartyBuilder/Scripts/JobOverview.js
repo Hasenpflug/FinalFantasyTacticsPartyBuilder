@@ -69,15 +69,15 @@
             {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
-                if (isMobile)
-                {
-                    if (event.pageY > window.innerHeight / 1.5)
-                    {
-                        $('.unit-details-container').css({
-                            top: '10%'
-                        });
-                    }
-                }
+                //if (isMobile)
+                //{
+                //    if (event.pageY > window.innerHeight / 1.5)
+                //    {
+                //        $('.unit-details-container').css({
+                //            top: '10%'
+                //        });
+                //    }
+                //}
 
                 renderMenuPanel(event, selectedUnitPosition);
             });
@@ -667,7 +667,7 @@
 
     function initializeJobWheel()
     {
-        if (window.innerWidth > 600)
+        if (!isMobile)
         {
             piemenu = new wheelnav('piemenu');
             piemenu.centerX = window.innerWidth / 2 - window.innerWidth / 20;
@@ -676,19 +676,19 @@
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
             piemenu.animatetime = 200;
-            piemenu.maxPercent = 0.50;
+            piemenu.maxPercent = 0.55;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }
         else
         {
             piemenu = new wheelnav('piemenu');
-            piemenu.centerY = window.innerHeight / 12;
+            piemenu.centerY = 0;
             piemenu.selectedPercent = 1.1;
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
             piemenu.animatetime = 200;
-            piemenu.maxPercent = 2.5;
+            piemenu.maxPercent = 3;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }
@@ -702,11 +702,6 @@
 
     function updateJobWheel(event)
     {
-        //if (piemenu !== 'undefined')
-        //{
-        //    piemenu.removeWheel();
-        //}
-
         var gender = event.currentTarget.attributes['data-gender'].nodeValue;
         renderJobSelectionPanel(gender);
         if (gender === 'Male')

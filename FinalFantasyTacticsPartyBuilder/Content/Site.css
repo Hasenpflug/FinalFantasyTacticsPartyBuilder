@@ -72,7 +72,7 @@ img {
     width: 50%;
     height: 80%;
     margin: auto;
-    padding: 30px 0 30px 0;
+    /*padding: 30px 0 30px 0;*/
 }
 
     #empty-unit-outline:hover {
@@ -81,27 +81,19 @@ img {
     }
 
 #new-unit-cross-container {
-    position: relative;
-    margin: auto;
-    width: 80%;
-    height: 100%;
+    position:relative;
+    height:100%;
+    
 }
 
-#new-unit-cross-vertical {
-    position: absolute;
-    left: 40%;
-    background: green;
-    height: 100%;
-    width: 20%;
-}
-
-#new-unit-cross-horizontal {
-    position: absolute;
-    top: 40%;
-    background: green;
-    height: 20%;
-    width: 100%;
-}
+    #new-unit-cross-container img {
+        margin: auto;
+        width:75%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%,-50%)
+    }
 
 .unit-selector:hover {
     cursor: pointer;
@@ -1348,9 +1340,10 @@ img {
 
     .unit-details-name-container {
         font-size: 10vw;
-        width: 50%;
+        width: 60%;
         padding: 5%;
         margin: 0;
+        left:45%;
     }
 
     #unit-details-name-orb {
@@ -1418,13 +1411,13 @@ img {
 
     #job-modifier-chart-container {
         width: 45%;
-        top: 5%;
+        top: 2.5%;
         height: 25%;
     }
 
     #job-move-chart-container {
         width: 40%;
-        top: 5%;
+        top: 2.5%;
         left: 55%;
     }
 
@@ -1448,8 +1441,7 @@ img {
     }
 
     #job-details-container {
-        position: absolute;
-        top: 33%;
+        top: 29%;
         left: 30%;
         margin: 0;
     }
@@ -1514,5 +1506,14 @@ img {
 
     .item-category img {
         margin:auto;
+    }
+
+    .job-status-container .value {
+        width: 5vw;
+    }
+
+    .mp-bar, .hp-bar {
+        height:40%;
+        width:80%;
     }
 }
