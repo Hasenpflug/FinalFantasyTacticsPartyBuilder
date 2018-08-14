@@ -688,7 +688,7 @@
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
             piemenu.animatetime = 200;
-            piemenu.maxPercent = 3;
+            piemenu.maxPercent = window.screen.availWidth <= 320 ? 3.2 : window.screen.availWidth <= 375 ? 2.75 : 2.5;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }
