@@ -637,13 +637,13 @@ img {
 }
 
 #job-details-level-container {
-    width: 50%;
     margin: auto;
+    font-size:0;
 }
 
     #job-details-level-container img {
         width: auto;
-        height: 2vh;
+        margin:0 2.5%;
     }
 
 #job-name {
@@ -1319,7 +1319,7 @@ img {
     .menu-container {
         position: absolute;
         left: 5%;
-        top: 10%;
+        top: 1%;
         width: 80%;
         height: auto;
         z-index: 10;
@@ -1339,8 +1339,8 @@ img {
 
     .unit-details-name-container {
         font-size: 10vw;
-        width: 60%;
-        padding: 5%;
+        width: 55%;
+        /*padding: 5%;*/
         margin: 0;
         left:45%;
     }
@@ -1446,7 +1446,8 @@ img {
     }
 
     #job-gender-container, #job-confirm-container {
-        top: 65%;
+        margin:0;
+        top: 64%;
     }
 
     #job-gender-container {
@@ -1481,10 +1482,6 @@ img {
         width: 7vw
     }
 
-    #unit-details-name-job {
-        top:22.5%
-    }
-
     #unit-equipment, #unit-abilities {
         width: 100%;
         margin-bottom: 1%;
@@ -1512,7 +1509,19 @@ img {
     }
 
     .mp-bar, .hp-bar {
-        height:40%;
-        width:80%;
+        height:30%;
+        width:75%;
+    }
+
+    .fft-button:hover:before {
+        content: none;
+    }
+
+    #unit-ability-equipment-container {
+        height:auto;
+    }
+
+    #equip-icon {
+        width:100%
     }
 }

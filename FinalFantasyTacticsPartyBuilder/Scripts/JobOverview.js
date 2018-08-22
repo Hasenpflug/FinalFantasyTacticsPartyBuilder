@@ -683,7 +683,7 @@
         else
         {
             piemenu = new wheelnav('piemenu');
-            piemenu.centerY = 0;
+            piemenu.centerY = (window.screen.availHeight % 650) * Math.floor(window.screen.availHeight / 650);
             piemenu.selectedPercent = 1.1;
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
