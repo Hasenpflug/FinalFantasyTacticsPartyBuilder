@@ -23,6 +23,7 @@
         navigator.click(renderUnitPanels);
         $('body').on('click', '.item-details-button', renderItemDetailsPartial);
         $('body').on('click', '#item-details-close', function () { $('#item-details-container').remove(); })
+        $('body').on('click', '#job-tree-close', function () { $('#job-tree-container').remove(); })
         $('body').on('click', '.new-unit-selector', renderJobOverviewPanel);
         $('body').on('click', '.unit-container[data-unit-position]', renderUnitStatusPanel);
         $('body').on('click', '#gender-male-button, #gender-female-button', updateJobWheel);
@@ -37,6 +38,7 @@
         $('body').on('click', '.item-names', setEquippedItem);
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
+        $('body').on('click', '#job-tree-button', renderJobTreePartial);
     });
 
     function renderUnitPanels()
@@ -115,6 +117,14 @@
             $('#party-overview-container').append(data);
             selectedUnitPosition = '-1';
             renderJobSelectionPanel('Male');
+        });
+    }
+
+    function renderJobTreePartial()
+    {
+        $.post('/Home/GetJobTreePartial', function (data)
+        {
+            $('#party-overview-container').append(data);
         });
     }
 

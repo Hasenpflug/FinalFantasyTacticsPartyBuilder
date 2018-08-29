@@ -38,6 +38,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult GetUnitOverviewPartial(UnitOverviewViewModel unit)
         {
             unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
+            unit.JobName = unit.JobName.Contains("Onion") ? "Onion Knight" : unit.JobName;
             unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName, unit.GenderName);
             unit.JobName = string.Concat(unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
             unit.GenderName = Enum.GetName(typeof(Gender), unit.Gender);
@@ -77,6 +78,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             List<Item> items = new List<Item>();
 
             unit.Unit.JobName = Enum.GetName(typeof(Jobs), unit.Unit.JobID);
+            unit.Unit.JobName = unit.Unit.JobName.Contains("Onion") ? "Onion Knight" : unit.Unit.JobName;
             unit.Unit.JobPortraitPath = String.Format("/Content/Images/Jobs/{0}_{1}_Portrait.png", unit.Unit.JobName.Contains("Onion") ? "OnionKnight" : unit.Unit.JobName, unit.Unit.GenderName);
             unit.Unit.JobName = string.Concat(unit.Unit.JobName.Select(m => Char.IsUpper(m) ? " " + m : m.ToString())).Trim();
             unit.Unit.GenderName = Enum.GetName(typeof(Gender), unit.Unit.Gender);
@@ -374,6 +376,11 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
         public ActionResult GetJobOverviewPartial()
         {
             return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");
+        }
+
+        public ActionResult GetJobTreePartial()
+        {
+            return PartialView("~/Views/Home/_JobTreePartial.cshtml");
         }
 
         public ActionResult GetJobSelectionPartial(string gender)

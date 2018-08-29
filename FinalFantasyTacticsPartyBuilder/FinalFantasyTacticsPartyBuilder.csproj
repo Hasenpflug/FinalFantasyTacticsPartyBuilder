@@ -760,6 +760,7 @@
     <Content Include="Views\Home\UnitItemSelectionPartials\_CloakAccessorySelectionPartial.cshtml" />
     <Content Include="Views\Home\UnitItemSelectionPartials\_ShoeAccessorySelectionPartial.cshtml" />
     <Content Include="Views\Home\UnitItemSelectionPartials\_RingAccessorySelectionPartial.cshtml" />
+    <Content Include="Views\Home\_JobTreePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />

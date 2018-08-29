@@ -29,6 +29,11 @@ textarea {
 
 img {
     vertical-align: text-top;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 #party-overview-container {
@@ -153,7 +158,6 @@ img {
     }
 
 .menu {
-    /*height: 80%;*/
     width: 100%;
     background-image: url(Images/menu_background.png);
     border: 2px solid black;
@@ -677,12 +681,12 @@ img {
     }
 
 #job-gender-container {
-    width: 25vw;
+    width: 15vw;
 }
 
 #job-confirm-container {
     margin-left: 1vw;
-    width: 15vw;
+    width: 25vw;
 }
 
 #job-modifier-chart-container, #job-growth-chart-container {
@@ -1015,7 +1019,7 @@ img {
     outline: solid 400px rgba(0, 0, 0, 0.50);
 }
 
-#item-details-close {
+#item-details-close, #job-tree-close {
     position: absolute;
     padding: 5px;
     top: 1%;
@@ -1023,7 +1027,7 @@ img {
     border: outset 2px;
 }
 
-    #item-details-close:hover {
+    #item-details-close:hover, #job-tree-close:hover {
         cursor: pointer;
         border: inset 2px;
     }
@@ -1291,6 +1295,38 @@ img {
     display:inline;
 }
 
+#job-tree-container {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.50);
+}
+
+#job-tree-canvas {
+    position:relative;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.job-tree-job-container {
+    display:inline-block;
+}
+
+.job-tree-name {
+    margin:auto;
+}
+
+.job-tree-job-container img {
+    display: inline-block;
+    width: 30%;
+}
+
 @media screen and (max-width: 600px) {
     .menu {
         font: 20vw 'Altima';
@@ -1523,5 +1559,9 @@ img {
 
     #equip-icon {
         width:100%
+    }
+
+    #unit-equipment-item-icons, #unit-equipment-slot-icons, #unit-equipment-item-names {
+        width: auto;
     }
 }
