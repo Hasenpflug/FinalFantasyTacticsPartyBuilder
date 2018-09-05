@@ -529,6 +529,16 @@
     <Content Include="Content\Images\Item_Icons\Weapons\FFT_Zwill_Straightblade.gif" />
     <Content Include="Content\Images\Item_Icons\Weapons\Giant%27sAxe-fft-psx.gif" />
     <Content Include="Content\Images\Item_Icons\Weapons\Slasher-fft-psx.gif" />
+    <Content Include="Content\Images\Job Tree SVGs\long-up-arrow.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-eight-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-five-in-circular-button.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-four-in-circular-button.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-nine-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-one-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-seven-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-six-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-three-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\number-two-in-a-circle.svg" />
     <Content Include="Content\Images\job.png" />
     <Content Include="Content\Images\Jobs\Archer_Female_Portrait.png" />
     <Content Include="Content\Images\Jobs\Archer_Female_Standing.png" />
