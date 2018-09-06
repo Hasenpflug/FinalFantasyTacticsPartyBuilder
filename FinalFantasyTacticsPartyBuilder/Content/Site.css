@@ -1317,7 +1317,9 @@ img {
 
 .job-tree-job-container {
     position:absolute;
-    width:10vw;
+    width:6vw;
+    font-size: 1.5vw;
+    padding:0.5%;
 }
 
 .job-tree-name {
@@ -1327,47 +1329,64 @@ img {
 }
 
 .job-tree-job-container img {
-    display: inline-block;
-    margin-left:1vw;
-    width:2vw
+    display: block;
+    margin: auto;
+    height:5vh;
 }
 
 #job-tree-onion-knight-container {
-    left:50%;  
+    left:50%;
+    transform:translate(-50%);
 }
 
 #job-tree-squire-container {
-    top:20%;
-    left: 25%;
+    top: 15%;
+    left: 20%;
 }
 
 #job-tree-knight-container {
-    top: 40%;
-    left: 15%;
+    top: 30%;
+    left: 10%;
 }
 
 #job-tree-archer-container {
-    top: 40%;
-    left: 35%;
+    top: 30%;
+    left: 30%;
 }
 
 #job-tree-samurai-container {
-    top: 60%;
+    top: 45%;
+    left: 5%
 }
 
 #job-tree-monk-container {
-    top: 60%;
-    left: 25%;
+    top: 45%;
+    left: 15%;
 }
 
 #job-tree-thief-container {
-    top: 60%;
-    left: 35%;
+    top: 45%;
+    left: 25%;
 }
 
 #job-tree-ninja-container {
+    top: 45%;
+    left: 35%;
+}
+
+#job-tree-dragoon-container {
     top: 60%;
-    left: 55%;
+    left: 12.5%;
+}
+
+#job-tree-geomancer-container {
+    top: 60%;
+    left: 27.5%;
+}
+
+#job-tree-dancer-container {
+    top: 75%;
+    left: 20%;
 }
 
 .job-leaf-container {
