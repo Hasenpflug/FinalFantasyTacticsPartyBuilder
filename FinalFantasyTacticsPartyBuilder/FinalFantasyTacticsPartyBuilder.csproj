@@ -539,6 +539,7 @@
     <Content Include="Content\Images\Job Tree SVGs\number-six-in-a-circle.svg" />
     <Content Include="Content\Images\Job Tree SVGs\number-three-in-a-circle.svg" />
     <Content Include="Content\Images\Job Tree SVGs\number-two-in-a-circle.svg" />
+    <Content Include="Content\Images\Job Tree SVGs\thin-right-arrow.svg" />
     <Content Include="Content\Images\job.png" />
     <Content Include="Content\Images\Jobs\Archer_Female_Portrait.png" />
     <Content Include="Content\Images\Jobs\Archer_Female_Standing.png" />
@@ -655,6 +656,7 @@
     <Content Include="Content\Images\number_dark_9.png" />
     <Content Include="Content\Images\party_builder_background.png" />
     <Content Include="Content\Images\physical-icon.png" />
+    <Content Include="Content\Images\plus-sign.svg" />
     <Content Include="Content\Images\primary_ability.png" />
     <Content Include="Content\Images\reaction_ability.png" />
     <Content Include="Content\Images\selection-square.png" />

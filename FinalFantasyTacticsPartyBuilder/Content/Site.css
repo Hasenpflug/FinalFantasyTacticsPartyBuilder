@@ -1307,12 +1307,10 @@ img {
 }
 
 #job-tree-canvas {
+    z-index:-1;
     position:relative;
-    width: 90%;
-    height: 90%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    /*width: 100%;
+    height: 100%;*/
 }
 
 .job-tree-job-container {
@@ -1335,13 +1333,13 @@ img {
 }
 
 #job-tree-onion-knight-container {
-    left:50%;
-    transform:translate(-50%);
+    left: 50%;
+    transform: translate(-50%);
 }
 
 #job-tree-squire-container {
     top: 15%;
-    left: 20%;
+    left: 21.5%;
 }
 
 #job-tree-knight-container {
@@ -1351,17 +1349,17 @@ img {
 
 #job-tree-archer-container {
     top: 30%;
-    left: 30%;
+    left: 32.5%;
 }
 
 #job-tree-samurai-container {
     top: 45%;
-    left: 5%
+    left: 2.25%;
 }
 
 #job-tree-monk-container {
     top: 45%;
-    left: 15%;
+    left: 17.5%;
 }
 
 #job-tree-thief-container {
@@ -1371,7 +1369,7 @@ img {
 
 #job-tree-ninja-container {
     top: 45%;
-    left: 35%;
+    left: 40%;
 }
 
 #job-tree-dragoon-container {
@@ -1391,18 +1389,30 @@ img {
 
 .job-leaf-container {
     position:absolute;
+    height:10%;
     width:10%;
 }
 
 .job-leaf-pointer {
-    position:absolute;
-    width:100%;
+    position:relative;
+    width:30%;
 }
 
 .job-leaf-level {
+    left:30%;
     position:absolute;
-    top:0;
-    width: 100%;
+    width: 30%;
+}
+
+.job-leaf-pointer-down-right {
+    left:10%;
+    top:45%;
+    transform:rotate(55deg);
+}
+
+#job-squire-archer-requirement {
+    top: 17.5%;
+    left: 28%
 }
 
 @media screen and (max-width: 600px) {

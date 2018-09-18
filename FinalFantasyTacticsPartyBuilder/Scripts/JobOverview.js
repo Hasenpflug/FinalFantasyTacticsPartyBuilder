@@ -1,7 +1,13 @@
 ﻿var JobOverview = function ()
 {
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
-        selectedJobData, selectedUnitPosition, isMobile, navigator;
+        selectedJobData, selectedUnitPosition, isMobile, navigator, jobTreeCanvas;
+
+    var sources = {
+        squire: '/Content/Images/Jobs/Squire_Male_Standing.png'
+    }
+
+    var images = {};
 
     $(document).ready(function ()
     {
@@ -881,6 +887,58 @@
         return modifierChart;
     }
 
+    function getJobTreeCanvasContext()
+    {
+        if (!jobTreeCanvas)
+        {
+            jobTreeCanvas = document.getElementById('job-tree-canvas');
+        }
+
+        return jobTreeCanvas.getContext('2d');
+    }
+
+    function loadImages()
+    {
+        for (var jobName in sources) {
+            images[jobName] = new Image();
+            images[jobName].src = sources[jobName];
+        }
+    }
+
+    function drawLine(context, x1, y1, x2, y2, lineWidth, colour, lineStyle)
+    {
+        context.beginPath();
+        context.moveTo(x1, y1);
+        context.lineTo(x2, y2);
+        context.lineWidth = lineWidth;
+        context.strokeStyle = colour;
+        context.lineCap = lineStyle;
+        context.stroke();
+    }
+
+    function drawJobContainer(context, jobName, currentX, currentY)
+    {
+        var jobImageWidth = 18;
+        var jobImageHeight = 36;
+
+        context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth * 2, jobImageHeight * 2);
+        context.fillText(jobName, currentX - 25, currentY - 10);
+    }
+
+    function drawJobTree()
+    {
+        context = getJobTreeCanvasContext();
+        loadImages();
+        context.font = '40pt Altima';        
+        drawJobContainer(context, 'Squire', 100, 100);
+    }
+
+    var LINE_END_STYLES = {
+        ROUND: 'round',
+        BUTT: 'butt',
+        SQUARE: 'square'
+    };
+
     function UnitDetails()
     {
         this.RawHP = 0,
@@ -923,7 +981,7 @@
         initializeJobGrowthChart: initializeJobGrowthChart,
         initializeJobMoveChart: initializeJobMoveChart,
         initializeJobEvasionChart: initializeJobEvasionChart,
-        updateChartData: updateChartData
+        updateChartData: updateChartData,
+        drawJobTree: drawJobTree
     }
-
 }();
