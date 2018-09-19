@@ -918,19 +918,50 @@
 
     function drawJobContainer(context, jobName, currentX, currentY)
     {
-        var jobImageWidth = 18;
-        var jobImageHeight = 36;
+        var jobImageWidth = 36;        
+        var jobImageHeight = 72;
+        var jobNameOffsetX = jobName.length * 4;
+        var jobNameOffsetY = jobName.length * 2;
+        var containerOffsetX = jobNameOffsetX + 10;
+        var containerOffsetY = jobNameOffsetY + 50;
 
-        context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth * 2, jobImageHeight * 2);
-        context.fillText(jobName, currentX - 25, currentY - 10);
+        context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth, jobImageHeight);
+        context.fillText(jobName, currentX - jobNameOffsetX, currentY - jobNameOffsetY);
+        context.beginPath();
+        context.rect(currentX - containerOffsetX, currentY - containerOffsetY, 100, 150);
+        context.stroke();
+
+        return {
+            width: currentX - containerOffsetX + 100,
+            height: currentY - containerOffsetY + 150
+        }
+    }
+
+    function drawJobArc(context, currentX, currentY, lineLength, circleRadius, jobLevelRequirement, arcLength)
+    {
+        context.beginPath();
+        context.moveTo(currentX, currentY);
+        context.lineTo(currentX + lineLength, currentY);
+        context.stroke();
+        context.closePath();
+        context.moveTo(currentX + lineLength, currentY);
+        context.beginPath();
+        context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 2 * Math.PI, false);
+        context.stroke();
+        context.font = '80pt Altima';
+        context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);
+        context.arcTo(currentX + lineLength + circleRadius, currentY, currentX + lineLength + circleRadius + 100, currentY + 100, 50);
+        context.stroke();
     }
 
     function drawJobTree()
     {
         context = getJobTreeCanvasContext();
         loadImages();
-        context.font = '40pt Altima';        
-        drawJobContainer(context, 'Squire', 100, 100);
+        context.font = '40pt Altima';
+        context.lineWidth = 5;
+        var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
+        drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 0);
     }
 
     var LINE_END_STYLES = {
