@@ -938,19 +938,29 @@
     }
 
     function drawJobArc(context, currentX, currentY, lineLength, circleRadius, jobLevelRequirement, arcLength)
-    {
+    {        
         context.beginPath();
         context.moveTo(currentX, currentY);
-        context.lineTo(currentX + lineLength, currentY);
+        context.lineTo(currentX + lineLength, currentY);        
+        context.moveTo(currentX + lineLength, currentY);
         context.stroke();
         context.closePath();
-        context.moveTo(currentX + lineLength, currentY);
         context.beginPath();
-        context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 2 * Math.PI, false);
-        context.stroke();
+        context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 360, false);
         context.font = '80pt Altima';
-        context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);
-        context.arcTo(currentX + lineLength + circleRadius, currentY, currentX + lineLength + circleRadius + 100, currentY + 100, 50);
+        context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);        
+        context.moveTo(currentX + lineLength + circleRadius * 2, currentY);
+        context.lineTo(currentX + lineLength + circleRadius * 2, currentY);
+        context.stroke();
+        context.closePath();
+        context.beginPath();
+        context.arc(currentX + lineLength + circleRadius * 2, currentY + circleRadius, circleRadius, 1.5 * Math.PI, 0, false);
+        context.stroke();
+        context.closePath();
+        context.beginPath();
+        context.moveTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius);
+        context.lineTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius * 2)
+        context.closePath();
         context.stroke();
     }
 
@@ -961,7 +971,7 @@
         context.font = '40pt Altima';
         context.lineWidth = 5;
         var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
-        drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 0);
+        drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
     }
 
     var LINE_END_STYLES = {
