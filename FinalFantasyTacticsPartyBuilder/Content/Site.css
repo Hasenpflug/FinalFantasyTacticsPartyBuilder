@@ -1395,19 +1395,18 @@ img {
 
 .job-leaf-pointer {
     position:relative;
-    width:30%;
+    height:50%;
 }
 
 .job-leaf-level {
-    left:30%;
+    left:50%;
     position:absolute;
-    width: 30%;
+    height: 50%;
 }
 
 .job-leaf-pointer-down-right {
-    left:10%;
-    top:45%;
-    transform:rotate(55deg);
+    left:50%;
+    transform:rotate(90deg);
 }
 
 #job-squire-archer-requirement {

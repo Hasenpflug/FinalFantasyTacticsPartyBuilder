@@ -4,7 +4,8 @@
         selectedJobData, selectedUnitPosition, isMobile, navigator, jobTreeCanvas;
 
     var sources = {
-        squire: '/Content/Images/Jobs/Squire_Male_Standing.png'
+        squire: '/Content/Images/Jobs/Squire_Male_Standing.png',
+        knight: '/Content/Images/Jobs/Knight_Male_Standing.png'
     }
 
     var images = {};
@@ -920,20 +921,21 @@
     {
         var jobImageWidth = 36;        
         var jobImageHeight = 72;
-        var jobNameOffsetX = jobName.length * 4;
-        var jobNameOffsetY = jobName.length * 2;
-        var containerOffsetX = jobNameOffsetX + 10;
-        var containerOffsetY = jobNameOffsetY + 50;
+        var jobNameOffsetX = jobName.length * 2;
+        var jobNameOffsetY = jobName > 7 ? jobName.length * 15 : jobName.length * 7.5;
+        var jobImageOffsetX = jobNameOffsetX * 2;
+        var jobImageOffsetY = jobNameOffsetY * 1.5;
 
+        context.font = '40pt Altima';
         context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth, jobImageHeight);
-        context.fillText(jobName, currentX - jobNameOffsetX, currentY - jobNameOffsetY);
+        context.fillText(jobName, currentX + jobNameOffsetX, currentY + jobNameOffsetY);
         context.beginPath();
-        context.rect(currentX - containerOffsetX, currentY - containerOffsetY, 100, 150);
+        context.rect(currentX, currentY, 100, 150);
         context.stroke();
 
         return {
-            width: currentX - containerOffsetX + 100,
-            height: currentY - containerOffsetY + 150
+            width: currentX + 100,
+            height: currentY + 150
         }
     }
 
@@ -962,23 +964,30 @@
         context.lineTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius * 2)
         context.closePath();
         context.stroke();
+
+        return {
+            currentX: currentX + lineLength + circleRadius * 3,
+            currentY: currentY + circleRadius * 3
+        }
     }
 
     function drawJobTree()
     {
+        var currentCoordinates;
         context = getJobTreeCanvasContext();
         loadImages();
         context.font = '40pt Altima';
         context.lineWidth = 5;
         var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
-        drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
+        currentCoordinates = drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
+        currentCoordinates = drawJobContainer(context, 'Knight', currentCoordinates.currentX, currentCoordinates.currentY);
     }
 
     var LINE_END_STYLES = {
         ROUND: 'round',
         BUTT: 'butt',
         SQUARE: 'square'
-    };
+    }
 
     function UnitDetails()
     {
