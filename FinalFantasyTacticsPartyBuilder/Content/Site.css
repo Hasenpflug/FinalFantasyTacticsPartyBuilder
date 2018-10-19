@@ -1299,31 +1299,74 @@ img {
     padding:1%;
     width: 90%;
     height: 90%;
-    position: absolute;
+    position:absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.50);
 }
 
-#job-tree-canvas {
+#tree-simple {
+    position:absolute;
+    display:block;
+    width: 80%;
+    margin:auto;
+}
+
+/*#job-tree-canvas {
     z-index:-1;
     position:relative;
-    /*width: 100%;
-    height: 100%;*/
 }
 
 .job-tree-job-container {
     position:absolute;
-    width:6vw;
-    font-size: 1.5vw;
+    width:120px;    
     padding:0.5%;
 }
 
-.job-tree-name {
-    display:block;
-    text-align:center;
-    margin:auto;
+.job-tree-tier {
+    transform: translate(-50%);
+}
+
+    .job-tree-tier.eighth {
+        left: 925px;
+    }
+
+    .job-tree-tier.seventh {
+        left: 800px;
+    }
+
+    .job-tree-tier.sixth {
+        left: 675px;
+    }
+
+    .job-tree-tier.fifth {
+        left: 550px;
+    }
+
+    .job-tree-tier.fourth {
+        left: 425px;
+    }
+
+    .job-tree-tier.third {
+        left: 300px;
+    }
+
+    .job-tree-tier.second {
+        left: 175px;
+    }
+
+    .job-tree-tier.first {
+        left: 50px;
+        right: 25%;
+    }*/
+
+
+/*.job-tree-name {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+    margin: auto;
 }
 
 .job-tree-job-container img {
@@ -1332,87 +1375,32 @@ img {
     height:5vh;
 }
 
-#job-tree-onion-knight-container {
-    left: 50%;
-    transform: translate(-50%);
+#job-table {
+    width:100%;
+    height:100%;
 }
 
-#job-tree-squire-container {
-    top: 15%;
-    left: 21.5%;
+.right-arrow-1 {
+    width:30px;
 }
 
-#job-tree-knight-container {
-    top: 30%;
-    left: 10%;
+.right-arrow-2 {
+    width: 75px;
 }
 
-#job-tree-archer-container {
-    top: 30%;
-    left: 32.5%;
-}
-
-#job-tree-samurai-container {
-    top: 45%;
-    left: 2.25%;
-}
-
-#job-tree-monk-container {
-    top: 45%;
-    left: 17.5%;
-}
-
-#job-tree-thief-container {
-    top: 45%;
-    left: 25%;
-}
-
-#job-tree-ninja-container {
-    top: 45%;
-    left: 40%;
-}
-
-#job-tree-dragoon-container {
-    top: 60%;
-    left: 12.5%;
-}
-
-#job-tree-geomancer-container {
-    top: 60%;
-    left: 27.5%;
-}
-
-#job-tree-dancer-container {
-    top: 75%;
-    left: 20%;
-}
-
-.job-leaf-container {
+.job-tree-pointer-container {
     position:absolute;
-    height:10%;
-    width:10%;
+    transform:translate(0, 25%);
+    padding:0;
 }
 
-.job-leaf-pointer {
-    position:relative;
-    height:50%;
-}
+    .job-tree-pointer-container.fifth {
+        left:500px;
+    }
 
-.job-leaf-level {
-    left:50%;
-    position:absolute;
-    height: 50%;
-}
-
-.job-leaf-pointer-down-right {
-    left:50%;
-    transform:rotate(90deg);
-}
-
-#job-squire-archer-requirement {
-    top: 17.5%;
-    left: 28%
-}
+    .job-tree-pointer-container.sixth {
+        left: 625px;
+    }*/
 
 @media screen and (max-width: 600px) {
     .menu {

@@ -30,6 +30,7 @@ namespace FinalFantasyTacticsPartyBuilder
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/Treant.css",
                       "~/Content/webfont.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/wheelnav").Include(
@@ -38,6 +39,7 @@ namespace FinalFantasyTacticsPartyBuilder
                       "~/Scripts/wheelnav.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+                      "~/Scripts/Treant.js",
                       "~/Scripts/Chart.bundle.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jobOverview").Include(

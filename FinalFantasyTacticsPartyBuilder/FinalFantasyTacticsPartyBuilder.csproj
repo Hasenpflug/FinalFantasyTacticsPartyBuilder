@@ -680,6 +680,7 @@
     <Content Include="Content\Images\Status_Ailment_Icons\vampire.svg" />
     <Content Include="Content\Images\Status_Ailment_Icons\zombie.svg" />
     <Content Include="Content\Images\support_ability.png" />
+    <Content Include="Content\Treant.css" />
     <Content Include="FFTFemaleNames.txt" />
     <Content Include="FFTMaleNames.txt" />
     <Content Include="FFTMonsterNames.txt" />
@@ -714,6 +715,7 @@
     <Content Include="Scripts\raphael.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Treant.js" />
     <Content Include="Scripts\wheelnav.js" />
     <Content Include="Scripts\wheelnav.min.js" />
     <Content Include="Scripts\_references.js" />

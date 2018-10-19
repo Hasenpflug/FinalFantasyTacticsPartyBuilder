@@ -888,105 +888,215 @@
         return modifierChart;
     }
 
-    function getJobTreeCanvasContext()
-    {
-        if (!jobTreeCanvas)
-        {
-            jobTreeCanvas = document.getElementById('job-tree-canvas');
+    //function getJobTreeCanvasContext()
+    //{
+    //    if (!jobTreeCanvas)
+    //    {
+    //        jobTreeCanvas = document.getElementById('job-tree-canvas');
+    //    }
+
+    //    return jobTreeCanvas.getContext('2d');
+    //}
+
+    //function loadImages()
+    //{
+    //    for (var jobName in sources) {
+    //        images[jobName] = new Image();
+    //        images[jobName].src = sources[jobName];
+    //    }
+    //}
+
+    //function drawLine(context, x1, y1, x2, y2, lineWidth, colour, lineStyle)
+    //{
+    //    context.beginPath();
+    //    context.moveTo(x1, y1);
+    //    context.lineTo(x2, y2);
+    //    context.lineWidth = lineWidth;
+    //    context.strokeStyle = colour;
+    //    context.lineCap = lineStyle;
+    //    context.stroke();
+    //}
+
+    //function drawJobContainer(context, jobName, currentX, currentY)
+    //{
+    //    var jobImageWidth = 36;        
+    //    var jobImageHeight = 72;
+    //    var jobNameOffsetX = jobName.length * 2;
+    //    var jobNameOffsetY = jobName > 7 ? jobName.length * 15 : jobName.length * 7.5;
+    //    var jobImageOffsetX = jobNameOffsetX * 2;
+    //    var jobImageOffsetY = jobNameOffsetY * 1.5;
+
+    //    context.font = '40pt Altima';
+    //    context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth, jobImageHeight);
+    //    context.fillText(jobName, currentX + jobNameOffsetX, currentY + jobNameOffsetY);
+    //    context.beginPath();
+    //    context.rect(currentX, currentY, 100, 150);
+    //    context.stroke();
+
+    //    return {
+    //        width: currentX + 100,
+    //        height: currentY + 150
+    //    }
+    //}
+
+    //function drawJobArc(context, currentX, currentY, lineLength, circleRadius, jobLevelRequirement, arcLength)
+    //{        
+    //    context.beginPath();
+    //    context.moveTo(currentX, currentY);
+    //    context.lineTo(currentX + lineLength, currentY);        
+    //    context.moveTo(currentX + lineLength, currentY);
+    //    context.stroke();
+    //    context.closePath();
+    //    context.beginPath();
+    //    context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 360, false);
+    //    context.font = '80pt Altima';
+    //    context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);        
+    //    context.moveTo(currentX + lineLength + circleRadius * 2, currentY);
+    //    context.lineTo(currentX + lineLength + circleRadius * 2, currentY);
+    //    context.stroke();
+    //    context.closePath();
+    //    context.beginPath();
+    //    context.arc(currentX + lineLength + circleRadius * 2, currentY + circleRadius, circleRadius, 1.5 * Math.PI, 0, false);
+    //    context.stroke();
+    //    context.closePath();
+    //    context.beginPath();
+    //    context.moveTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius);
+    //    context.lineTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius * 2)
+    //    context.closePath();
+    //    context.stroke();
+
+    //    return {
+    //        currentX: currentX + lineLength + circleRadius * 3,
+    //        currentY: currentY + circleRadius * 3
+    //    }
+    //}
+
+    //function drawJobTree()
+    //{
+    //    var currentCoordinates;
+    //    context = getJobTreeCanvasContext();
+    //    loadImages();
+    //    context.font = '40pt Altima';
+    //    context.lineWidth = 5;
+    //    var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
+    //    currentCoordinates = drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
+    //    currentCoordinates = drawJobContainer(context, 'Knight', currentCoordinates.currentX, currentCoordinates.currentY);
+    //}
+
+    //var LINE_END_STYLES = {
+    //    ROUND: 'round',
+    //    BUTT: 'butt',
+    //    SQUARE: 'square'
+    //}
+
+    simple_chart_config = {
+        chart: {
+            container: "#tree-simple",
+            connectors: {
+                type: "step",
+                style: {
+                    "arrow-end": "",
+                    "stroke-width": 3
+                },
+                stackIndent: 30
+            },
+            levelSeparation: 50,
+            siblingSeparation: 50
+        },
+        
+        nodeStructure: {
+            text: { name: "Onion Knight" },
+            image: "/Content/Images/Jobs/OnionKnight_Male_Standing.png",
+            children: [
+                {
+                    text: { name: "Squire" },
+                    image: "/Content/Images/Jobs/Squire_Male_Standing.png",
+                    children: [
+                        {
+                            text: { name: "Knight" },
+                            image: "/Content/Images/Jobs/Knight_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Samurai" },
+                                    image: "/Content/Images/Jobs/Samurai_Male_Standing.png",
+                                },
+                                {
+                                    text: { name: "Monk" },
+                                    image: "/Content/Images/Jobs/Monk_Male_Standing.png",
+                                }
+                            ]
+                        },
+                        {
+                            text: { name: "Archer" },
+                            image: "/Content/Images/Jobs/Archer_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Thief" },
+                                    image: "/Content/Images/Jobs/Thief_Male_Standing.png",
+                                },
+                                {
+                                    text: { name: "Ninja" },
+                                    image: "/Content/Images/Jobs/Ninja_Male_Standing.png",
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    text: { name: "Chemist" },
+                    image: "/Content/Images/Jobs/Chemist_Male_Standing.png",
+                    children: [
+                        {
+                            text: { name: "White Mage" },
+                            image: "/Content/Images/Jobs/WhiteMage_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Mystic" },
+                                    image: "/Content/Images/Jobs/Mystic_Male_Standing.png",
+                                    children: [
+                                        {
+                                            text: { name: "Orator" },
+                                            image: "/Content/Images/Jobs/Orator_Male_Standing.png",
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: { name: "Arithmetician" },
+                                    image: "/Content/Images/Jobs/Arithmetician_Male_Standing.png",
+                                }
+                            ]
+                        },
+                        {
+                            text: { name: "Black Mage" },
+                            image: "/Content/Images/Jobs/BlackMage_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Time Mage" },
+                                    image: "/Content/Images/Jobs/TimeMage_Male_Standing.png",
+                                    children: [
+                                        {
+                                            text: { name: "Summoner" },
+                                            image: "/Content/Images/Jobs/Summoner_Male_Standing.png",
+                                            children: [
+                                                {
+                                                    text: { name: "Bard" },
+                                                    image: "/Content/Images/Jobs/Bard_Male_Standing.png",
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
+    };
 
-        return jobTreeCanvas.getContext('2d');
-    }
-
-    function loadImages()
+    function drawTreantJobTree()
     {
-        for (var jobName in sources) {
-            images[jobName] = new Image();
-            images[jobName].src = sources[jobName];
-        }
-    }
-
-    function drawLine(context, x1, y1, x2, y2, lineWidth, colour, lineStyle)
-    {
-        context.beginPath();
-        context.moveTo(x1, y1);
-        context.lineTo(x2, y2);
-        context.lineWidth = lineWidth;
-        context.strokeStyle = colour;
-        context.lineCap = lineStyle;
-        context.stroke();
-    }
-
-    function drawJobContainer(context, jobName, currentX, currentY)
-    {
-        var jobImageWidth = 36;        
-        var jobImageHeight = 72;
-        var jobNameOffsetX = jobName.length * 2;
-        var jobNameOffsetY = jobName > 7 ? jobName.length * 15 : jobName.length * 7.5;
-        var jobImageOffsetX = jobNameOffsetX * 2;
-        var jobImageOffsetY = jobNameOffsetY * 1.5;
-
-        context.font = '40pt Altima';
-        context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth, jobImageHeight);
-        context.fillText(jobName, currentX + jobNameOffsetX, currentY + jobNameOffsetY);
-        context.beginPath();
-        context.rect(currentX, currentY, 100, 150);
-        context.stroke();
-
-        return {
-            width: currentX + 100,
-            height: currentY + 150
-        }
-    }
-
-    function drawJobArc(context, currentX, currentY, lineLength, circleRadius, jobLevelRequirement, arcLength)
-    {        
-        context.beginPath();
-        context.moveTo(currentX, currentY);
-        context.lineTo(currentX + lineLength, currentY);        
-        context.moveTo(currentX + lineLength, currentY);
-        context.stroke();
-        context.closePath();
-        context.beginPath();
-        context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 360, false);
-        context.font = '80pt Altima';
-        context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);        
-        context.moveTo(currentX + lineLength + circleRadius * 2, currentY);
-        context.lineTo(currentX + lineLength + circleRadius * 2, currentY);
-        context.stroke();
-        context.closePath();
-        context.beginPath();
-        context.arc(currentX + lineLength + circleRadius * 2, currentY + circleRadius, circleRadius, 1.5 * Math.PI, 0, false);
-        context.stroke();
-        context.closePath();
-        context.beginPath();
-        context.moveTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius);
-        context.lineTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius * 2)
-        context.closePath();
-        context.stroke();
-
-        return {
-            currentX: currentX + lineLength + circleRadius * 3,
-            currentY: currentY + circleRadius * 3
-        }
-    }
-
-    function drawJobTree()
-    {
-        var currentCoordinates;
-        context = getJobTreeCanvasContext();
-        loadImages();
-        context.font = '40pt Altima';
-        context.lineWidth = 5;
-        var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
-        currentCoordinates = drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
-        currentCoordinates = drawJobContainer(context, 'Knight', currentCoordinates.currentX, currentCoordinates.currentY);
-    }
-
-    var LINE_END_STYLES = {
-        ROUND: 'round',
-        BUTT: 'butt',
-        SQUARE: 'square'
+        var chart = new Treant(simple_chart_config);
     }
 
     function UnitDetails()
@@ -1032,6 +1142,6 @@
         initializeJobMoveChart: initializeJobMoveChart,
         initializeJobEvasionChart: initializeJobEvasionChart,
         updateChartData: updateChartData,
-        drawJobTree: drawJobTree
+        drawJobTree: drawTreantJobTree
     }
 }();

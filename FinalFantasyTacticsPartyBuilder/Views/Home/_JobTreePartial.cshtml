@@ -1,81 +1,75 @@
 ﻿<div id="job-tree-container" class="menu">
     <strong id="job-tree-close">X</strong>
-    <table style="display:none;">
+    <div id="tree-simple">
+
+    </div>
+    @*<table id="job-table">
         <tr>
-            <td id="job-tree-onion-knight-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-onion-knight-container" class="fft-button job-tree-job-container job-tree-tier eighth" selected="false">
                 <span class="job-tree-name">Onion Knight</span>
-                <img src="~/Content/Images/Jobs/OnionKnight_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/OnionKnight_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/OnionKnight_Male_Standing.png" />                
             </td>
         </tr>
         <tr>
-            <td id="job-tree-squire-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-squire-container" class="fft-button job-tree-job-container job-tree-tier fourth" selected="false">
                 <span class="job-tree-name">Squire</span>
                 <img src="~/Content/Images/Jobs/Squire_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Squire_Female_Standing.png" />*@
+            </td>
+            <td class="job-tree-pointer-container fifth">
+                <img src="~/Content/Images/Job Tree SVGs/thin-right-arrow.svg" class="right-arrow-2" />
+            </td>
+            <td class="job-tree-pointer-container sixth">
+                <img src="~/Content/Images/Job Tree SVGs/number-five-in-circular-button.svg" class="right-arrow-2" />
+            </td>
+            <td class="job-tree-pointer-container fifth">
+                <img src="~/Content/Images/Job Tree SVGs/thin-right-arrow.svg" class="right-arrow-2" />
             </td>
         </tr>
         <tr>
-            <td id="job-squire-archer-requirement" class="job-leaf-container">
-                <img src="~/Content/Images/Job Tree SVGs/thin-right-arrow.svg" class="job-leaf-pointer job-leaf-pointer-right" />
-                <img src="~/Content/Images/Job Tree SVGs/number-five-in-circular-button.svg" class="job-leaf-level" />
-                <img src="~/Content/Images/Job Tree SVGs/thin-right-arrow.svg" class="job-leaf-pointer job-leaf-pointer-down-right" />
-            </td>
-        </tr>
-        <tr>
-            <td id="job-tree-archer-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-archer-container" class="fft-button job-tree-job-container job-tree-tier sixth" selected="false">
                 <span class="job-tree-name">Archer</span>
                 <img src="~/Content/Images/Jobs/Archer_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Archer_Female_Standing.png" />*@
             </td>
-            <td id="job-tree-knight-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-knight-container" class="fft-button job-tree-job-container job-tree-tier second" selected="false">
                 <span class="job-tree-name">Knight</span>
-                <img src="~/Content/Images/Jobs/Knight_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Knight_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Knight_Male_Standing.png" />                
             </td>
         </tr>
         <tr>
-            <td id="job-tree-samurai-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-samurai-container" class="fft-button job-tree-job-container job-tree-tier first" selected="false">
                 <span class="job-tree-name">Samurai</span>
-                <img src="~/Content/Images/Jobs/Samurai_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Samurai_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Samurai_Male_Standing.png" />                
             </td>
-            <td id="job-tree-monk-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-monk-container" class="fft-button job-tree-job-container job-tree-tier third" selected="false">
                 <span class="job-tree-name">Monk</span>
-                <img src="~/Content/Images/Jobs/Monk_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Monk_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Monk_Male_Standing.png" />                
             </td>
-            <td id="job-tree-thief-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-thief-container" class="fft-button job-tree-job-container job-tree-tier fifth" selected="false">
                 <span class="job-tree-name">Thief</span>
-                <img src="~/Content/Images/Jobs/Thief_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Thief_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Thief_Male_Standing.png" />                
             </td>
-            <td id="job-tree-ninja-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-ninja-container" class="fft-button job-tree-job-container job-tree-tier seventh" selected="false">
                 <span class="job-tree-name">Ninja</span>
-                <img src="~/Content/Images/Jobs/Ninja_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Ninja_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Ninja_Male_Standing.png" />                
             </td>
         </tr>
         <tr>
-            <td id="job-tree-dragoon-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-dragoon-container" class="fft-button job-tree-job-container job-tree-tier second" selected="false">
                 <span class="job-tree-name">Dragoon</span>
-                <img src="~/Content/Images/Jobs/Dragoon_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Ninja_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Dragoon_Male_Standing.png" />                
             </td>
-            <td id="job-tree-geomancer-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-geomancer-container" class="fft-button job-tree-job-container job-tree-tier sixth" selected="false">
                 <span class="job-tree-name">Geomancer</span>
-                <img src="~/Content/Images/Jobs/Geomancer_Male_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Ninja_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Geomancer_Male_Standing.png" />                
             </td>
         </tr>
         <tr>
-            <td id="job-tree-dancer-container" class="fft-button job-tree-job-container" selected="false">
+            <td id="job-tree-dancer-container" class="fft-button job-tree-job-container job-tree-tier fourth" selected="false">
                 <span class="job-tree-name">Dancer</span>
-                <img src="~/Content/Images/Jobs/Dancer_Female_Standing.png" />
-                @*<img src="~/Content/Images/Jobs/Ninja_Female_Standing.png" />*@
+                <img src="~/Content/Images/Jobs/Dancer_Female_Standing.png" />                
             </td>
         </tr>
-    </table>
+    </table>*@
 </div>
 <canvas id="job-tree-canvas" width="1500" height="960"></canvas>
 <script type="text/javascript">
