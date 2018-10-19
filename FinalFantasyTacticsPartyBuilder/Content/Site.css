@@ -1296,6 +1296,7 @@ img {
 }
 
 #job-tree-container {
+    font-size: 30px;
     padding:1%;
     width: 90%;
     height: 90%;
@@ -1310,6 +1311,13 @@ img {
     position:absolute;
     display:block;
     width: 80%;
+    margin:auto;
+}
+
+.node img {
+    display:block;
+    width: 30px;
+    float:none !important;
     margin:auto;
 }
 
