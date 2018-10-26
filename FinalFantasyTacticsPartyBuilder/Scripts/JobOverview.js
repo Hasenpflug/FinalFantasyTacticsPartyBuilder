@@ -1,5 +1,4 @@
-﻿var JobOverview = function ()
-{
+﻿var JobOverview = function () {
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
         selectedJobData, selectedUnitPosition, isMobile, navigator, jobTreeCanvas;
 
@@ -10,17 +9,14 @@
 
     var images = {};
 
-    $(document).ready(function ()
-    {
+    $(document).ready(function () {
         navigator = $('#navigator-previous');
         navigator.hide();
         isMobile = window.innerWidth < 600;
 
-        if (typeof (Storage) !== 'undefined')
-        {
+        if (typeof (Storage) !== 'undefined') {
             var unitDataRaw = getUnitData();
-            if (unitDataRaw === null)
-            {
+            if (unitDataRaw === null) {
                 localStorage.setItem('unitData', '{"units": []}')
             }
 
@@ -48,11 +44,9 @@
         $('body').on('click', '#job-tree-button', renderJobTreePartial);
     });
 
-    function renderUnitPanels()
-    {
+    function renderUnitPanels() {
         var unitData = buildPanelData(getUnitData());
-        $.post('/Home/GetUnitPanelPartial', unitData, function (data)
-        {
+        $.post('/Home/GetUnitPanelPartial', unitData, function (data) {
             navigator.hide();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').prepend(data);
@@ -60,22 +54,18 @@
         });
     }
 
-    function renderUnitStatusPanel(event)
-    {
-        if (selectedUnitPosition === event.currentTarget.attributes['data-unit-position'].nodeValue)
-        {
+    function renderUnitStatusPanel(event) {
+        if (selectedUnitPosition === event.currentTarget.attributes['data-unit-position'].nodeValue) {
             $('.unit-details-container').toggle();
             $('.menu-container').toggle();
         }
-        else
-        {
+        else {
             selectedUnitPosition = event.currentTarget.attributes['data-unit-position'].nodeValue;
             var unitData = getUnitData();
 
             unitData = unitData.units[selectedUnitPosition];
 
-            $.post('/Home/GetUnitOverviewPartial', unitData, function (data)
-            {
+            $.post('/Home/GetUnitOverviewPartial', unitData, function (data) {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
                 //if (isMobile)
@@ -93,15 +83,12 @@
         }
     }
 
-    function renderMenuPanel(event, unitPosition)
-    {
-        $.post('/Home/GetUnitMenuPartial', unitPosition, function (data)
-        {
+    function renderMenuPanel(event, unitPosition) {
+        $.post('/Home/GetUnitMenuPartial', unitPosition, function (data) {
             $('.menu-container').remove();
             $('#party-builder-container').append(data);
 
-            if (!isMobile)
-            {
+            if (!isMobile) {
                 var windowScrollOffset = (document.getElementsByClassName('body-content')[0].scrollTop / window.innerHeight) * 100;
                 var convertedUnitPosition = parseInt(unitPosition) + 1;
                 var columnIndex = (convertedUnitPosition % 4 === 0 && convertedUnitPosition !== 0 ? 0.40 : ((parseInt(unitPosition) % 4) / 4)) * 100 + 20;
@@ -115,10 +102,8 @@
         });
     }
 
-    function renderJobOverviewPanel()
-    {
-        $.post('/Home/GetJobOverviewPartial', function (data)
-        {
+    function renderJobOverviewPanel() {
+        $.post('/Home/GetJobOverviewPartial', function (data) {
             navigator.show();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data);
@@ -127,18 +112,14 @@
         });
     }
 
-    function renderJobTreePartial()
-    {
-        $.post('/Home/GetJobTreePartial', function (data)
-        {
+    function renderJobTreePartial() {
+        $.post('/Home/GetJobTreePartial', function (data) {
             $('#party-overview-container').append(data);
         });
     }
 
-    function renderJobSelectionPanel(gender)
-    {
-        $.post('/Home/GetJobSelectionPartial', { gender: gender }, function (data)
-        {
+    function renderJobSelectionPanel(gender) {
+        $.post('/Home/GetJobSelectionPartial', { gender: gender }, function (data) {
             $('#job-selection-container').remove();
             $('#job-overview-container').prepend(data);
             initializeJobWheel();
@@ -149,14 +130,12 @@
         });
     }
 
-    function setEquippedItem(event)
-    {
+    function setEquippedItem(event) {
         var unit = getUnitData().units[selectedUnitPosition];
         var itemID = event.currentTarget.attributes['data-item-id'].nodeValue;
         var itemCategoryName = event.currentTarget.attributes['data-item-category-name'].nodeValue;
 
-        switch (itemCategoryName)
-        {
+        switch (itemCategoryName) {
             case "weapon":
                 unit.WeaponID = itemID;
                 modifyUnitData(unit, selectedUnitPosition);
@@ -186,63 +165,53 @@
         renderUnitStatsDetailsPartial();
     }
 
-    function renderUnitStatsDetailsPartial(event)
-    {
+    function renderUnitStatsDetailsPartial(event) {
         var unitData = getUnitData();
         selectedJobData = unitData.units[selectedUnitPosition];
-        unitData = { unit: selectedJobData };        
-        
-        $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data)
-        {
+        unitData = { unit: selectedJobData };
+
+        $.post('/Home/GetUnitStatsDetailPartial', unitData, function (data) {
             navigator.show();
             $('#party-overview-container').contents().remove();
             $('#party-overview-container').append(data.View);
             modifyUnitData(data.Data, selectedUnitPosition);
         });
-    }    
+    }
 
-    function renderItemLookupPartial(event)
-    {
+    function renderItemLookupPartial(event) {
         var equipmentCategoryID = event.currentTarget.attributes['data-equipment-category'].nodeValue;
 
         $.post('/Home/GetUnitItemLookupPartial', {
             jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID,
             isFemale: selectedJobData.Unit.Gender === 1 ? true : false
-        }, function (data)
-        {
-            $('#item-lookup-container').remove();
-            $('#item-selection').remove();
-            $('#unit-abilities').append(data);
-        });
+        }, function (data) {
+                $('#item-lookup-container').remove();
+                $('#item-selection').remove();
+                $('#unit-abilities').append(data);
+            });
     }
 
-    function renderItemDetailsPartial(event)
-    {
+    function renderItemDetailsPartial(event) {
         var itemID = event.currentTarget.attributes['data-item-id'].nodeValue;
 
-        $.post('/Home/GetItemDetailsPartial', { itemID }, function (data)
-        {
+        $.post('/Home/GetItemDetailsPartial', { itemID }, function (data) {
             $('#party-overview-container').append(data);
         });
     }
 
-    function renderItemSelectionPartial(event)
-    {
+    function renderItemSelectionPartial(event) {
         var itemCategory = event.currentTarget.attributes['data-item-category'].nodeValue;
 
-        $.post('/Home/GetItemSelectionPartial', { itemCategoryID: itemCategory }, function (data)
-        {
+        $.post('/Home/GetItemSelectionPartial', { itemCategoryID: itemCategory }, function (data) {
             $('#item-selection').remove();
             $('#item-lookup-container').append(data);
         });
     }
 
-    function previewEquipmentChanges(event)
-    {
+    function previewEquipmentChanges(event) {
         var itemCategoryName = event.currentTarget.attributes['data-item-category-name'].nodeValue;
 
-        switch (itemCategoryName)
-        {
+        switch (itemCategoryName) {
             case "weapon":
                 var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
                 var rightHitElement = document.querySelector('#weapon-stats-right-hit');
@@ -252,25 +221,21 @@
                 var itemDamage = parseInt(event.currentTarget.attributes['data-item-power'].nodeValue);
                 var itemHit = parseInt(event.currentTarget.attributes['data-item-hit-percentage'].nodeValue);
 
-                if (itemDamage > rightDamage)
-                {
+                if (itemDamage > rightDamage) {
                     rightDamageElement.firstChild.textContent = '+' + (itemDamage - rightDamage);
                     rightDamageElement.firstChild.style.color = 'blue';
 
                 }
-                else if (itemDamage < rightDamage)
-                {
+                else if (itemDamage < rightDamage) {
                     rightDamageElement.firstChild.textContent = '-' + (rightDamage - itemDamage);
                     rightDamageElement.firstChild.style.color = 'red';
                 }
 
-                if (itemHit > rightHit)
-                {
+                if (itemHit > rightHit) {
                     rightHitElement.firstChild.textContent = '+' + (itemHit - rightHit);
                     rightHitElement.firstChild.style.color = 'blue';
                 }
-                else if (itemHit < rightHit)
-                {
+                else if (itemHit < rightHit) {
                     rightHitElement.firstChild.textContent = '-' + (rightHit - itemHit);
                     rightHitElement.firstChild.style.color = 'red';
                 }
@@ -286,24 +251,20 @@
                 var itemPhysicalEvade = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
                 var itemMagicalEvade = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
 
-                if (itemPhysicalEvade > physicalEvade)
-                {
+                if (itemPhysicalEvade > physicalEvade) {
                     leftPhysicalEvadeElement.firstChild.textContent = '+' + (itemPhysicalEvade - physicalEvade);
                     leftPhysicalEvadeElement.firstChild.style.color = 'blue';
                 }
-                else if (itemPhysicalEvade < physicalEvade)
-                {
+                else if (itemPhysicalEvade < physicalEvade) {
                     leftPhysicalEvadeElement.firstChild.textContent = '-' + (physicalEvade - itemPhysicalEvade);
                     leftPhysicalEvadeElement.firstChild.style.color = 'red';
                 }
 
-                if (itemMagicalEvade > magicalEvade)
-                {
+                if (itemMagicalEvade > magicalEvade) {
                     leftMagicalEvadeElement.firstChild.textContent = '+' + (itemMagicalEvade - magicalEvade);
                     leftMagicalEvadeElement.firstChild.style.color = 'blue';
                 }
-                else if (itemMagicalEvade < magicalEvade)
-                {
+                else if (itemMagicalEvade < magicalEvade) {
                     leftMagicalEvadeElement.firstChild.textContent = '-' + (magicalEvade - itemMagicalEvade);
                     leftMagicalEvadeElement.firstChild.style.color = 'red';
                 }
@@ -319,27 +280,23 @@
                 var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
                 var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
 
-                if (itemHpBonus > hpBonus)
-                {
+                if (itemHpBonus > hpBonus) {
                     hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
                     hpBonusElement.style.color = 'lightblue';
                     hpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemHpBonus < hpBonus)
-                {
+                else if (itemHpBonus < hpBonus) {
                     hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
                     hpBonusElement.style.color = 'red';
                     hpBonusElement.style.visibility = 'visible';
                 }
 
-                if (itemMpBonus > mpBonus)
-                {
+                if (itemMpBonus > mpBonus) {
                     mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
                     mpBonusElement.style.color = 'lightblue';
                     mpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemMpBonus < mpBonus)
-                {
+                else if (itemMpBonus < mpBonus) {
                     mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
                     mpBonusElement.style.color = 'red';
                     mpBonusElement.style.visibility = 'visible';
@@ -356,27 +313,23 @@
                 var itemHpBonus = parseInt(event.currentTarget.attributes['data-item-hp'].nodeValue);
                 var itemMpBonus = parseInt(event.currentTarget.attributes['data-item-mp'].nodeValue);
 
-                if (itemHpBonus > hpBonus)
-                {
+                if (itemHpBonus > hpBonus) {
                     hpBonusElement.textContent = '+' + (itemHpBonus - hpBonus);
                     hpBonusElement.style.color = 'lightblue';
                     hpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemHpBonus < hpBonus)
-                {
+                else if (itemHpBonus < hpBonus) {
                     hpBonusElement.textContent = '-' + (hpBonus - itemHpBonus);
                     hpBonusElement.style.color = 'red';
                     hpBonusElement.style.visibility = 'visible';
                 }
 
-                if (itemMpBonus > mpBonus)
-                {
+                if (itemMpBonus > mpBonus) {
                     mpBonusElement.textContent = '+' + (itemMpBonus - mpBonus);
                     mpBonusElement.style.color = 'lightblue';
                     mpBonusElement.style.visibility = 'visible';
                 }
-                else if (itemMpBonus < mpBonus)
-                {
+                else if (itemMpBonus < mpBonus) {
                     mpBonusElement.textContent = '-' + (mpBonus - itemMpBonus);
                     mpBonusElement.style.color = 'red';
                     mpBonusElement.style.visibility = 'visible';
@@ -392,30 +345,26 @@
                     parseInt(accessoryEquippedElement.attributes['data-item-move-bonus'].nodeValue) : 0 : 0;
                 var equippedJumpBonus = accessoryEquippedElement != null ? accessoryEquippedElement.attributes['data-item-jump-bonus'] != null ?
                     parseInt(accessoryEquippedElement.attributes['data-item-jump-bonus'].nodeValue) : 0 : 0;
-                var itemMoveBonus = parseInt(event.currentTarget.attributes['data-item-move-bonus'].nodeValue); 
+                var itemMoveBonus = parseInt(event.currentTarget.attributes['data-item-move-bonus'].nodeValue);
                 var itemJumpBonus = parseInt(event.currentTarget.attributes['data-item-jump-bonus'].nodeValue);
 
-                if (itemMoveBonus > equippedMoveBonus)
-                {
+                if (itemMoveBonus > equippedMoveBonus) {
                     moveElement.firstChild.textContent = '+' + (itemMoveBonus - equippedMoveBonus);
                     moveElement.firstChild.style.color = 'blue';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemMoveBonus < equippedMoveBonus)
-                {
+                else if (itemMoveBonus < equippedMoveBonus) {
                     moveElement.firstChild.textContent = '-' + (equippedMoveBonus - itemMoveBonus);
                     moveElement.firstChild.style.color = 'red';
                     moveElement.firstChild.style.visibility = 'visible';
                 }
 
-                if (itemJumpBonus > equippedJumpBonus)
-                {
+                if (itemJumpBonus > equippedJumpBonus) {
                     jumpElement.firstChild.textContent = '+' + (itemJumpBonus - equippedJumpBonus);
                     jumpElement.firstChild.style.color = 'blue';
                     jumpElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemJumpBonus < equippedJumpBonus)
-                {
+                else if (itemJumpBonus < equippedJumpBonus) {
                     jumpElement.firstChild.textContent = '-' + (equippedJumpBonus - itemJumpBonus);
                     jumpElement.firstChild.style.color = 'red';
                     jumpElement.firstChild.style.visibility = 'visible';
@@ -425,7 +374,7 @@
                 break;
             case "armguard":
                 var accessoryEquippedElement = document.querySelector('#accessory-equipped').firstElementChild;
-                var currentItem = event.currentTarget;                
+                var currentItem = event.currentTarget;
                 previewSpeedDamageChanges(currentItem, accessoryEquippedElement);
                 break;
             case "ring":
@@ -444,27 +393,23 @@
                 var itemPhysicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-physical-evade'].nodeValue);
                 var itemMagicalEvadeBonus = parseInt(event.currentTarget.attributes['data-item-magical-evade'].nodeValue);
 
-                if (itemPhysicalEvadeBonus > equippedPhysicalEvade)
-                {
+                if (itemPhysicalEvadeBonus > equippedPhysicalEvade) {
                     physicalEvadeElement.firstChild.textContent = '+' + (itemPhysicalEvadeBonus - equippedPhysicalEvade);
                     physicalEvadeElement.firstChild.style.color = 'blue';
                     physicalEvadeElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemPhysicalEvadeBonus < equippedPhysicalEvade)
-                {
+                else if (itemPhysicalEvadeBonus < equippedPhysicalEvade) {
                     physicalEvadeElement.firstChild.textContent = '-' + (equippedPhysicalEvade - itemPhysicalEvadeBonus);
                     physicalEvadeElement.firstChild.style.color = 'red';
                     physicalEvadeElement.firstChild.style.visibility = 'visible';
                 }
 
-                if (itemMagicalEvadeBonus > equippedMagicalEvade)
-                {
+                if (itemMagicalEvadeBonus > equippedMagicalEvade) {
                     magicalEvadeElement.firstChild.textContent = '+' + (itemMagicalEvadeBonus - equippedMagicalEvade);
                     magicalEvadeElement.firstChild.style.color = 'blue';
                     magicalEvadeElement.firstChild.style.visibility = 'visible';
                 }
-                else if (itemMagicalEvadeBonus < equippedMagicalEvade)
-                {
+                else if (itemMagicalEvadeBonus < equippedMagicalEvade) {
                     magicalEvadeElement.firstChild.textContent = '-' + (equippedMagicalEvade - itemMagicalEvadeBonus);
                     magicalEvadeElement.firstChild.style.color = 'red';
                     magicalEvadeElement.firstChild.style.visibility = 'visible';
@@ -479,14 +424,12 @@
                 break;
         }
 
-        function previewSpeedDamageChanges(itemElement, equippedElement)
-        {
+        function previewSpeedDamageChanges(itemElement, equippedElement) {
             var physicalAttackBonus = 0, magicalAttackBonus = 0, speedBonus = 0, itemPhysicalAttackBonus = 0, itemMagicalAttackBonus = 0, itemSpeedBonus = 0;
             var physicalAttackElement = document.querySelector('#physical-attack-power');
             var magicalAttackElement = document.querySelector('#magical-attack-power');
             var speedElement = document.querySelector('#speed-stat-value');
-            if (equippedElement != null)
-            {
+            if (equippedElement != null) {
                 physicalAttackBonus = equippedElement.attributes['data-item-physical-bonus'] != null ?
                     parseInt(equippedElement.attributes['data-item-physical-bonus'].nodeValue) : 0;
                 magicalAttackBonus = equippedElement.attributes['data-item-magical-bonus'] != null ?
@@ -495,8 +438,7 @@
                     parseInt(equippedElement.attributes['data-item-speed-bonus'].nodeValue) : 0;
             }
 
-            if (itemElement != null)
-            {            
+            if (itemElement != null) {
                 itemPhysicalAttackBonus = itemElement.attributes['data-item-physical-bonus'] != null ?
                     parseInt(itemElement.attributes['data-item-physical-bonus'].nodeValue) : 0;
                 itemMagicalAttackBonus = itemElement.attributes['data-item-magical-bonus'] != null ?
@@ -505,40 +447,34 @@
                     parseInt(itemElement.attributes['data-item-speed-bonus'].nodeValue) : 0;
             }
 
-            if (itemPhysicalAttackBonus > physicalAttackBonus)
-            {
+            if (itemPhysicalAttackBonus > physicalAttackBonus) {
                 physicalAttackElement.firstChild.textContent = '+' + (itemPhysicalAttackBonus - physicalAttackBonus);
                 physicalAttackElement.firstChild.style.color = 'blue';
                 physicalAttackElement.firstChild.style.visibility = 'visible';
             }
-            else if (itemPhysicalAttackBonus < physicalAttackBonus)
-            {
+            else if (itemPhysicalAttackBonus < physicalAttackBonus) {
                 physicalAttackElement.firstChild.textContent = '-' + (physicalAttackBonus - itemPhysicalAttackBonus);
                 physicalAttackElement.firstChild.style.color = 'red';
                 physicalAttackElement.firstChild.style.visibility = 'visible';
             }
 
-            if (itemMagicalAttackBonus > magicalAttackBonus)
-            {
+            if (itemMagicalAttackBonus > magicalAttackBonus) {
                 magicalAttackElement.firstChild.textContent = '+' + (itemMagicalAttackBonus - magicalAttackBonus);
                 magicalAttackElement.firstChild.style.color = 'blue';
                 magicalAttackElement.firstChild.style.visibility = 'visible';
             }
-            else if (itemMagicalAttackBonus < magicalAttackBonus)
-            {
+            else if (itemMagicalAttackBonus < magicalAttackBonus) {
                 magicalAttackElement.firstChild.textContent = '-' + (magicalAttackBonus - itemMagicalAttackBonus);
                 magicalAttackElement.firstChild.style.color = 'red';
                 magicalAttackElement.firstChild.style.visibility = 'visible';
             }
 
-            if (itemSpeedBonus > speedBonus)
-            {
+            if (itemSpeedBonus > speedBonus) {
                 speedElement.firstElementChild.textContent = '+' + (itemSpeedBonus - speedBonus);
                 speedElement.firstElementChild.style.color = 'blue';
                 speedElement.firstElementChild.style.visibility = 'visible';
             }
-            else if (itemSpeedBonus < speedBonus)
-            {
+            else if (itemSpeedBonus < speedBonus) {
                 speedElement.firstChild.textContent = '-' + (speedBonus - itemSpeedBonus);
                 speedElement.firstChild.style.color = 'red';
                 speedElement.firstChild.style.visibility = 'visible';
@@ -546,8 +482,7 @@
         }
     }
 
-    function resetItemStats()
-    {
+    function resetItemStats() {
         var rightDamageElement = document.querySelector('#weapon-stats-right-damage');
         var rightHitElement = document.querySelector('#weapon-stats-right-hit');
         var leftPhysicalEvadeElement = document.querySelector('#shield-stats-physical-evade');
@@ -594,8 +529,7 @@
         accessoryMagicalEvadeElement.firstElementChild.style.color = '#333333';
     }
 
-    function renderDismissUnitPartial()
-    {
+    function renderDismissUnitPartial() {
         var localUnitData = getUnitData();
         localUnitData = localUnitData.units[selectedUnitPosition];
         var viewModelData = {
@@ -606,34 +540,29 @@
             JobName: localUnitData.Unit.JobName
         };
 
-        $.post('/Home/GetUnitDismissPartial', viewModelData, function (data)
-        {
+        $.post('/Home/GetUnitDismissPartial', viewModelData, function (data) {
             $('#unit-dismiss-container').remove();
             $('#party-builder-container').append(data);
         });
     }
 
-    function getUnitData()
-    {
+    function getUnitData() {
         return JSON.parse(localStorage.getItem('unitData'));
     }
 
-    function modifyUnitData(unit, position)
-    {
+    function modifyUnitData(unit, position) {
         var unitData = getUnitData();
         unitData.units[position] = unit;
         localStorage.setItem('unitData', JSON.stringify(unitData));
     }
 
-    function hireUnit()
-    {
+    function hireUnit() {
         var localUnitData = getUnitData();
         var newUnitData = new UnitDetails();
         newUnitData.Unit.JobID = selectedJobData.jobID;
         newUnitData.Unit.Gender = selectedJobData.gender;
         newUnitData.Unit.Position = localUnitData.units.length;
-        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender, position: newUnitData.Unit.Position }, function (data)
-        {
+        $.post('/Home/PopulateNewUnitData', { jobID: newUnitData.Unit.JobID, gender: newUnitData.Unit.Gender, position: newUnitData.Unit.Position }, function (data) {
             $('#party-overview-container').contents().remove();
             localUnitData.units.push(data);
             localStorage.setItem('unitData', JSON.stringify(localUnitData));
@@ -641,8 +570,7 @@
         });
     }
 
-    function dismissUnit()
-    {
+    function dismissUnit() {
         var unitData = getUnitData();
         unitData.units.splice(selectedUnitPosition, 1);
         localStorage.setItem('unitData', JSON.stringify(unitData));
@@ -651,12 +579,10 @@
         renderUnitPanels();
     }
 
-    function buildPanelData(unitData)
-    {
+    function buildPanelData(unitData) {
         var unitDataLength = unitData.units.length;
         var unitPanelData = { units: [] };
-        for (var i = 0; i < unitDataLength; i++)
-        {
+        for (var i = 0; i < unitDataLength; i++) {
             unitPanelData.units.push({
                 JobID: unitData.units[i].Unit.JobID, JobName: unitData.units[i].Unit.JobName, MaxHP: unitData.units[i].Unit.MaxHP, MaxMP: unitData.units[i].Unit.MaxMP,
                 Position: unitData.units[i].Unit.Position, Gender: unitData.units[i].Unit.GenderName
@@ -666,8 +592,7 @@
         return unitPanelData;
     }
 
-    function updateChartData(chart, jobData)
-    {
+    function updateChartData(chart, jobData) {
         selectedJobData = jobData;
         document.getElementById('job-name').innerHTML = selectedJobData.name;
         modifierChart.data.datasets[0].data = [parseInt(selectedJobData.hpm), parseInt(selectedJobData.mpm), parseInt(selectedJobData.spm), parseInt(selectedJobData.pam),
@@ -682,10 +607,8 @@
         baseEvasionChart.update();
     }
 
-    function initializeJobWheel()
-    {
-        if (!isMobile)
-        {
+    function initializeJobWheel() {
+        if (!isMobile) {
             piemenu = new wheelnav('piemenu');
             piemenu.centerX = window.innerWidth / 2 - window.innerWidth / 20;
             piemenu.centerY = window.innerHeight / 2 - window.innerHeight / 20;
@@ -697,8 +620,7 @@
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }
-        else
-        {
+        else {
             piemenu = new wheelnav('piemenu');
             piemenu.centerY = (window.screen.availHeight % 650) * Math.floor(window.screen.availHeight / 650);
             piemenu.selectedPercent = 1.1;
@@ -711,30 +633,25 @@
         }
     }
 
-    function setInitialJobData(jobData)
-    {
+    function setInitialJobData(jobData) {
         selectedJobData = jobData;
         document.getElementById('job-name').innerHTML = selectedJobData.name;
     }
 
-    function updateJobWheel(event)
-    {
+    function updateJobWheel(event) {
         var gender = event.currentTarget.attributes['data-gender'].nodeValue;
         renderJobSelectionPanel(gender);
-        if (gender === 'Male')
-        {
+        if (gender === 'Male') {
             document.getElementById('gender-male-button').setAttribute('selected', true);
             document.getElementById('gender-female-button').setAttribute('selected', false);
         }
-        else
-        {
+        else {
             document.getElementById('gender-male-button').setAttribute('selected', false);
             document.getElementById('gender-female-button').setAttribute('selected', true);
         }
     }
 
-    function initializeJobModifierChart()
-    {
+    function initializeJobModifierChart() {
         modifierChartCanvas = document.getElementById('job-modifier-chart');
         modifierChart = new Chart(modifierChartCanvas, {
             type: 'radar',
@@ -772,8 +689,7 @@
         modifierChart.resize();
     }
 
-    function initializeJobGrowthChart(data)
-    {
+    function initializeJobGrowthChart(data) {
         growthChartCanvas = document.getElementById('job-growth-chart');
         growthChart = new Chart(growthChartCanvas, {
             type: 'radar',
@@ -811,8 +727,7 @@
         growthChart.resize();
     }
 
-    function initializeJobMoveChart(data)
-    {
+    function initializeJobMoveChart(data) {
         baseMoveJumpChartCanvas = document.getElementById('job-move-chart');
         baseMoveJumpChart = new Chart(baseMoveJumpChartCanvas, {
             type: 'bar',
@@ -847,8 +762,7 @@
         baseMoveJumpChart.resize();
     }
 
-    function initializeJobEvasionChart()
-    {
+    function initializeJobEvasionChart() {
         baseEvasionChartCanvas = document.getElementById('job-evasion-chart');
         baseEvasionChart = new Chart(baseEvasionChartCanvas, {
             type: 'bar',
@@ -883,208 +797,161 @@
         baseEvasionChart.resize();
     }
 
-    function getModifierChart()
-    {
+    function getModifierChart() {
         return modifierChart;
     }
 
-    //function getJobTreeCanvasContext()
-    //{
-    //    if (!jobTreeCanvas)
-    //    {
-    //        jobTreeCanvas = document.getElementById('job-tree-canvas');
-    //    }
-
-    //    return jobTreeCanvas.getContext('2d');
-    //}
-
-    //function loadImages()
-    //{
-    //    for (var jobName in sources) {
-    //        images[jobName] = new Image();
-    //        images[jobName].src = sources[jobName];
-    //    }
-    //}
-
-    //function drawLine(context, x1, y1, x2, y2, lineWidth, colour, lineStyle)
-    //{
-    //    context.beginPath();
-    //    context.moveTo(x1, y1);
-    //    context.lineTo(x2, y2);
-    //    context.lineWidth = lineWidth;
-    //    context.strokeStyle = colour;
-    //    context.lineCap = lineStyle;
-    //    context.stroke();
-    //}
-
-    //function drawJobContainer(context, jobName, currentX, currentY)
-    //{
-    //    var jobImageWidth = 36;        
-    //    var jobImageHeight = 72;
-    //    var jobNameOffsetX = jobName.length * 2;
-    //    var jobNameOffsetY = jobName > 7 ? jobName.length * 15 : jobName.length * 7.5;
-    //    var jobImageOffsetX = jobNameOffsetX * 2;
-    //    var jobImageOffsetY = jobNameOffsetY * 1.5;
-
-    //    context.font = '40pt Altima';
-    //    context.drawImage(images[jobName.toLowerCase()], currentX, currentY, jobImageWidth, jobImageHeight);
-    //    context.fillText(jobName, currentX + jobNameOffsetX, currentY + jobNameOffsetY);
-    //    context.beginPath();
-    //    context.rect(currentX, currentY, 100, 150);
-    //    context.stroke();
-
-    //    return {
-    //        width: currentX + 100,
-    //        height: currentY + 150
-    //    }
-    //}
-
-    //function drawJobArc(context, currentX, currentY, lineLength, circleRadius, jobLevelRequirement, arcLength)
-    //{        
-    //    context.beginPath();
-    //    context.moveTo(currentX, currentY);
-    //    context.lineTo(currentX + lineLength, currentY);        
-    //    context.moveTo(currentX + lineLength, currentY);
-    //    context.stroke();
-    //    context.closePath();
-    //    context.beginPath();
-    //    context.arc(currentX + lineLength + circleRadius, currentY, circleRadius, 0, 360, false);
-    //    context.font = '80pt Altima';
-    //    context.fillText(jobLevelRequirement, currentX + lineLength + circleRadius / 2 + 7.5, currentY + 40);        
-    //    context.moveTo(currentX + lineLength + circleRadius * 2, currentY);
-    //    context.lineTo(currentX + lineLength + circleRadius * 2, currentY);
-    //    context.stroke();
-    //    context.closePath();
-    //    context.beginPath();
-    //    context.arc(currentX + lineLength + circleRadius * 2, currentY + circleRadius, circleRadius, 1.5 * Math.PI, 0, false);
-    //    context.stroke();
-    //    context.closePath();
-    //    context.beginPath();
-    //    context.moveTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius);
-    //    context.lineTo(currentX + lineLength + circleRadius * 3, currentY + circleRadius * 2)
-    //    context.closePath();
-    //    context.stroke();
-
-    //    return {
-    //        currentX: currentX + lineLength + circleRadius * 3,
-    //        currentY: currentY + circleRadius * 3
-    //    }
-    //}
-
-    //function drawJobTree()
-    //{
-    //    var currentCoordinates;
-    //    context = getJobTreeCanvasContext();
-    //    loadImages();
-    //    context.font = '40pt Altima';
-    //    context.lineWidth = 5;
-    //    var containerDimensions = drawJobContainer(context, 'Squire', 400, 200);
-    //    currentCoordinates = drawJobArc(context, containerDimensions.width, containerDimensions.height - 75, 50, 50, 2, 100);
-    //    currentCoordinates = drawJobContainer(context, 'Knight', currentCoordinates.currentX, currentCoordinates.currentY);
-    //}
-
-    //var LINE_END_STYLES = {
-    //    ROUND: 'round',
-    //    BUTT: 'butt',
-    //    SQUARE: 'square'
-    //}
-
-    simple_chart_config = {
+    squire_chart_config = {
         chart: {
-            container: "#tree-simple",
+            container: "#tree-squire-chart",
+            rootOrientation: "WEST",
             connectors: {
                 type: "step",
                 style: {
-                    "arrow-end": "",
+                    "arrow-end": "block",
                     "stroke-width": 3
-                },
-                stackIndent: 30
+                }
             },
             levelSeparation: 50,
-            siblingSeparation: 50
+            siblingSeparation: 5,
+            subTeeSeparation: 5
         },
-        
+
         nodeStructure: {
-            text: { name: "Onion Knight" },
-            image: "/Content/Images/Jobs/OnionKnight_Male_Standing.png",
+            text: { name: "Squire" },
+            image: "/Content/Images/Jobs/Squire_Male_Standing.png",
             children: [
                 {
-                    text: { name: "Squire" },
-                    image: "/Content/Images/Jobs/Squire_Male_Standing.png",
+                    text: { name: "Knight" },
+                    image: "/Content/Images/Jobs/Knight_Male_Standing.png",
                     children: [
                         {
-                            text: { name: "Knight" },
-                            image: "/Content/Images/Jobs/Knight_Male_Standing.png",
+                            innerHTML: "<img class='treant-job-multiple' src='/Content/Images/Jobs/Knight_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Monk_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Dragoon</p>",
                             children: [
                                 {
                                     text: { name: "Samurai" },
                                     image: "/Content/Images/Jobs/Samurai_Male_Standing.png",
-                                },
-                                {
-                                    text: { name: "Monk" },
-                                    image: "/Content/Images/Jobs/Monk_Male_Standing.png",
                                 }
                             ]
                         },
                         {
-                            text: { name: "Archer" },
-                            image: "/Content/Images/Jobs/Archer_Male_Standing.png",
+                            text: { name: "Monk" },
+                            image: "/Content/Images/Jobs/Monk_Male_Standing.png",
                             children: [
                                 {
-                                    text: { name: "Thief" },
-                                    image: "/Content/Images/Jobs/Thief_Male_Standing.png",
-                                },
+                                    text: { name: "Geomancer" },
+                                    image: "/Content/Images/Jobs/Geomancer_Male_Standing.png",
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {                    
+                    pseudo: true,
+                    children: [
+                        {
+                            innerHTML: "<img src='/Content/Images/Jobs/Knight_Male_Standing.png'><img src='/Content/Images/Jobs/Monk_Male_Standing.png'><img src='/Content/Images/Jobs/Geomancer_Male_Standing.png'><img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Geomancer/Archer/Thief/Dragoon</p>",
+                            childrenDropLevel: 1,
+                            children: [
                                 {
-                                    text: { name: "Ninja" },
-                                    image: "/Content/Images/Jobs/Ninja_Male_Standing.png",
+                                    text: { name: "Dancer" },
+                                    image: "/Content/Images/Jobs/Dancer_Female_Standing.png"
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: { name: "Chemist" },
-                    image: "/Content/Images/Jobs/Chemist_Male_Standing.png",
+                    text: { name: "Archer" },
+                    image: "/Content/Images/Jobs/Archer_Male_Standing.png",
                     children: [
                         {
-                            text: { name: "White Mage" },
-                            image: "/Content/Images/Jobs/WhiteMage_Male_Standing.png",
+                            text: { name: "Thief" },
+                            image: "/Content/Images/Jobs/Thief_Male_Standing.png",
                             children: [
                                 {
-                                    text: { name: "Mystic" },
-                                    image: "/Content/Images/Jobs/Mystic_Male_Standing.png",
-                                    children: [
-                                        {
-                                            text: { name: "Orator" },
-                                            image: "/Content/Images/Jobs/Orator_Male_Standing.png",
-                                        }
-                                    ]
-                                },
-                                {
-                                    text: { name: "Arithmetician" },
-                                    image: "/Content/Images/Jobs/Arithmetician_Male_Standing.png",
+                                    text: { name: "Dragoon" },
+                                    image: "/Content/Images/Jobs/Dragoon_Male_Standing.png"
                                 }
                             ]
                         },
                         {
-                            text: { name: "Black Mage" },
-                            image: "/Content/Images/Jobs/BlackMage_Male_Standing.png",
+                            innerHTML: "<img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/geomancer_Male_Standing.png'><p class='node-name'>Archer/Thief/Geomancer</p>",
                             children: [
                                 {
-                                    text: { name: "Time Mage" },
-                                    image: "/Content/Images/Jobs/TimeMage_Male_Standing.png",
-                                    children: [
-                                        {
-                                            text: { name: "Summoner" },
-                                            image: "/Content/Images/Jobs/Summoner_Male_Standing.png",
-                                            children: [
-                                                {
-                                                    text: { name: "Bard" },
-                                                    image: "/Content/Images/Jobs/Bard_Male_Standing.png",
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    text: { name: "Ninja" },
+                                    image: "/Content/Images/Jobs/Ninja_Male_Standing.png"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+
+    chemist_chart_config = {
+        chart: {
+            container: "#tree-chemist-chart",
+            rootOrientation: "WEST",
+            connectors: {
+                type: "step",
+                style: {
+                    "arrow-end": "block",
+                    "stroke-width": 3
+                }
+            },
+            levelSeparation: 50,
+            siblingSeparation: 5,
+            subTeeSeparation: 5
+        },
+        nodeStructure: {
+            text: { name: "Chemist" },
+            image: "/Content/Images/Jobs/Chemist_Male_Standing.png",
+            children: [
+                {
+                    text: { name: "White Mage" },
+                    image: "/Content/Images/Jobs/WhiteMage_Male_Standing.png",
+                    children: [
+                        {
+                            text: { name: "Mystic" },
+                            image: "/Content/Images/Jobs/Mystic_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Orator" },
+                                    image: "/Content/Images/Jobs/Orator_Male_Standing.png",
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    pseudo: true,
+                    children: [
+                        {
+                            innerHTML: "<img src='/Content/Images/Jobs/WhiteMage_Male_Standing.png'><img src='/Content/Images/Jobs/Mystic_Male_Standing.png'><img src='/Content/Images/Jobs/Orator_Male_Standing.png'><img src='/Content/Images/Jobs/BlackMage_Male_Standing.png'><img src='/Content/Images/Jobs/TimeMage_Male_Standing.png'><img src='/Content/Images/Jobs/Summoner_Male_Standing.png'><p class='node-name'>White Mage/Mystic/Orator/Black Mage /Time Mage/Summoner</p>",
+                            childrenDropLevel: 1,
+                            children: [
+                                {
+                                    text: { name: "Bard" },
+                                    image: "/Content/Images/Jobs/Bard_Male_Standing.png"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    text: { name: "Black Mage" },
+                    image: "/Content/Images/Jobs/BlackMage_Male_Standing.png",
+                    children: [
+                        {
+
+                            text: { name: "Time Mage" },
+                            image: "/Content/Images/Jobs/TimeMage_Male_Standing.png",
+                            children: [
+                                {
+                                    text: { name: "Summoner" },
+                                    image: "/Content/Images/Jobs/Summoner_Male_Standing.png"
                                 }
                             ]
                         }
@@ -1094,54 +961,53 @@
         }
     };
 
-    function drawTreantJobTree()
-    {
-        var chart = new Treant(simple_chart_config);
-    }
+function drawTreantJobTree() {
+    var squire_chart = new Treant(squire_chart_config);
+    var chemist_chart = new Treant(chemist_chart_config)
+}
 
-    function UnitDetails()
-    {
-        this.RawHP = 0,
-            this.RawMP = 0,
-            this.RawSpeedGrowth = 0,
-            this.RawPhysicalAttack = 0,
-            this.RawMagicalAttack = 0,
-            this.SecondaryAbilityJobID = 1,
-            this.ReactionAbilityID = 1,
-            this.SupportAbilityID = 1,
-            this.MovementAbilityID = 1,
-            this.WeaponID = 1,
-            this.Unit = {
-                UnitID: 0,
-                UnitName: '',
-                Position: 0,
-                Gender: 0,
-                GenderName: "Male",
-                JobID: 1,
-                JobName: 'Squire',
-                JobPortraitPath: '',
-                MaxHP: 0,
-                MaxMP: 0,
-                Level: 1,
-                Experience: 0,
-                Brave: 0,
-                Faith: 0
-            },
-            this.ShieldID = 1,
-            this.HeadID = 1,
-            this.BodyID = 1,
-            this.AccessoryID = 1
-    }
+function UnitDetails() {
+    this.RawHP = 0,
+        this.RawMP = 0,
+        this.RawSpeedGrowth = 0,
+        this.RawPhysicalAttack = 0,
+        this.RawMagicalAttack = 0,
+        this.SecondaryAbilityJobID = 1,
+        this.ReactionAbilityID = 1,
+        this.SupportAbilityID = 1,
+        this.MovementAbilityID = 1,
+        this.WeaponID = 1,
+        this.Unit = {
+            UnitID: 0,
+            UnitName: '',
+            Position: 0,
+            Gender: 0,
+            GenderName: "Male",
+            JobID: 1,
+            JobName: 'Squire',
+            JobPortraitPath: '',
+            MaxHP: 0,
+            MaxMP: 0,
+            Level: 1,
+            Experience: 0,
+            Brave: 0,
+            Faith: 0
+        },
+        this.ShieldID = 1,
+        this.HeadID = 1,
+        this.BodyID = 1,
+        this.AccessoryID = 1
+}
 
-    return {
-        getModifierChart: getModifierChart,
-        initializeJobWheel: initializeJobWheel,
-        setInitialJobData: setInitialJobData,
-        initializeJobModifierChart: initializeJobModifierChart,
-        initializeJobGrowthChart: initializeJobGrowthChart,
-        initializeJobMoveChart: initializeJobMoveChart,
-        initializeJobEvasionChart: initializeJobEvasionChart,
-        updateChartData: updateChartData,
-        drawJobTree: drawTreantJobTree
-    }
+return {
+    getModifierChart: getModifierChart,
+    initializeJobWheel: initializeJobWheel,
+    setInitialJobData: setInitialJobData,
+    initializeJobModifierChart: initializeJobModifierChart,
+    initializeJobGrowthChart: initializeJobGrowthChart,
+    initializeJobMoveChart: initializeJobMoveChart,
+    initializeJobEvasionChart: initializeJobEvasionChart,
+    updateChartData: updateChartData,
+    drawJobTree: drawTreantJobTree
+}
 }();

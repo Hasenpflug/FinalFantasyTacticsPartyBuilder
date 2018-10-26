@@ -2158,7 +2158,7 @@
         }
 
         this.tree = TreeStore.createTree( jsonConfig );
-        this.tree.positionTree( callback );
+        this.tree.positionTree(callback);
     };
 
     Treant.prototype.destroy = function() {
@@ -2167,5 +2167,4 @@
 
     /* expose constructor globally */
     window.Treant = Treant;
-
 })();
