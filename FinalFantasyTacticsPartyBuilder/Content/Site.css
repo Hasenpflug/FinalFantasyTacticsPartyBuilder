@@ -1299,25 +1299,65 @@ img {
     font-size: 30px;
     padding:1%;
     width: 90%;
-    height: 90%;
+    height: 95%;
     position:absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform:translate(-50%, -50%);
     box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.50);
 }
 
 .tree-chart {
-    position: relative;
-    display: block;
+    display: inline-block;
+    position:absolute !important;
     width: 95%;
-    margin: auto;
+    margin: 0;
+}
+
+#tree-squire-chart {
+    margin:0;
+    width:60%;
+}
+
+#tree-chemist-chart {
+    top:55%;
+    margin: 0;
+    width: 60%;
+}
+
+#tree-onion-chart {
+    left:60%;
+    margin: 0;
+    width: 30%;
+}
+
+#tree-mime-chart {
+    top:35%;
+    left: 60%;
+    margin: 0;
+    width: 30%;
+}
+
+#tree-dark-chart {
+    top: 70%;
+    left: 60%;
+    margin: 0;
+    width: 30%;
 }
 
 .node img {
     margin: 0 10px;
-    height:60px;
-    float:none !important;
+    height: 60px;
+    float: none !important;
+}
+
+.node p {
+    font-size:30px;
+}
+
+.job-treant-node-container img {
+    display: block;
+    margin: auto;
 }
 
 @media screen and (max-width: 600px) {

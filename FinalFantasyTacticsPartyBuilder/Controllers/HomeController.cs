@@ -378,7 +378,7 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
             return PartialView("~/Views/Home/_JobOverviewPartial.cshtml");
         }
 
-        public ActionResult GetJobTreePartial()
+        public ActionResult GetJobTreePartial(string gender)
         {
             return PartialView("~/Views/Home/_JobTreePartial.cshtml");
         }

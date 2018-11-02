@@ -113,7 +113,8 @@
     }
 
     function renderJobTreePartial() {
-        $.post('/Home/GetJobTreePartial', function (data) {
+        var gender = document.getElementById('gender-male-button').attributes['selected'].nodeValue === "true" ? 'Male' : 'Female';
+        $.post('/Home/GetJobTreePartial', { gender: gender }, function (data) {
             $('#party-overview-container').append(data);
         });
     }
@@ -185,10 +186,10 @@
             jobID: selectedJobData.Unit.JobID, equipmentCategoryID: equipmentCategoryID,
             isFemale: selectedJobData.Unit.Gender === 1 ? true : false
         }, function (data) {
-                $('#item-lookup-container').remove();
-                $('#item-selection').remove();
-                $('#unit-abilities').append(data);
-            });
+            $('#item-lookup-container').remove();
+            $('#item-selection').remove();
+            $('#unit-abilities').append(data);
+        });
     }
 
     function renderItemDetailsPartial(event) {
@@ -801,213 +802,47 @@
         return modifierChart;
     }
 
-    squire_chart_config = {
-        chart: {
-            container: "#tree-squire-chart",
-            rootOrientation: "WEST",
-            connectors: {
-                type: "step",
-                style: {
-                    "arrow-end": "block",
-                    "stroke-width": 3
-                }
+    function UnitDetails() {
+        this.RawHP = 0,
+            this.RawMP = 0,
+            this.RawSpeedGrowth = 0,
+            this.RawPhysicalAttack = 0,
+            this.RawMagicalAttack = 0,
+            this.SecondaryAbilityJobID = 1,
+            this.ReactionAbilityID = 1,
+            this.SupportAbilityID = 1,
+            this.MovementAbilityID = 1,
+            this.WeaponID = 1,
+            this.Unit = {
+                UnitID: 0,
+                UnitName: '',
+                Position: 0,
+                Gender: 0,
+                GenderName: "Male",
+                JobID: 1,
+                JobName: 'Squire',
+                JobPortraitPath: '',
+                MaxHP: 0,
+                MaxMP: 0,
+                Level: 1,
+                Experience: 0,
+                Brave: 0,
+                Faith: 0
             },
-            levelSeparation: 50,
-            siblingSeparation: 5,
-            subTeeSeparation: 5
-        },
-
-        nodeStructure: {
-            text: { name: "Squire" },
-            image: "/Content/Images/Jobs/Squire_Male_Standing.png",
-            children: [
-                {
-                    text: { name: "Knight" },
-                    image: "/Content/Images/Jobs/Knight_Male_Standing.png",
-                    children: [
-                        {
-                            innerHTML: "<img class='treant-job-multiple' src='/Content/Images/Jobs/Knight_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Monk_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Dragoon</p>",
-                            children: [
-                                {
-                                    text: { name: "Samurai" },
-                                    image: "/Content/Images/Jobs/Samurai_Male_Standing.png",
-                                }
-                            ]
-                        },
-                        {
-                            text: { name: "Monk" },
-                            image: "/Content/Images/Jobs/Monk_Male_Standing.png",
-                            children: [
-                                {
-                                    text: { name: "Geomancer" },
-                                    image: "/Content/Images/Jobs/Geomancer_Male_Standing.png",
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {                    
-                    pseudo: true,
-                    children: [
-                        {
-                            innerHTML: "<img src='/Content/Images/Jobs/Knight_Male_Standing.png'><img src='/Content/Images/Jobs/Monk_Male_Standing.png'><img src='/Content/Images/Jobs/Geomancer_Male_Standing.png'><img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Geomancer/Archer/Thief/Dragoon</p>",
-                            childrenDropLevel: 1,
-                            children: [
-                                {
-                                    text: { name: "Dancer" },
-                                    image: "/Content/Images/Jobs/Dancer_Female_Standing.png"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: { name: "Archer" },
-                    image: "/Content/Images/Jobs/Archer_Male_Standing.png",
-                    children: [
-                        {
-                            text: { name: "Thief" },
-                            image: "/Content/Images/Jobs/Thief_Male_Standing.png",
-                            children: [
-                                {
-                                    text: { name: "Dragoon" },
-                                    image: "/Content/Images/Jobs/Dragoon_Male_Standing.png"
-                                }
-                            ]
-                        },
-                        {
-                            innerHTML: "<img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/geomancer_Male_Standing.png'><p class='node-name'>Archer/Thief/Geomancer</p>",
-                            children: [
-                                {
-                                    text: { name: "Ninja" },
-                                    image: "/Content/Images/Jobs/Ninja_Male_Standing.png"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
+            this.ShieldID = 1,
+            this.HeadID = 1,
+            this.BodyID = 1,
+            this.AccessoryID = 1
     }
 
-    chemist_chart_config = {
-        chart: {
-            container: "#tree-chemist-chart",
-            rootOrientation: "WEST",
-            connectors: {
-                type: "step",
-                style: {
-                    "arrow-end": "block",
-                    "stroke-width": 3
-                }
-            },
-            levelSeparation: 50,
-            siblingSeparation: 5,
-            subTeeSeparation: 5
-        },
-        nodeStructure: {
-            text: { name: "Chemist" },
-            image: "/Content/Images/Jobs/Chemist_Male_Standing.png",
-            children: [
-                {
-                    text: { name: "White Mage" },
-                    image: "/Content/Images/Jobs/WhiteMage_Male_Standing.png",
-                    children: [
-                        {
-                            text: { name: "Mystic" },
-                            image: "/Content/Images/Jobs/Mystic_Male_Standing.png",
-                            children: [
-                                {
-                                    text: { name: "Orator" },
-                                    image: "/Content/Images/Jobs/Orator_Male_Standing.png",
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    pseudo: true,
-                    children: [
-                        {
-                            innerHTML: "<img src='/Content/Images/Jobs/WhiteMage_Male_Standing.png'><img src='/Content/Images/Jobs/Mystic_Male_Standing.png'><img src='/Content/Images/Jobs/Orator_Male_Standing.png'><img src='/Content/Images/Jobs/BlackMage_Male_Standing.png'><img src='/Content/Images/Jobs/TimeMage_Male_Standing.png'><img src='/Content/Images/Jobs/Summoner_Male_Standing.png'><p class='node-name'>White Mage/Mystic/Orator/Black Mage /Time Mage/Summoner</p>",
-                            childrenDropLevel: 1,
-                            children: [
-                                {
-                                    text: { name: "Bard" },
-                                    image: "/Content/Images/Jobs/Bard_Male_Standing.png"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: { name: "Black Mage" },
-                    image: "/Content/Images/Jobs/BlackMage_Male_Standing.png",
-                    children: [
-                        {
-
-                            text: { name: "Time Mage" },
-                            image: "/Content/Images/Jobs/TimeMage_Male_Standing.png",
-                            children: [
-                                {
-                                    text: { name: "Summoner" },
-                                    image: "/Content/Images/Jobs/Summoner_Male_Standing.png"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    };
-
-function drawTreantJobTree() {
-    var squire_chart = new Treant(squire_chart_config);
-    var chemist_chart = new Treant(chemist_chart_config)
-}
-
-function UnitDetails() {
-    this.RawHP = 0,
-        this.RawMP = 0,
-        this.RawSpeedGrowth = 0,
-        this.RawPhysicalAttack = 0,
-        this.RawMagicalAttack = 0,
-        this.SecondaryAbilityJobID = 1,
-        this.ReactionAbilityID = 1,
-        this.SupportAbilityID = 1,
-        this.MovementAbilityID = 1,
-        this.WeaponID = 1,
-        this.Unit = {
-            UnitID: 0,
-            UnitName: '',
-            Position: 0,
-            Gender: 0,
-            GenderName: "Male",
-            JobID: 1,
-            JobName: 'Squire',
-            JobPortraitPath: '',
-            MaxHP: 0,
-            MaxMP: 0,
-            Level: 1,
-            Experience: 0,
-            Brave: 0,
-            Faith: 0
-        },
-        this.ShieldID = 1,
-        this.HeadID = 1,
-        this.BodyID = 1,
-        this.AccessoryID = 1
-}
-
-return {
-    getModifierChart: getModifierChart,
-    initializeJobWheel: initializeJobWheel,
-    setInitialJobData: setInitialJobData,
-    initializeJobModifierChart: initializeJobModifierChart,
-    initializeJobGrowthChart: initializeJobGrowthChart,
-    initializeJobMoveChart: initializeJobMoveChart,
-    initializeJobEvasionChart: initializeJobEvasionChart,
-    updateChartData: updateChartData,
-    drawJobTree: drawTreantJobTree
-}
+    return {
+        getModifierChart: getModifierChart,
+        initializeJobWheel: initializeJobWheel,
+        setInitialJobData: setInitialJobData,
+        initializeJobModifierChart: initializeJobModifierChart,
+        initializeJobGrowthChart: initializeJobGrowthChart,
+        initializeJobMoveChart: initializeJobMoveChart,
+        initializeJobEvasionChart: initializeJobEvasionChart,
+        updateChartData: updateChartData
+    }
 }();
