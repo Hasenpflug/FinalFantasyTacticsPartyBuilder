@@ -16,5 +16,7 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public int JobLevelRequiredPsp { get; set; }
 
         public int JobLevelRequiredPsx { get; set; }
+
+        public virtual Job Job { get; set; }
     }
 }

@@ -380,7 +380,36 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
 
         public ActionResult GetJobTreePartial(string gender)
         {
-            return PartialView("~/Views/Home/_JobTreePartial.cshtml");
+            Dictionary<string, List<JobTreantNodeViewModel>> viewModels = new Dictionary<string, List<JobTreantNodeViewModel>>();
+            using (FFTContext context = new FFTContext())
+            {
+                List<Job> jobs = context.Jobs.ToList();
+
+                foreach (Job job in jobs)
+                {
+                    viewModels.Add(job.PspName, new List<JobTreantNodeViewModel>
+                    {
+                        new JobTreantNodeViewModel
+                        {
+                            Gender = gender,
+                            ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), job.JobID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), job.JobID))}_{(job.PspName.Contains("Dancer") ? "Female" : "Male")}_Standing.png",
+                            JobName = job.PspName, 
+                            //RequiredJobName = job.
+                        }
+                    });
+                    if (job.JobPrerequisites.Count > 0)
+                    {
+                        viewModels.Add(job.PspName + "Pre", job.JobPrerequisites.Select(m => new JobTreantNodeViewModel
+                        {
+                            Gender = gender,
+                            ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), m.JobRequiredID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), m.JobRequiredID))}_{gender}_Standing.png",
+                            JobName = jobs.Single(c => c.JobID == m.JobRequiredID).PspName 
+                        }).ToList());
+                    }
+                }
+            }
+
+            return PartialView("~/Views/Home/_JobTreePartial.cshtml", viewModels);
         }
 
         public ActionResult GetJobSelectionPartial(string gender)

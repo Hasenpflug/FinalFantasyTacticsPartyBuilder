@@ -55,5 +55,7 @@ namespace FinalFantasyTacticsPartyBuilder.Models
         public virtual ICollection<Ability> Abilities { get; set; }
 
         public virtual ICollection<JobItem> JobItems { get; set; }
+
+        public virtual ICollection<JobPrerequisites> JobPrerequisites { get; set; }
     }
 }

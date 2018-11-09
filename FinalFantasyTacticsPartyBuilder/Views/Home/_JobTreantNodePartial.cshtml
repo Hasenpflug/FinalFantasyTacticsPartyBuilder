@@ -1,3 +1,4 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models;
-@model JobTreantNodeViewModel
-<div class="job-treant-node-container"><img src="@Model.ImagePath"><p>@Model.JobName</p></div>
+@model List<JobTreantNodeViewModel>
+
+@foreach (var node in Model){<div class="job-treant-node-container"><img src="@node.ImagePath"><p>@node.JobName<img src="~/Content/Images/number_0.png" class="job-node-img" /></p></div>}

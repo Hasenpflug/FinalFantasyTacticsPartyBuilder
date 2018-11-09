@@ -68,16 +68,6 @@
             $.post('/Home/GetUnitOverviewPartial', unitData, function (data) {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
-                //if (isMobile)
-                //{
-                //    if (event.pageY > window.innerHeight / 1.5)
-                //    {
-                //        $('.unit-details-container').css({
-                //            top: '10%'
-                //        });
-                //    }
-                //}
-
                 renderMenuPanel(event, selectedUnitPosition);
             });
         }

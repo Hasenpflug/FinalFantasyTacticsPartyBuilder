@@ -1346,8 +1346,7 @@ img {
 }
 
 .node img {
-    margin: 0 10px;
-    height: 60px;
+    margin: 0 10px;    
     float: none !important;
 }
 
@@ -1355,9 +1354,21 @@ img {
     font-size:30px;
 }
 
-.job-treant-node-container img {
-    display: block;
-    margin: auto;
+.job-treant-node-container {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+    .job-treant-node-container img {
+        height: 60px;
+        display: block;
+        margin: auto;
+    }
+
+.job-node-img {
+    position: absolute;
+    transform:translate(50%, -200%);
+    height: 25px !important;
 }
 
 @media screen and (max-width: 600px) {

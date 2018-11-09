@@ -1,4 +1,5 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models;
+@model Dictionary<string, List<JobTreantNodeViewModel>>
 
 <div id="job-tree-container" class="menu">
     <strong id="job-tree-close">X</strong>
@@ -26,29 +27,25 @@
             subTeeSeparation: 5
         },
         nodeStructure: {
-            text: { name: "Squire" },
-            image: "/Content/Images/Jobs/Squire_Male_Standing.png",
+            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Squire"]).ToString().Replace('"', '\'')))",
             children: [
                 {
-                    text: { name: "Knight" },
-                    image: "/Content/Images/Jobs/Knight_Male_Standing.png",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Knight"]).ToString().Replace('"', '\'')))",
                     children: [
                         {
-                            innerHTML: "<img class='treant-job-multiple' src='/Content/Images/Jobs/Knight_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Monk_Male_Standing.png'><img class='treant-job-multiple' src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Dragoon</p>",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["SamuraiPre"]).ToString().Replace('"', '\'')))",
                             children: [
                                 {
-                                    text: { name: "Samurai" },
-                                    image: "/Content/Images/Jobs/Samurai_Male_Standing.png",
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Samurai"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         },
                         {
-                            text: { name: "Monk" },
-                            image: "/Content/Images/Jobs/Monk_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Monk"]).ToString().Replace('"', '\'')))",
                             children: [
                                 {
-                                    text: { name: "Geomancer" },
-                                    image: "/Content/Images/Jobs/Geomancer_Male_Standing.png",
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Geomancer"]).ToString().Replace('"', '\'')))",
+
                                 }
                             ]
                         }
@@ -58,37 +55,34 @@
                     pseudo: true,
                     children: [
                         {
-                            innerHTML: "<img src='/Content/Images/Jobs/Knight_Male_Standing.png'><img src='/Content/Images/Jobs/Monk_Male_Standing.png'><img src='/Content/Images/Jobs/Geomancer_Male_Standing.png'><img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><p class='node-name'>Knight/Monk/Geomancer/Archer/Thief/Dragoon</p>",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["DancerPre"]).ToString().Replace('"', '\'')))",
+                            
                             childrenDropLevel: 1,
                             children: [
                                 {
-                                    text: { name: "Dancer" },
-                                    image: "/Content/Images/Jobs/Dancer_Female_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Dancer"]).ToString().Replace('"', '\'')))",                                    
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: { name: "Archer" },
-                    image: "/Content/Images/Jobs/Archer_Male_Standing.png",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Archer"]).ToString().Replace('"', '\'')))",
                     children: [
                         {
-                            text: { name: "Thief" },
-                            image: "/Content/Images/Jobs/Thief_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Thief"]).ToString().Replace('"', '\'')))",
                             children: [
                                 {
-                                    text: { name: "Dragoon" },
-                                    image: "/Content/Images/Jobs/Dragoon_Male_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Dragoon"]).ToString().Replace('"', '\'')))",
+
                                 }
                             ]
                         },
                         {
-                            innerHTML: "<img src='/Content/Images/Jobs/Archer_Male_Standing.png'><img src='/Content/Images/Jobs/Thief_Male_Standing.png'><img src='/Content/Images/Jobs/geomancer_Male_Standing.png'><p class='node-name'>Archer/Thief/Geomancer</p>",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["NinjaPre"]).ToString().Replace('"', '\'')))",                            
                             children: [
                                 {
-                                    text: { name: "Ninja" },
-                                    image: "/Content/Images/Jobs/Ninja_Male_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Ninja"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         }
@@ -114,24 +108,16 @@
             subTeeSeparation: 5
         },
         nodeStructure: {
-            text: { name: "Chemist" },
-            image: "/Content/Images/Jobs/Chemist_Male_Standing.png",
+            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Chemist"]).ToString().Replace('"', '\'')))",
             children: [
                 {
-                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml",
-                                new JobTreantNodeViewModel { Gender = FinalFantasyTacticsPartyBuilder.Models.Gender.Male,
-                                    ImagePath = @"/Content/Images/Jobs/WhiteMage_Male_Standing.png", JobName = "White Mage" }).ToString().Replace('"', '\'')))",
-                    //innerHTML: "<div class='job-treant-node-container'><img src='/Content/Images/Jobs/WhiteMage_Male_Standing.png'><p>White Mage</p></div>",
-                    //text: { name: "White Mage" },
-                    //image: "/Content/Images/Jobs/WhiteMage_Male_Standing.png",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["White Mage"]).ToString().Replace('"', '\'')))",
                     children: [
                         {
-                            text: { name: "Mystic" },
-                            image: "/Content/Images/Jobs/Mystic_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Mystic"]).ToString().Replace('"', '\'')))",                            
                             children: [
                                 {
-                                    text: { name: "Orator" },
-                                    image: "/Content/Images/Jobs/Orator_Male_Standing.png",
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Orator"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         }
@@ -141,11 +127,10 @@
                     pseudo: true,
                     children: [
                         {
-                            innerHTML: "<img src='/Content/Images/Jobs/WhiteMage_Male_Standing.png'><img src='/Content/Images/Jobs/Mystic_Male_Standing.png'><img src='/Content/Images/Jobs/Orator_Male_Standing.png'><img src='/Content/Images/Jobs/BlackMage_Male_Standing.png'><img src='/Content/Images/Jobs/TimeMage_Male_Standing.png'><img src='/Content/Images/Jobs/Summoner_Male_Standing.png'><p class='node-name'>White Mage/Mystic/Orator/Black Mage /Time Mage/Summoner</p>",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["BardPre"]).ToString().Replace('"', '\'')))",                            
                             children: [
                                 {
-                                    text: { name: "Bard" },
-                                    image: "/Content/Images/Jobs/Bard_Male_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Bard"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         }
@@ -155,28 +140,23 @@
                     pseudo: true,
                     children: [
                         {
-                            innerHTML: "<img src='/Content/Images/Jobs/WhiteMage_Male_Standing.png'><img src='/Content/Images/Jobs/Mystic_Male_Standing.png'><img src='/Content/Images/Jobs/BlackMage_Male_Standing.png'><img src='/Content/Images/Jobs/TimeMage_Male_Standing.png'><p class='node-name'>White Mage/Mystic/Black Mage /Time Mage</p>",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["ArithmeticianPre"]).ToString().Replace('"', '\'')))",                            
                             children: [
                                 {
-                                    text: { name: "Arithmetician" },
-                                    image: "/Content/Images/Jobs/Arithmetician_Male_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Arithmetician"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: { name: "Black Mage" },
-                    image: "/Content/Images/Jobs/BlackMage_Male_Standing.png",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Black Mage"]).ToString().Replace('"', '\'')))",
                     children: [
                         {
-
-                            text: { name: "Time Mage" },
-                            image: "/Content/Images/Jobs/TimeMage_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Time Mage"]).ToString().Replace('"', '\'')))",
                             children: [
                                 {
-                                    text: { name: "Summoner" },
-                                    image: "/Content/Images/Jobs/Summoner_Male_Standing.png"
+                                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Summoner"]).ToString().Replace('"', '\'')))",
                                 }
                             ]
                         }
@@ -205,11 +185,10 @@
         nodeStructure: {
             children: [
                 {
-                    innerHTML: "<img src='/Content/Images/Jobs/Squire_Male_Standing.png'><img src='/Content/Images/Jobs/Chemist_Male_Standing.png'><p>Squire/Chemist</p>",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Onion Knight (8)Pre"]).ToString().Replace('"', '\'')))",                    
                     children: [
                         {
-                            text: { name: "Onion Knight" },
-                            image: "/Content/Images/Jobs/OnionKnight_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Onion Knight (8)"]).ToString().Replace('"', '\'')))",
                         }
                     ]
                 }
@@ -236,11 +215,10 @@
         nodeStructure: {
             children: [
                 {
-                    innerHTML: "<img src='/Content/Images/Jobs/Squire_Male_Standing.png'><img src='/Content/Images/Jobs/Chemist_Male_Standing.png'><img src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><img src='/Content/Images/Jobs/Geomancer_Male_Standing.png'><img src='/Content/Images/Jobs/Orator_Male_Standing.png'><img src='/Content/Images/Jobs/Summoner_Male_Standing.png'><p class='node-name'>Squire/Chemist/Dragoon/Geomancer/Orator/Summoner</p>",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["MimePre"]).ToString().Replace('"', '\'')))",                    
                     children: [
                         {
-                            text: { name: "Mime" },
-                            image: "/Content/Images/Jobs/Mime_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Mime"]).ToString().Replace('"', '\'')))",
                         }
                     ]
                 }
@@ -267,11 +245,10 @@
         nodeStructure: {
             children: [
                 {
-                    innerHTML: "<img src='/Content/Images/Jobs/BlackMage_Male_Standing.png'><img src='/Content/Images/Jobs/Knight_Male_Standing.png'><img src='/Content/Images/Jobs/Samurai_Male_Standing.png'><img src='/Content/Images/Jobs/Dragoon_Male_Standing.png'><img src='/Content/Images/Jobs/Geomancer_Male_Standing.png'><img src='/Content/Images/Jobs/Ninja_Male_Standing.png'><p class='node-name'>Black Mage/Knight/Samurai/Dragoon/Geomancer/Ninja</p>",
+                    innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Dark KnightPre"]).ToString().Replace('"', '\'')))",                    
                     children: [
                         {
-                            text: { name: "Dark Knight" },
-                            image: "/Content/Images/Jobs/DarkKnight_Male_Standing.png",
+                            innerHTML: "@(Html.Raw(Html.Partial(@"~\Views\Home\_JobTreantNodePartial.cshtml", Model["Dark Knight"]).ToString().Replace('"', '\'')))",
                         }
                     ]
                 }
