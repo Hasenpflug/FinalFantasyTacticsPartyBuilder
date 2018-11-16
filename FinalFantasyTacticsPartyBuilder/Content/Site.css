@@ -1355,6 +1355,7 @@ img {
 }
 
 .job-treant-node-container {
+    position:relative;
     margin: 0 5px;
     display: inline-block;
 }
@@ -1367,7 +1368,8 @@ img {
 
 .job-node-img {
     position: absolute;
-    transform:translate(50%, -200%);
+    left:50%;
+    transform: translate(-50%, -250%);
     height: 25px !important;
 }
 

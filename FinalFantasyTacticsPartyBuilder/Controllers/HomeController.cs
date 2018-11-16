@@ -392,9 +392,10 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         new JobTreantNodeViewModel
                         {
                             Gender = gender,
-                            ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), job.JobID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), job.JobID))}_{(job.PspName.Contains("Dancer") ? "Female" : "Male")}_Standing.png",
-                            JobName = job.PspName, 
-                            //RequiredJobName = job.
+                            ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), job.JobID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), job.JobID))}_" +
+                            $"{(job.PspName.Contains("Dancer") ? "Female" : job.PspName.Contains("Bard") ? "Male" : gender)}_Standing.png",
+                            JobName = job.PspName,
+                            JobPrerequisiteNames = String.Concat(job.JobPrerequisites.Select(m => $"Level {m.JobLevelRequiredPsp} {jobs.Single(c => c.JobID == m.JobRequiredID).PspName}"))
                         }
                     });
                     if (job.JobPrerequisites.Count > 0)
@@ -403,7 +404,9 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                         {
                             Gender = gender,
                             ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), m.JobRequiredID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), m.JobRequiredID))}_{gender}_Standing.png",
-                            JobName = jobs.Single(c => c.JobID == m.JobRequiredID).PspName 
+                            JobName = jobs.Single(c => c.JobID == m.JobRequiredID).PspName,
+                            RequiredJobLevelPath = m.JobLevelRequiredPsp > 0 ?  $"/Content/Images/number_{m.JobLevelRequiredPsp}.png" : $"/Content/Images/star.png",
+                            JobPrerequisiteNames = $"Job Prerequisites: { String.Concat(m.Job.JobPrerequisites.Select(c => $"Level {c.JobLevelRequiredPsp} {c.Job.PspName}"))}"
                         }).ToList());
                     }
                 }

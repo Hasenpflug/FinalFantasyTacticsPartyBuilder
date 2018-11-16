@@ -1,4 +1,5 @@
 ﻿@using FinalFantasyTacticsPartyBuilder.View_Models;
 @model List<JobTreantNodeViewModel>
 
-@foreach (var node in Model){<div class="job-treant-node-container"><img src="@node.ImagePath"><p>@node.JobName<img src="~/Content/Images/number_0.png" class="job-node-img" /></p></div>}
+@foreach (var node in Model)
+{<div class="job-treant-node-container fft-tooltip"><span class="fft-tooltip-container">@node.JobPrerequisiteNames</span><img src="@node.ImagePath"><p>@node.JobName</p>@{ if (!String.IsNullOrEmpty(node.RequiredJobLevelPath)) { <img src ="@node.RequiredJobLevelPath" class="job-node-img" />}}</div>}

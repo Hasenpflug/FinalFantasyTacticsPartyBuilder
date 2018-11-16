@@ -12,6 +12,7 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
         public string ImagePath { get; set; }
         public string JobName { get; set; }
         public string RequiredJobName { get; set; }
-        public int RequiredJobLevel { get; set; }
+        public string RequiredJobLevelPath { get; set; }
+        public string JobPrerequisiteNames { get; set; }
     }
 }
