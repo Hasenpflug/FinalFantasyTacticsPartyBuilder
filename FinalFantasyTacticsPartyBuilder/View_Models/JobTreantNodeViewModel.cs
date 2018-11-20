@@ -8,11 +8,11 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 {
     public class JobTreantNodeViewModel
     {
-        public string Gender { get; set; }
+        public string RequiredGender { get; set; }
         public string ImagePath { get; set; }
         public string JobName { get; set; }
         public string RequiredJobName { get; set; }
         public string RequiredJobLevelPath { get; set; }
-        public string JobPrerequisiteNames { get; set; }
+        public List<string> JobPrerequisiteNames { get; set; }
     }
 }

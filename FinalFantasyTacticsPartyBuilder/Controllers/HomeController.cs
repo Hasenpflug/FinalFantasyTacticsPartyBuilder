@@ -391,22 +391,23 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     {
                         new JobTreantNodeViewModel
                         {
-                            Gender = gender,
+                            RequiredGender = job.IsMaleOnly ? "Male" : job.IsFemaleOnly ? "Female" : "",
                             ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), job.JobID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), job.JobID))}_" +
                             $"{(job.PspName.Contains("Dancer") ? "Female" : job.PspName.Contains("Bard") ? "Male" : gender)}_Standing.png",
                             JobName = job.PspName,
-                            JobPrerequisiteNames = String.Concat(job.JobPrerequisites.Select(m => $"Level {m.JobLevelRequiredPsp} {jobs.Single(c => c.JobID == m.JobRequiredID).PspName}"))
+                            JobPrerequisiteNames = job.JobPrerequisites.Select(m => (m.JobLevelRequiredPsp > -1 ? $"Level {m.JobLevelRequiredPsp} " : "Mastered ") + $"{jobs.Single(c => c.JobID == m.JobRequiredID).PspName}").ToList()
                         }
                     });
                     if (job.JobPrerequisites.Count > 0)
                     {
                         viewModels.Add(job.PspName + "Pre", job.JobPrerequisites.Select(m => new JobTreantNodeViewModel
                         {
-                            Gender = gender,
+                            RequiredGender = job.IsMaleOnly ? "Male" : job.IsFemaleOnly ? "Female" : "",
                             ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), m.JobRequiredID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), m.JobRequiredID))}_{gender}_Standing.png",
                             JobName = jobs.Single(c => c.JobID == m.JobRequiredID).PspName,
-                            RequiredJobLevelPath = m.JobLevelRequiredPsp > 0 ?  $"/Content/Images/number_{m.JobLevelRequiredPsp}.png" : $"/Content/Images/star.png",
-                            JobPrerequisiteNames = $"Job Prerequisites: { String.Concat(m.Job.JobPrerequisites.Select(c => $"Level {c.JobLevelRequiredPsp} {c.Job.PspName}"))}"
+                            RequiredJobLevelPath = m.JobLevelRequiredPsp > 0 ? $"/Content/Images/number_{m.JobLevelRequiredPsp}.png" : $"/Content/Images/star.png",
+                            JobPrerequisiteNames = jobs.Single(c => m.JobRequiredID == c.JobID).JobPrerequisites.Select(x => $"Level {x.JobLevelRequiredPsp} {jobs.Single(v => v.JobID == x.JobRequiredID).PspName}").ToList()
+
                         }).ToList());
                     }
                 }

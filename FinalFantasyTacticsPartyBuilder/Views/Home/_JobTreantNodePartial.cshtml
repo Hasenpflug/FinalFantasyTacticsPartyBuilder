@@ -2,4 +2,5 @@
 @model List<JobTreantNodeViewModel>
 
 @foreach (var node in Model)
-{<div class="job-treant-node-container fft-tooltip"><span class="fft-tooltip-container">@node.JobPrerequisiteNames</span><img src="@node.ImagePath"><p>@node.JobName</p>@{ if (!String.IsNullOrEmpty(node.RequiredJobLevelPath)) { <img src ="@node.RequiredJobLevelPath" class="job-node-img" />}}</div>}
+{
+    int nameCount = node.JobPrerequisiteNames?.Count ?? 0; <div class="job-treant-node-container fft-tooltip">@if (nameCount > 0) {<span class="fft-tooltip-container top">Required<br> @if (!String.IsNullOrEmpty(node.RequiredGender)) { @node.RequiredGender <br> } @for (int i = 0; i < nameCount; i++) { @node.JobPrerequisiteNames[i] if (i != nameCount - 1) {<br>} }</span>}<img src="@node.ImagePath"><p>@node.JobName</p>@{ if (!String.IsNullOrEmpty(node.RequiredJobLevelPath)){ <img src ="@node.RequiredJobLevelPath" class="job-node-img" />}}</div>}
