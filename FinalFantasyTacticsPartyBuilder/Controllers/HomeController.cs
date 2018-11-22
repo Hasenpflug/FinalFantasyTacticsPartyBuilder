@@ -402,7 +402,6 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                     {
                         viewModels.Add(job.PspName + "Pre", job.JobPrerequisites.Select(m => new JobTreantNodeViewModel
                         {
-                            RequiredGender = job.IsMaleOnly ? "Male" : job.IsFemaleOnly ? "Female" : "",
                             ImagePath = $"/Content/Images/Jobs/{(Enum.GetName(typeof(Jobs), m.JobRequiredID).Contains("Onion") ? "OnionKnight" : Enum.GetName(typeof(Jobs), m.JobRequiredID))}_{gender}_Standing.png",
                             JobName = jobs.Single(c => c.JobID == m.JobRequiredID).PspName,
                             RequiredJobLevelPath = m.JobLevelRequiredPsp > 0 ? $"/Content/Images/number_{m.JobLevelRequiredPsp}.png" : $"/Content/Images/star.png",
