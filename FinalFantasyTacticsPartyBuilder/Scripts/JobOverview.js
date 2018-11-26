@@ -68,6 +68,13 @@
             $.post('/Home/GetUnitOverviewPartial', unitData, function (data) {
                 $('.unit-details-container').remove();
                 $('#party-overview-container').append(data);
+                var windowScrollOffset = (document.getElementsByClassName('body-content')[0].scrollTop / window.innerHeight) * 100;
+                var rowIndex = Math.trunc(selectedUnitPosition / 4) * 30 + 10 - windowScrollOffset;
+                var bottomCss = rowIndex > 40 ? 62 : 8;
+                $('.unit-details-container').css({
+                    bottom: bottomCss + '%'
+                });
+                
                 renderMenuPanel(event, selectedUnitPosition);
             });
         }
