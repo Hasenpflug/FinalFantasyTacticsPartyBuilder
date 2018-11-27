@@ -119,7 +119,8 @@ img {
 
     .fft-tooltip .fft-tooltip-container {
         white-space: nowrap;
-        font-size: 40px;
+        overflow:auto;
+        font-size: 30px;
         visibility: hidden;
         background-color: black;
         color: white;
@@ -127,7 +128,8 @@ img {
         padding: 5px;
         border-radius: 10px;
         position: absolute;
-        left: -50%;
+        left:50%;
+        transform: translate(-50%);
         z-index: 1;
     }
 
@@ -1299,49 +1301,42 @@ img {
     font-size: 30px;
     padding:1%;
     width: 90%;
-    height: 95%;
+    height: 90%;
+    top:5%;
     position:absolute;
-    left: 50%;
-    top: 50%;
-    transform:translate(-50%, -50%);
     box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.50);
 }
 
 .tree-chart {
     display: inline-block;
     position:absolute !important;
-    width: 95%;
     margin: 0;
+    overflow:visible !important;
 }
 
 #tree-squire-chart {
-    margin:0;
-    width:60%;
+    top: 45%;
+    width: 60%;
 }
 
 #tree-chemist-chart {
-    top:55%;
-    margin: 0;
     width: 60%;
 }
 
 #tree-onion-chart {
     left:60%;
-    margin: 0;
     width: 30%;
 }
 
 #tree-mime-chart {
     top:35%;
     left: 60%;
-    margin: 0;
     width: 30%;
 }
 
 #tree-dark-chart {
     top: 70%;
     left: 60%;
-    margin: 0;
     width: 30%;
 }
 
@@ -1372,6 +1367,17 @@ img {
     transform: translate(-50%, -250%);
     height: 25px !important;
 }
+
+.not-implemented a {
+    opacity: 0.3;
+    cursor: default !important;
+}
+
+
+.not-implemented:before {
+    content: ' ' !important;
+}
+
 
 @media screen and (max-width: 600px) {
     .menu {
@@ -1509,9 +1515,10 @@ img {
     }
 
     #job-evasion-chart-container {
+        height:20%;
         width: 40%;
         left: 55%;
-        top: 72.5%;
+        top: 77.5%;
     }
 
     #job-details-container, #job-gender-container, #job-confirm-container {
@@ -1609,5 +1616,45 @@ img {
 
     #unit-equipment-item-icons, #unit-equipment-slot-icons, #unit-equipment-item-names {
         width: auto;
+    }
+
+    #job-tree-container {
+        overflow:scroll;
+    }
+
+    #tree-chemist-chart {
+        top:10%;
+        width:800px;
+    }
+
+    #tree-squire-chart {
+        top: 90%;
+        width: 800px;
+    }
+
+    #tree-onion-chart {
+        top: 10%;
+        left: 1000px;
+        width: 200px;
+    }
+
+    #tree-mime-chart {
+        top: 60%;
+        left: 800px;
+        width: 600px;
+    }
+
+    #tree-dark-chart {
+        top: 110%;
+        left: 800px;
+        width: 600px;
+    }
+
+    #job-tree-close {
+        position: fixed;
+        right:10%;
+        top:5%;
+        transform:translate(0, 50%);
+        z-index: 9001;
     }
 }
