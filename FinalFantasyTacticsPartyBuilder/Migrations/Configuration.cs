@@ -9515,11 +9515,11 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
 
             #region Names
 
-            string serverPath = @"D:\home\site\wwwroot\";
+            string serverPath = @"C:\Network Share\Web Deploy\";
             string homePath = @"C:\Users\Braedon\Desktop\Braedon's Crap\Programming\FinalFantasyTacticsPartyBuilder\FinalFantasyTacticsPartyBuilder\";
             string workPath = @"C:\Source\FFT Party Builder\FinalFantasyTacticsPartyBuilder-master\FinalFantasyTacticsPartyBuilder\";
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTMaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9529,7 +9529,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTFemaleNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTFemaleNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
@@ -9539,7 +9539,7 @@ namespace FinalFantasyTacticsPartyBuilder.Migrations
                 });
             }
 
-            foreach (string maleName in File.ReadAllLines(workPath + "FFTMonsterNames.txt"))
+            foreach (string maleName in File.ReadAllLines(serverPath + "FFTMonsterNames.txt"))
             {
                 context.UnitNames.AddOrUpdate(m => m.Name,
                 new UnitName
