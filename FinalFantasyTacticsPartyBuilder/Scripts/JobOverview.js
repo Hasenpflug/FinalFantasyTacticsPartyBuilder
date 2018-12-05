@@ -2,13 +2,6 @@
     var piemenu, modifierChartCanvas, modifierChart, growthChartCanvas, growthChart, baseMoveJumpChartCanvas, baseMoveJumpChart, baseEvasionChartCanvas, baseEvasionChart,
         selectedJobData, selectedUnitPosition, isMobile, navigator, jobTreeCanvas;
 
-    var sources = {
-        squire: '/Content/Images/Jobs/Squire_Male_Standing.png',
-        knight: '/Content/Images/Jobs/Knight_Male_Standing.png'
-    }
-
-    var images = {};
-
     $(document).ready(function () {
         navigator = $('#navigator-previous');
         navigator.hide();
@@ -114,6 +107,8 @@
         $.post('/Home/GetJobTreePartial', { gender: gender }, function (data) {
             $('#party-overview-container').append(data);
         });
+
+        displayJobTreeScroll();
     }
 
     function renderJobSelectionPanel(gender) {
@@ -568,6 +563,20 @@
         });
     }
 
+    function displayJobTreeScroll() {
+        var scrollContainer = document.getElementById('job-overview-container');
+        scrollContainer.onscroll = function () {
+            var scrollRight = document.getElementById('job-overview-scroll-right');
+            var scrollBottom = document.getElementById('job-overview-scroll-bottom');
+            if (scrollContainer.scrollLeft != scrollContainer.scrollWidth) {
+                scrollRight.style.display = 'normal';
+            }
+            else {
+                scrollRight.style.display = 'none';
+            }
+        };
+    }
+
     function dismissUnit() {
         var unitData = getUnitData();
         unitData.units.splice(selectedUnitPosition, 1);
@@ -620,7 +629,7 @@
         }
         else {
             piemenu = new wheelnav('piemenu');
-            piemenu.centerY = (window.screen.availHeight % 650) * Math.floor(window.screen.availHeight / 650);
+            piemenu.centerY = window.screen.availHeight <= 600 ? -25 : window.screen.availHeight <= 700 ? 25 : 50;
             piemenu.selectedPercent = 1.1;
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
@@ -663,7 +672,7 @@
                     pointBackgroundColor: 'white',
                     pointBorderColor: 'yellow',
                     defaultFontFamily: 'Altima',
-                    defaultFontSize: '30'
+                    defaultFontSize: '20'
                 }]
             },
             options: {
@@ -743,7 +752,7 @@
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 5,
+                            max: 4,
                         }
                     }],
                     xAxes: [{
@@ -778,7 +787,7 @@
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 40,
+                            max: 30,
                         }
                     }],
                     xAxes: [{

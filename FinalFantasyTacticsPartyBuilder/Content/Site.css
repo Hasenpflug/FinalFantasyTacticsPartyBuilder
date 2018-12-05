@@ -635,8 +635,9 @@ img {
 }
 
 #job-details-container, #job-gender-container, #job-confirm-container {
+    top:85%;
     display: inline-block;
-    position: relative;
+    position: absolute;
     text-align: center;
     vertical-align: middle;
     padding: 0.5vw;
@@ -684,10 +685,11 @@ img {
 
 #job-gender-container {
     width: 15vw;
+    margin-left: 48vw;
 }
 
 #job-confirm-container {
-    margin-left: 1vw;
+    margin-left: 66vw;
     width: 25vw;
 }
 
@@ -1378,6 +1380,23 @@ img {
     content: ' ' !important;
 }
 
+#job-overview-scroll-right {
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 15%;
+    position: sticky;
+    top:15%;
+    left:85%;
+}
+
+#job-overview-scroll-bottom {
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 7.5%;
+    width: 70%;
+    position: sticky;
+    left: 15%;
+    top: 92.5%;
+}
 
 @media screen and (max-width: 600px) {
     .menu {
@@ -1496,27 +1515,26 @@ img {
         height: 50%;
     }
 
+    .job-chart-container {
+        width: 40% !important;
+        height: 20% !important;
+    }
+
     #job-modifier-chart-container {
-        width: 45%;
         top: 2.5%;
         height: 25%;
     }
 
     #job-move-chart-container {
-        width: 40%;
         top: 2.5%;
         left: 55%;
     }
 
     #job-growth-chart-container {
-        width: 45%;
-        height: 25%;
-        top: 72.5%;
+       top: 77.5%;
     }
 
     #job-evasion-chart-container {
-        height:20%;
-        width: 40%;
         left: 55%;
         top: 77.5%;
     }
@@ -1529,7 +1547,7 @@ img {
     }
 
     #job-details-container {
-        top: 29%;
+        top: 25%;
         left: 30%;
         margin: 0;
     }
