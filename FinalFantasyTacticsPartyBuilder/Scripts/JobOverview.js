@@ -35,6 +35,8 @@
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
         $('body').on('click', '#job-tree-button', renderJobTreePartial);
+        //$('body').on('scroll', '#job-tree-container', displayJobTreeScroll);
+        $('.body-content').on('scroll', '#job-tree-container', displayJobTreeScroll);
     });
 
     function renderUnitPanels() {
@@ -67,7 +69,7 @@
                 $('.unit-details-container').css({
                     bottom: bottomCss + '%'
                 });
-                
+
                 renderMenuPanel(event, selectedUnitPosition);
             });
         }
@@ -107,8 +109,6 @@
         $.post('/Home/GetJobTreePartial', { gender: gender }, function (data) {
             $('#party-overview-container').append(data);
         });
-
-        displayJobTreeScroll();
     }
 
     function renderJobSelectionPanel(gender) {
@@ -564,17 +564,18 @@
     }
 
     function displayJobTreeScroll() {
+        console.log('Hit');
         var scrollContainer = document.getElementById('job-overview-container');
-        scrollContainer.onscroll = function () {
-            var scrollRight = document.getElementById('job-overview-scroll-right');
-            var scrollBottom = document.getElementById('job-overview-scroll-bottom');
-            if (scrollContainer.scrollLeft != scrollContainer.scrollWidth) {
-                scrollRight.style.display = 'normal';
-            }
-            else {
-                scrollRight.style.display = 'none';
-            }
-        };
+        var scrollRight = document.getElementById('job-overview-scroll-right');
+        var scrollBottom = document.getElementById('job-overview-scroll-bottom');
+        
+
+        if (scrollContainer.scrollLeft != scrollContainer.scrollWidth) {
+            scrollRight.style.visibility = 'visible';
+        }
+        else {
+            scrollRight.style.visibility = 'hidden';
+        }
     }
 
     function dismissUnit() {
