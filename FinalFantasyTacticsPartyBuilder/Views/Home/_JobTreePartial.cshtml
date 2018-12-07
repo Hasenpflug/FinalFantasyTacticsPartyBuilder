@@ -2,18 +2,32 @@
 @model Dictionary<string, List<JobTreantNodeViewModel>>
 
 <div id="job-tree-container" class="menu">
-    <div id="job-overview-scroll-right">
+    <div id="job-overview-scroll-right" class="job-overview-scroll-indicator">
         <svg width="25" height="300" style="opacity:0.5">
             <polyline points="25,100 0,75 0,125" />
             <polyline points="25,175 0,150 0,200" />
             <polyline points="25,250 0,225 0,275" />
         </svg>
     </div>
-    <div id="job-overview-scroll-bottom">
+    <div id="job-overview-scroll-bottom" class="job-overview-scroll-indicator">
         <svg width="200" height="25" style="opacity:0.5">
             <polyline points="0,0 25,25 50,0" />
             <polyline points="75,0 100,25 125,0" />
             <polyline points="175,25 150,0 200,0" />
+        </svg>
+    </div>
+    <div id="job-overview-scroll-top" class="job-overview-scroll-indicator">
+        <svg width="200" height="25" style="opacity:0.5">
+            <polyline points="0,25 25,0 50,25" />
+            <polyline points="75,25 100,0 125,25" />
+            <polyline points="150,25 175,0 200,25" />
+        </svg>
+    </div>
+    <div id="job-overview-scroll-left" class="job-overview-scroll-indicator">
+        <svg width="25" height="300" style="opacity:0.5">
+            <polyline points="25,75 0,100 25,125" />
+            <polyline points="25,150 0,175 25,200" />
+            <polyline points="25,225 0,250 25,275" />
         </svg>
     </div>
     <strong id="job-tree-close">X</strong>

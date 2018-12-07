@@ -35,8 +35,9 @@
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
         $('body').on('click', '#job-tree-button', renderJobTreePartial);
-        //$('body').on('scroll', '#job-tree-container', displayJobTreeScroll);
+        $('body').on('scroll', '#job-tree-container', displayJobTreeScroll);
         $('.body-content').on('scroll', '#job-tree-container', displayJobTreeScroll);
+        $('.body-content').on('scroll', '#job-overview-container', displayJobTreeScroll);
     });
 
     function renderUnitPanels() {
@@ -568,7 +569,6 @@
         var scrollContainer = document.getElementById('job-overview-container');
         var scrollRight = document.getElementById('job-overview-scroll-right');
         var scrollBottom = document.getElementById('job-overview-scroll-bottom');
-        
 
         if (scrollContainer.scrollLeft != scrollContainer.scrollWidth) {
             scrollRight.style.visibility = 'visible';
