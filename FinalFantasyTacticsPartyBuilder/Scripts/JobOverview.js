@@ -35,9 +35,7 @@
         $('body').on('mouseover', '.item-names', previewEquipmentChanges);
         $('body').on('mouseleave', '.item-names', resetItemStats);
         $('body').on('click', '#job-tree-button', renderJobTreePartial);
-        $('body').on('scroll', '#job-tree-container', displayJobTreeScroll);
-        $('.body-content').on('scroll', '#job-tree-container', displayJobTreeScroll);
-        $('.body-content').on('scroll', '#job-overview-container', displayJobTreeScroll);
+        //$('window').on('scroll', displayJobTreeScroll);
     });
 
     function renderUnitPanels() {
@@ -109,6 +107,7 @@
         var gender = document.getElementById('gender-male-button').attributes['selected'].nodeValue === "true" ? 'Male' : 'Female';
         $.post('/Home/GetJobTreePartial', { gender: gender }, function (data) {
             $('#party-overview-container').append(data);
+            $('#job-tree-container').on('scroll', displayJobTreeScroll);
         });
     }
 
@@ -565,16 +564,38 @@
     }
 
     function displayJobTreeScroll() {
-        console.log('Hit');
-        var scrollContainer = document.getElementById('job-overview-container');
+        var scrollContainer = document.getElementById('job-tree-container');
         var scrollRight = document.getElementById('job-overview-scroll-right');
+        var scrollLeft = document.getElementById('job-overview-scroll-left');
+        var scrollTop = document.getElementById('job-overview-scroll-top');
         var scrollBottom = document.getElementById('job-overview-scroll-bottom');
 
-        if (scrollContainer.scrollLeft != scrollContainer.scrollWidth) {
+        if ((scrollContainer.scrollLeft + scrollContainer.clientWidth) < scrollContainer.scrollWidth) {
             scrollRight.style.visibility = 'visible';
         }
         else {
             scrollRight.style.visibility = 'hidden';
+        }
+
+        if (scrollContainer.scrollLeft > 0) {
+            scrollLeft.style.visibility = 'visible';
+        }
+        else {
+            scrollLeft.style.visibility = 'hidden';
+        }
+
+        if ((scrollContainer.scrollTop + scrollContainer.clientHeight) < scrollContainer.scrollHeight) {
+            scrollBottom.style.visibility = 'visible';
+        }
+        else {
+            scrollBottom.style.visibility = 'hidden';
+        }
+
+        if (scrollContainer.scrollTop > 0) {
+            scrollTop.style.visibility = 'visible';
+        }
+        else {
+            scrollTop.style.visibility = 'hidden';
         }
     }
 

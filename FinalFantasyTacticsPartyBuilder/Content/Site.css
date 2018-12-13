@@ -1661,10 +1661,13 @@ img {
     }
 
     .job-overview-scroll-indicator {
+        z-index: 900001;
         position: fixed;
+        visibility:hidden;
     }
 
     #job-overview-scroll-right {
+        visibility:visible;
         height: 70%;
         width: 10%;
         top: 20%;
@@ -1672,14 +1675,15 @@ img {
     }
 
     #job-overview-scroll-bottom {
-        height: 5%;
+        visibility:visible;
+        height: 2.5%;
         width: 70%;
         left: 15%;
         top: 90%;
     }
 
     #job-overview-scroll-top {
-        height: 5%;
+        height: 2.5%;
         width: 70%;
         left: 15%;
         top: 6%;
@@ -1687,7 +1691,7 @@ img {
 
     #job-overview-scroll-left {
         height: 70%;
-        width: 10%;
+        width: 5%;
         left: 5%;
         top: 20%;
     }
