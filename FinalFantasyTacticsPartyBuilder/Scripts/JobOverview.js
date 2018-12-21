@@ -526,6 +526,7 @@
         var localUnitData = getUnitData();
         localUnitData = localUnitData.units[selectedUnitPosition];
         var viewModelData = {
+            JobID: localUnitData.Unit.JobID,
             Position: parseInt(selectedUnitPosition),
             UnitName: localUnitData.Unit.UnitName,
             Gender: parseInt(localUnitData.Unit.Gender),

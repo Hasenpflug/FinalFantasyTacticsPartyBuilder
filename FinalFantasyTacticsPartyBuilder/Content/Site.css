@@ -10,7 +10,7 @@
     background-image: url(Images/party_builder_background.png);
     overflow: scroll;
     padding-left: 3%;
-    padding-right: 3%;
+    /*padding-right: 3%;*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -86,18 +86,17 @@ img {
     }
 
 #new-unit-cross-container {
-    position:relative;
-    height:100%;
-    
+    position: relative;
+    height: 100%;
 }
 
     #new-unit-cross-container img {
         margin: auto;
-        width:75%;
+        width: 75%;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform:translate(-50%,-50%)
+        transform: translate(-50%,-50%)
     }
 
 .unit-selector:hover {
@@ -119,7 +118,7 @@ img {
 
     .fft-tooltip .fft-tooltip-container {
         white-space: nowrap;
-        overflow:auto;
+        overflow: auto;
         font-size: 30px;
         visibility: hidden;
         background-color: black;
@@ -128,7 +127,7 @@ img {
         padding: 5px;
         border-radius: 10px;
         position: absolute;
-        left:50%;
+        left: 50%;
         transform: translate(-50%);
         z-index: 1;
     }
@@ -635,7 +634,7 @@ img {
 }
 
 #job-details-container, #job-gender-container, #job-confirm-container {
-    top:85%;
+    top: 85%;
     display: inline-block;
     position: absolute;
     text-align: center;
@@ -645,12 +644,12 @@ img {
 
 #job-details-level-container {
     margin: auto;
-    font-size:0;
+    font-size: 0;
 }
 
     #job-details-level-container img {
         width: auto;
-        margin:0 2.5%;
+        margin: 0 2.5%;
     }
 
 #job-name {
@@ -824,7 +823,7 @@ img {
 }
 
 #unit-ability-equipment-container {
-    margin-top:1%;
+    margin-top: 1%;
     width: 100%;
     height: 45%;
 }
@@ -874,6 +873,7 @@ img {
 #unit-equipment-item-names, #unit-ability-names {
     height: 100%;
     width: 60%;
+    position: relative;
 }
 
 #ability-icon {
@@ -884,10 +884,10 @@ img {
 }
 
 #unit-equipment-item-names .fft-cell, #unit-ability-names .fft-cell {
-    margin: 7% 0%;
+    margin: 7% 0;
     text-align: left;
-    position: relative;
 }
+
 
 #unit-ability-icons img {
     max-height: 50px;
@@ -1268,7 +1268,7 @@ img {
     left: 0;
     top: 0;
     height: 100%;
-    width: 4%;
+    width: 5%;
     display: none;
     background-color: rgba(0, 0, 0, 0.25);
 }
@@ -1296,24 +1296,24 @@ img {
     }
 
 .unit-stat-container {
-    display:inline;
+    display: inline;
 }
 
 #job-tree-container {
     font-size: 30px;
-    padding:1%;
+    padding: 1%;
     width: 90%;
     height: 90%;
-    top:5%;
-    position:absolute;
+    top: 5%;
+    position: absolute;
     box-shadow: 0 0 3000px 3000px rgba(0, 0, 0, 0.50);
 }
 
 .tree-chart {
     display: inline-block;
-    position:absolute !important;
+    position: absolute !important;
     margin: 0;
-    overflow:visible !important;
+    overflow: visible !important;
 }
 
 #tree-squire-chart {
@@ -1326,12 +1326,12 @@ img {
 }
 
 #tree-onion-chart {
-    left:60%;
+    left: 60%;
     width: 30%;
 }
 
 #tree-mime-chart {
-    top:35%;
+    top: 35%;
     left: 60%;
     width: 30%;
 }
@@ -1343,16 +1343,16 @@ img {
 }
 
 .node img {
-    margin: 0 10px;    
+    margin: 0 10px;
     float: none !important;
 }
 
 .node p {
-    font-size:30px;
+    font-size: 30px;
 }
 
 .job-treant-node-container {
-    position:relative;
+    position: relative;
     margin: 0 5px;
     display: inline-block;
 }
@@ -1365,7 +1365,7 @@ img {
 
 .job-node-img {
     position: absolute;
-    left:50%;
+    left: 50%;
     transform: translate(-50%, -250%);
     height: 25px !important;
 }
@@ -1433,7 +1433,7 @@ img {
         width: 55%;
         /*padding: 5%;*/
         margin: 0;
-        left:45%;
+        left: 45%;
     }
 
     #unit-details-name-orb {
@@ -1515,7 +1515,7 @@ img {
     }
 
     #job-growth-chart-container {
-       top: 77.5%;
+        top: 77.5%;
     }
 
     #job-evasion-chart-container {
@@ -1537,7 +1537,7 @@ img {
     }
 
     #job-gender-container, #job-confirm-container {
-        margin:0;
+        margin: 0;
         top: 64%;
     }
 
@@ -1551,7 +1551,7 @@ img {
 
     #unit-details-overall-stats {
         font: 10vw 'Altima';
-        padding:1%;
+        padding: 1%;
     }
 
     #physical-icon, #magical-icon {
@@ -1559,14 +1559,15 @@ img {
     }
 
     #damage-resist-container {
-        display:block;
+        display: block;
         margin: 0% 10%;
         padding: 0 3vw;
     }
 
     #status-immunities-container {
+        padding: 0 2%;
         display: block;
-        margin:auto;
+        margin: auto;
     }
 
     .element-icon, img.status-icon {
@@ -1583,16 +1584,21 @@ img {
         font-size: 12vw;
     }
 
-    #unit-equipment-item-icons {
-        width:10%;
+    #equipment-stats-container {
+        display: block;
+        margin: auto;
     }
 
-    #unit-equipment-item-icons .fft-cell{
-        margin: 40% 0;
+    #unit-equipment-item-icons {
+        width: 10%;
     }
+
+        #unit-equipment-item-icons .fft-cell {
+            margin: 40% 0;
+        }
 
     .item-category img {
-        margin:auto;
+        margin: auto;
     }
 
     .job-status-container .value {
@@ -1600,8 +1606,8 @@ img {
     }
 
     .mp-bar, .hp-bar {
-        height:30%;
-        width:75%;
+        height: 30%;
+        width: 75%;
     }
 
     .fft-button:hover:before {
@@ -1609,24 +1615,28 @@ img {
     }
 
     #unit-ability-equipment-container {
-        height:auto;
+        height: auto;
     }
 
     #equip-icon {
-        width:100%
+        width: 100%
     }
 
     #unit-equipment-item-icons, #unit-equipment-slot-icons, #unit-equipment-item-names {
         width: auto;
     }
 
+        #unit-equipment-item-names .fft-cell {
+            margin: 10% 0;
+        }
+
     #job-tree-container {
-        overflow:scroll;
+        overflow: scroll;
     }
 
     #tree-chemist-chart {
-        top:10%;
-        width:800px;
+        top: 10%;
+        width: 800px;
     }
 
     #tree-squire-chart {
@@ -1654,20 +1664,20 @@ img {
 
     #job-tree-close {
         position: fixed;
-        right:10%;
-        top:5%;
-        transform:translate(0, 50%);
+        right: 10%;
+        top: 5%;
+        transform: translate(0, 50%);
         z-index: 9001;
     }
 
     .job-overview-scroll-indicator {
         z-index: 900001;
         position: fixed;
-        visibility:hidden;
+        visibility: hidden;
     }
 
     #job-overview-scroll-right {
-        visibility:visible;
+        visibility: visible;
         height: 70%;
         width: 10%;
         top: 20%;
@@ -1675,7 +1685,7 @@ img {
     }
 
     #job-overview-scroll-bottom {
-        visibility:visible;
+        visibility: visible;
         height: 2.5%;
         width: 70%;
         left: 15%;

@@ -8,6 +8,8 @@ namespace FinalFantasyTacticsPartyBuilder.View_Models
 {
     public class UnitDismissViewModel
     {
+        public int JobID { get; set; }
+
         public int Position { get; set; }
 
         public string UnitName { get; set; }

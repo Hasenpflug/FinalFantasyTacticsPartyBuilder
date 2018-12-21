@@ -67,7 +67,8 @@ namespace FinalFantasyTacticsPartyBuilder.Controllers
                 unit.Quote = context.Quotes.OrderBy(m => Guid.NewGuid()).FirstOrDefault(m => m.Gender == unit.Gender).Text;
             }
 
-            unit.JobName = unit.JobName.Contains("Onion") ? "OnionKnight" : unit.JobName;
+            unit.JobName = Enum.GetName(typeof(Jobs), unit.JobID);
+            unit.JobName = unit.JobName.Contains("Onion") ? "Onion Knight" : unit.JobName;
 
             return PartialView("~/Views/Home/_UnitDismissPartial.cshtml", unit);
         }
