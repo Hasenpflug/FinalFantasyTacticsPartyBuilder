@@ -646,7 +646,7 @@
             piemenu.hoverPercent = 1;
             piemenu.clockwise = false;
             piemenu.animatetime = 200;
-            piemenu.maxPercent = 0.55;
+            piemenu.maxPercent = 0.50;
             piemenu.animateeffect = 'linear';
             piemenu.createWheel();
         }

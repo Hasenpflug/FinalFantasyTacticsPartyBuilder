@@ -863,6 +863,8 @@ img {
     text-align: center;
     margin: 40% 20%;
     height: 40px;
+    position: relative;
+    font-size:70%;
 }
 
     #unit-equipment-slot-icons .fft-cell img, #unit-equipment-item-icons .fft-cell img, #unit-ability-icons .fft-cell img {
@@ -978,17 +980,17 @@ img {
             content: url(Images/menu_cursor.png);
         }
 
-#item-selection .fft-row .fft-cell:last-child {
+#item-selection .item-details-button {
     width: 10%;
     margin-left: 3%;
     padding: 0.5%;
     vertical-align: top;
 }
 
-    #item-selection .fft-row .fft-cell:last-child:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.15);
-    }
+#item-selection item-details-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.15);
+}
 
 .weapon-icons {
     width: 50px;
@@ -1380,7 +1382,9 @@ img {
     content: ' ' !important;
 }
 
-
+.job-overview-scroll-indicator {
+    display:none;
+}
 
 @media screen and (max-width: 600px) {
     .menu {
@@ -1579,24 +1583,64 @@ img {
         margin-bottom: 1%;
     }
 
-    .equipment-selector {
-        margin: 0;
-        font-size: 12vw;
-    }
-
     #equipment-stats-container {
         display: block;
         margin: auto;
     }
 
-    #unit-equipment-item-icons {
-        width: 10%;
+    #equip-icon {
+        position:absolute;
+        z-index:1;
     }
 
-        #unit-equipment-item-icons .fft-cell {
-            margin: 40% 0;
+    #unit-equipment-slot-icons, #unit-equipment-item-icons {
+        position:relative;
+        width: 15%;
+    }
+
+        #unit-equipment-slot-icons .fft-cell, #unit-equipment-item-icons .fft-cell {
+            margin: 2vh auto;
         }
 
+            #unit-equipment-slot-icons .fft-cell img, #unit-equipment-item-icons .fft-cell img {
+                margin: auto;
+            }
+
+
+    #unit-equipment-item-names {
+        width:50%;
+        font-size:15vw;
+    }
+
+    #unit-equipment-item-names .fft-cell {
+       width:100%;
+       margin: 2vh auto;
+       vertical-align:middle;
+       line-height: 45px;
+    }
+
+    #item-selection-icon-background {
+        width:15%;
+    }
+
+    #item-selection .fft-row {
+        font-size: 7vw;
+        height: 6vh;
+    }
+
+    #item-selection .item-icon {
+        width: 10%;
+        height: 100%;
+    }
+
+    #item-selection .type-icon {
+        width:5%;
+    }
+
+    #item-selection .item-names {
+        width: 30%;
+    }
+    
     .item-category img {
         margin: auto;
     }
@@ -1621,14 +1665,6 @@ img {
     #equip-icon {
         width: 100%
     }
-
-    #unit-equipment-item-icons, #unit-equipment-slot-icons, #unit-equipment-item-names {
-        width: auto;
-    }
-
-        #unit-equipment-item-names .fft-cell {
-            margin: 10% 0;
-        }
 
     #job-tree-container {
         overflow: scroll;
@@ -1673,6 +1709,7 @@ img {
     .job-overview-scroll-indicator {
         z-index: 900001;
         position: fixed;
+        display:block;
         visibility: hidden;
     }
 
@@ -1704,5 +1741,16 @@ img {
         width: 5%;
         left: 5%;
         top: 20%;
+    }
+
+    #item-details-container {
+        top:5%;
+        height:90%;
+        overflow:scroll;
+    }
+
+    #item-details-power-boost-container {
+       width:80%;
+       margin:0 10%;
     }
 }
